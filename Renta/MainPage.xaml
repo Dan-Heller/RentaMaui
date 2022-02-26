@@ -1,0 +1,13 @@
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Renta.MainPage"
+             BackgroundColor="{DynamicResource SecondaryColor}"
+            xmlns:local="clr-namespace:Renta" 
+            xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+            android:TabbedPage.ToolbarPlacement="Bottom">
+
+    <local:SearchPage  IconImageSource="searchicon" />
+    <local:MenuPage  IconImageSource="menuicon" />
+    
+
+</TabbedPage>
