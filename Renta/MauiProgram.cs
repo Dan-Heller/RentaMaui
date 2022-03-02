@@ -1,4 +1,5 @@
-﻿namespace Renta;
+﻿
+namespace Renta;
 
 public static class MauiProgram
 {
@@ -11,6 +12,8 @@ public static class MauiProgram
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 			});
+
+		
 
 		return builder.Build();
 	}

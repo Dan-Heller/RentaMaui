@@ -54,17 +54,35 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\addicon.png" />
+	  <None Remove="Resources\Images\coinicon.png" />
 	  <None Remove="Resources\Images\homeicon.png" />
 	  <None Remove="Resources\Images\menuicon.png" />
 	  <None Remove="Resources\Images\messageicon.png" />
+	  <None Remove="Resources\Images\profileicon.png" />
+	  <None Remove="Resources\Images\ricon.png" />
 	  <None Remove="Resources\Images\searchicon.png" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="MenuPage.xaml">
+	  <MauiXaml Update="Views\AddItemPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="SearchPage.xaml">
+	  <MauiXaml Update="Views\CreditsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\FeedPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\MenuPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\MessagesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ProfilePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SearchPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

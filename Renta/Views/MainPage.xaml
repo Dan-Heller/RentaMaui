@@ -1,0 +1,30 @@
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Renta.MainPage"
+             BackgroundColor="{DynamicResource SecondaryColor}"
+            xmlns:local="clr-namespace:Renta" 
+            xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            BarBackgroundColor="WhiteSmoke">
+
+    <NavigationPage IconImageSource="homeicon" Title="Home" BarBackgroundColor="WhiteSmoke">
+     <!--  <NavigationPage.TitleView>
+            <AbsoluteLayout   VerticalOptions="CenterAndExpand">
+                <Button ImageSource="profileicon.png" TextColor="black" HorizontalOptions="End"  AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0,0,40,40" />
+            </AbsoluteLayout>
+        </NavigationPage.TitleView> -->
+
+        <x:Arguments>
+            <local:FeedPage  />
+        </x:Arguments>
+    </NavigationPage>
+    
+    
+    
+    <local:MessagesPage IconImageSource="messageicon" Title="Messages"/>
+    <local:AddItemPage IconImageSource="addicon" Title="Add"/>
+    <local:SearchPage  IconImageSource="searchicon" Title="Search"/>
+    <local:MenuPage  IconImageSource="menuicon" Title="Menu"/>
+    
+
+</TabbedPage>
