@@ -12,12 +12,11 @@ public partial class MainPage : TabbedPage
 		InitializeComponent();
 
 		// FEED TAB
-		NavigationPage navigation = new NavigationPage(feedPage);
-		navigation.IconImageSource = "homeicon.png";
-		navigation.Title = "Home";
-		Children.Add(navigation);
-		
-		
- 	}
+		NavigationPage FeedTab = new NavigationPage(feedPage);
+		FeedTab.IconImageSource = "homeicon.png";
+		FeedTab.Title = "Home";
+		Children.Add(FeedTab);
+
+	}
 }
 

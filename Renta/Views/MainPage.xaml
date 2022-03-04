@@ -15,9 +15,8 @@
           <local:FeedPage/> 
         </x:Arguments>
     </NavigationPage> -->
-    
-    
-    
+
+        
     <local:MessagesPage  IconImageSource="messageicon" Title="Messages" />
     <local:AddItemPage IconImageSource="addicon" Title="Add"/>
     <local:SearchPage  IconImageSource="searchicon" Title="Search"/>

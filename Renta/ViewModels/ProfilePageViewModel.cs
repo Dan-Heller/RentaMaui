@@ -15,8 +15,6 @@ namespace Renta.ViewModels
         public ProfilePageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            
-
         }
     }
 }
