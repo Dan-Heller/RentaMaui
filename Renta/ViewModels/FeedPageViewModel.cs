@@ -5,31 +5,36 @@ using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using System.Threading.Tasks;
+using Renta.Common.Navigation;
 
 namespace Renta.ViewModels
 {
     //: INotifyPropertyChanged
-    public class FeedPageViewModel
+    public class FeedPageViewModel //: BaseViewModel
     {
-        public INavigation Navigation { get; set; }
-        public ICommand ProfileCommand { get; private set; }
-        public ICommand CreditsCommand { get; private set; }
 
-        public FeedPageViewModel(INavigation navigation)
+       // INavigation navigation = App.Current.MainPage.Navigation;
+        readonly INavigationService _navigationService;
+        public INavigation navigation;
+
+        //public ICommand ProfileCommand { get; private set; }
+        //public ICommand CreditsCommand { get; private set; }
+
+        public FeedPageViewModel(INavigationService navigationService)
         {
-            this.Navigation = navigation;
-           ProfileCommand = new Command(async () => await GoToUserPage());
-           CreditsCommand = new Command(async () => await GotoCreditsPage());
+           _navigationService = navigationService;
+           //ProfileCommand = new Command(async () => await GoToUserPage());
+          
         }
 
-        public async Task GoToUserPage()
-        {
-            await Navigation.PushAsync(new ProfilePage());
-        }
+      
 
-        public async Task GotoCreditsPage()
-        {
-            await Navigation.PushAsync(new CreditsPage());
-        }
+        //public Command NavigateToProfilePage
+        // => new Command(async () => await _navigationService.NavigateToProfilePage());
+
+        
+        public Command NavigateToProfilePage
+         => new Command(async () => await _navigationService.NavigateToProfilePage(navigation));
+
     }
 }

@@ -7,24 +7,22 @@
             android:TabbedPage.ToolbarPlacement="Bottom"
             BarBackgroundColor="WhiteSmoke">
 
-    <NavigationPage IconImageSource="homeicon" Title="Home" BarBackgroundColor="WhiteSmoke">
-     <!--  <NavigationPage.TitleView>
-            <AbsoluteLayout   VerticalOptions="CenterAndExpand">
-                <Button ImageSource="profileicon.png" TextColor="black" HorizontalOptions="End"  AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0,0,40,40" />
-            </AbsoluteLayout>
-        </NavigationPage.TitleView> -->
-
+    <TabbedPage.Children>
+    
+    
+    <!-- NavigationPage IconImageSource="homeicon" Title="Home" BarBackgroundColor="WhiteSmoke">
         <x:Arguments>
-            <local:FeedPage  />
+          <local:FeedPage/> 
         </x:Arguments>
-    </NavigationPage>
+    </NavigationPage> -->
     
     
     
-    <local:MessagesPage IconImageSource="messageicon" Title="Messages"/>
+    <local:MessagesPage  IconImageSource="messageicon" Title="Messages" />
     <local:AddItemPage IconImageSource="addicon" Title="Add"/>
     <local:SearchPage  IconImageSource="searchicon" Title="Search"/>
     <local:MenuPage  IconImageSource="menuicon" Title="Menu"/>
-    
 
+    </TabbedPage.Children>
+    
 </TabbedPage>

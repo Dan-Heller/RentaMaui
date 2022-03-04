@@ -2,21 +2,22 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Renta.FeedPage"
-             BackgroundColor="White"
-             Title="Renta"
-            >
+             BackgroundColor="White">
+    <!-- Title="Renta" -->
+            
     
    <!-- <Shell.TitleView>
         <Image Source="homeicon.png" HorizontalOptions="Center"
                VerticalOptions="Center"/>
     </Shell.TitleView> -->
     
-    
+  
     
   <ContentPage.ToolbarItems>
         
-        <ToolbarItem  IconImageSource="profileicon" Command="{Binding ProfileCommand}"/>
-        <ToolbarItem   IconImageSource="coinicon" Command="{Binding CreditsCommand}"/>
+        <ToolbarItem  IconImageSource="profileicon" Command="{Binding NavigateToProfilePage}"/>
+        <ToolbarItem   IconImageSource="coinicon" />
+      
     </ContentPage.ToolbarItems> 
     
     

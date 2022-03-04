@@ -1,15 +1,23 @@
-﻿namespace Renta;
+﻿using Renta.Common.Navigation;
+using Renta.ViewModels;
+namespace Renta;
+
 
 public partial class MainPage : TabbedPage
 {
-	
+	public MainPage(MainPageViewModel viewModel,FeedPage feedPage)
 
-	public MainPage()
-	{
+	{ 
+		BindingContext = viewModel;
 		InitializeComponent();
 
-		new NavigationPage(new FeedPage());
+		// FEED TAB
+		NavigationPage navigation = new NavigationPage(feedPage);
+		navigation.IconImageSource = "homeicon.png";
+		navigation.Title = "Home";
+		Children.Add(navigation);
+		
+		
  	}
-
 }
 
