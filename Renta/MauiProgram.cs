@@ -1,4 +1,4 @@
-﻿
+﻿using Microsoft.Extensions.DependencyInjection;
 using Renta.Common.Navigation;
 using Renta.ViewModels;
 
@@ -16,16 +16,25 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 			});
 
+		builder.Services.AddSingleton<AppShell>(); 
+		builder.Services.AddSingleton<AppShellViewModel>();
+
+		builder.Services.AddSingleton<FeedPage>();
+		builder.Services.AddSingleton<FeedPageViewModel>();
+
+
+
+
 		//builder.Services.AddTransient<AppShell>();  ///???
 		//builder.Services.AddTransient<AppShellViewModel>();
 
-  //      builder.Services.AddTransient<FeedPage>();
-  //      builder.Services.AddTransient<FeedPageViewModel>();
+		//      builder.Services.AddTransient<FeedPage>();
+		//      builder.Services.AddTransient<FeedPageViewModel>();
 
-  //      builder.Services.AddTransient<ProfilePage>();
-  //      builder.Services.AddTransient<ProfilePageViewModel>();
+		//      builder.Services.AddTransient<ProfilePage>();
+		//      builder.Services.AddTransient<ProfilePageViewModel>();
 
-  //      builder.Services.AddSingleton<INavigationService, NavigationService>();
+		//      builder.Services.AddSingleton<INavigationService, NavigationService>();
 
 
 

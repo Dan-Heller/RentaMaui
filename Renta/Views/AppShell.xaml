@@ -4,8 +4,10 @@
              BackgroundColor="{DynamicResource SecondaryColor}"
             xmlns:Pages ="clr-namespace:Renta"
             xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
-            android:TabbedPage.ToolbarPlacement="Bottom">
-
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            >
+            
+    
 
 
     <TabBar>

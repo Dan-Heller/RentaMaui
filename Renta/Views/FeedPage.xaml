@@ -2,31 +2,26 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Renta.FeedPage"
-             BackgroundColor="White">
+             BackgroundColor="WhiteSmoke"
+             
+             xmlns:controls="clr-namespace:Renta.Controls"
+              Shell.NavBarIsVisible="False">
     <!-- Title="Renta" -->
-            
-    
- <Shell.TitleView>
-        <!-- StackLayout>-->
-        <Image Source="homeicon.png" HorizontalOptions="Center" VerticalOptions="Center"/>
-        <!--    <Button ImageSource="profileicon.png" HorizontalOptions="End" VerticalOptions="Center" /> -->
-       <!-- </StackLayout> -->
-    </Shell.TitleView> 
-    
-    
-  
-    
-  <!--<ContentPage.ToolbarItems>
-        
-        <ToolbarItem  IconImageSource="profileicon" Command="{Binding NavigateToProfilePage}"/>
-        <ToolbarItem   IconImageSource="coinicon" />
-      
-    </ContentPage.ToolbarItems> -->
-    
-    
-    <StackLayout>
-        <Label Text="This is Feed Page!"
+
+    <Grid>
+        <StackLayout Margin="0,0" >
+            <controls:HeaderControl 
+                                    VerticalOptions="Start" />
+            <!--TextToSearch="{Binding Text, Mode=OneWayToSource}"
+                                    SearchCommand="{Binding SearchCommand}"-->
+        </StackLayout>
+
+        <StackLayout>
+            <Label   Text="This is Feed Page!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-    </StackLayout>
+        </StackLayout>
+
+    </Grid>
+    
 </ContentPage>
