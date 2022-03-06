@@ -6,12 +6,12 @@ namespace Renta;
 
 public partial class App : Application
 {
-	public App(INavigationService navigationService)
+	public App()
 	{
 		InitializeComponent();
 
-		MainPage = new NavigationPage();
-		navigationService.NavigateToMainPage(MainPage.Navigation);
-
+		//MainPage = new NavigationPage();
+		//navigationService.NavigateToMainPage(MainPage.Navigation);
+		MainPage = new AppShell();
 	}
 }

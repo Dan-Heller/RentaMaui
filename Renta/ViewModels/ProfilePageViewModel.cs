@@ -9,12 +9,11 @@ namespace Renta.ViewModels
 {
     public class ProfilePageViewModel
     {
-        readonly INavigationService _navigationService;
-        public INavigation navigation;
+        
 
-        public ProfilePageViewModel(INavigationService navigationService)
+        public ProfilePageViewModel()
         {
-            _navigationService = navigationService;
+            
         }
     }
 }

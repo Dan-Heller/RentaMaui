@@ -5,13 +5,13 @@ namespace Renta;
 
 public partial class FeedPage : ContentPage
 {
-	public FeedPage(FeedPageViewModel feedPageViewModel)
+	public FeedPage()
 	{
 		//BindingContext = feedPageViewModel;
 		//FeedPageViewModel feedPageViewModel = new FeedPageViewModel(navigationService);
 
-		BindingContext = feedPageViewModel;
-		feedPageViewModel.navigation = this.Navigation;  ////
+		//BindingContext = feedPageViewModel;
+		//feedPageViewModel.navigation = this.Navigation;  ////
 		InitializeComponent();
 		
 	}

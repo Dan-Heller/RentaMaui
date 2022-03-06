@@ -14,15 +14,15 @@ namespace Renta.ViewModels
     {
 
        // INavigation navigation = App.Current.MainPage.Navigation;
-        readonly INavigationService _navigationService;
-        public INavigation navigation;
+        //readonly INavigationService _navigationService;
+        //public INavigation navigation;
 
         //public ICommand ProfileCommand { get; private set; }
         //public ICommand CreditsCommand { get; private set; }
 
-        public FeedPageViewModel(INavigationService navigationService)
+        public FeedPageViewModel()
         {
-           _navigationService = navigationService;
+          // _navigationService = navigationService;
            //ProfileCommand = new Command(async () => await GoToUserPage());
           
         }
@@ -33,8 +33,8 @@ namespace Renta.ViewModels
         // => new Command(async () => await _navigationService.NavigateToProfilePage());
 
         
-        public Command NavigateToProfilePage
-         => new Command(async () => await _navigationService.NavigateToProfilePage(navigation));
+        //public Command NavigateToProfilePage
+        // => new Command(async () => await _navigationService.NavigateToProfilePage(navigation));
 
     }
 }

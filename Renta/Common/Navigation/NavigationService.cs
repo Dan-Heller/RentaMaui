@@ -36,7 +36,7 @@ namespace Renta.Common.Navigation
 
         public Task NavigateToProfilePage(INavigation navigation) => NavigateToPage<ProfilePage>(navigation);
 
-        public Task NavigateToMainPage(INavigation navigation) => NavigateToPage<MainPage>(navigation);
+       // public Task NavigateToMainPage(INavigation navigation) => NavigateToPage<MainPage>(navigation);
 
 
 

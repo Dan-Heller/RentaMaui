@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace Renta.ViewModels
 {
-    public class MainPageViewModel
+    public class AppShellViewModel
     {
         //INavigation navigation = App.Current.MainPage.Navigation;
-        readonly INavigationService _navigationService;
+        //readonly INavigationService _navigationService;
 
-        public MainPageViewModel(INavigationService navigationService)
+        public AppShellViewModel()
         {
-            _navigationService = navigationService;
+            //_navigationService = navigationService;
            
         }
     }

@@ -68,6 +68,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\AppShell.xaml.cs">
+	    <DependentUpon>AppShell.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Views\AddItemPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

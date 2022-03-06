@@ -5,11 +5,11 @@ namespace Renta;
 
 public partial class ProfilePage : ContentPage
 {
-	public ProfilePage(ProfilePageViewModel profilePageViewModel, FeedPage feedPage)
+	public ProfilePage()
 	{
 		//ProfilePageViewModel profilePageViewModel = new ProfilePageViewModel(navigationService);
-		BindingContext = profilePageViewModel;
-		profilePageViewModel.navigation = feedPage.Navigation;
+		//BindingContext = profilePageViewModel;
+		//profilePageViewModel.navigation = feedPage.Navigation;
 		InitializeComponent();
 	}
 }

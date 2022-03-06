@@ -6,23 +6,26 @@
     <!-- Title="Renta" -->
             
     
-   <!-- <Shell.TitleView>
-        <Image Source="homeicon.png" HorizontalOptions="Center"
-               VerticalOptions="Center"/>
-    </Shell.TitleView> -->
+ <Shell.TitleView>
+        <!-- StackLayout>-->
+        <Image Source="homeicon.png" HorizontalOptions="Center" VerticalOptions="Center"/>
+        <!--    <Button ImageSource="profileicon.png" HorizontalOptions="End" VerticalOptions="Center" /> -->
+       <!-- </StackLayout> -->
+    </Shell.TitleView> 
+    
     
   
     
-  <ContentPage.ToolbarItems>
+  <!--<ContentPage.ToolbarItems>
         
         <ToolbarItem  IconImageSource="profileicon" Command="{Binding NavigateToProfilePage}"/>
         <ToolbarItem   IconImageSource="coinicon" />
       
-    </ContentPage.ToolbarItems> 
+    </ContentPage.ToolbarItems> -->
     
     
     <StackLayout>
-        <Label Text="Welcome to .NET MAUI!"
+        <Label Text="This is Feed Page!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
     </StackLayout>
