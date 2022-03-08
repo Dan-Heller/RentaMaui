@@ -3,18 +3,59 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Renta.FeedPage"
              BackgroundColor="WhiteSmoke"
-             
+             Shell.NavBarIsVisible="true"
              xmlns:controls="clr-namespace:Renta.Controls"
-              Shell.NavBarIsVisible="False">
+             
+             >
     <!-- Title="Renta" -->
+    <Shell.TitleView>
+        <Grid Padding="5" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
 
+        <ImageButton Grid.Column="2" Source="profileicon.png"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   Command="{Binding ProfileButtonTapped }" />
+        <ImageButton Grid.Column="1" Source="coinicon.png"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   Command="{Binding ProfileButtonTapped }" />
+        <BoxView Grid.Column="0" BackgroundColor="LightGoldenrodYellow"/>
+
+    </Grid>
+    </Shell.TitleView>
+
+
+<!--<Shell.TitleView>
     <Grid>
-        <StackLayout Margin="0,0" >
+--><!--Margin="{OnPlatform Android='115,10,50,25', Default=0}"--><!--
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <BoxView BackgroundColor="Yellow"/>
+        <BoxView Grid.Column="1" BackgroundColor="LightGoldenrodYellow"/>
+    </Grid>
+</Shell.TitleView>-->
+
+    
+   
+        <!--<StackLayout Margin="0,0" >
             <controls:HeaderControl 
                                     VerticalOptions="Start" />
-            <!--TextToSearch="{Binding Text, Mode=OneWayToSource}"
-                                    SearchCommand="{Binding SearchCommand}"-->
-        </StackLayout>
+            --><!--TextToSearch="{Binding Text, Mode=OneWayToSource}"
+                                    SearchCommand="{Binding SearchCommand}"--><!--
+        </StackLayout>-->
+
+
+
+    <Grid>
+
 
         <StackLayout>
             <Label   Text="This is Feed Page!"

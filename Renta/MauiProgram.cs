@@ -22,7 +22,7 @@ public static class MauiProgram
 		builder.Services.AddSingleton<FeedPage>();
 		builder.Services.AddSingleton<FeedPageViewModel>();
 
-
+		builder.Services.AddSingleton<MessagesPage>();
 
 
 		//builder.Services.AddTransient<AppShell>();  ///???

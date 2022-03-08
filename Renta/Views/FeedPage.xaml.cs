@@ -5,9 +5,9 @@ namespace Renta;
 
 public partial class FeedPage : ContentPage
 {
-	public FeedPage()
+	public FeedPage(FeedPageViewModel feedPageViewModel)
 	{
-		//BindingContext = feedPageViewModel;
+		BindingContext = feedPageViewModel;
 		//FeedPageViewModel feedPageViewModel = new FeedPageViewModel(navigationService);
 
 		//BindingContext = feedPageViewModel;

@@ -31,6 +31,19 @@ public partial class HeaderControl : ContentView
     //    set { SetValue(ShowSearchCategoriesProperty, value); }
     //}
 
+    public static readonly BindableProperty ShowProfileButtonProperty =
+        BindableProperty.Create(
+            nameof(ShowProfileButtonProperty),
+            typeof(bool),
+            typeof(HeaderControl),
+            true);
+
+    public bool ShowProfileButton
+    {
+        get { return (bool)GetValue(ShowProfileButtonProperty); }
+        set { SetValue(ShowProfileButtonProperty, value); }
+    }
+
     //public ICommand SearchCommand
     //{
     //    get { return (ICommand)GetValue(SearchCommandProperty); }

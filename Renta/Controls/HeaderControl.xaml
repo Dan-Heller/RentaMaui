@@ -46,7 +46,8 @@
                                VerticalOptions="Center"
                                HorizontalOptions="End"
                                HeightRequest="30"
-                               WidthRequest="30">
+                               WidthRequest="30"
+                               IsVisible="{Binding ShowProfileButton ,Source={x:Reference selfMediaElementView}}">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                             </Image.GestureRecognizers> 
