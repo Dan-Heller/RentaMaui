@@ -4,15 +4,14 @@
              x:Class="Renta.ProfilePage"
              Title="ProfilePage"
              Shell.ForegroundColor="black"
+             Shell.NavBarIsVisible="true"
              xmlns:controls="clr-namespace:Renta.Controls"
              BackgroundColor="White">
     <Grid>
         <!--<StackLayout Margin="0,0" >
-            <controls:HeaderControl IsVisible="{OnIdiom Default=true, Phone=false}"
-                                    VerticalOptions="Start" 
-                                    ShowProfileButton="False"                            />
-            TextToSearch="{Binding Text, Mode=OneWayToSource}"
-                                    SearchCommand="{Binding SearchCommand}"
+            <controls:HeaderControl       VerticalOptions="Start"                   />
+            --><!--TextToSearch="{Binding Text, Mode=OneWayToSource}"
+                                    SearchCommand="{Binding SearchCommand}"--><!--
         </StackLayout>-->
        
    

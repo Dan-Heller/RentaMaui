@@ -61,8 +61,15 @@ public partial class HeaderControl : ContentView
         InitializeComponent();
     }
 
-    private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+    private async void ProfileButton_Tapped(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync($"{nameof(ProfilePage)}");
     }
+
+    private async void CreditButton_Tapped(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync($"{nameof(CreditsPage)}");
+    }
+
+    
 }

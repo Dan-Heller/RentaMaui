@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Renta.CreditsPage"
              Title="CreditsPage"
+             Shell.NavBarIsVisible="true"
+               Shell.ForegroundColor="black"
              BackgroundColor="White">
     <StackLayout>
         <Label Text="Welcome to .NET MAUI!"

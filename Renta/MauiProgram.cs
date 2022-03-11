@@ -20,7 +20,19 @@ public static class MauiProgram
 		builder.Services.AddSingleton<AppShellViewModel>();
 
 		builder.Services.AddSingleton<FeedPage>();
-		builder.Services.AddSingleton<FeedPageViewModel>();
+		builder.Services.AddTransient<FeedPageViewModel>();
+
+		builder.Services.AddSingleton<ProfilePage>();
+		builder.Services.AddTransient<ProfilePageViewModel>();
+
+		builder.Services.AddSingleton<CreditsPage>();
+
+		builder.Services.AddSingleton<MenuPage>();
+
+		builder.Services.AddSingleton<AddItemPage>();
+
+		builder.Services.AddSingleton<SearchPage>();
+
 
 		builder.Services.AddSingleton<MessagesPage>();
 
