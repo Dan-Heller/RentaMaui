@@ -33,8 +33,10 @@ public static class MauiProgram
 
 		builder.Services.AddSingleton<SearchPage>();
 
+		builder.Services.AddSingleton<NotificationsPage>();
 
 		builder.Services.AddSingleton<MessagesPage>();
+		builder.Services.AddSingleton<MessagesShell>();
 
 
 		//builder.Services.AddTransient<AppShell>();  ///???

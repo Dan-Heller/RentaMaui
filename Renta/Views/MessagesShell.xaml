@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Renta.MessagesShell"
+             xmlns:Pages ="clr-namespace:Renta"
+             
+              Title="Inbox"
+             Shell.NavBarIsVisible="False"
+             
+             Shell.TabBarUnselectedColor="black"
+             Shell.TabBarTitleColor="black"
+             Shell.UnselectedColor="Gray"
+             Shell.TitleColor="Black">
+
+    <TabBar>
+
+        <Tab  Title="Inbox">
+            <ShellContent Title="Notifications" 
+                        ContentTemplate="{DataTemplate Pages:NotificationsPage}"  />
+            <ShellContent Title="Messages"
+                       ContentTemplate="{DataTemplate Pages:MessagesPage}"    />
+        </Tab>
+    </TabBar>
+</Shell>

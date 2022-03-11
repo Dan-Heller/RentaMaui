@@ -4,18 +4,20 @@
              BackgroundColor="{DynamicResource SecondaryColor}"
             xmlns:Pages ="clr-namespace:Renta"
             xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
-       Shell.NavBarIsVisible="false"
-            android:TabbedPage.ToolbarPlacement="Bottom">
-
+            Shell.NavBarIsVisible="false"
+            Shell.TabBarUnselectedColor="Gray"
+       Shell.TabBarTitleColor="Black"
+           >
+            
     
-    <TabBar>
-        <Tab Title="Home"
+    <TabBar >
+        <Tab Title="Home" 
          Icon="homeicon.png">
             <ShellContent ContentTemplate="{DataTemplate Pages:FeedPage}" />
         </Tab>
         <Tab Title="Messages"
          Icon="messageicon.png">
-            <ShellContent ContentTemplate="{DataTemplate Pages:MessagesPage}" />
+            <ShellContent ContentTemplate="{DataTemplate Pages:MessagesShell}" />
         </Tab>
         <Tab Title="Add"
          Icon="addicon.png">

@@ -3,16 +3,19 @@
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Renta.Controls.HeaderControl"
-             BackgroundColor="GhostWhite">
+             BackgroundColor="GhostWhite"
+             
+             >
     <ContentView.Content>
-        <ContentView>
-            <OnPlatform x:TypeArguments="View">
-                <On Platform="UWP, macOS">
-                    <Grid RowDefinitions="*, auto">
-                        
-                        <Button ImageSource="profileicon.png"/>
+        <ContentView  >
+            <Frame HasShadow="true"  Padding="1" CornerRadius="0" Margin="0">
+                <OnPlatform x:TypeArguments="View">
+                    <On Platform="UWP, macOS">
+                        <Grid RowDefinitions="*, auto">
 
-                        <!--  <SearchBar x:Name="searchBar"
+                            <Button ImageSource="profileicon.png"/>
+
+                            <!--  <SearchBar x:Name="searchBar"
                                    HorizontalOptions="Start"
                                    WidthRequest="460"
                                    Text="{Binding TextToSearch, Source={x:Reference selfMediaElementView}}"
@@ -31,29 +34,38 @@
                             </Label.GestureRecognizers>
                         </Label> -->
 
-                    </Grid>
-                </On>
-                <On Platform="Android,iOS">
-                    <Grid ColumnDefinitions="6*,1*,1*"
-                          Margin="16,12" >
-                        
-                       <!-- <Image Source="{AppThemeBinding Light=logo_header_horizontal.png,Dark=logo_color_horizontal_darkmode.png}"
+                        </Grid>
+                    </On>
+                    <On Platform="Android,iOS">
+                        <Grid ColumnDefinitions="6*,1*,1*"
+                          Margin="16,12"  >
+
+                            <!-- <Image Source="{AppThemeBinding Light=logo_header_horizontal.png,Dark=logo_color_horizontal_darkmode.png}"
                                HeightRequest="34"
                                WidthRequest="125"
                                VerticalOptions="Center"
                                HorizontalOptions="Start" /> -->
-                        <Image Source="profileicon.png"
+                            <Label
+                                Text="Renta"
+                                FontSize="20"
+                                Grid.Column="0"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Start"
+                               >
+                                
+                            </Label>
+                            <Image Source="profileicon.png"
                                Grid.Column="1"
                                VerticalOptions="Center"
                                HorizontalOptions="End"
                                HeightRequest="30"
                                WidthRequest="30"
                                >
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="ProfileButton_Tapped" />
-                            </Image.GestureRecognizers> 
-                        </Image>
-                        <Image Source="coinicon.png"
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ProfileButton_Tapped" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Image Source="coinicon.png"
                                Grid.Column="2"
                                
                                VerticalOptions="Center"
@@ -62,13 +74,17 @@
                                WidthRequest="30"
                             
                                >
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="CreditButton_Tapped" />
-                            </Image.GestureRecognizers> 
-                        </Image>
-                    </Grid>
-                </On>
-            </OnPlatform>
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="CreditButton_Tapped" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+
+
+                    </On>
+                </OnPlatform>
+            </Frame>
+            
         </ContentView>
     </ContentView.Content>
 </ContentView>
