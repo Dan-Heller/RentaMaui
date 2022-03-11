@@ -36,7 +36,7 @@
                 <On Platform="Android,iOS">
                     <Grid ColumnDefinitions="6*,1*,1*"
                           Margin="16,12" >
-                        <Frame></Frame>
+                        
                        <!-- <Image Source="{AppThemeBinding Light=logo_header_horizontal.png,Dark=logo_color_horizontal_darkmode.png}"
                                HeightRequest="34"
                                WidthRequest="125"
