@@ -7,6 +7,14 @@
              Shell.NavBarIsVisible="true"
              xmlns:controls="clr-namespace:Renta.Controls"
              BackgroundColor="White">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Logout" Command="{Binding LogoutClicked }">
+            
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    
+    
     <Grid>
         <!--<StackLayout Margin="0,0" >
             <controls:HeaderControl       VerticalOptions="Start"                   />
@@ -14,7 +22,7 @@
                                     SearchCommand="{Binding SearchCommand}"--><!--
         </StackLayout>-->
        
-   
+        
 
         <StackLayout>
             <Label Text="Profile page!"

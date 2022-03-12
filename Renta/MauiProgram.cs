@@ -25,6 +25,9 @@ public static class MauiProgram
 		builder.Services.AddSingleton<ProfilePage>();
 		builder.Services.AddTransient<ProfilePageViewModel>();
 
+		builder.Services.AddSingleton<LoginPage>();
+		builder.Services.AddTransient<LoginPageViewModel>();
+
 		builder.Services.AddSingleton<CreditsPage>();
 
 		builder.Services.AddSingleton<MenuPage>();
@@ -37,6 +40,8 @@ public static class MauiProgram
 
 		builder.Services.AddSingleton<MessagesPage>();
 		builder.Services.AddSingleton<MessagesShell>();
+
+
 
 
 		//builder.Services.AddTransient<AppShell>();  ///???

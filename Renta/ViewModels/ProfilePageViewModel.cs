@@ -16,6 +16,7 @@ namespace Renta.ViewModels
             
         }
 
-
+        public Command LogoutClicked
+         => new Command(async () => await Shell.Current.GoToAsync($"//{nameof(LoginPage)}"));
     }
 }

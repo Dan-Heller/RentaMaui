@@ -12,6 +12,8 @@ public partial class AppShell: Shell
 
 		Routing.RegisterRoute(nameof(ProfilePage), typeof(ProfilePage));
 		Routing.RegisterRoute(nameof(CreditsPage), typeof(CreditsPage));
+		Routing.RegisterRoute(nameof(RegistrationPage), typeof(RegistrationPage));
+
 
 
 		// FEED TAB

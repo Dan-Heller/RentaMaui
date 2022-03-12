@@ -12,7 +12,7 @@ public partial class App : Application
 
 		//MainPage = new NavigationPage();
 		//navigationService.NavigateToMainPage(MainPage.Navigation);
-
+		
 
 		MainPage = appShell;
 	}

@@ -6,30 +6,33 @@
             xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
             Shell.NavBarIsVisible="false"
             Shell.TabBarUnselectedColor="Gray"
-       Shell.TabBarTitleColor="Black"
-           >
-            
+            Shell.TabBarTitleColor="Black">
+
+
+    <ShellItem Route="LoginPage" FlyoutItemIsVisible="False">
+        <ShellContent ContentTemplate="{DataTemplate Pages:LoginPage}" />
+    </ShellItem>
     
     <TabBar >
         <Tab Title="Home" 
          Icon="homeicon.png">
-            <ShellContent ContentTemplate="{DataTemplate Pages:FeedPage}" />
+            <ShellContent ContentTemplate="{DataTemplate Pages:FeedPage}" Route="FeedPage" />
         </Tab>
         <Tab Title="Messages"
          Icon="messageicon.png">
-            <ShellContent ContentTemplate="{DataTemplate Pages:MessagesShell}" />
+            <ShellContent ContentTemplate="{DataTemplate Pages:MessagesShell}" Route="MessagesShell"/>
         </Tab>
         <Tab Title="Add"
          Icon="addicon.png">
-            <ShellContent ContentTemplate="{DataTemplate Pages:AddItemPage}" />
+            <ShellContent ContentTemplate="{DataTemplate Pages:AddItemPage}" Route="AddItemPage"/>
         </Tab>
         <Tab Title="Search"
          Icon="searchicon.png">
-            <ShellContent ContentTemplate="{DataTemplate Pages:SearchPage}" />
+            <ShellContent ContentTemplate="{DataTemplate Pages:SearchPage}" Route="SearchPage"/>
         </Tab>
         <Tab Title="Menu"
          Icon="menuicon.png">
-            <ShellContent ContentTemplate="{DataTemplate Pages:MenuPage}" />
+            <ShellContent ContentTemplate="{DataTemplate Pages:MenuPage}" Route="MenuPage"/>
         </Tab>
     </TabBar>
 </Shell>
