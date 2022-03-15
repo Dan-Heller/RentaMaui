@@ -54,8 +54,11 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\addicon.png" />
+	  <None Remove="Resources\Images\blankprofileimage.jpg" />
+	  <None Remove="Resources\Images\blankstar.png" />
 	  <None Remove="Resources\Images\coinicon.png" />
 	  <None Remove="Resources\Images\homeicon.png" />
+	  <None Remove="Resources\Images\locationicon.png" />
 	  <None Remove="Resources\Images\menuicon.png" />
 	  <None Remove="Resources\Images\messageicon.png" />
 	  <None Remove="Resources\Images\profileicon.png" />
