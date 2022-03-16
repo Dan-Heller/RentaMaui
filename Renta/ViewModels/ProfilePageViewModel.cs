@@ -18,5 +18,8 @@ namespace Renta.ViewModels
 
         public Command LogoutClicked
          => new Command(async () => await Shell.Current.GoToAsync($"//{nameof(LoginPage)}"));
+
+        public Command EditButtonClicked
+        => new Command(async () => await Shell.Current.GoToAsync($"{nameof(EditProfilePage)}"));
     }
 }

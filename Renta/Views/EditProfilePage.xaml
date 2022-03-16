@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Renta.EditProfilePage"
+             Title="Edit Profile"
+             Shell.ForegroundColor="black"
+             Shell.NavBarIsVisible="true"
+             Shell.TabBarIsVisible="False"
+             BackgroundColor="White"
+             Shell.TitleColor="MediumPurple">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Command="{Binding SaveButtonClicked }"/>
+    </ContentPage.ToolbarItems>
+
+
+
+    <Grid RowDefinitions="100,20,20" Padding="10,0" BackgroundColor="LightGray">
+
+        <!-- Image Profile-->
+        <Frame Grid.Row="1" Margin="0,-90,0,0" BorderColor="White" HorizontalOptions="Center" WidthRequest="110" HeightRequest="{OnPlatform iOS='110', Android='20'}" HasShadow="False" CornerRadius="55" Padding="0" IsClippedToBounds="True" >
+            <ImageButton Source="addprofileimage" Aspect="AspectFill" Command="{Binding ChangeProfileImage_Clicked}"/>
+        </Frame>
+
+        <!-- Profile name & general description-->
+        <StackLayout Grid.Row="2" Padding="10" 
+                     HorizontalOptions="FillAndExpand">
+            <Label Text="Username:" />
+            <Entry Placeholder="Username" HorizontalOptions="FillAndExpand"/>
+            <Label Text="Email:" />
+            <Entry Placeholder="Email"/>
+            <Label Text="Adress:" />
+            <Entry Placeholder="Adress"/>
+
+        </StackLayout>
+
+    </Grid>
+</ContentPage>

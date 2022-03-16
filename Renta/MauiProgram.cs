@@ -41,6 +41,9 @@ public static class MauiProgram
 		builder.Services.AddSingleton<MessagesPage>();
 		builder.Services.AddSingleton<MessagesShell>();
 
+		builder.Services.AddSingleton<EditProfilePage>();
+		builder.Services.AddSingleton<EditProfilePageViewModel>();
+
 
 
 

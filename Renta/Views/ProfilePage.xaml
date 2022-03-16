@@ -5,6 +5,7 @@
              Title="ProfilePage"
              Shell.ForegroundColor="black"
              Shell.NavBarIsVisible="true"
+             Shell.TabBarIsVisible="False"
              xmlns:controls="clr-namespace:Renta.Controls"
              BackgroundColor="White">
 
@@ -15,6 +16,7 @@
         <ToolbarItem Text="Logout" Command="{Binding LogoutClicked }">
             
         </ToolbarItem>
+        <ToolbarItem IconImageSource="editicon" Command="{Binding EditButtonClicked}"/>
     </ContentPage.ToolbarItems>
 
    
