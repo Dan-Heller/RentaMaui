@@ -37,7 +37,7 @@
                         </Grid>
                     </On>
                     <On Platform="Android,iOS">
-                        <Grid ColumnDefinitions="6*,1*,1*"
+                        <Grid ColumnDefinitions="6*,1*,1*,1*"
                           Margin="16,12"  >
 
                             <!-- <Image Source="{AppThemeBinding Light=logo_header_horizontal.png,Dark=logo_color_horizontal_darkmode.png}"
@@ -76,6 +76,19 @@
                                >
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="CreditButton_Tapped" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Image Source="addicon.png"
+                               Grid.Column="3"
+                               
+                               VerticalOptions="Center"
+                               HorizontalOptions="End"
+                               HeightRequest="30"
+                               WidthRequest="30"
+                            
+                               >
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="AddITtemButton_Tapped" />
                                 </Image.GestureRecognizers>
                             </Image>
                         </Grid>

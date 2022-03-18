@@ -71,5 +71,8 @@ public partial class HeaderControl : ContentView
         await Shell.Current.GoToAsync($"{nameof(CreditsPage)}");
     }
 
-    
+    private async void AddITtemButton_Tapped(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync($"{nameof(AddItemPage)}");
+    }
 }

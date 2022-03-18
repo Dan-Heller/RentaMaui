@@ -22,10 +22,10 @@
          Icon="messageicon.png">
             <ShellContent ContentTemplate="{DataTemplate Pages:MessagesShell}" Route="MessagesShell"/>
         </Tab>
-        <Tab Title="Add"
+        <!--<Tab Title="Add"
          Icon="addicon.png">
             <ShellContent ContentTemplate="{DataTemplate Pages:AddItemPage}" Route="AddItemPage"/>
-        </Tab>
+        </Tab>-->
         <Tab Title="Search"
          Icon="searchicon.png">
             <ShellContent ContentTemplate="{DataTemplate Pages:SearchPage}" Route="SearchPage"/>

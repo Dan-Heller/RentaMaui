@@ -28,22 +28,25 @@ public static class MauiProgram
 		builder.Services.AddSingleton<LoginPage>();
 		builder.Services.AddTransient<LoginPageViewModel>();
 
-		builder.Services.AddSingleton<CreditsPage>();
-
-		builder.Services.AddSingleton<MenuPage>();
-
-		builder.Services.AddSingleton<AddItemPage>();
-
-		builder.Services.AddSingleton<SearchPage>();
-
-		builder.Services.AddSingleton<NotificationsPage>();
-
 		builder.Services.AddSingleton<MessagesPage>();
 		builder.Services.AddSingleton<MessagesShell>();
 
 		builder.Services.AddSingleton<EditProfilePage>();
 		builder.Services.AddSingleton<EditProfilePageViewModel>();
 
+
+		builder.Services.AddSingleton<CreditsPage>();
+
+		builder.Services.AddSingleton<MenuPage>();
+
+		//builder.Services.AddSingleton<AddItemPage>();
+		//builder.Services.AddSingleton<AddItemPageViewModel>();
+
+		builder.Services.AddSingleton<SearchPage>();
+
+		builder.Services.AddSingleton<NotificationsPage>();
+
+		
 
 
 

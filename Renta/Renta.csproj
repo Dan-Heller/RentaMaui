@@ -54,6 +54,7 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\addicon.png" />
+	  <None Remove="Resources\Images\addphoto.jpg" />
 	  <None Remove="Resources\Images\addprofileimage.png" />
 	  <None Remove="Resources\Images\blankprofileimage.jpg" />
 	  <None Remove="Resources\Images\blankstar.png" />

@@ -33,6 +33,8 @@ namespace Renta.ViewModels
          => new Command(async () => await Shell.Current.GoToAsync($"{nameof(ProfilePage)}"));
 
 
+
+
         //public Command NavigateToProfilePage
         // => new Command(async () => await _navigationService.NavigateToProfilePage());
 

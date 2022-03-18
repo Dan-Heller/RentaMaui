@@ -19,8 +19,10 @@
 
         <!-- Image Profile-->
         <Frame Grid.Row="1" Margin="0,-90,0,0" BorderColor="White" HorizontalOptions="Center" WidthRequest="110" HeightRequest="{OnPlatform iOS='110', Android='20'}" HasShadow="False" CornerRadius="55" Padding="0" IsClippedToBounds="True" >
-            <ImageButton Source="addprofileimage" Aspect="AspectFill" Command="{Binding ChangeProfileImage_Clicked}"/>
+            <ImageButton Source="{Binding profileImage}"   Aspect="AspectFill" Command="{Binding ChangeProfileImage_Clicked}"/>
         </Frame>
+        
+
 
         <!-- Profile name & general description-->
         <StackLayout Grid.Row="2" Padding="10" 
