@@ -80,6 +80,9 @@
 	  <Compile Update="Views\MessagesShell.xaml.cs">
 	    <DependentUpon>MessagesShell.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Controls\ItemCard.xaml.cs">
+	    <DependentUpon>ItemCard.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -108,6 +111,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\MessagesShell.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Controls\ItemCard.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\NotificationsPage.xaml">

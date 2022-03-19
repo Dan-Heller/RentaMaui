@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Renta.Controls.ItemCard"
+             x:Name="ItemCardComponent">
+
+    <Frame CornerRadius="13"   
+           BorderColor="#c6c1ea"    
+           HasShadow="False" 
+           Margin="3" 
+           Padding="0"
+           >
+        
+
+    <Grid RowDefinitions ="Auto ,2*" 
+          ColumnDefinitions ="*, 20" 
+          WidthRequest="120" 
+          HeightRequest="150"
+          >
+
+
+        <Image Grid.Row="0" 
+               Source="item" 
+               Aspect="AspectFit" 
+               Grid.ColumnSpan="2"
+               HorizontalOptions="CenterAndExpand"
+               HeightRequest="125"
+        />
+        
+        <Label Grid.Row="1" 
+               Grid.Column="0" 
+               Padding="8,2,0,0"
+               Text="Item Name"
+               FontSize="12" 
+               
+        />
+
+        <Image Grid.Row="1" 
+               Grid.Column="1" 
+               Source="coinsstackicon24px" 
+               HeightRequest="15" 
+               WidthRequest="15" 
+        />
+
+    </Grid>
+    </Frame>
+
+</ContentView>

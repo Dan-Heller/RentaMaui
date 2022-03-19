@@ -60,10 +60,65 @@
                                     VerticalOptions="Start" />
             <!--TextToSearch="{Binding Text, Mode=OneWayToSource}"
                                     SearchCommand="{Binding SearchCommand}"-->
-        </StackLayout>
 
-    
+
+        <ScrollView Padding="8,0,0,0">
         
+        <StackLayout Spacing="10">
+            <Label Text="Recently Added:" TextColor="Black" FontSize="16" Margin="0,20,0,0"/>
+            <ScrollView Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal">
+                    <controls:ItemCard/>
+                    <!--<controls:ItemCard/>
+                    <controls:ItemCard/>
+                    <controls:ItemCard/>
+                    <controls:ItemCard/>
+                    <controls:ItemCard/>-->
+                </StackLayout>
+            </ScrollView>
+
+        
+            <Label Text="Near You:" TextColor="Black" FontSize="16" Margin="0,20,0,0"/>
+            <ScrollView Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal">
+                    <controls:ItemCard/>
+                    <controls:ItemCard/>
+                    <controls:ItemCard/>
+                    <controls:ItemCard/>
+                    <controls:ItemCard/>
+                    <controls:ItemCard/>
+                </StackLayout>
+            </ScrollView>
+
+        
+            <Label Text="You Might Like:" TextColor="Black" FontSize="16" Margin="0,20,0,0"/>
+            <ScrollView Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal">
+                    <controls:ItemCard/>
+                    <controls:ItemCard/>
+                    <controls:ItemCard/>
+                    <controls:ItemCard/>
+                    <controls:ItemCard/>
+                    <controls:ItemCard/>
+                </StackLayout>
+            </ScrollView>
+
+            <Label Text="Trending:" TextColor="Black" FontSize="16" Margin="0,20,0,0"/>
+            <ScrollView Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal">
+                    <controls:ItemCard/>
+                    <controls:ItemCard/>
+                    <controls:ItemCard/>
+                    <controls:ItemCard/>
+                    <controls:ItemCard/>
+                    <controls:ItemCard/>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ScrollView>
+
+    </StackLayout>
+
 
 
     <!--<Grid>

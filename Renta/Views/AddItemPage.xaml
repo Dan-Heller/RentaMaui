@@ -5,7 +5,7 @@
              Title="Add Item"
             
              Shell.NavBarIsVisible="true"
-             Shell.TabBarIsVisible="True"
+             Shell.TabBarIsVisible="False"
              BackgroundColor="White"
              Shell.TitleColor="MediumPurple"
              Shell.ForegroundColor="black">
