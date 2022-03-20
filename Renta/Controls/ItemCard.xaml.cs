@@ -8,4 +8,9 @@ public partial class ItemCard : ContentView
 	{
 		InitializeComponent();
 	}
+
+    private async void ItemCard_Tapped(object sender, EventArgs e)
+    {
+		await Shell.Current.GoToAsync($"{nameof(ItemPage)}");
+	}
 }

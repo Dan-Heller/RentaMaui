@@ -9,10 +9,13 @@
            HasShadow="False" 
            Margin="3" 
            Padding="0"
-           >
-        
+            >
+        <Frame.GestureRecognizers>
+            <TapGestureRecognizer Tapped="ItemCard_Tapped" NumberOfTapsRequired="1" />
+        </Frame.GestureRecognizers>
 
-    <Grid RowDefinitions ="Auto ,2*" 
+
+        <Grid RowDefinitions ="Auto ,2*" 
           ColumnDefinitions ="*, 20" 
           WidthRequest="120" 
           HeightRequest="150"
