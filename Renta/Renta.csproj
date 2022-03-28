@@ -60,6 +60,7 @@
 	  <None Remove="Resources\Images\blankstar.png" />
 	  <None Remove="Resources\Images\coinicon.png" />
 	  <None Remove="Resources\Images\editicon.png" />
+	  <None Remove="Resources\Images\fullhearticon.png" />
 	  <None Remove="Resources\Images\hollowhearticon.png" />
 	  <None Remove="Resources\Images\homeicon.png" />
 	  <None Remove="Resources\Images\locationicon.png" />

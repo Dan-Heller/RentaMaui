@@ -8,5 +8,13 @@ namespace Renta.ViewModels
 {
     public  class ItemPageViewModel
     {
+        public bool ItemLiked;
+
+        public ItemPageViewModel()
+        {
+            ItemLiked = false;
+        }
+
+
     }
 }

@@ -28,7 +28,7 @@
     </ContentPage.Resources>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="hollowhearticon.png" />
+        <ToolbarItem x:Name="HeartButton" Clicked="HeartButton_Clicked" />
     </ContentPage.ToolbarItems>
 
 
