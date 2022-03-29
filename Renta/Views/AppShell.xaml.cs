@@ -16,6 +16,7 @@ public partial class AppShell: Shell
 		Routing.RegisterRoute(nameof(EditProfilePage), typeof(EditProfilePage));
 		Routing.RegisterRoute(nameof(AddItemPage), typeof(AddItemPage));
 		Routing.RegisterRoute(nameof(ItemPage), typeof(ItemPage));
+		Routing.RegisterRoute(nameof(FiltersPage), typeof(FiltersPage));
 
 		// FEED TAB
 		//NavigationPage FeedTab = new NavigationPage(feedPage);

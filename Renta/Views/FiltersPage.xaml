@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Renta.FiltersPage"
+             Title="Filters"
+                Shell.ForegroundColor="black"
+             Shell.NavBarIsVisible="true"
+             Shell.TabBarIsVisible="False"
+              Shell.TitleColor="MediumPurple"
+             xmlns:controls="clr-namespace:Renta.Controls"
+             BackgroundColor="White">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Show" />
+    </ContentPage.ToolbarItems>
+
+    <StackLayout>
+        <Grid RowDefinitions="*,*,*">
+            <Label 
+               Text="Price range"
+               FontSize="Medium"
+               HorizontalOptions="Start"
+               VerticalOptions="CenterAndExpand" 
+                   Grid.Row="0"/>
+
+            <Slider  Maximum="360" 
+                 Grid.Row="2" />
+
+        </Grid>
+
+    </StackLayout>
+
+</ContentPage>
