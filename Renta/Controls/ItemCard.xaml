@@ -8,44 +8,60 @@
     <Frame
         Margin="3"
         Padding="0"
-        BorderColor="#c6c1ea"
+        BackgroundColor="AliceBlue"
         CornerRadius="13"
         HasShadow="False">
-        <Frame.GestureRecognizers>
-            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ItemCard_Tapped" />
-        </Frame.GestureRecognizers>
-        <Grid
-            ColumnDefinitions="*, 20"
-            RowDefinitions="Auto ,2*"
-            WidthRequest="120">
 
-            <Grid
-                ColumnDefinitions="*, 20"
-                RowDefinitions="Auto ,2*"
-                WidthRequest="120">
-
+        <Grid RowDefinitions="160 ,30" WidthRequest="120">
+            <Frame
+                Margin="0"
+                Padding="0"
+                HasShadow="False">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="onCardHeartTapped" />
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ItemCard_Tapped" />
+                </Frame.GestureRecognizers>
                 <Image
                     Grid.Row="0"
-                    Grid.ColumnSpan="2"
-                    Aspect="AspectFit"
-                    HeightRequest="125"
+                    Aspect="AspectFill"
+                    HeightRequest="160"
                     HorizontalOptions="CenterAndExpand"
                     Source="item" />
+            </Frame>
+            <StackLayout
+                Grid.Row="1"
+                Padding="3,0,0,0"
+                Orientation="Horizontal">
+
+                <Image
+                    Grid.Row="1"
+                    HeightRequest="22"
+                    Source="coinsstackicon24px"
+                    WidthRequest="22" />
 
                 <Label
                     Grid.Row="1"
-                    Grid.Column="0"
                     Padding="8,2,0,0"
-                    FontSize="12"
-                    Text="Item Name" />
+                    FontSize="16"
+                    Text="50" />
 
-                <Image
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    HeightRequest="15"
-                    Source="coinsstackicon24px"
-                    WidthRequest="15" />
-            </Grid>
+                <Frame
+                    Margin="0"
+                    Padding="0"
+                    BackgroundColor="AliceBlue"
+                    HasShadow="False">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="onCardHeartTapped" />
+                    </Frame.GestureRecognizers>
+                    <Image
+                        x:Name="HeartButton"
+                        Grid.Row="1"
+                        Margin="42,0,0,0"
+                        HeightRequest="25"
+                        Source="hollowhearticon"
+                        WidthRequest="25" />
+                </Frame>
+            </StackLayout>
         </Grid>
     </Frame>
 
