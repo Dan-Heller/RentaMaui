@@ -5,49 +5,52 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Name="ItemCardComponent">
 
-    <!--<Frame CornerRadius="13"
-           BorderColor="#c6c1ea"
-           HasShadow="False"
-           Margin="3"
-           Padding="0"
-           >
-
-
-    <Grid RowDefinitions ="Auto ,2*"
-          ColumnDefinitions ="*, 20"
-          WidthRequest="120"
-          HeightRequest="150"
-          >
-
-
-        <Image Grid.Row="0"
-               Source="item"
-               Aspect="AspectFit"
-               Grid.ColumnSpan="2"
-               HorizontalOptions="CenterAndExpand"
-               HeightRequest="125"
-        />
-
-        <Label Grid.Row="1"
-               Grid.Column="0"
-               Padding="8,2,0,0"
-               Text="Item Name"
-               FontSize="12"
-
-        />
-
-        <Image Grid.Row="1"
-               Grid.Column="1"
-               Source="coinsstackicon24px"
-               HeightRequest="15"
-               WidthRequest="15"
-        />
-
-    </Grid>
-    </Frame>-->
-
-
     <Frame
+        Margin="3"
+        Padding="0"
+        BorderColor="#c6c1ea"
+        CornerRadius="13"
+        HasShadow="False">
+        <Frame.GestureRecognizers>
+            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ItemCard_Tapped" />
+        </Frame.GestureRecognizers>
+        <Grid
+            ColumnDefinitions="*, 20"
+            RowDefinitions="Auto ,2*"
+            WidthRequest="120">
+
+            <Grid
+                ColumnDefinitions="*, 20"
+                RowDefinitions="Auto ,2*"
+                WidthRequest="120">
+
+                <Image
+                    Grid.Row="0"
+                    Grid.ColumnSpan="2"
+                    Aspect="AspectFit"
+                    HeightRequest="125"
+                    HorizontalOptions="CenterAndExpand"
+                    Source="item" />
+
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Padding="8,2,0,0"
+                    FontSize="12"
+                    Text="Item Name" />
+
+                <Image
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    HeightRequest="15"
+                    Source="coinsstackicon24px"
+                    WidthRequest="15" />
+            </Grid>
+        </Grid>
+    </Frame>
+
+
+    <!--<Frame
         Margin="10"
         Padding="0"
         CornerRadius="15"
@@ -74,14 +77,16 @@
                         HeightRequest="15"
                         Source="coinsstackicon24px"
                         WidthRequest="15" />
-                    <!--<Image Source="https://cdn-icons.flaticon.com/png/512/2838/premium/2838912.png?token=exp=1647883314~hmac=f62f827ed9870e0072d2c70186fa9ae2"
+    -->
+    <!--<Image Source="https://cdn-icons.flaticon.com/png/512/2838/premium/2838912.png?token=exp=1647883314~hmac=f62f827ed9870e0072d2c70186fa9ae2"
                            HeightRequest="15"
                            Margin="-80,0,0,0"
                            Aspect="AspectFit"/>-->
+    <!--
                 </StackLayout>
             </Grid>
         </StackLayout>
 
-    </Frame>
+    </Frame>-->
 
 </ContentView>

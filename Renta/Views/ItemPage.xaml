@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Renta.ItemPage"
+             Title="ItemPage"
+             BackgroundColor="White"
+             Shell.NavBarIsVisible="true"
+             Shell.TabBarIsVisible="False"
+             
+             Shell.TitleColor="MediumPurple"
+             Shell.ForegroundColor="black">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="stlBoardTitle" TargetType="Label">
+                <Setter Property="Padding"           Value="0,30,0,5"/>
+                <Setter Property="TextColor"         Value="#a5a2a2"/>
+                <Setter Property="FontSize"          Value="16"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+
+            <Style x:Key="stlBoardDesc" TargetType="Label">
+                <Setter Property="FontAttributes"    Value="Bold"/>
+                <Setter Property="FontSize"          Value="16" />
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="HeartButton" Clicked="HeartButton_Clicked" />
+    </ContentPage.ToolbarItems>
+
+
+    <ScrollView>
+        <!-- Images  should be horizontal scroll -->
+        <Grid RowDefinitions="auto,auto">
+
+            <Grid Grid.Row="0" Padding="0,0,0,0" BackgroundColor="LightGray">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0" Source="item.jpg" VerticalOptions="Start" />
+            </Grid>
+
+            <Grid  Grid.Row="1" BackgroundColor="White" RowSpacing="0" Padding="10,10,25,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                 
+                </Grid.RowDefinitions> 
+                
+                     <Grid Grid.Row="0" RowDefinitions ="auto"
+                            ColumnDefinitions ="20,*"  Padding="5,0,0,0" >
+                             <Image Grid.Row="0" 
+                                Grid.Column="0" 
+                                Source="coinsstackicon24px" 
+                                HeightRequest="15" 
+                                WidthRequest="15"            
+                                  />
+                             <Label Grid.Row="0" 
+                                Grid.Column="1" 
+                                Padding="8,2,0,0"
+                                Text="25"
+                                FontAttributes="Bold"
+                                TextColor="Black"
+                                FontSize="16" 
+                                 />
+                      </Grid>
+
+                <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="Item name" FontAttributes="Bold" FontSize="20" TextColor="black"/>
+                <Label Grid.Row="2" Grid.Column="0" Text="Upload date" TextColor="#a5a2a2" FontSize="16"/>
+                <Label  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Text="Description" FontAttributes="Bold" FontSize="20" TextColor="black" Margin="0,10,0,0">
+
+                </Label>
+                <Label Grid.Row="4" Grid.Column="0" Text="text" TextColor="Black" />
+        
+                <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" TextColor="White" BackgroundColor="#2193f3" Text="Submit rent request" Margin="40,20,40,20" FontAttributes="Bold" FontSize="17" HeightRequest="45"/>
+                
+            </Grid>
+            
+        </Grid>
+            
+            
+            
+
+    </ScrollView>
+
+</ContentPage>
+

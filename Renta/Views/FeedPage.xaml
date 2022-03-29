@@ -41,7 +41,7 @@
     </ContentPage.ToolbarItems>-->
 
     <!--<Shell.TitleView>
-    <Grid>    -->
+    <Grid>-->
     <!--  Margin="{OnPlatform Android='115,10,50,25', Default=0}"  -->
     <!--
         <Grid.ColumnDefinitions>
@@ -65,7 +65,7 @@
         -->
 
 
-        <ScrollView Padding="8,0,0,0">
+        <ScrollView Padding="8,0,0,0" Orientation="Horizontal">
 
             <StackLayout Spacing="10">
                 <Label
