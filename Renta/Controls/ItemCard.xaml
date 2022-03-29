@@ -18,7 +18,6 @@
                 Padding="0"
                 HasShadow="False">
                 <Frame.GestureRecognizers>
-                    <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="onCardHeartTapped" />
                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ItemCard_Tapped" />
                 </Frame.GestureRecognizers>
                 <Image
