@@ -1,10 +1,228 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Renta.MenuPage"
-             Shell.NavBarIsVisible="True"
-             Title="MenuPage"
-             xmlns:controls="clr-namespace:Renta.Controls"
-             BackgroundColor="White">
-    
+<ContentPage
+    x:Class="Renta.MenuPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Renta.Controls"
+    Title="MenuPage"
+    BackgroundColor="White"
+    Shell.NavBarIsVisible="False">
+
+    <StackLayout>
+
+        <Label
+            BackgroundColor="AliceBlue"
+            FontSize="Header"
+            Text="Menu" />
+
+        <Grid
+            BackgroundColor="White"
+            ColumnDefinitions="30, 60 , *, 30, 50"
+            HeightRequest="320"
+            RowDefinitions="80,80,80,80">
+
+
+            <!--  Settings Menu Item  -->
+            <Button
+                Grid.Row="0"
+                Grid.ColumnSpan="5"
+                Clicked="onSettingButtonClicked"
+                Opacity="0" />
+            <BoxView
+                BackgroundColor="Blue"
+                HeightRequest="80"
+                WidthRequest="8" />
+            <Image
+                Grid.Column="1"
+                Source="settingsicon"
+                VerticalOptions="Center"
+                WidthRequest="30" />
+            <Label
+                Grid.Column="2"
+                FontSize="24"
+                Text="Settings"
+                VerticalOptions="CenterAndExpand" />
+            <BoxView
+                x:Name="settingItemNotificationBox"
+                Grid.Column="3"
+                BackgroundColor="#999999"
+                CornerRadius="100"
+                HeightRequest="30"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="30" />
+            <Label
+                x:Name="settingsNotificationBadge"
+                Grid.Column="3"
+                FontAttributes="Bold"
+                FontSize="14"
+                HorizontalOptions="Center"
+                Text="15"
+                TextColor="White"
+                VerticalOptions="Center"
+                ZIndex="3" />
+            <Image
+                Grid.Column="4"
+                HorizontalOptions="Center"
+                Source="nextarrow"
+                WidthRequest="20" />
+
+            <!--  My Listing Menu Item  -->
+            <Button
+                Grid.Row="1"
+                Grid.ColumnSpan="5"
+                Clicked="onMyListingButtonClicled"
+                Opacity="0" />
+            <BoxView
+                Grid.Row="1"
+                BackgroundColor="LawnGreen"
+                HeightRequest="80"
+                WidthRequest="8" />
+            <Image
+                Grid.Row="1"
+                Grid.Column="1"
+                Source="mylistingicon"
+                VerticalOptions="Center"
+                WidthRequest="30" />
+            <Label
+                Grid.Row="1"
+                Grid.Column="2"
+                FontSize="24"
+                Text="My Listings"
+                VerticalOptions="CenterAndExpand" />
+            <BoxView
+                x:Name="myListingItemNotificationBox"
+                Grid.Row="1"
+                Grid.Column="3"
+                BackgroundColor="#999999"
+                CornerRadius="100"
+                HeightRequest="30"
+                HorizontalOptions="Center"
+                IsVisible="True"
+                VerticalOptions="Center"
+                WidthRequest="30" />
+            <Label
+                x:Name="myListingsNotificationBadgeCounter"
+                Grid.Row="1"
+                Grid.Column="3"
+                FontAttributes="Bold"
+                FontSize="14"
+                HorizontalOptions="Center"
+                Text="15"
+                TextColor="White"
+                VerticalOptions="Center"
+                ZIndex="3" />
+            <Image
+                Grid.Row="1"
+                Grid.Column="4"
+                HorizontalOptions="Center"
+                Source="nextarrow"
+                WidthRequest="20" />
+
+
+            <!--  Items Menu Item  -->
+            <Button
+                Grid.Row="2"
+                Grid.ColumnSpan="5"
+                Clicked="onItemsButtonClicked"
+                Opacity="0" />
+            <BoxView
+                Grid.Row="2"
+                BackgroundColor="Yellow"
+                HeightRequest="80"
+                WidthRequest="8" />
+            <Image
+                Grid.Row="2"
+                Grid.Column="1"
+                Source="itemsicon"
+                VerticalOptions="Center"
+                WidthRequest="30" />
+            <Label
+                Grid.Row="2"
+                Grid.Column="2"
+                FontSize="24"
+                Text="Items"
+                VerticalOptions="CenterAndExpand" />
+            <BoxView
+                x:Name="itemsItemNotifiactionBox"
+                Grid.Row="2"
+                Grid.Column="3"
+                BackgroundColor="#999999"
+                CornerRadius="100"
+                HeightRequest="30"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="30" />
+            <Label
+                x:Name="ItemsNotificationBadgeCounter"
+                Grid.Row="2"
+                Grid.Column="3"
+                FontAttributes="Bold"
+                FontSize="14"
+                HorizontalOptions="Center"
+                Text="15"
+                TextColor="White"
+                VerticalOptions="Center"
+                ZIndex="3" />
+            <Image
+                Grid.Row="2"
+                Grid.Column="4"
+                HorizontalOptions="Center"
+                Source="nextarrow"
+                WidthRequest="20" />
+
+
+            <!--  Wish List Menu Item  -->
+            <Button
+                Grid.Row="3"
+                Grid.ColumnSpan="5"
+                Clicked="onWishListItemClicked"
+                Opacity="0" />
+            <BoxView
+                Grid.Row="3"
+                BackgroundColor="Orange"
+                HeightRequest="80"
+                WidthRequest="8" />
+            <Image
+                Grid.Row="3"
+                Grid.Column="1"
+                Source="favlisticon"
+                VerticalOptions="Center"
+                WidthRequest="30" />
+            <Label
+                Grid.Row="3"
+                Grid.Column="2"
+                FontSize="24"
+                Text="My Listings"
+                VerticalOptions="CenterAndExpand" />
+            <BoxView
+                x:Name="favoritesItemNotifiactionBox"
+                Grid.Row="3"
+                Grid.Column="3"
+                BackgroundColor="#999999"
+                CornerRadius="100"
+                HeightRequest="30"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="30" />
+            <Label
+                x:Name="favoritesNotificationBadgeCounter"
+                Grid.Row="3"
+                Grid.Column="3"
+                FontAttributes="Bold"
+                FontSize="14"
+                HorizontalOptions="Center"
+                Text="15"
+                TextColor="White"
+                VerticalOptions="Center" />
+            <Image
+                Grid.Row="3"
+                Grid.Column="4"
+                HorizontalOptions="Center"
+                Source="nextarrow"
+                WidthRequest="20" />
+
+        </Grid>
+
+    </StackLayout>
 </ContentPage>

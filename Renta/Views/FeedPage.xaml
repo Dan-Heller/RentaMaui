@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Renta.FeedPage"
-             BackgroundColor="white"
-             Shell.NavBarIsVisible="false"
-             xmlns:controls="clr-namespace:Renta.Controls"
-            >
+<ContentPage
+    x:Class="Renta.FeedPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Renta.Controls"
+    BackgroundColor="white"
+    Shell.NavBarIsVisible="false">
 
     <!--<Shell.TitleView>-->
-        <!--<Grid Padding="5" >
+    <!--<Grid Padding="5" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>-->
 
-        <!--<ImageButton Grid.Column="2" Source="profileicon.png"
+    <!--<ImageButton Grid.Column="2" Source="profileicon.png"
                    HorizontalOptions="CenterAndExpand"
                    VerticalOptions="CenterAndExpand"
                    Command="{Binding ProfileButtonTapped }" />
@@ -24,24 +24,26 @@
                    VerticalOptions="CenterAndExpand"
                    Command="{Binding ProfileButtonTapped }" />
         <BoxView Grid.Column="0" BackgroundColor="LightGoldenrodYellow"/>-->
-        <!--<StackLayout>
+    <!--<StackLayout>
             <ImageButton  Source="profileicon.png"
                    HorizontalOptions="CenterAndExpand"
                    VerticalOptions="CenterAndExpand"
                    Command="{Binding ProfileButtonTapped }" />
         </StackLayout>
-        --><!--</Grid>
+    -->
+    <!--</Grid>
     </Shell.TitleView>-->
 
-    
+
     <!--<ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="profileicon"  Order="Primary"
                  Priority="0" />
     </ContentPage.ToolbarItems>-->
 
-<!--<Shell.TitleView>
-    <Grid>
---><!--Margin="{OnPlatform Android='115,10,50,25', Default=0}"--><!--
+    <!--<Shell.TitleView>
+    <Grid>    -->
+    <!--  Margin="{OnPlatform Android='115,10,50,25', Default=0}"  -->
+    <!--
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="1*"/>
@@ -53,69 +55,86 @@
 </Shell.TitleView>-->
 
 
-    
-        <StackLayout Margin="0,0" >
 
-            <controls:HeaderControl 
-                                    VerticalOptions="Start" />
-            <!--TextToSearch="{Binding Text, Mode=OneWayToSource}"
-                                    SearchCommand="{Binding SearchCommand}"-->
+    <StackLayout Margin="0,0">
+
+        <controls:HeaderControl VerticalOptions="Start" />
+        <!--
+            TextToSearch="{Binding Text, Mode=OneWayToSource}"
+            SearchCommand="{Binding SearchCommand}"
+        -->
 
 
         <ScrollView Padding="8,0,0,0">
-        
-        <StackLayout Spacing="10">
-            <Label Text="Recently Added:" TextColor="Black" FontSize="16" Margin="0,20,0,0"/>
-            <ScrollView Orientation="Horizontal">
-                <StackLayout Orientation="Horizontal">
-                    <controls:ItemCard/>
-                    <!--<controls:ItemCard/>
-                    <controls:ItemCard/>
-                    <controls:ItemCard/>
-                    <controls:ItemCard/>
-                    <controls:ItemCard/>-->
-                </StackLayout>
-            </ScrollView>
 
-        
-            <Label Text="Near You:" TextColor="Black" FontSize="16" Margin="0,20,0,0"/>
-            <ScrollView Orientation="Horizontal">
-                <StackLayout Orientation="Horizontal">
-                    <controls:ItemCard/>
-                    <controls:ItemCard/>
-                    <controls:ItemCard/>
-                    <controls:ItemCard/>
-                    <controls:ItemCard/>
-                    <controls:ItemCard/>
-                </StackLayout>
-            </ScrollView>
+            <StackLayout Spacing="10">
+                <Label
+                    Margin="0,20,0,0"
+                    FontSize="16"
+                    Text="Recently Added:"
+                    TextColor="Black" />
+                <ScrollView Orientation="Horizontal">
+                    <StackLayout Orientation="Horizontal">
+                        <controls:ItemCard />
+                        <controls:ItemCard />
+                        <controls:ItemCard />
+                        <controls:ItemCard />
+                        <controls:ItemCard />
+                        <controls:ItemCard />
+                    </StackLayout>
+                </ScrollView>
 
-        
-            <Label Text="You Might Like:" TextColor="Black" FontSize="16" Margin="0,20,0,0"/>
-            <ScrollView Orientation="Horizontal">
-                <StackLayout Orientation="Horizontal">
-                    <controls:ItemCard/>
-                    <controls:ItemCard/>
-                    <controls:ItemCard/>
-                    <controls:ItemCard/>
-                    <controls:ItemCard/>
-                    <controls:ItemCard/>
-                </StackLayout>
-            </ScrollView>
 
-            <Label Text="Trending:" TextColor="Black" FontSize="16" Margin="0,20,0,0"/>
-            <ScrollView Orientation="Horizontal">
-                <StackLayout Orientation="Horizontal">
-                    <controls:ItemCard/>
-                    <controls:ItemCard/>
-                    <controls:ItemCard/>
-                    <controls:ItemCard/>
-                    <controls:ItemCard/>
-                    <controls:ItemCard/>
-                </StackLayout>
-            </ScrollView>
-        </StackLayout>
-    </ScrollView>
+                <Label
+                    Margin="0,20,0,0"
+                    FontSize="16"
+                    Text="Near You:"
+                    TextColor="Black" />
+                <ScrollView Orientation="Horizontal">
+                    <StackLayout Orientation="Horizontal">
+                        <controls:ItemCard />
+                        <controls:ItemCard />
+                        <controls:ItemCard />
+                        <controls:ItemCard />
+                        <controls:ItemCard />
+                        <controls:ItemCard />
+                    </StackLayout>
+                </ScrollView>
+
+
+                <Label
+                    Margin="0,20,0,0"
+                    FontSize="16"
+                    Text="You Might Like:"
+                    TextColor="Black" />
+                <ScrollView Orientation="Horizontal">
+                    <StackLayout Orientation="Horizontal">
+                        <controls:ItemCard />
+                        <controls:ItemCard />
+                        <controls:ItemCard />
+                        <controls:ItemCard />
+                        <controls:ItemCard />
+                        <controls:ItemCard />
+                    </StackLayout>
+                </ScrollView>
+
+                <Label
+                    Margin="0,20,0,0"
+                    FontSize="16"
+                    Text="Trending:"
+                    TextColor="Black" />
+                <ScrollView Orientation="Horizontal">
+                    <StackLayout Orientation="Horizontal">
+                        <controls:ItemCard />
+                        <controls:ItemCard />
+                        <controls:ItemCard />
+                        <controls:ItemCard />
+                        <controls:ItemCard />
+                        <controls:ItemCard />
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </ScrollView>
 
     </StackLayout>
 
@@ -126,10 +145,10 @@
 
         <StackLayout>
             <Label   Text="This is Feed Page!"
-                VerticalOptions="CenterAndExpand" 
+                VerticalOptions="CenterAndExpand"
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>
 
     </Grid>-->
-    
+
 </ContentPage>

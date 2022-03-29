@@ -40,23 +40,23 @@ namespace Renta.ViewModels
         public Command SaveButtonClicked
        => new Command(async () => await Shell.Current.GoToAsync($"{nameof(ProfilePage)}"));
 
-        // public Command ChangeProfileImage_Clicked
-        //=> new Command(async () =>  await ChangeProfileImage());
+       // public Command ChangeProfileImage_Clicked
+       //=> new Command(async () => await ChangeProfileImage());
 
-        // private async Task ChangeProfileImage()
-        // {
-        //     var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions { Title = "Please pick a photo" });
+       // private async Task ChangeProfileImage()
+       // {
+       //     var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions { Title = "Please pick a photo" });
 
-        //     if (result != null)
-        //     {
-        //         var stream = await result.OpenReadAsync();
+       //     if (result != null)
+       //     {
+       //         var stream = await result.OpenReadAsync();
 
-        //         //PickedProfileImage.Source = ImageSource.FromStream(() => stream);
-        //         //ProfileImageSource = ImageSource.FromStream(() => stream);
-        //         ProfileImageSource = "addprofileimage.jpg";
-        //         OnPropertyChanged(nameof(ProfileImageSource));
-        //     }
-        // }
+       //         //PickedProfileImage.Source = ImageSource.FromStream(() => stream);
+       //         //ProfileImageSource = ImageSource.FromStream(() => stream);
+       //         ProfileImageSource = "addprofileimage.jpg";
+       //         OnPropertyChanged(nameof(ProfileImageSource));
+       //     }
+       // }
 
         public Command ChangeProfileImage_Clicked
        => new Command(async () => await Func());
