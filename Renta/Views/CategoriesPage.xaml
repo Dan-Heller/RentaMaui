@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Renta.CategoriesPage"
+             Title="Categories"
+             BackgroundColor="White"
+            Shell.ForegroundColor="black"
+             Shell.NavBarIsVisible="true"
+             Shell.TabBarIsVisible="False"
+              Shell.TitleColor="MediumPurple">
+    
+    <ScrollView Padding="0,0,0,0" VerticalOptions="FillAndExpand">
+        <StackLayout>
+            <!-- All items -->
+            <Frame Grid.Row="0" Padding="0,2,0,2" BorderColor="LightGray" >
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="CategoryOption_Tapped"/>
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="*,*,*">
+                    <Image Grid.Column="0" Source="allitemsphoto.png" HorizontalOptions="Start"/>
+                    <Grid Grid.Column="1" RowDefinitions="*,*" >
+                        <Label Grid.Row="0" Text="All items" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Grid.Row="1" Text="XXX items" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Grid>
+                    <Image Grid.Column="2" Source="nextarrow.png" WidthRequest="20" HorizontalOptions="End"/>
+                </Grid>
+            </Frame>
+            <!-- Books -->
+            <Frame Grid.Row="1" Padding="0,2,0,2" BorderColor="LightGray" >
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="CategoryOption_Tapped"/>
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="*,*,*">
+                    <Image Grid.Column="0" Source="booksphoto.png" HorizontalOptions="Start"/>
+                    <Grid Grid.Column="1" RowDefinitions="*,*" >
+                        <Label Grid.Row="0" Text="Books" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Grid.Row="1" Text="XXX items" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Grid>
+                    <Image Grid.Column="2"  Source="nextarrow.png" WidthRequest="20" HorizontalOptions="End"/>
+                </Grid>
+            </Frame>
+            <!-- Music Instruments -->
+            <Frame Grid.Row="2" Padding="0,2,0,2" BorderColor="LightGray" >
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="CategoryOption_Tapped"/>
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="*,*,*">
+                    <Image Grid.Column="0" Source="musicinstrumentsphoto.png" HorizontalOptions="Start"/>
+                    <Grid Grid.Column="1" RowDefinitions="*,*" >
+                        <Label Grid.Row="0" Text="Music accessories" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Grid.Row="1" Text="XXX items" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Grid>
+                    <Image Grid.Column="2" Source="nextarrow.png" WidthRequest="20" HorizontalOptions="End"/>
+                </Grid>
+            </Frame>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

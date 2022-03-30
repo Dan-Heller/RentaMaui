@@ -56,8 +56,10 @@
 	  <None Remove="Resources\Images\addicon.png" />
 	  <None Remove="Resources\Images\addphoto.jpg" />
 	  <None Remove="Resources\Images\addprofileimage.png" />
+	  <None Remove="Resources\Images\allitemsphoto.png" />
 	  <None Remove="Resources\Images\blankprofileimage.jpg" />
 	  <None Remove="Resources\Images\blankstar.png" />
+	  <None Remove="Resources\Images\booksphoto.png" />
 	  <None Remove="Resources\Images\categoriesicon.png" />
 	  <None Remove="Resources\Images\coinicon.png" />
 	  <None Remove="Resources\Images\editicon.png" />
@@ -68,6 +70,7 @@
 	  <None Remove="Resources\Images\locationicon.png" />
 	  <None Remove="Resources\Images\menuicon.png" />
 	  <None Remove="Resources\Images\messageicon.png" />
+	  <None Remove="Resources\Images\musicinstrumentsphoto.png" />
 	  <None Remove="Resources\Images\profileicon.png" />
 	  <None Remove="Resources\Images\ricon.png" />
 	  <None Remove="Resources\Images\searchicon.png" />
@@ -95,6 +98,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\AddItemPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\CategoriesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\CreditsPage.xaml">
