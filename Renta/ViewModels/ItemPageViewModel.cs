@@ -15,6 +15,11 @@ namespace Renta.ViewModels
             ItemLiked = false;
         }
 
+        
+
+        public Command ProfileLink_Tapped
+        => new Command(async () => await Shell.Current.GoToAsync($"{nameof(OtherUserProfilePage)}"));
+
 
     }
 }

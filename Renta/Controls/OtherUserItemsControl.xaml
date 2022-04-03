@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Renta.Controls.OtherUserItemsControl"
+            >
+    <ContentView.Content>
+        <Grid  ColumnDefinitions="*,*,*"   >
+            <Label x:Name="AllLabel"  Text="All"   Grid.Column="0" HorizontalOptions="Center"  TextColor="Gray" >
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                </Label.GestureRecognizers>
+                
+            </Label>
+            <Label x:Name="AvailableLabel" Text="Available"   Grid.Column="1" HorizontalOptions="Center" TextColor="Gray" >
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+            </Label.GestureRecognizers>
+            </Label>
+
+            <Label x:Name="UnAvailableLabel"  Text="Unavailable"  Grid.Column="2"  HorizontalOptions="Center"  TextColor="Gray">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                </Label.GestureRecognizers>
+            </Label>
+            
+        </Grid>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:controls="clr-namespace:Renta.Controls"
+             x:Class="Renta.OtherUserProfilePage"
+              xmlns:Pages ="clr-namespace:Renta"
+             Title=""
+             
+             BackgroundColor="White"
+             Shell.ForegroundColor="black"
+             Shell.NavBarIsVisible="true"
+             Shell.TabBarIsVisible="False">
+
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="messageicon.png" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView Padding="2,0,0,0" VerticalOptions="FillAndExpand">
+        <Grid RowDefinitions="90,20,50,15,15,50,auto" Padding="2,0" >
+
+            <!-- Image Profile-->
+            <Frame Grid.Row="1" Margin="0,-90,0,0" BorderColor="White" HorizontalOptions="Center" WidthRequest="110" HeightRequest="{OnPlatform iOS='110', Android='20'}" HasShadow="False" CornerRadius="55" Padding="0" IsClippedToBounds="True" >
+                <Image Source="blankprofileimage" Aspect="AspectFill"/>
+            </Frame>
+
+            <!-- Profile name & general description-->
+            <Label Grid.Row="2" Text="Angelica Melli" FontAttributes="Bold" TextColor="#383b67" HorizontalTextAlignment="Center" Margin="0,10,0,0" FontSize="22"/>
+
+            <Grid Grid.Row="3" ColumnDefinitions="Auto,Auto,Auto,Auto,Auto" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10,0,0" >
+                <Image Grid.Column="0" Source="blankstar" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center" />
+                <Image Grid.Column="1" Source="blankstar" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center" />
+                <Image Grid.Column="2" Source="blankstar" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center" />
+                <Image Grid.Column="3" Source="blankstar" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center" />
+                <Image Grid.Column="4" Source="blankstar" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center" />
+
+            </Grid>
+
+            <Grid Grid.Row="4" ColumnDefinitions="Auto,Auto" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,26,0,0">
+                <Image Grid.Column="0" Source="locationicon" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center" />
+                <Label Grid.Column="1" Text="Tel aviv" FontAttributes="Bold" TextColor="#383b67"  FontSize="16"/>
+            </Grid>
+
+            <Frame Grid.Row="5" Margin="0,30,0,0" Padding="0">
+                <controls:OtherUserItemsControl></controls:OtherUserItemsControl>
+            </Frame>
+
+            <Grid Grid.Row="6" ColumnDefinitions="*,*,*" RowDefinitions="*,*,*,*">
+                <controls:ItemCard Grid.Column="0" Grid.Row="0"/>
+                <controls:ItemCard Grid.Column="1" Grid.Row="0"/>
+                <controls:ItemCard Grid.Column="2" Grid.Row="0"/>
+                <controls:ItemCard Grid.Column="0" Grid.Row="1"/>
+                <controls:ItemCard Grid.Column="1" Grid.Row="1"/>
+                <controls:ItemCard Grid.Column="2" Grid.Row="1"/>
+                <controls:ItemCard Grid.Column="0" Grid.Row="2"/>
+                <controls:ItemCard Grid.Column="1" Grid.Row="2"/>
+                <controls:ItemCard Grid.Column="2" Grid.Row="2"/>
+                <controls:ItemCard Grid.Column="0" Grid.Row="3"/>
+                <controls:ItemCard Grid.Column="1" Grid.Row="3"/>
+                <controls:ItemCard Grid.Column="2" Grid.Row="3"/>
+            </Grid>
+
+
+        </Grid>
+    </ScrollView>
+</ContentPage>

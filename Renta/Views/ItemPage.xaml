@@ -51,7 +51,7 @@
 
             <Grid
                 Grid.Row="1"
-                Padding="10,10,25,0"
+                Padding="10,10,10,0"
                 BackgroundColor="White"
                 RowSpacing="0">
                 <Grid.RowDefinitions>
@@ -67,14 +67,17 @@
                 <Grid
                     Grid.Row="0"
                     Padding="5,0,0,0"
-                    ColumnDefinitions="20,*"
-                    RowDefinitions="auto">
+                    ColumnDefinitions="20,*,*"
+                    RowDefinitions="auto"
+                    >
+                    
                     <Image
                         Grid.Row="0"
                         Grid.Column="0"
-                        HeightRequest="15"
+                        HeightRequest="25"
+                        HorizontalOptions="StartAndExpand"
                         Source="coinsstackicon24px"
-                        WidthRequest="15" />
+                        WidthRequest="25" />
                     <Label
                         Grid.Row="0"
                         Grid.Column="1"
@@ -83,6 +86,22 @@
                         FontSize="16"
                         Text="25"
                         TextColor="Black" />
+                    
+                    <!-- item owner profile link -->
+
+                    <Image  
+                            
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        HeightRequest="40"
+                        HorizontalOptions="End"
+                        Source="blankprofileimage.jpg"
+                        WidthRequest="40">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ProfileLink_Tapped}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+ 
                 </Grid>
 
                 <Label
