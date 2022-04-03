@@ -38,7 +38,7 @@ namespace Renta.ViewModels
         }
 
         public Command SaveButtonClicked
-       => new Command(async () => await Shell.Current.GoToAsync($"{nameof(ProfilePage)}"));
+       => new Command(async () => await Shell.Current.GoToAsync(".."));
 
        // public Command ChangeProfileImage_Clicked
        //=> new Command(async () => await ChangeProfileImage());
