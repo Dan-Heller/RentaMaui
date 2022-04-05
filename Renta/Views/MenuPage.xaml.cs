@@ -1,9 +1,12 @@
+using Renta.ViewModels;
+
 namespace Renta;
 
 public partial class MenuPage : ContentPage
 {
-	public MenuPage()
+	public MenuPage(MenuPageViewModel menuPageViewModel)
 	{
+        BindingContext = menuPageViewModel;
 		InitializeComponent();
 	}
 
@@ -13,12 +16,17 @@ public partial class MenuPage : ContentPage
 
     }
 
-    private void onMyListingButtonClicled(object sender, EventArgs e)
+    private void onRentingButtonClicked(object sender, EventArgs e)
     {
 
     }
 
-    private void onItemsButtonClicked(object sender, EventArgs e)
+    private void onMyItemsButtonClicked(object sender, EventArgs e)
+    {
+
+    }
+
+    private void onRentalButtonClicked(object sender, EventArgs e)
     {
 
     }

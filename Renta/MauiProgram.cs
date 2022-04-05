@@ -40,10 +40,13 @@ public static class MauiProgram
 		builder.Services.AddSingleton<CategoriesPage>();
         builder.Services.AddSingleton<CategoriesPageViewModel>();
 
+		builder.Services.AddSingleton<MenuPage>();
+		builder.Services.AddSingleton<MenuPageViewModel>();
 
 
 
-        builder.Services.AddSingleton<CreditsPage>();
+
+		builder.Services.AddSingleton<CreditsPage>();
 
 		builder.Services.AddSingleton<MenuPage>();
 

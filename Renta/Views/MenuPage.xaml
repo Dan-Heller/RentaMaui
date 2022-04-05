@@ -17,32 +17,34 @@
 
         <Grid
             BackgroundColor="White"
-            ColumnDefinitions="30, 60 , *, 30, 50"
-            HeightRequest="320"
-            RowDefinitions="80,80,80,80">
+           
+            HeightRequest="400"
+            RowDefinitions="80,80,80,80,80">
 
 
             <!--  Settings Menu Item  -->
-            <Button
-                Grid.Row="0"
+            <Frame  Grid.Row="0" Padding="0" HasShadow="False">
+                <Grid ColumnDefinitions="30, 60 , *, 30, 50">
+                    <Button
+               
                 Grid.ColumnSpan="5"
                 Clicked="onSettingButtonClicked"
                 Opacity="0" />
-            <BoxView
+                    <BoxView
                 BackgroundColor="Blue"
                 HeightRequest="80"
                 WidthRequest="8" />
-            <Image
+                    <Image
                 Grid.Column="1"
                 Source="settingsicon"
                 VerticalOptions="Center"
                 WidthRequest="30" />
-            <Label
+                    <Label
                 Grid.Column="2"
                 FontSize="24"
                 Text="Settings"
                 VerticalOptions="CenterAndExpand" />
-            <BoxView
+                    <BoxView
                 x:Name="settingItemNotificationBox"
                 Grid.Column="3"
                 BackgroundColor="#999999"
@@ -51,7 +53,7 @@
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 WidthRequest="30" />
-            <Label
+                    <Label
                 x:Name="settingsNotificationBadge"
                 Grid.Column="3"
                 FontAttributes="Bold"
@@ -61,38 +63,97 @@
                 TextColor="White"
                 VerticalOptions="Center"
                 ZIndex="3" />
-            <Image
+                    <Image
                 Grid.Column="4"
                 HorizontalOptions="Center"
                 Source="nextarrow"
                 WidthRequest="20" />
 
-            <!--  My Listing Menu Item  -->
+                </Grid>
+             
+            </Frame>
+            
+            <!--  My items Menu Item  -->
+            <Frame Grid.Row="1" Padding="0" HasShadow="False">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding MyItems_Tapped}" />
+                </Frame.GestureRecognizers>
+                <Grid  ColumnDefinitions="30, 60 , *, 30, 50">
+                   
+                    <BoxView
+                
+                BackgroundColor="Red"
+                HeightRequest="80"
+                WidthRequest="8" />
+                    <Image
+               
+                Grid.Column="1"
+                Source="mylistingicon.png"
+                VerticalOptions="Center"
+                WidthRequest="30" />
+                    <Label
+                
+                Grid.Column="2"
+                FontSize="24"
+                Text="My items"
+                VerticalOptions="CenterAndExpand" />
+                    <BoxView
+                
+                x:Name="MyItemsItemNotificationBox"
+                Grid.Column="3"
+                BackgroundColor="#999999"
+                CornerRadius="100"
+                HeightRequest="30"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="30" />
+                    <Label
+               
+                x:Name="MyItemsNotificationBadge"
+                Grid.Column="3"
+                FontAttributes="Bold"
+                FontSize="14"
+                HorizontalOptions="Center"
+                Text="15"
+                TextColor="White"
+                VerticalOptions="Center"
+                ZIndex="3" />
+                    <Image
+                
+                Grid.Column="4"
+                HorizontalOptions="Center"
+                Source="nextarrow"
+                WidthRequest="20" />
+                </Grid>
+            </Frame>
+            
+
+            <!--  Renting Menu Item  -->
+            <Frame  Grid.Row="2" Padding="0" HasShadow="False">
+                <Grid ColumnDefinitions="30, 60 , *, 30, 50">
             <Button
-                Grid.Row="1"
                 Grid.ColumnSpan="5"
-                Clicked="onMyListingButtonClicled"
+                Clicked="onRentingButtonClicked"
                 Opacity="0" />
             <BoxView
-                Grid.Row="1"
                 BackgroundColor="LawnGreen"
                 HeightRequest="80"
                 WidthRequest="8" />
             <Image
-                Grid.Row="1"
+                
                 Grid.Column="1"
-                Source="mylistingicon"
+                Source="renticon"
                 VerticalOptions="Center"
                 WidthRequest="30" />
             <Label
-                Grid.Row="1"
+               
                 Grid.Column="2"
                 FontSize="24"
-                Text="My Listings"
+                Text="Renting"
                 VerticalOptions="CenterAndExpand" />
             <BoxView
-                x:Name="myListingItemNotificationBox"
-                Grid.Row="1"
+                x:Name="rentingItemNotificationBox"
+                
                 Grid.Column="3"
                 BackgroundColor="#999999"
                 CornerRadius="100"
@@ -102,8 +163,8 @@
                 VerticalOptions="Center"
                 WidthRequest="30" />
             <Label
-                x:Name="myListingsNotificationBadgeCounter"
-                Grid.Row="1"
+                x:Name="rentingNotificationBadgeCounter"
+                
                 Grid.Column="3"
                 FontAttributes="Bold"
                 FontSize="14"
@@ -113,39 +174,42 @@
                 VerticalOptions="Center"
                 ZIndex="3" />
             <Image
-                Grid.Row="1"
+              
                 Grid.Column="4"
                 HorizontalOptions="Center"
                 Source="nextarrow"
                 WidthRequest="20" />
+             </Grid>
+             </Frame>
 
-
-            <!--  Items Menu Item  -->
-            <Button
-                Grid.Row="2"
+                    <!--  rental  -->
+            <Frame  Grid.Row="3" Padding="0" HasShadow="False">
+                <Grid ColumnDefinitions="30, 60 , *, 30, 50">
+                    <Button
+                
                 Grid.ColumnSpan="5"
-                Clicked="onItemsButtonClicked"
+                Clicked="onRentalButtonClicked"
                 Opacity="0" />
-            <BoxView
-                Grid.Row="2"
+                    <BoxView
+               
                 BackgroundColor="Yellow"
                 HeightRequest="80"
                 WidthRequest="8" />
-            <Image
-                Grid.Row="2"
+                    <Image
+                
                 Grid.Column="1"
                 Source="itemsicon"
                 VerticalOptions="Center"
                 WidthRequest="30" />
-            <Label
-                Grid.Row="2"
+                    <Label
+                
                 Grid.Column="2"
                 FontSize="24"
-                Text="Items"
+                Text="Rental"
                 VerticalOptions="CenterAndExpand" />
-            <BoxView
-                x:Name="itemsItemNotifiactionBox"
-                Grid.Row="2"
+                    <BoxView
+                x:Name="rentalItemNotifiactionBox"
+               
                 Grid.Column="3"
                 BackgroundColor="#999999"
                 CornerRadius="100"
@@ -153,9 +217,9 @@
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 WidthRequest="30" />
-            <Label
-                x:Name="ItemsNotificationBadgeCounter"
-                Grid.Row="2"
+                    <Label
+                x:Name="RentalNotificationBadgeCounter"
+                
                 Grid.Column="3"
                 FontAttributes="Bold"
                 FontSize="14"
@@ -164,40 +228,43 @@
                 TextColor="White"
                 VerticalOptions="Center"
                 ZIndex="3" />
-            <Image
-                Grid.Row="2"
+                    <Image
+               
                 Grid.Column="4"
                 HorizontalOptions="Center"
                 Source="nextarrow"
                 WidthRequest="20" />
-
+                </Grid>
+            </Frame>
 
             <!--  Wish List Menu Item  -->
-            <Button
-                Grid.Row="3"
+            <Frame  Grid.Row="4" Padding="0"  HasShadow="False">
+                <Grid ColumnDefinitions="30, 60 , *, 30, 50">
+                    <Button
+              
                 Grid.ColumnSpan="5"
                 Clicked="onWishListItemClicked"
                 Opacity="0" />
-            <BoxView
-                Grid.Row="3"
+                    <BoxView
+              
                 BackgroundColor="Orange"
                 HeightRequest="80"
                 WidthRequest="8" />
-            <Image
-                Grid.Row="3"
+                    <Image
+              
                 Grid.Column="1"
                 Source="favlisticon"
                 VerticalOptions="Center"
                 WidthRequest="30" />
-            <Label
-                Grid.Row="3"
+                    <Label
+               
                 Grid.Column="2"
                 FontSize="24"
-                Text="My Listings"
+                Text="Saved items"
                 VerticalOptions="CenterAndExpand" />
-            <BoxView
+                    <BoxView
                 x:Name="favoritesItemNotifiactionBox"
-                Grid.Row="3"
+              
                 Grid.Column="3"
                 BackgroundColor="#999999"
                 CornerRadius="100"
@@ -205,9 +272,9 @@
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 WidthRequest="30" />
-            <Label
+                    <Label
                 x:Name="favoritesNotificationBadgeCounter"
-                Grid.Row="3"
+            
                 Grid.Column="3"
                 FontAttributes="Bold"
                 FontSize="14"
@@ -215,12 +282,15 @@
                 Text="15"
                 TextColor="White"
                 VerticalOptions="Center" />
-            <Image
-                Grid.Row="3"
+                    <Image
+               
                 Grid.Column="4"
                 HorizontalOptions="Center"
                 Source="nextarrow"
                 WidthRequest="20" />
+
+                </Grid>
+            </Frame>
 
         </Grid>
 

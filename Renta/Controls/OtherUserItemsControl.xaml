@@ -5,19 +5,19 @@
             >
     <ContentView.Content>
         <Grid  ColumnDefinitions="*,*,*"   >
-            <Label x:Name="AllLabel"  Text="All"   Grid.Column="0" HorizontalOptions="Center"  TextColor="Gray" >
+            <Label x:Name="AllLabel"  Text="All"   Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"  TextColor="Gray" >
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                 </Label.GestureRecognizers>
                 
             </Label>
-            <Label x:Name="AvailableLabel" Text="Available"   Grid.Column="1" HorizontalOptions="Center" TextColor="Gray" >
+            <Label x:Name="AvailableLabel" Text="Available"   Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Gray" >
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
             </Label.GestureRecognizers>
             </Label>
 
-            <Label x:Name="UnAvailableLabel"  Text="Unavailable"  Grid.Column="2"  HorizontalOptions="Center"  TextColor="Gray">
+            <Label x:Name="UnAvailableLabel"  Text="Unavailable"  Grid.Column="2"  HorizontalOptions="Center" VerticalOptions="Center"  TextColor="Gray">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                 </Label.GestureRecognizers>
