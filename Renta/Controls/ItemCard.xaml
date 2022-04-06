@@ -49,16 +49,17 @@
                     Padding="0"
                     BackgroundColor="AliceBlue"
                     HasShadow="False">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="onCardHeartTapped" />
-                    </Frame.GestureRecognizers>
                     <Image
                         x:Name="HeartButton"
                         Grid.Row="1"
                         Margin="42,0,0,0"
                         HeightRequest="25"
                         Source="hollowhearticon"
-                        WidthRequest="25" />
+                        WidthRequest="25" >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="onCardHeartTapped" />
+                        </Image.GestureRecognizers>
+                    </Image>
                 </Frame>
             </StackLayout>
         </Grid>

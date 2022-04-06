@@ -12,7 +12,7 @@ namespace Renta.ViewModels
 
         public ItemPageViewModel()
         {
-            ItemLiked = false;
+            ItemLiked = false; //should be set according to the user liked items in data base/
         }
 
         

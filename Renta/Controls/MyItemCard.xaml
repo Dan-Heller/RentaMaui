@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="Renta.Controls.MyItemCard"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="MyItemCardComponent">
+
+    <Frame
+        Margin="3"
+        Padding="0"
+        BackgroundColor="AliceBlue"
+        CornerRadius="13"
+        HasShadow="False">
+
+        <Grid RowDefinitions="160 ,30" WidthRequest="120">
+            <Frame
+                Margin="0"
+                Padding="0"
+                HasShadow="False">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="MyItemCard_Tapped" />
+                </Frame.GestureRecognizers>
+                <Image
+                    Grid.Row="0"
+                    Aspect="AspectFill"
+                    HeightRequest="160"
+                    HorizontalOptions="CenterAndExpand"
+                    Source="item" />
+            </Frame>
+            <StackLayout
+                Grid.Row="1"
+                Padding="3,0,0,0"
+                Orientation="Horizontal">
+
+                <Image
+                    Grid.Row="1"
+                    HeightRequest="22"
+                    Source="coinsstackicon24px"
+                    WidthRequest="22" />
+
+                <Label
+                    Grid.Row="1"
+                    Padding="8,2,0,0"
+                    FontSize="16"
+                    Text="50" />
+
+                <Frame
+                    Margin="0"
+                    Padding="0"
+                    BackgroundColor="AliceBlue"
+                    HasShadow="False">
+                </Frame>
+            </StackLayout>
+
+        </Grid>
+    </Frame>
+
+</ContentView>

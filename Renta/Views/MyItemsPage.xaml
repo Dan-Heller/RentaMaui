@@ -2,11 +2,28 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Renta.MyItemsPage"
-             Title="MyItemsPage"
-             BackgroundColor="White">
-    <StackLayout>
-        <Label Text="Welcome to .NET MAUI!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-    </StackLayout>
+             Title="Your Items"
+               xmlns:controls="clr-namespace:Renta.Controls"
+             BackgroundColor="White"
+             Shell.ForegroundColor="black"
+    Shell.NavBarIsVisible="true"
+     Shell.TitleColor="Black">
+
+    <ScrollView Padding="8,0,0,0" VerticalOptions="FillAndExpand">
+        <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*,*,*">
+            <controls:MyItemCard Grid.Column="0" Grid.Row="0"/>
+            <controls:MyItemCard Grid.Column="1" Grid.Row="0"/>
+            <controls:MyItemCard Grid.Column="2" Grid.Row="0"/>
+            <controls:MyItemCard Grid.Column="0" Grid.Row="1"/>
+            <controls:MyItemCard Grid.Column="1" Grid.Row="1"/>
+            <controls:MyItemCard Grid.Column="2" Grid.Row="1"/>
+            <controls:MyItemCard Grid.Column="0" Grid.Row="2"/>
+            <controls:MyItemCard Grid.Column="1" Grid.Row="2"/>
+            <controls:MyItemCard Grid.Column="2" Grid.Row="2"/>
+            <controls:MyItemCard Grid.Column="0" Grid.Row="3"/>
+            <controls:MyItemCard Grid.Column="1" Grid.Row="3"/>
+            <controls:MyItemCard Grid.Column="2" Grid.Row="3"/>
+        </Grid>
+    </ScrollView>
+  
 </ContentPage>

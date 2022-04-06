@@ -8,6 +8,7 @@ public partial class ItemCard : ContentView
 	public ItemCard()
 	{
 		InitializeComponent();
+		HeartButtonClicked = false;  //should be sync with the liked collection from data base
 	}
 
     private async void ItemCard_Tapped(object sender, EventArgs e)
@@ -19,11 +20,11 @@ public partial class ItemCard : ContentView
     {
 		if(HeartButtonClicked == false)
         {
-			HeartButton.Source = "hollowhearticon.png";
+			HeartButton.Source = "fullhearticon.png";
 		}
         else
         {
-			HeartButton.Source = "fullhearticon.png";
+			HeartButton.Source = "hollowhearticon.png";
 		}
 		HeartButtonClicked = !HeartButtonClicked;
 	}

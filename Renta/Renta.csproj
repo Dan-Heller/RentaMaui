@@ -83,8 +83,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Controls\MyItemCard.xaml.cs">
+	    <DependentUpon>MyItemCard.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\AppShell.xaml.cs">
 	    <DependentUpon>AppShell.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\MyItemPage.xaml.cs">
+	    <DependentUpon>MyItemPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\MessagesShell.xaml.cs">
 	    <DependentUpon>MessagesShell.xaml</DependentUpon>
@@ -96,6 +102,9 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="Controls\HeaderControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Controls\MyItemCard.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Controls\OtherUserItemsControl.xaml">
@@ -117,6 +126,10 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\FiltersPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\MyItemPage.xaml">
+	    <SubType>Designer</SubType>
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ItemPage.xaml">
