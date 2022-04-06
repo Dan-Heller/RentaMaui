@@ -98,6 +98,9 @@
 	  <Compile Update="Controls\ItemCard.xaml.cs">
 	    <DependentUpon>ItemCard.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\SavedItemsPage.xaml.cs">
+	    <DependentUpon>SavedItemsPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -148,6 +151,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Controls\ItemCard.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SavedItemsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\MyItemsPage.xaml">

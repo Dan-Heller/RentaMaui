@@ -21,6 +21,7 @@ public partial class AppShell: Shell
 		Routing.RegisterRoute(nameof(OtherUserProfilePage), typeof(OtherUserProfilePage));
 		Routing.RegisterRoute(nameof(MyItemsPage), typeof(MyItemsPage));
 		Routing.RegisterRoute(nameof(MyItemPage), typeof(MyItemPage));
+		Routing.RegisterRoute(nameof(SavedItemsPage), typeof(SavedItemsPage));
 
 
 		// FEED TAB

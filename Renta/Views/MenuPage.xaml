@@ -239,12 +239,11 @@
 
             <!--  Wish List Menu Item  -->
             <Frame  Grid.Row="4" Padding="0"  HasShadow="False">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding SavedItems_Tapped}" />
+                </Frame.GestureRecognizers>
                 <Grid ColumnDefinitions="30, 60 , *, 30, 50">
-                    <Button
-              
-                Grid.ColumnSpan="5"
-                Clicked="onWishListItemClicked"
-                Opacity="0" />
+                   
                     <BoxView
               
                 BackgroundColor="Orange"
