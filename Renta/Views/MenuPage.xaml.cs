@@ -10,29 +10,5 @@ public partial class MenuPage : ContentPage
 		InitializeComponent();
 	}
 
-    private void onSettingButtonClicked(object sender, EventArgs e)
-    {
-        
 
-    }
-
-    private void onRentingButtonClicked(object sender, EventArgs e)
-    {
-
-    }
-
-    private void onMyItemsButtonClicked(object sender, EventArgs e)
-    {
-
-    }
-
-    private void onRentalButtonClicked(object sender, EventArgs e)
-    {
-
-    }
-
-    private void onWishListItemClicked(object sender, EventArgs e)
-    {
-
-    }
 }

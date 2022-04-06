@@ -25,11 +25,7 @@
             <!--  Settings Menu Item  -->
             <Frame  Grid.Row="0" Padding="0" HasShadow="False">
                 <Grid ColumnDefinitions="30, 60 , *, 30, 50">
-                    <Button
-               
-                Grid.ColumnSpan="5"
-                Clicked="onSettingButtonClicked"
-                Opacity="0" />
+                   
                     <BoxView
                 BackgroundColor="Blue"
                 HeightRequest="80"
@@ -131,10 +127,7 @@
             <!--  Renting Menu Item  -->
             <Frame  Grid.Row="2" Padding="0" HasShadow="False">
                 <Grid ColumnDefinitions="30, 60 , *, 30, 50">
-            <Button
-                Grid.ColumnSpan="5"
-                Clicked="onRentingButtonClicked"
-                Opacity="0" />
+           
             <BoxView
                 BackgroundColor="LawnGreen"
                 HeightRequest="80"
@@ -185,11 +178,7 @@
                     <!--  rental  -->
             <Frame  Grid.Row="3" Padding="0" HasShadow="False">
                 <Grid ColumnDefinitions="30, 60 , *, 30, 50">
-                    <Button
-                
-                Grid.ColumnSpan="5"
-                Clicked="onRentalButtonClicked"
-                Opacity="0" />
+                   
                     <BoxView
                
                 BackgroundColor="Yellow"
