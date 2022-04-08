@@ -8,8 +8,8 @@
     <ContentPage.Content>
         <StackLayout Padding="40" VerticalOptions="Center"
                      HorizontalOptions="FillAndExpand">
-            <Label Text="Username:" />
-            <Entry Placeholder="Username"/>
+            <Label Text="Email:" />
+            <Entry Placeholder="Email"/>
             <Label Text="Password:" />
             <Entry IsPassword="True"
                    Placeholder="Password"/>

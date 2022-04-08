@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using System.Threading.Tasks;
-using Renta.Common.Navigation;
+
 
 namespace Renta.ViewModels
 {

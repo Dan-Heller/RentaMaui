@@ -13,11 +13,22 @@ namespace Renta.ViewModels
 
         }
 
+        //       public Command LoginButtonClicked
+        //=> new Command(async () => await Shell.Current.GoToAsync($"//{nameof(FeedPage)}")); //  "//" remove backstack.
+
         public Command LoginButtonClicked
- => new Command(async () => await Shell.Current.GoToAsync($"//{nameof(FeedPage)}")); //  "//" remove backstack.
+ => new Command(async () => await loginUser());
+
+        public async Task loginUser()
+        {
+
+            await Shell.Current.GoToAsync($"//{nameof(FeedPage)}");  //  "//" remove backstack.
+        }
 
 
         public Command RegisterLabelTapped
  => new Command(async () => await Shell.Current.GoToAsync($"//{nameof(LoginPage)}/{nameof(RegistrationPage)}"));
+
+    
     }
 }

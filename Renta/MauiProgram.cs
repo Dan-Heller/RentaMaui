@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Renta.Common.Navigation;
+using Renta.Services;
 using Renta.ViewModels;
 
 namespace Renta;
@@ -25,8 +25,13 @@ public static class MauiProgram
 		builder.Services.AddSingleton<ProfilePage>();
 		builder.Services.AddTransient<ProfilePageViewModel>();
 
-		builder.Services.AddSingleton<LoginPage>();
-		builder.Services.AddTransient<LoginPageViewModel>();
+		builder.Services.AddTransient<LoginPage>();
+		builder.Services.AddTransient<LoginPageViewModel>(); //maybe shouldnt be singleton ...
+
+		builder.Services.AddSingleton<UserService>();
+
+		builder.Services.AddTransient<RegistrationPage>();
+		builder.Services.AddTransient<RegistrationPageViewModel>();
 
 		builder.Services.AddSingleton<MessagesPage>();
 		builder.Services.AddSingleton<MessagesShell>();

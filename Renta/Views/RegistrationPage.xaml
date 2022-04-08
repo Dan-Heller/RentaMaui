@@ -6,9 +6,17 @@
              Shell.ForegroundColor="black"
              Shell.NavBarIsVisible="true"
              BackgroundColor="White">
-    <StackLayout>
-        <Label Text="Welcome to .NET MAUI!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-    </StackLayout>
+    <ContentPage.Content>
+        <StackLayout Padding="40" VerticalOptions="Center"
+                     HorizontalOptions="FillAndExpand">
+            <Label Text="Email:" />
+            <Entry Placeholder="Email" Text="{Binding Email, Mode=TwoWay}"  />
+            <Label Text="Password:" />
+            <Entry IsPassword="True"  Text="{Binding Password, Mode=TwoWay}"
+                   Placeholder="Password"/>
+            <Button Text="Register" Command="{Binding RegisterCompleted_Clicked }" />
+           
+
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>
