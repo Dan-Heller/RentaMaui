@@ -126,6 +126,9 @@
 
             <!--  Renting Menu Item  -->
             <Frame  Grid.Row="2" Padding="0" HasShadow="False">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Renting_Tapped}" />
+                </Frame.GestureRecognizers>
                 <Grid ColumnDefinitions="30, 60 , *, 30, 50">
            
             <BoxView

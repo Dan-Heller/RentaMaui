@@ -15,5 +15,12 @@ namespace Renta.ViewModels
        
                public Command SavedItems_Tapped
       => new Command(async () => await Shell.Current.GoToAsync($"{nameof(SavedItemsPage)}"));
+
+
+        
+
+                    public Command Renting_Tapped
+      => new Command(async () => await Shell.Current.GoToAsync($"{nameof(RentingPage)}"));
+
     }
 }

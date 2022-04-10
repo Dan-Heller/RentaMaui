@@ -48,6 +48,8 @@ public static class MauiProgram
 		builder.Services.AddSingleton<MenuPage>();
 		builder.Services.AddSingleton<MenuPageViewModel>();
 
+		builder.Services.AddSingleton<RentingPage>();
+
 
 
 
