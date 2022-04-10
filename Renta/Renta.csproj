@@ -113,6 +113,9 @@
 	  <MauiXaml Update="Controls\HeaderControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Controls\ItemInListControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Controls\MyItemCard.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
