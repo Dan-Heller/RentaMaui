@@ -6,4 +6,14 @@ public partial class ItemInListControl : ContentView
 	{
 		InitializeComponent();
 	}
+
+	private async void ItemImage_Tapped(object sender, EventArgs e)
+	{
+		await Shell.Current.GoToAsync($"{nameof(MyItemPage)}");
+	}
+
+	private async void OtherUserProfile_Tapped(object sender, EventArgs e)
+	{
+		await Shell.Current.GoToAsync($"{nameof(OtherUserProfilePage)}");
+	}
 }
