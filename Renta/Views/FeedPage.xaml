@@ -5,85 +5,75 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:Renta.Controls"
     BackgroundColor="white"
-    Shell.NavBarIsVisible="false">
+    Shell.NavBarIsVisible="False">
 
 
-    <StackLayout Margin="0,0">
-
-        <controls:HeaderControl VerticalOptions="Start" />
+    <Grid RowDefinitions="57,*">
+        
+        <controls:HeaderControl VerticalOptions="Start" Grid.Row="0"/>
         <!--
             TextToSearch="{Binding Text, Mode=OneWayToSource}"
             SearchCommand="{Binding SearchCommand}"
         -->
 
-        <ScrollView Padding="8,0,0,0">
+
+        <ScrollView Padding="8,0,0,0" Grid.Row="1"  Orientation="Vertical" >
             <StackLayout Spacing="10">
-                <Label
-                    Margin="0,20,0,0"
-                    FontSize="16"
-                    Text="Recently Added:"
-                    TextColor="Black" />
-                <ScrollView Orientation="Horizontal">
-                    <StackLayout Orientation="Horizontal">
-                        <controls:ItemCard />
-                        <controls:ItemCard />
-                        <controls:ItemCard />
-                        <controls:ItemCard />
-                        <controls:ItemCard />
-                        <controls:ItemCard />
-                    </StackLayout>
-                </ScrollView>
-
-
-                <Label
+                <Grid RowDefinitions="50,*">
+                    <Label Grid.Row="0"
                     Margin="0,20,0,0"
                     FontSize="16"
                     Text="Near You:"
                     TextColor="Black" />
-                <ScrollView Orientation="Horizontal">
-                    <StackLayout Orientation="Horizontal">
-                        <controls:ItemCard />
-                        <controls:ItemCard />
-                        <controls:ItemCard />
-                        <controls:ItemCard />
-                        <controls:ItemCard />
-                        <controls:ItemCard />
-                    </StackLayout>
-                </ScrollView>
+                    <ScrollView Orientation="Horizontal" Grid.Row="1">
+                        <StackLayout Orientation="Horizontal">
+                            <controls:ItemCard />
+                            <controls:ItemCard />
+                            <controls:ItemCard />
+                            <controls:ItemCard />
+                            <controls:ItemCard />
+                            <controls:ItemCard />
+                        </StackLayout>
+                    </ScrollView>
+                </Grid>
 
-
-                <Label
+                <Grid RowDefinitions="50,*">
+                    <Label Grid.Row="0"
                     Margin="0,20,0,0"
                     FontSize="16"
                     Text="You Might Like:"
                     TextColor="Black" />
-                <ScrollView Orientation="Horizontal">
-                    <StackLayout Orientation="Horizontal">
-                        <controls:ItemCard />
-                        <controls:ItemCard />
-                        <controls:ItemCard />
-                        <controls:ItemCard />
-                        <controls:ItemCard />
-                        <controls:ItemCard />
-                    </StackLayout>
-                </ScrollView>
+                    <ScrollView Orientation="Horizontal" Grid.Row="1">
+                        <StackLayout Orientation="Horizontal">
+                            <controls:ItemCard />
+                            <controls:ItemCard />
+                            <controls:ItemCard />
+                            <controls:ItemCard />
+                            <controls:ItemCard />
+                            <controls:ItemCard />
+                        </StackLayout>
+                    </ScrollView>
+                </Grid>
 
-                <Label
+                <Grid RowDefinitions="50,*">
+                    <Label Grid.Row="0"
                     Margin="0,20,0,0"
                     FontSize="16"
                     Text="Trending:"
                     TextColor="Black" />
-                <ScrollView Orientation="Horizontal">
-                    <StackLayout Orientation="Horizontal">
-                        <controls:ItemCard />
-                        <controls:ItemCard />
-                        <controls:ItemCard />
-                        <controls:ItemCard />
-                        <controls:ItemCard />
-                        <controls:ItemCard />
-                    </StackLayout>
-                </ScrollView>
+                    <ScrollView Orientation="Horizontal" Grid.Row="1">
+                        <StackLayout Orientation="Horizontal">
+                            <controls:ItemCard />
+                            <controls:ItemCard />
+                            <controls:ItemCard />
+                            <controls:ItemCard />
+                            <controls:ItemCard />
+                            <controls:ItemCard />
+                        </StackLayout>
+                    </ScrollView>
+                </Grid>
+
             </StackLayout>
         </ScrollView>
-    </StackLayout>
+    </Grid>
 </ContentPage>

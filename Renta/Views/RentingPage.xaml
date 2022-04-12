@@ -7,7 +7,8 @@
              BackgroundColor="White"
              Shell.ForegroundColor="black"
              Shell.NavBarIsVisible="true"
-             Shell.TitleColor="Black">
+             Shell.TitleColor="Black"
+             Shell.TabBarIsVisible="False">
 
   
     
