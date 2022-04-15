@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Renta.Models;
 using Renta.Dto_s;
@@ -13,14 +13,11 @@ namespace Renta.Services
 {
     public class UserService
     {
-
-       private readonly RestClient _client = new RestClient("https://rentaapidev.azurewebsites.net");
-        //private readonly RestClient _client = new RestClient("http://10.0.2.2:3000");
-
+        IConfiguration configuration;
         HttpClient httpclient;
+        // https://rentaapidev.azurewebsites.net
 
-
-        public UserService()
+        public UserService(IConfiguration config)
         {
             var httpClientHandler = new HttpClientHandler();
 
@@ -30,10 +27,9 @@ namespace Renta.Services
 
             httpclient = new HttpClient(httpClientHandler);
 
+            configuration = config;
 
-            //httpclient.BaseAddress = new Uri("http://10.0.2.2:3000/omer/thruth"); //andoid local working!
-            //httpclient.BaseAddress = new Uri("https://10.0.2.2:3000/Auth/register");
-            //httpclient.BaseAddress = new Uri("https://e006-89-138-198-193.ngrok.io:3000/omer/thruth");
+            
             httpclient.MaxResponseContentBufferSize = 256000;
 
         }
@@ -46,28 +42,23 @@ namespace Renta.Services
             string json = JsonConvert.SerializeObject(registerDto);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
             HttpResponseMessage response = null;
-            response = await httpclient.PostAsync(new Uri("https://rentaapidev.azurewebsites.net/Auth/register"), content);
-            
+         
+            response = await httpclient.PostAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Auth/register"), content);
         }
 
+        public async Task LoginUser(LoginDto loginDto)
+        {
+        
+            string json = JsonConvert.SerializeObject(loginDto);
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = null;
 
-
-        //public async Task<User> LoginUser(Email email)
-        //{
-        //    string json = JsonConvert.SerializeObject(email);
-        //    StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-        //    HttpResponseMessage response = null;
-
-        //    string str = string.Empty;
-        //    response = await httpclient.PostAsync(new Uri("http://10.0.2.2:3000/Auth/login"), content);
-        //    str = await response.Content.ReadAsStringAsync();
-        //    User loggedUser = JsonConvert.DeserializeObject<User>(str);
-
-
-        //    User user = new User(loggedUser.Username, loggedUser.CellphoneNumber, loggedUser.Password, loggedUser.Email);
-        //    return user;
-        //}
-
-
+           
+            response = await httpclient.PostAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Auth/login"), content);
+            string str = await  response.Content.ReadAsStringAsync();
+            LoginResponse loginResponse = JsonConvert.DeserializeObject<LoginResponse>(str);
+            
+          
+        }
     }
 }

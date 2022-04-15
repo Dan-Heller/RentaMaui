@@ -1,6 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Renta.Services;
 using Renta.ViewModels;
+using Renta.Models;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.Json;
+using System.Reflection;
+
+
 
 namespace Renta;
 
@@ -15,8 +21,19 @@ public static class MauiProgram
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 			});
+		
+        var a = Assembly.GetExecutingAssembly();  //all following rows are for the appsetting.json
+        using var stream = a.GetManifestResourceStream("Renta.appsettings.json");
+        var config = new ConfigurationBuilder()
+                    .AddJsonStream(stream)
+                    .Build();
+        builder.Configuration.AddConfiguration(config);
 
-		builder.Services.AddSingleton<AppShell>(); 
+
+
+
+
+        builder.Services.AddSingleton<AppShell>(); 
 		builder.Services.AddSingleton<AppShellViewModel>();
 
 		builder.Services.AddSingleton<FeedPage>();
@@ -50,7 +67,7 @@ public static class MauiProgram
 
 		builder.Services.AddSingleton<RentingPage>();
 
-
+		
 
 
 		builder.Services.AddSingleton<CreditsPage>();

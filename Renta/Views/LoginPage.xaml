@@ -9,10 +9,10 @@
         <StackLayout Padding="40" VerticalOptions="Center"
                      HorizontalOptions="FillAndExpand">
             <Label Text="Email:" />
-            <Entry Placeholder="Email"/>
+            <Entry Placeholder="Email" Text="{Binding Email, Mode=TwoWay}"/>
             <Label Text="Password:" />
             <Entry IsPassword="True"
-                   Placeholder="Password"/>
+                   Placeholder="Password" Text="{Binding Password, Mode=TwoWay}"/>
             <Button Text="Login" Command="{Binding LoginButtonClicked }" />
             <Label Text="Register" HorizontalOptions="Center">
                 <Label.GestureRecognizers>
