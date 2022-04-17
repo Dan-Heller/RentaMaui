@@ -43,10 +43,11 @@ namespace Renta.ViewModels
 
 
         public Command LoginButtonClicked
- => new Command(async () => await loginUser());
+            => new Command(async () => await loginUser());
 
         public async Task loginUser()
         {
+            // todo add validation before sending
             LoginDto loginDto = new LoginDto(email, password);
             await m_userService.LoginUser(loginDto);
             await Shell.Current.GoToAsync($"//{nameof(FeedPage)}");  //  "//" remove backstack.
