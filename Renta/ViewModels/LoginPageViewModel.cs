@@ -43,7 +43,7 @@ namespace Renta.ViewModels
 
 
         public Command LoginButtonClicked
-            => new Command(async () => await loginUser());
+            => new Command(async () => await  loginUser());
 
         public async Task loginUser()
         {

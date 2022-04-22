@@ -1,4 +1,6 @@
 ﻿
+using Renta.Models;
+using Renta.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +11,29 @@ namespace Renta.ViewModels
 {
     public class ProfilePageViewModel
     {
-        
 
-        public ProfilePageViewModel()
+        private string email;
+
+        public ProfilePageViewModel(UserService userService)
         {
-            
+            getUserInformation(userService.LoggedInUser);
+
+        }
+
+        private void getUserInformation(User user)
+        {
+            email = user.Email;
+        }
+
+
+        public string Email
+        {
+            set
+            {
+                email = value;
+                // OnPropertyChanged();
+            }
+            get => email;
         }
 
         //public Command LogoutClicked

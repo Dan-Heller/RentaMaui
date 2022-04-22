@@ -11,4 +11,6 @@ public partial class ProfilePage : ContentPage
 		
 		InitializeComponent();
 	}
+
+   
 }

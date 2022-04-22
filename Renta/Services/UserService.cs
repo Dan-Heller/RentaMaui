@@ -13,9 +13,14 @@ namespace Renta.Services
 {
     public class UserService
     {
+        public User LoggedInUser = null;
+
         IConfiguration configuration;
         HttpClient httpclient;
         // https://rentaapidev.azurewebsites.net
+
+        
+
 
         public UserService(IConfiguration config)
         {
@@ -48,7 +53,7 @@ namespace Renta.Services
 
         public async Task LoginUser(LoginDto loginDto)
         {
-        
+            
             string json = JsonConvert.SerializeObject(loginDto);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
             HttpResponseMessage response = null;
@@ -57,8 +62,8 @@ namespace Renta.Services
             response = await httpclient.PostAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Auth/login"), content);
             string str = await  response.Content.ReadAsStringAsync();
             LoginResponse loginResponse = JsonConvert.DeserializeObject<LoginResponse>(str);
-            
-          
+
+            LoggedInUser = loginResponse.user;
         }
     }
 }
