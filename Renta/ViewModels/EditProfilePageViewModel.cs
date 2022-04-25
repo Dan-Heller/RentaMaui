@@ -15,12 +15,35 @@ namespace Renta.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
         private FileService _fileService;
         public FileResult NewProfileImageFile = null;
+        public UserService _userService;
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Address { get; set; }
+
        
 
-        public EditProfilePageViewModel(FileService fileService)
+        private bool ProfileImageChanged = false;
+       
+
+        public EditProfilePageViewModel(FileService fileService, UserService userService)
         {
-            profileImageSource = ImageSource.FromFile("addprofileimage.png");
+            //profileImageSource = ImageSource.FromFile("addprofileimage.png");
             _fileService = fileService;
+            _userService = userService;
+
+            if(_userService.LoggedInUser.ProfilePhotoUrl == String.Empty)
+            {
+                profileImageSource = ImageSource.FromFile("addprofileimage.png");
+            }
+            else
+            {
+                profileImageSource = _userService.LoggedInUser.ProfilePhotoUrl;
+            }
+            
+            FirstName = _userService.LoggedInUser.FirstName;
+            LastName = _userService.LoggedInUser.LastName;
+            Address = _userService.LoggedInUser.Address;
+
         }
 
 
@@ -48,8 +71,25 @@ namespace Renta.ViewModels
 
         private async Task updateUser()
         {
-            var stream = await NewProfileImageFile.OpenReadAsync();
-            var str = await _fileService.UploadImageAsync(stream, NewProfileImageFile.FileName);
+            //check if image changed
+            if (ProfileImageChanged)
+            {
+                var stream = await NewProfileImageFile.OpenReadAsync();
+                var ImageUrl = await _fileService.UploadImageAsync(stream, NewProfileImageFile.FileName);
+                _userService.LoggedInUser.ProfilePhotoUrl = ImageUrl;
+
+            }
+            ProfileImageChanged = false;
+
+            //update
+            _userService.LoggedInUser.FirstName = FirstName;
+            _userService.LoggedInUser.LastName = LastName;
+            _userService.LoggedInUser.Address = Address;
+            await _userService.UpdateUserInfo(_userService.LoggedInUser);
+
+
+
+
             await Shell.Current.GoToAsync("..");
         }
 
@@ -69,14 +109,14 @@ namespace Renta.ViewModels
                 var stream = await NewProfileImageFile.OpenReadAsync();
                 profileImageSource = ImageSource.FromStream(() => stream);
                 OnPropertyChanged(nameof(ProfileImageSource));
-                
+                ProfileImageChanged = true;
             }
-
+            
             //if (stream != null)
             //{
             //    var str = await _fileService.UploadImageAsync(stream, "ProfilePicture");
             //}
-           
+
 
         }
     }

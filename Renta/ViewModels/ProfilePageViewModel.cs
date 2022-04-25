@@ -3,27 +3,52 @@ using Renta.Models;
 using Renta.Services;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Renta.ViewModels
 {
-    public class ProfilePageViewModel
+    public class ProfilePageViewModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private string email;
+        public string FullName { get; set; }
+        
+        public string Address   { get; set; }
+
+        public string ProfileImageUrl { get; set; }
+
+        private User _LoggedUser;
 
         public ProfilePageViewModel(UserService userService)
         {
-            getUserInformation(userService.LoggedInUser);
-
+            _LoggedUser = userService.LoggedInUser;
+            getUserInformation();
+            userService.UserUpdatedInvoker += new Action(getUserInformation); //tell me when user info updated .
         }
 
-        private void getUserInformation(User user)
+        void OnPropertyChanged([CallerMemberName] string name = "")
         {
-            email = user.Email;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
+
+        private void getUserInformation()
+        {
+            email = _LoggedUser.Email;
+            FullName = _LoggedUser.GetFullName();
+            ProfileImageUrl = _LoggedUser.ProfilePhotoUrl;
+
+            OnPropertyChanged(nameof(ProfileImageUrl));
+            OnPropertyChanged(nameof(FullName));
+           
+        }
+
+       
+
 
 
         public string Email

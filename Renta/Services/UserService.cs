@@ -18,9 +18,29 @@ namespace Renta.Services
         IConfiguration configuration;
         HttpClient httpclient;
         // https://rentaapidev.azurewebsites.net
+        public event Action UserUpdatedInvoker;
+
+
+        public async Task UpdateUserInfo(User user)
+        {
+            string json = JsonConvert.SerializeObject(user);
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = null;
+
+            string UserId = LoggedInUser.Id;
+            response = await httpclient.PutAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Users/" + UserId), content);
+
+            string str = await response.Content.ReadAsStringAsync();
+            LoggedInUser  = JsonConvert.DeserializeObject<User>(str);
+
+            if (UserUpdatedInvoker != null)
+            {
+                UserUpdatedInvoker.Invoke();
+            }
+
+        }
 
         
-
 
         public UserService(IConfiguration config)
         {

@@ -16,6 +16,9 @@ namespace Renta.ViewModels
 
         public string password;
         public string email;
+        public string FirstName { get; set; }
+        public string LastName { get; set;}
+
         private bool IsFormValid { get; set; } = false;
         private UserService m_userService;
         public RegistrationPageViewModel(UserService userService)
@@ -58,7 +61,7 @@ namespace Renta.ViewModels
 
         private async Task registerUser()
         {
-            RegisterDto registerDto = new RegisterDto(email, password);
+            RegisterDto registerDto = new RegisterDto(email, password,FirstName, LastName);
             await m_userService.RegisterUser(registerDto);
 
             await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");

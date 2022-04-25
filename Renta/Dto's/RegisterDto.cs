@@ -10,14 +10,19 @@ namespace Renta.Dto_s
     {
         public string Email { get; set; }
         public string Password { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+
 
         public RegisterDto() { }
 
-        public RegisterDto(string i_Email, string i_Password) 
+        public RegisterDto(string i_Email, string i_Password, string i_FirstName, string i_LastName) 
         {
            
             this.Password = i_Password;
             this.Email = i_Email;
+            this.FirstName = i_FirstName;
+            this.LastName = i_LastName;
         }
     }
 }

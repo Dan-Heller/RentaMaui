@@ -27,12 +27,12 @@
         <!-- Profile name & general description-->
         <StackLayout Grid.Row="2" Padding="10" 
                      HorizontalOptions="FillAndExpand">
-            <Label Text="Username:" />
-            <Entry Placeholder="Username" HorizontalOptions="FillAndExpand"/>
-            <Label Text="Email:" />
-            <Entry Placeholder="Email"/>
-            <Label Text="Adress:" />
-            <Entry Placeholder="Adress"/>
+            <Label Text="First Name:" />
+            <Entry Placeholder="First Name" Text="{Binding FirstName, Mode=TwoWay}"/>
+            <Label Text="Last Name:" />
+            <Entry Placeholder="Last Name" Text="{Binding LastName, Mode=TwoWay}"/>
+            <Label Text="Address:" />
+            <Entry Placeholder="Address" Text="{Binding Address, Mode=TwoWay}"/>
 
         </StackLayout>
 

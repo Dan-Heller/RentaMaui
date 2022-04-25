@@ -11,9 +11,17 @@
                      HorizontalOptions="FillAndExpand">
             <Label Text="Email:" />
             <Entry Placeholder="Email" Text="{Binding Email, Mode=TwoWay}"  />
+            
             <Label Text="Password:" />
             <Entry IsPassword="True"  Text="{Binding Password, Mode=TwoWay}"
                    Placeholder="Password"/>
+            
+            <Label Text="First Name:" />
+            <Entry Placeholder="First Name" Text="{Binding FirstName, Mode=TwoWay}"  />
+            
+            <Label Text="Last Name:" />
+            <Entry Placeholder="Last Name" Text="{Binding LastName, Mode=TwoWay}"  />
+           
             <Button Text="Register" Command="{Binding RegisterCompleted_Clicked }" />
            
 
