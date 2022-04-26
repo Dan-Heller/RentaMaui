@@ -5,12 +5,21 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Renta.ViewModels
 {
-    public  class AddItemPageViewModel : INotifyPropertyChanged
+    public  class AddItemPageViewModel : BaseViewModel
     {
         public List<string> Categories { get; set; }
+        public ImageSource imageSource1 { get; set; }
+        public ImageSource ImageSource2 { get; set; }
+        public ImageSource ImageSource3 { get; set; }
+        public ImageSource ImageSource4 { get; set; }
+
+        public string SelectedCategory;
+
+       
 
         public AddItemPageViewModel()
         {
@@ -18,9 +27,17 @@ namespace Renta.ViewModels
             Categories.Add("Sports");
             Categories.Add("Clothing");
             Categories.Add("Music");
+
+            imageSource1 = ImageSource.FromFile("addphoto.jpg");
+            ImageSource2 = ImageSource.FromFile("addphoto.jpg");
+            ImageSource3 = ImageSource.FromFile("addphoto.jpg");
+            ImageSource4 = ImageSource.FromFile("addphoto.jpg");
+
+            
+
         }
 
-        public string SelectedCategory;
+        
 
         public string selectedCategory
         {
@@ -31,7 +48,7 @@ namespace Renta.ViewModels
             set
             {
                 SelectedCategory = value;
-                OnPropertyChanged();
+                OnPropertyChanged(nameof(ImageSource1));
             }
         }
 
@@ -40,21 +57,63 @@ namespace Renta.ViewModels
 
         public async Task AddPhotoFromGallery()
         {
+           
+            //ImageSource chosenImageSource = getChosenImageSource(ImageId);
             var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions { Title = "Please pick a photo" });
+
+            
+
 
             if (result != null)
             {
+                
                 var stream = await result.OpenReadAsync();
+                ImageSource1 = ImageSource.FromStream(() => stream);
+                OnPropertyChanged(nameof(ImageSource1));
+                //return ImageSource1;
+            }
+         // return ImageSource.FromFile("addphoto.jpg");
 
-              
+        }
 
+        public ImageSource ImageSource1
+        {
+            get { return imageSource1; }
+            set
+            {
+                imageSource1 = value;
+                OnPropertyChanged();
             }
         }
+
+        private ImageSource getChosenImageSource(string Id)
+        {
+            ImageSource wantedImageSource = null;
+
+            switch (Id)
+            {
+                case "1":
+                    wantedImageSource = ImageSource1;
+                    break;
+                case "2":
+                    wantedImageSource = ImageSource2;
+                    break;
+                case "3":
+                    wantedImageSource = ImageSource3;
+                    break;
+                case "4":
+                    wantedImageSource = ImageSource4;
+                    break;
+            }
+            return wantedImageSource;
+        }
+
+
 
         public Command AddItemClicked
    => new Command(async () => await Shell.Current.GoToAsync(".."));
 
-        public async Task TakeAPhoto()
+        public async Task TakeAPhoto(string ImageId)
         {
             var result = await MediaPicker.CapturePhotoAsync();
 
@@ -65,12 +124,5 @@ namespace Renta.ViewModels
                // resultImage.Source = ImageSource.FromStream(() => stream);
             }
         }
-
-
-        void OnPropertyChanged([CallerMemberName] string name = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

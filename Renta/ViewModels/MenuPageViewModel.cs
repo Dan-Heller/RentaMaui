@@ -22,5 +22,8 @@ namespace Renta.ViewModels
                     public Command Renting_Tapped
       => new Command(async () => await Shell.Current.GoToAsync($"{nameof(RentingPage)}"));
 
+
+        public Command Rental_Tapped
+=> new Command(async () => await Shell.Current.GoToAsync($"{nameof(RentalPage)}"));
     }
 }

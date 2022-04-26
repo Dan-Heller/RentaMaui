@@ -11,10 +11,9 @@ using System.Threading.Tasks;
 
 namespace Renta.ViewModels
 {
-    public class ProfilePageViewModel : INotifyPropertyChanged
+    public class ProfilePageViewModel : BaseViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
+       
         private string email;
         public string FullName { get; set; }
         
@@ -31,11 +30,7 @@ namespace Renta.ViewModels
             userService.UserUpdatedInvoker += new Action(getUserInformation); //tell me when user info updated .
         }
 
-        void OnPropertyChanged([CallerMemberName] string name = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
-
+   
         private void getUserInformation()
         {
             email = _LoggedUser.Email;
@@ -46,10 +41,6 @@ namespace Renta.ViewModels
             OnPropertyChanged(nameof(FullName));
            
         }
-
-       
-
-
 
         public string Email
         {

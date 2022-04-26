@@ -11,7 +11,7 @@ using Renta.Services;
 
 namespace Renta.ViewModels
 {
-    public class RegistrationPageViewModel : INotifyPropertyChanged
+    public class RegistrationPageViewModel : BaseViewModel
     {
 
         public string password;
@@ -46,12 +46,7 @@ namespace Renta.ViewModels
         }
 
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        void OnPropertyChanged([CallerMemberName] string name = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-            
-        }
+     
 
 
 

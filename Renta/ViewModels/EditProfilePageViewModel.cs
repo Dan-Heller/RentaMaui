@@ -9,19 +9,15 @@ using System.Threading.Tasks;
 
 namespace Renta.ViewModels
 {
-    public class EditProfilePageViewModel : INotifyPropertyChanged
+    public class EditProfilePageViewModel : BaseViewModel
     {
         public ImageSource profileImageSource;
-        public event PropertyChangedEventHandler PropertyChanged;
         private FileService _fileService;
         public FileResult NewProfileImageFile = null;
         public UserService _userService;
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Address { get; set; }
-
-       
-
         private bool ProfileImageChanged = false;
        
 
@@ -44,12 +40,6 @@ namespace Renta.ViewModels
             LastName = _userService.LoggedInUser.LastName;
             Address = _userService.LoggedInUser.Address;
 
-        }
-
-
-        void OnPropertyChanged([CallerMemberName] string name = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
 
@@ -87,13 +77,8 @@ namespace Renta.ViewModels
             _userService.LoggedInUser.Address = Address;
             await _userService.UpdateUserInfo(_userService.LoggedInUser);
 
-
-
-
             await Shell.Current.GoToAsync("..");
         }
-
-
 
 
         public Command ChangeProfileImage_Clicked
@@ -116,8 +101,6 @@ namespace Renta.ViewModels
             //{
             //    var str = await _fileService.UploadImageAsync(stream, "ProfilePicture");
             //}
-
-
         }
     }
 }

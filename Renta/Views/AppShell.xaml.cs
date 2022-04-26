@@ -23,14 +23,7 @@ public partial class AppShell: Shell
 		Routing.RegisterRoute(nameof(MyItemPage), typeof(MyItemPage));
 		Routing.RegisterRoute(nameof(SavedItemsPage), typeof(SavedItemsPage));
 		Routing.RegisterRoute(nameof(RentingPage), typeof(RentingPage));
-
-
-		// FEED TAB
-		//NavigationPage FeedTab = new NavigationPage(feedPage);
-		//FeedTab.IconImageSource = "homeicon.png";
-		//FeedTab.Title = "Home";
-		//Children.Add(FeedTab);
-
+		Routing.RegisterRoute(nameof(RentalPage), typeof(RentalPage));
 	}
 }
 

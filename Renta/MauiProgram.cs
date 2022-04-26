@@ -31,26 +31,20 @@ public static class MauiProgram
 
 
 
-
-
         builder.Services.AddSingleton<AppShell>(); 
 		builder.Services.AddSingleton<AppShellViewModel>();
 
 		builder.Services.AddSingleton<FeedPage>();
 		builder.Services.AddTransient<FeedPageViewModel>();
 
-		
 		builder.Services.AddSingleton<ProfilePage>();
 		builder.Services.AddSingleton<ProfilePageViewModel>();
 
 		builder.Services.AddSingleton<UserService>();
 		builder.Services.AddSingleton<FileService>();
 
-
 		builder.Services.AddTransient<LoginPage>();
 		builder.Services.AddTransient<LoginPageViewModel>(); //maybe shouldnt be singleton ...
-
-		
 
 		builder.Services.AddTransient<RegistrationPage>();
 		builder.Services.AddTransient<RegistrationPageViewModel>();
@@ -71,18 +65,16 @@ public static class MauiProgram
 		builder.Services.AddSingleton<MenuPageViewModel>();
 
 		builder.Services.AddSingleton<RentingPage>();
-
-		
-
+		builder.Services.AddSingleton<RentalPage>();
 
 		builder.Services.AddSingleton<CreditsPage>();
 
 		builder.Services.AddSingleton<MenuPage>();
 
-		//builder.Services.AddSingleton<AddItemPage>();
-		//builder.Services.AddSingleton<AddItemPageViewModel>();
+        builder.Services.AddSingleton<AddItemPage>();
+        builder.Services.AddSingleton<AddItemPageViewModel>();
 
-		builder.Services.AddSingleton<SearchPage>();
+        builder.Services.AddSingleton<SearchPage>();
 
 		builder.Services.AddSingleton<NotificationsPage>();
 

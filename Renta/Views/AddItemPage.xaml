@@ -18,6 +18,7 @@
     <ScrollView>
         <Grid RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto">
 
+            <!--slots to upload item photos -->
             <Label  Grid.Row="0" Text="Upload Images"  FontAttributes="Bold" 
                     Margin="5,30,0,10" FontSize="20" HorizontalOptions="StartAndExpand"/>
             <Grid Grid.Row="1" 
@@ -25,16 +26,16 @@
                  HeightRequest="100"
                   ColumnDefinitions="*,*,*,*" HorizontalOptions="FillAndExpand" >
                 <Frame CornerRadius="13"   BorderColor="#c6c1ea"    HasShadow="False" Grid.Column="0" Margin="3" Padding="0">
-                    <ImageButton Source="addphoto.jpg"   Aspect="AspectFill" Clicked="AddPhoto_Tapped" />
+                    <ImageButton ClassId="1" Source="{Binding ImageSource1, Mode=TwoWay}"  Aspect="AspectFill" Clicked="AddPhoto_Tapped" />
                 </Frame>
                 <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="1" Margin="3"  Padding="0">
-                    <ImageButton Source="addphoto.jpg"   Aspect="AspectFill" Clicked="AddPhoto_Tapped" />
+                    <ImageButton ClassId="2" Source="{Binding ImageSource2, Mode=TwoWay}"   Aspect="AspectFill" Clicked="AddPhoto_Tapped" />
                 </Frame>
                 <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="2" Margin="3" Padding="0">
-                    <ImageButton Source="addphoto.jpg"   Aspect="AspectFill" Clicked="AddPhoto_Tapped" />
+                    <ImageButton ClassId="3" Source="{Binding ImageSource3, Mode=TwoWay}"   Aspect="AspectFill" Clicked="AddPhoto_Tapped" />
                 </Frame>
                 <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="3"  Margin="3" Padding="0">
-                    <ImageButton Source="addphoto.jpg"   Aspect="AspectFill" Clicked="AddPhoto_Tapped" />
+                    <ImageButton ClassId="4" Source="{Binding ImageSource4, Mode=TwoWay}"   Aspect="AspectFill" Clicked="AddPhoto_Tapped" />
                 </Frame>
             </Grid>
 

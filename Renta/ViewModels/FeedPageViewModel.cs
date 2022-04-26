@@ -9,13 +9,11 @@ using System.Threading.Tasks;
 
 namespace Renta.ViewModels
 {
-    //: INotifyPropertyChanged
-    public class FeedPageViewModel //: BaseViewModel
+   
+    public class FeedPageViewModel 
     {
 
-       // INavigation navigation = App.Current.MainPage.Navigation;
-        //readonly INavigationService _navigationService;
-        //public INavigation navigation;
+   
 
         //public ICommand ProfileCommand { get; private set; }
         //public ICommand CreditsCommand { get; private set; }
@@ -35,12 +33,7 @@ namespace Renta.ViewModels
 
 
 
-        //public Command NavigateToProfilePage
-        // => new Command(async () => await _navigationService.NavigateToProfilePage());
-
-
-        //public Command NavigateToProfilePage
-        // => new Command(async () => await _navigationService.NavigateToProfilePage(navigation));
+     
 
     }
 }
