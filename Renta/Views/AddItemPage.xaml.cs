@@ -7,13 +7,10 @@ public partial class AddItemPage : ContentPage
 	
 	public AddItemPage(AddItemPageViewModel addItemPageViewModel)
 	{
-
-		
 		//BindingContext = new AddItemPageViewModel();
 		BindingContext = addItemPageViewModel;
 		 _addItemPageViewModel = addItemPageViewModel;
 		InitializeComponent();
-		
 	}
 
     private async void AddPhoto_Tapped(object sender, EventArgs e)
@@ -24,7 +21,7 @@ public partial class AddItemPage : ContentPage
 
 		if(choosedOption == "From Gallery")
         {
-			await (BindingContext as AddItemPageViewModel).AddPhotoFromGallery();    //the of clicked -> init the method doesnt worked with onchanged
+			await (BindingContext as AddItemPageViewModel).AddPhotoFromGallery(ImageId);    //the of clicked -> init the method doesnt worked with onchanged
 			//await _addItemPageViewModel.AddPhotoFromGallery();
 			//(BindingContext as AddItemPageViewModel).AddPhotoFromGallery_Clicked.Execute(null);
 			//await _addItemPageViewModel.AddPhotoFromGallery();

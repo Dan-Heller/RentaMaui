@@ -12,13 +12,21 @@ namespace Renta.ViewModels
     public  class AddItemPageViewModel : BaseViewModel
     {
         public List<string> Categories { get; set; }
-        public ImageSource imageSource1 { get; set; }
+        public ImageSource ImageSource1 { get; set; }   
         public ImageSource ImageSource2 { get; set; }
         public ImageSource ImageSource3 { get; set; }
         public ImageSource ImageSource4 { get; set; }
 
-        public string SelectedCategory;
+        private string AddPhotoImageSource = "addphoto.jpg";
+        public string ItemName { get; set; }
+        public string CoinsPerDay { get; set; }
+        public string MaxDaysPerRent { get; set; }
+        public string ItemDescription { get; set; }
+        public string SelectedCategory { get; set; }
+        
+        private bool ImageAdded = false;
 
+        private FileResult chosenImageFile;
        
 
         public AddItemPageViewModel()
@@ -28,90 +36,59 @@ namespace Renta.ViewModels
             Categories.Add("Clothing");
             Categories.Add("Music");
 
-            imageSource1 = ImageSource.FromFile("addphoto.jpg");
-            ImageSource2 = ImageSource.FromFile("addphoto.jpg");
-            ImageSource3 = ImageSource.FromFile("addphoto.jpg");
-            ImageSource4 = ImageSource.FromFile("addphoto.jpg");
-
             
+
+            ImageSource1 = ImageSource.FromFile(AddPhotoImageSource);
+            ImageSource2 = ImageSource.FromFile(AddPhotoImageSource);
+            ImageSource3 = ImageSource.FromFile(AddPhotoImageSource);
+            ImageSource4 = ImageSource.FromFile(AddPhotoImageSource);
 
         }
 
         
 
-        public string selectedCategory
-        {
-            get
-            {
-                return SelectedCategory;
-            }
-            set
-            {
-                SelectedCategory = value;
-                OnPropertyChanged(nameof(ImageSource1));
-            }
-        }
-
         public Command AddPhotoFromGallery_Clicked
-        => new Command(async () => await AddPhotoFromGallery());
+        => new Command<string>(async (string ImageId) => await AddPhotoFromGallery(ImageId));
 
-        public async Task AddPhotoFromGallery()
+        public async Task AddPhotoFromGallery(string ImageId)
         {
-           
             //ImageSource chosenImageSource = getChosenImageSource(ImageId);
-            var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions { Title = "Please pick a photo" });
+            chosenImageFile = await MediaPicker.PickPhotoAsync(new MediaPickerOptions { Title = "Please pick a photo" });
 
-            
-
-
-            if (result != null)
+            if (chosenImageFile != null)
             {
-                
-                var stream = await result.OpenReadAsync();
-                ImageSource1 = ImageSource.FromStream(() => stream);
-                OnPropertyChanged(nameof(ImageSource1));
+                UpdateImageSource(ImageId, chosenImageFile);
+                ImageAdded = true;
                 //return ImageSource1;
             }
          // return ImageSource.FromFile("addphoto.jpg");
 
         }
 
-        public ImageSource ImageSource1
+        private async void UpdateImageSource(string ImageId,FileResult result)
         {
-            get { return imageSource1; }
-            set
-            {
-                imageSource1 = value;
-                OnPropertyChanged();
-            }
-        }
+            var stream = await result.OpenReadAsync();
 
-        private ImageSource getChosenImageSource(string Id)
-        {
-            ImageSource wantedImageSource = null;
-
-            switch (Id)
+            switch (ImageId)
             {
                 case "1":
-                    wantedImageSource = ImageSource1;
+                    ImageSource1 = ImageSource.FromStream(() => stream);
+                    OnPropertyChanged(nameof(ImageSource1));
                     break;
                 case "2":
-                    wantedImageSource = ImageSource2;
+                    ImageSource2 = ImageSource.FromStream(() => stream);
+                    OnPropertyChanged(nameof(ImageSource2));
                     break;
                 case "3":
-                    wantedImageSource = ImageSource3;
+                    ImageSource3 = ImageSource.FromStream(() => stream);
+                    OnPropertyChanged(nameof(ImageSource3));
                     break;
                 case "4":
-                    wantedImageSource = ImageSource4;
+                    ImageSource4 = ImageSource.FromStream(() => stream);
+                    OnPropertyChanged(nameof(ImageSource4));
                     break;
             }
-            return wantedImageSource;
         }
-
-
-
-        public Command AddItemClicked
-   => new Command(async () => await Shell.Current.GoToAsync(".."));
 
         public async Task TakeAPhoto(string ImageId)
         {
@@ -121,8 +98,23 @@ namespace Renta.ViewModels
             {
                 var stream = await result.OpenReadAsync();
 
-               // resultImage.Source = ImageSource.FromStream(() => stream);
+                // resultImage.Source = ImageSource.FromStream(() => stream);
             }
+        }
+
+
+        public Command AddItemClicked
+   => new Command(async () => await AddItem());
+
+
+        private async Task AddItem()
+        {
+            if(ItemName != null && SelectedCategory != null &&  MaxDaysPerRent != null && int.Parse(MaxDaysPerRent) >= 1 && ImageAdded) //check minimal information inserted.
+            {
+                await Shell.Current.GoToAsync("..");
+            }
+
+            
         }
     }
 }

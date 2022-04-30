@@ -10,8 +10,11 @@
              Shell.TitleColor="MediumPurple"
              Shell.ForegroundColor="black">
 
+  
+    
+    
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Command="{Binding AddItemClicked}"/>
+        <ToolbarItem Text="Add" Command="{Binding AddItemClicked}" x:Name="AddToolBarItem" />
     </ContentPage.ToolbarItems>
 
 
@@ -26,16 +29,27 @@
                  HeightRequest="100"
                   ColumnDefinitions="*,*,*,*" HorizontalOptions="FillAndExpand" >
                 <Frame CornerRadius="13"   BorderColor="#c6c1ea"    HasShadow="False" Grid.Column="0" Margin="3" Padding="0">
-                    <ImageButton ClassId="1" Source="{Binding ImageSource1, Mode=TwoWay}"  Aspect="AspectFill" Clicked="AddPhoto_Tapped" />
+                    <ImageButton ClassId="1" Source="{Binding ImageSource1, Mode=TwoWay}"  Aspect="AspectFill" 
+                                 Command="{Binding AddPhotoFromGallery_Clicked}"
+                                 CommandParameter="1"/>
+                    
                 </Frame>
                 <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="1" Margin="3"  Padding="0">
-                    <ImageButton ClassId="2" Source="{Binding ImageSource2, Mode=TwoWay}"   Aspect="AspectFill" Clicked="AddPhoto_Tapped" />
+                    <ImageButton ClassId="2" Source="{Binding ImageSource2, Mode=TwoWay}"   Aspect="AspectFill"
+                                 Command="{Binding AddPhotoFromGallery_Clicked}" 
+                                 CommandParameter="2"/>
+                    
                 </Frame>
                 <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="2" Margin="3" Padding="0">
-                    <ImageButton ClassId="3" Source="{Binding ImageSource3, Mode=TwoWay}"   Aspect="AspectFill" Clicked="AddPhoto_Tapped" />
+                    <ImageButton ClassId="3" Source="{Binding ImageSource3, Mode=TwoWay}"   Aspect="AspectFill" 
+                                 Command="{Binding AddPhotoFromGallery_Clicked}"
+                                 CommandParameter="3"/>
+                    
                 </Frame>
                 <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="3"  Margin="3" Padding="0">
-                    <ImageButton ClassId="4" Source="{Binding ImageSource4, Mode=TwoWay}"   Aspect="AspectFill" Clicked="AddPhoto_Tapped" />
+                    <ImageButton ClassId="4" Source="{Binding ImageSource4, Mode=TwoWay}"   Aspect="AspectFill" 
+                                 Command="{Binding AddPhotoFromGallery_Clicked}"
+                                 CommandParameter="4"/>
                 </Frame>
             </Grid>
 
@@ -46,19 +60,22 @@
                     Margin="5,10,0,10" FontSize="15" HorizontalOptions="StartAndExpand"/>
 
             <Entry  Grid.Row="4" Placeholder="Item name" PlaceholderColor="LightGray"
-                    Margin="5,2,0,10" FontSize="15" HorizontalOptions="FillAndExpand" MaxLength="50"/>
+                    Margin="5,2,0,10" FontSize="15" HorizontalOptions="FillAndExpand" MaxLength="50"
+                    Text="{Binding ItemName, Mode=TwoWay}"/>
 
             <Label  Grid.Row="5" Text="Coins per day"  FontAttributes="Bold" 
                     Margin="5,10,0,10" FontSize="15" HorizontalOptions="StartAndExpand"/>
 
-            <Entry  Grid.Row="6" Placeholder="Coins per day" PlaceholderColor="LightGray"
-                    Margin="5,2,0,10" FontSize="15" HorizontalOptions="FillAndExpand" Keyboard="Numeric"/>
+            <Entry  Grid.Row="6"  PlaceholderColor="LightGray"
+                    Margin="5,2,0,10" FontSize="15" HorizontalOptions="FillAndExpand" Keyboard="Numeric"  Placeholder="0"
+                    Text="{Binding CoinsPerDay, Mode=TwoWay}"/>
 
             <Label  Grid.Row="7" Text="Max days"  FontAttributes="Bold" 
                     Margin="5,10,0,10" FontSize="15" HorizontalOptions="StartAndExpand"/>
 
-            <Entry  Grid.Row="8" Placeholder="Max days" PlaceholderColor="LightGray"
-                    Margin="5,2,0,10" FontSize="15" HorizontalOptions="FillAndExpand" Keyboard="Numeric"/>
+            <Entry  Grid.Row="8" Placeholder="1" PlaceholderColor="LightGray"
+                    Margin="5,2,0,10" FontSize="15" HorizontalOptions="FillAndExpand" Keyboard="Numeric"
+                    Text="{Binding MaxDaysPerRent, Mode=TwoWay}"/>
 
             <Label  Grid.Row="9" Text="Category"  FontAttributes="Bold" 
                     Margin="5,10,0,10" FontSize="15" HorizontalOptions="StartAndExpand"/>
@@ -66,7 +83,8 @@
             <Picker  Grid.Row="10" Title="Category"
                     Margin="5,2,0,10" FontSize="15"
                      HorizontalOptions="FillAndExpand"
-                 ItemsSource="{Binding Categories}"  >
+                 ItemsSource="{Binding Categories}" 
+                     SelectedItem="{Binding SelectedCategory}">
                 <!-- selecteditem = {Binding selectemCategory }   -->
             </Picker>
 
@@ -77,6 +95,7 @@
                     FontSize="15" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Start"
                    HeightRequest="100" WidthRequest="370" BackgroundColor="WhiteSmoke" IsSpellCheckEnabled="false" MaxLength="250"
                      Margin="7,0,0,0" AutoSize="TextChanges"
+                    Text="{Binding ItemDescription, Mode=TwoWay}"
            />
           
             
