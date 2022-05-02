@@ -16,6 +16,9 @@ namespace Renta.Models
         public string Id { get; set; }
         //public string Password { get; set; }
         public string Email { get; set; }
+
+        public List<string> Items { get; set; }
+
         public User() { }
 
         public User(string i_Password, string i_Email = null, int i_CellphoneNumber = 0000) //change default values eventually

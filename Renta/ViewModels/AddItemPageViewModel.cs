@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Renta.Models;
+using Renta.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -7,30 +9,44 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
+
 namespace Renta.ViewModels
 {
     public  class AddItemPageViewModel : BaseViewModel
     {
+        private FileService _fileService;
+        private UserService _userService;
+        private ItemService _itemService;
         public List<string> Categories { get; set; }
         public ImageSource ImageSource1 { get; set; }   
         public ImageSource ImageSource2 { get; set; }
         public ImageSource ImageSource3 { get; set; }
         public ImageSource ImageSource4 { get; set; }
 
+        private Item NewItem = new Item();
+
         private string AddPhotoImageSource = "addphoto.jpg";
         public string ItemName { get; set; }
         public string CoinsPerDay { get; set; }
-        public string MaxDaysPerRent { get; set; }
+        //public string MaxDaysPerRent { get; set; }
         public string ItemDescription { get; set; }
         public string SelectedCategory { get; set; }
-        
-        private bool ImageAdded = false;
 
-        private FileResult chosenImageFile;
+        private bool ImageAdded = false;
        
 
-        public AddItemPageViewModel()
+        private readonly int MaxImagesPerItem = 4;
+        private FileResult chosenImageFile;
+        private List<FileResult> chosenImagesFilesResult = new List<FileResult>();
+       
+
+        public AddItemPageViewModel(FileService fileService, UserService userService, ItemService itemService)
         {
+            _fileService = fileService;
+            _userService = userService;
+            _itemService = itemService;
+
+
             Categories = new List<string>();
             Categories.Add("Sports");
             Categories.Add("Clothing");
@@ -88,6 +104,7 @@ namespace Renta.ViewModels
                     OnPropertyChanged(nameof(ImageSource4));
                     break;
             }
+            chosenImagesFilesResult.Add(result);
         }
 
         public async Task TakeAPhoto(string ImageId)
@@ -109,12 +126,30 @@ namespace Renta.ViewModels
 
         private async Task AddItem()
         {
-            if(ItemName != null && SelectedCategory != null &&  MaxDaysPerRent != null && int.Parse(MaxDaysPerRent) >= 1 && ImageAdded) //check minimal information inserted.
+
+            // MaxDaysPerRent != null && int.Parse(MaxDaysPerRent) >= 1 &&
+
+            if (ItemName != null && SelectedCategory != null &&  ImageAdded) //check minimal information inserted.
             {
+                foreach (var fileresult in chosenImagesFilesResult)
+                {
+                    //upload images to url 
+                        var stream = await fileresult.OpenReadAsync();
+                        var ImageUrl = await _fileService.UploadImageAsync(stream, fileresult.FileName);
+                        NewItem.ImagesUrls.Add(ImageUrl);
+                }
+                
+
+                NewItem.Name = ItemName;
+                NewItem.Category = SelectedCategory;
+                NewItem.Description = ItemDescription;
+                NewItem.PricePerDay = int.Parse(CoinsPerDay);
+                NewItem.OwnerId = _userService.LoggedInUser.Id;
+
+
+                await _itemService.UploadNewItem(NewItem);
                 await Shell.Current.GoToAsync("..");
             }
-
-            
         }
     }
 }

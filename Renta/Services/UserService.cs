@@ -45,18 +45,11 @@ namespace Renta.Services
         public UserService(IConfiguration config)
         {
             var httpClientHandler = new HttpClientHandler();
-
             httpClientHandler.ServerCertificateCustomValidationCallback =
             (message, cert, chain, errors) => { return true; };
-
-
             httpclient = new HttpClient(httpClientHandler);
-
             configuration = config;
-
-            
             httpclient.MaxResponseContentBufferSize = 256000;
-
         }
 
         public async Task RegisterUser(RegisterDto registerDto)
@@ -84,6 +77,15 @@ namespace Renta.Services
             LoginResponse loginResponse = JsonConvert.DeserializeObject<LoginResponse>(str);
 
             LoggedInUser = loginResponse.user;
+        }
+
+        public async Task UpdateLoggedInUser()
+        {
+            HttpResponseMessage response = null;
+            string UserId = LoggedInUser.Id;
+            response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Users/" + UserId));
+            string str = await response.Content.ReadAsStringAsync();
+            LoggedInUser = JsonConvert.DeserializeObject<User>(str);
         }
     }
 }
