@@ -38,6 +38,27 @@ namespace Renta.Services
 
         }
 
+        public async Task<List<Item>> GetItemsByOwner(string OwnerId)
+        {
+
+            HttpResponseMessage response = null;
+
+            //string UserId = _userService.LoggedInUser.Id;
+            response =  await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Items/owner/" + OwnerId));
+           
+            string str = await response.Content.ReadAsStringAsync();
+            var items = JsonConvert.DeserializeObject<List<Item>>(str);
+
+            return items;
+
+        }
+
+        public async Task<List<Item>> GetLoggedInUserItems()
+        {
+            return  await GetItemsByOwner(_userService.LoggedInUser.Id);
+        }
+
+
         public ItemService(IConfiguration config, UserService userService)
         {
             var httpClientHandler = new HttpClientHandler();

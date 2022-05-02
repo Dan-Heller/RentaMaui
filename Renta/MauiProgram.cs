@@ -75,7 +75,10 @@ public static class MauiProgram
         builder.Services.AddTransient<AddItemPage>();
         builder.Services.AddTransient<AddItemPageViewModel>();
 
-        builder.Services.AddSingleton<SearchPage>();
+		builder.Services.AddTransient<MyItemsPage>();
+		builder.Services.AddTransient<MyItemsPageViewModel>();
+
+		builder.Services.AddSingleton<SearchPage>();
 
 		builder.Services.AddSingleton<NotificationsPage>();
 

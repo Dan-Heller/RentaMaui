@@ -1,9 +1,12 @@
+using Renta.ViewModels;
 namespace Renta;
 
 public partial class MyItemsPage : ContentPage
 {
-	public MyItemsPage()
+	public MyItemsPage(MyItemsPageViewModel myItemsPageViewModel)
 	{
+		BindingContext = myItemsPageViewModel;
+		
 		InitializeComponent();
 	}
 }
