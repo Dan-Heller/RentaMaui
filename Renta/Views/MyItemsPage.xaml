@@ -3,14 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Renta.MyItemsPage"
              Title="Your Items"
-               xmlns:controls="clr-namespace:Renta.Controls"
+             xmlns:controls="clr-namespace:Renta.Controls"
              BackgroundColor="White"
              Shell.ForegroundColor="black"
-    Shell.NavBarIsVisible="true"
-     Shell.TitleColor="Black">
+             Shell.NavBarIsVisible="true"
+             Shell.TitleColor="Black">
 
     <ScrollView Padding="8,0,0,0" VerticalOptions="FillAndExpand">
-        <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*,*,*">
+
+        <CollectionView ItemsSource="{Binding MyItemsCollection}"
+                        SelectionMode="None"
+                        >
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout
+                                 Orientation="Vertical"
+                                 Span="{OnIdiom Phone=2, Tablet=3, Desktop=3}"
+                                 HorizontalItemSpacing="5"
+                                 VerticalItemSpacing="5" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <controls:MyItemCard />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+
+        <!--<Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*,*,*">
             <controls:MyItemCard Grid.Column="0" Grid.Row="0"/>
             <controls:MyItemCard Grid.Column="1" Grid.Row="0"/>
             <controls:MyItemCard Grid.Column="2" Grid.Row="0"/>
@@ -23,7 +42,6 @@
             <controls:MyItemCard Grid.Column="0" Grid.Row="3"/>
             <controls:MyItemCard Grid.Column="1" Grid.Row="3"/>
             <controls:MyItemCard Grid.Column="2" Grid.Row="3"/>
-        </Grid>
+        </Grid>-->
     </ScrollView>
-  
 </ContentPage>
