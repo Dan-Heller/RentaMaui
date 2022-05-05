@@ -9,7 +9,7 @@
              Shell.NavBarIsVisible="true"
              Shell.TitleColor="Black">
 
-    <ScrollView Padding="8,0,0,0" VerticalOptions="FillAndExpand">
+    <ScrollView Padding="5,5,5,5" VerticalOptions="FillAndExpand">
 
         <CollectionView ItemsSource="{Binding MyItemsCollection}"
                         SelectionMode="None"
@@ -17,7 +17,7 @@
             <CollectionView.ItemsLayout>
                 <GridItemsLayout
                                  Orientation="Vertical"
-                                 Span="{OnIdiom Phone=2, Tablet=3, Desktop=3}"
+                                 Span="{OnIdiom Phone=3, Tablet=3, Desktop=3}"
                                  HorizontalItemSpacing="5"
                                  VerticalItemSpacing="5" />
             </CollectionView.ItemsLayout>
