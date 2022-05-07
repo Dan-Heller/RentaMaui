@@ -36,10 +36,12 @@ namespace Renta.ViewModels
             email = _LoggedUser.Email;
             FullName = _LoggedUser.GetFullName();
             ProfileImageUrl = _LoggedUser.ProfilePhotoUrl;
+            Address = _LoggedUser.Address;
 
             OnPropertyChanged(nameof(ProfileImageUrl));
             OnPropertyChanged(nameof(FullName));
-           
+            OnPropertyChanged(nameof(Address));
+
         }
 
         public string Email

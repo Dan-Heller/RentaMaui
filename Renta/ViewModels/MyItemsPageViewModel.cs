@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Renta.ViewModels
 {
+  
     public class MyItemsPageViewModel
     {
 
@@ -31,8 +32,8 @@ namespace Renta.ViewModels
         //private async Task GetItems(ItemService itemService)
         //{
         //    MyItems = await itemService.GetLoggedInUserItems();
-
         //}
+
 
         internal async Task InitializeAsync()
         {

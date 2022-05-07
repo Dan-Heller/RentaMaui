@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
               xmlns:controls="clr-namespace:Renta.Controls"
+               xmlns:ViewModels="clr-namespace:Renta.ViewModels"
+            x:DataType="ViewModels:OtherUserProfilePageViewModel"
              x:Class="Renta.OtherUserProfilePage"
               xmlns:Pages ="clr-namespace:Renta"
              Title=""
@@ -20,13 +22,13 @@
         <Grid RowDefinitions="auto,auto">
         <Grid Grid.Row="0" RowDefinitions="100,*,*,*" Margin="0,10,0,0" Padding="0">
             <Grid Grid.Row="0" Padding="0">
-                <Frame  Margin="0,0,0,0"  BorderColor="White" HorizontalOptions="Center" WidthRequest="110" HeightRequest="100" HasShadow="False" CornerRadius="55" Padding="0" IsClippedToBounds="True">
-                    <Image Source="blankprofileimage" Aspect="AspectFill"/>
+                <Frame  Margin="0,0,0,0"  BorderColor="Black" HorizontalOptions="Center" WidthRequest="110" HeightRequest="100" HasShadow="False" CornerRadius="55" Padding="0" IsClippedToBounds="True">
+                    <Image Source="{Binding _OtherUser.ProfilePhotoUrl}" Aspect="AspectFit"/>
                 </Frame>
             </Grid>
 
             <!-- Profile name & general description-->
-            <Label Grid.Row="1" Text="Angelica Melli" FontAttributes="Bold" TextColor="#383b67" HorizontalTextAlignment="Center" Margin="0,10,0,0" FontSize="22" Padding="0"/>
+                <Label Grid.Row="1" Text="{Binding FullName}" FontAttributes="Bold" TextColor="#383b67" HorizontalTextAlignment="Center" Margin="0,10,0,0" FontSize="22" Padding="0"/>
 
             <Grid Grid.Row="2" ColumnDefinitions="Auto,Auto,Auto,Auto,Auto" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10,0,0" >
                 <Image Grid.Column="0" Source="blankstar" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center" />
@@ -39,7 +41,7 @@
 
             <Grid Grid.Row="3" ColumnDefinitions="Auto,Auto" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,0">
                 <Image Grid.Column="0" Source="locationicon" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center" />
-                <Label Grid.Column="1" Text="Tel aviv" FontAttributes="Bold" TextColor="#383b67"  FontSize="16"/>
+                    <Label Grid.Column="1" Text="{Binding _OtherUser.Address}" FontAttributes="Bold" TextColor="#383b67"  FontSize="16"/>
             </Grid>
         </Grid>
 
@@ -48,7 +50,29 @@
                 <controls:OtherUserItemsControl></controls:OtherUserItemsControl>
             </Frame>
 
-            <Grid Grid.Row="1" ColumnDefinitions="*,*,*" RowDefinitions="*,*,*,*">
+
+                <CollectionView ItemsSource="{Binding ItemsCollection}"
+                        SelectionMode="None"
+                                Grid.Row="1"
+                                Margin="0,3,0,0"
+                        >
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout
+                                 Orientation="Vertical"
+                                 Span="{OnIdiom Phone=3, Tablet=3, Desktop=3}"
+                                 HorizontalItemSpacing="5"
+                                 VerticalItemSpacing="5" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <controls:ItemCard />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+
+
+                <!--<Grid Grid.Row="1" ColumnDefinitions="*,*,*" RowDefinitions="*,*,*,*">
                 <controls:ItemCard Grid.Column="0" Grid.Row="0"/>
                 <controls:ItemCard Grid.Column="1" Grid.Row="0"/>
                 <controls:ItemCard Grid.Column="2" Grid.Row="0"/>
@@ -61,7 +85,7 @@
                 <controls:ItemCard Grid.Column="0" Grid.Row="3"/>
                 <controls:ItemCard Grid.Column="1" Grid.Row="3"/>
                 <controls:ItemCard Grid.Column="2" Grid.Row="3"/>
-            </Grid>
+            </Grid>-->
         </Grid>
     </Grid>
     </ScrollView>

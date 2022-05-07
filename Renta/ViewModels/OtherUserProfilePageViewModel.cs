@@ -9,45 +9,56 @@ using System.Threading.Tasks;
 
 namespace Renta.ViewModels
 {
-    public class SearchPageViewModel
+
+    [QueryProperty(nameof(UserId), "OwnerId")]
+    public class OtherUserProfilePageViewModel : BaseViewModel
     {
+        public User _OtherUser { get; set; }
+        public string FullName { get; set; }
+        private UserService _userService;
+        
+        private string _OtherUserId;
+        public String UserId
+        {
+            get => _OtherUserId;
+            set
+            {
+                _OtherUserId = Uri.UnescapeDataString(value ?? string.Empty);
+
+            }
+        }
+
         private List<Item> Items = new List<Item>();
         public ObservableRangeCollection<ItemViewModel> ItemsCollection { get; private set; } = new ObservableRangeCollection<ItemViewModel>();
-
         private List<ItemViewModel> ItemsViewModel;
-
         private ItemService _itemService;
 
-        public SearchPageViewModel(ItemService itemService)
+
+
+        public OtherUserProfilePageViewModel(UserService userService, ItemService itemService)
         {
+            _userService = userService;
             _itemService = itemService;
         }
 
         internal async Task InitializeAsync()
         {
-            await FetchAsync();
+            await FetchUserAsync();
         }
 
-        private async Task FetchAsync()
+        private async Task FetchUserAsync()
         {
-            Items = await _itemService.GetItems();
+            _OtherUser = await _userService.GetUserById(_OtherUserId);
+            FullName = _OtherUser.GetFullName();
+            OnPropertyChanged(nameof(_OtherUser));
+           OnPropertyChanged(nameof(FullName));
+           
 
-
-            //if (podcastsModels == null)
-            //{
-            //    await Shell.Current.DisplayAlert(
-            //        AppResource.Error_Title,
-            //        AppResource.Error_Message,
-            //        AppResource.Close);
-
-            //    return;
-            //}
-
-
+            Items = await _itemService.GetItemsByOwner(_OtherUserId);
             ItemsViewModel = ConvertToViewModels(Items);
             UpdateItemsCollection(ItemsViewModel);
-
         }
+
 
         private List<ItemViewModel> ConvertToViewModels(List<Item> Items)
         {
@@ -68,13 +79,6 @@ namespace Renta.ViewModels
 
 
 
-
-
-        public Command FiltersButton_Tapped
-        => new Command(async () => await Shell.Current.GoToAsync($"{nameof(FiltersPage)}"));
-
-        public Command CategoriesButton_Tapped
-       => new Command(async () => await Shell.Current.GoToAsync($"{nameof(CategoriesPage)}"));
 
     }
 }

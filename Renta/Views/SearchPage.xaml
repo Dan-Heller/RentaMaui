@@ -52,20 +52,23 @@
                     </Image>
                 </Grid>
 
-                <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*,*,*">
-                    <controls:ItemCard Grid.Column="0" Grid.Row="0"/>
-                    <controls:ItemCard Grid.Column="1" Grid.Row="0"/>
-                    <controls:ItemCard Grid.Column="2" Grid.Row="0"/>
-                    <controls:ItemCard Grid.Column="0" Grid.Row="1"/>
-                    <controls:ItemCard Grid.Column="1" Grid.Row="1"/>
-                    <controls:ItemCard Grid.Column="2" Grid.Row="1"/>
-                    <controls:ItemCard Grid.Column="0" Grid.Row="2"/>
-                    <controls:ItemCard Grid.Column="1" Grid.Row="2"/>
-                    <controls:ItemCard Grid.Column="2" Grid.Row="2"/>
-                    <controls:ItemCard Grid.Column="0" Grid.Row="3"/>
-                    <controls:ItemCard Grid.Column="1" Grid.Row="3"/>
-                    <controls:ItemCard Grid.Column="2" Grid.Row="3"/>
-                </Grid>
+                <CollectionView ItemsSource="{Binding ItemsCollection}"
+                        SelectionMode="None"
+                        >
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout
+                                 Orientation="Vertical"
+                                 Span="{OnIdiom Phone=3, Tablet=3, Desktop=3}"
+                                 HorizontalItemSpacing="5"
+                                 VerticalItemSpacing="5" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <controls:ItemCard />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                
             </StackLayout>
         </ScrollView>
 

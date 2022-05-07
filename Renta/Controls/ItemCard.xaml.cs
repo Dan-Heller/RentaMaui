@@ -9,6 +9,11 @@ public partial class ItemCard : ContentView
 	{
 		InitializeComponent();
 		HeartButtonClicked = false;  //should be sync with the liked collection from data base
+
+		//if(itemownerId == loggedInId)
+  //      {
+		//	Change boolean;
+  //      }
 	}
 
     private async void ItemCard_Tapped(object sender, EventArgs e)

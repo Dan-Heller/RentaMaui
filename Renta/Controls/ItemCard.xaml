@@ -3,37 +3,42 @@
     x:Class="Renta.Controls.ItemCard"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+     xmlns:ViewModels="clr-namespace:Renta.ViewModels"
+     x:DataType="ViewModels:ItemViewModel"
     x:Name="ItemCardComponent">
 
     <Frame
-        Margin="3"
+       Margin="2"
         Padding="0"
+       HeightRequest="180"
         BackgroundColor="AliceBlue"
         CornerRadius="13"
-        HasShadow="False">
+        BorderColor="DarkGray"
+        HasShadow="True">
 
-        <Grid RowDefinitions="160 ,30" WidthRequest="120">
-            <Frame
+        <Grid RowDefinitions="150 ,30"  Padding="0" HorizontalOptions="FillAndExpand">
+            <Frame Grid.Row="0"
                 Margin="0"
-                Padding="0"
+                Padding="0,1,0,0"
+               BackgroundColor="Transparent"
                 HasShadow="False">
                 <Frame.GestureRecognizers>
-                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ItemCard_Tapped" />
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GoToItemPage}" />
                 </Frame.GestureRecognizers>
                 <Image
-                    Grid.Row="0"
-                    Aspect="AspectFill"
-                    HeightRequest="160"
+                    Aspect="AspectFit"
+                    HeightRequest="150"
                     HorizontalOptions="CenterAndExpand"
-                    Source="item" />
+                    WidthRequest="119"
+                    Source="{Binding FirstImageUrl}" />
             </Frame>
             <StackLayout
                 Grid.Row="1"
-                Padding="3,0,0,0"
+                Padding="5,0,0,0"
                 Orientation="Horizontal">
 
                 <Image
-                    Grid.Row="1"
+                     Grid.Row="1"
                     HeightRequest="22"
                     Source="coinsstackicon24px"
                     WidthRequest="22" />
@@ -41,15 +46,12 @@
                 <Label
                     Grid.Row="1"
                     Padding="8,2,0,0"
+                    FontAttributes="Bold"
                     FontSize="16"
-                    Text="50" />
+                    Text="{Binding PricePerDay}" />
 
-                <Frame
-                    Margin="0"
-                    Padding="0"
-                    BackgroundColor="AliceBlue"
-                    HasShadow="False">
-                    <Image
+               
+                <Image
                         x:Name="HeartButton"
                         Grid.Row="1"
                         Margin="42,0,0,0"
@@ -59,8 +61,8 @@
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="onCardHeartTapped" />
                         </Image.GestureRecognizers>
-                    </Image>
-                </Frame>
+                 </Image>
+               
             </StackLayout>
         </Grid>
     </Frame>

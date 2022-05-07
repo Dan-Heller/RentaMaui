@@ -3,6 +3,8 @@
     x:Class="Renta.MyItemPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ViewModels="clr-namespace:Renta.ViewModels"
+    x:DataType="ViewModels:MyItemPageViewModel"
     Title=" "
     BackgroundColor="White"
     Shell.ForegroundColor="black"
@@ -43,7 +45,8 @@
                 </Grid.RowDefinitions>
                 <Image
                     Grid.Row="0"
-                    Source="item.jpg"
+                    HeightRequest="120"
+                    Source="{Binding _myItemViewModel.FirstImageUrl}"
                     VerticalOptions="Start" />
             </Grid>
 
@@ -82,7 +85,7 @@
                         Padding="8,2,0,0"
                         FontAttributes="Bold"
                         FontSize="16"
-                        Text="25"
+                        Text="{Binding _myItemViewModel.PricePerDay}"
                         TextColor="Black" />
                     
                     <!-- item owner profile link -->
@@ -108,8 +111,8 @@
                     Grid.ColumnSpan="3"
                     FontAttributes="Bold"
                     FontSize="20"
-                    Text="Item name"
-                    TextColor="black" />
+                    Text="{Binding _myItemViewModel.Name}"
+                    TextColor="Black" />
                 <Label
                     Grid.Row="2"
                     Grid.Column="0"

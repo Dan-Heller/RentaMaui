@@ -1,4 +1,5 @@
-﻿using Renta.Models;
+﻿using Newtonsoft.Json;
+using Renta.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,11 +35,26 @@ namespace Renta.ViewModels
             Item = item;
         }
 
-        //private Task NavigateToMyItemPage()
-        //{
-        //    return Shell.Current.GoToAsync($"{nameof(ShowDetailPage)}?Id={Show.Id}");
-        //}
 
+
+        public Command GoToMyItemPage
+      => new Command(async () => await MyItemCard_Tapped());
+
+        private async Task MyItemCard_Tapped()
+        {
+            var jsonStr = JsonConvert.SerializeObject(Item);
+            await Shell.Current.GoToAsync($"{nameof(MyItemPage)}?item={jsonStr}");
+        }
+
+       
+        public Command GoToItemPage
+    => new Command(async () => await ItemCard_Tapped());
+
+        private async Task ItemCard_Tapped()
+        {
+            var jsonStr = JsonConvert.SerializeObject(Item);
+            await Shell.Current.GoToAsync($"{nameof(ItemPage)}?item={jsonStr}");
+        }
 
     }
 }

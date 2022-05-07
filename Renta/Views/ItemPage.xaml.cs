@@ -5,9 +5,9 @@ public partial class ItemPage : ContentPage
 {
 	public bool HeartButtonClicked { get; set; }
 
-	public ItemPage()
+	public ItemPage(ItemPageViewModel itemPageViewModel)
 	{
-		BindingContext = new ItemPageViewModel();
+		BindingContext = itemPageViewModel;
 		InitializeComponent();
 
 		SetHeartButton();
@@ -26,9 +26,16 @@ public partial class ItemPage : ContentPage
 		}
     }
 
-	
+	protected override void OnAppearing()
+	{
+		base.OnAppearing();
+		(BindingContext as ItemPageViewModel).deserializeString();
 
-    private void HeartButton_Clicked(object sender, EventArgs e)
+	}
+
+
+
+	private void HeartButton_Clicked(object sender, EventArgs e)
     {
 		(BindingContext as ItemPageViewModel).ItemLiked = !(BindingContext as ItemPageViewModel).ItemLiked;
 		SetHeartButton();

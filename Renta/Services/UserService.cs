@@ -87,5 +87,16 @@ namespace Renta.Services
             string str = await response.Content.ReadAsStringAsync();
             LoggedInUser = JsonConvert.DeserializeObject<User>(str);
         }
+
+        public async Task<User> GetUserById(string Id)
+        {
+            HttpResponseMessage response = null;
+           
+            response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Users/" + Id));
+            string str = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<User>(str);
+        }
+
+
     }
 }

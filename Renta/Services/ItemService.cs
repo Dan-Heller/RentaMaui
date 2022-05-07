@@ -71,5 +71,16 @@ namespace Renta.Services
             _userService = userService;
         }
 
+        public async Task<List<Item>> GetItems()
+        {
+            HttpResponseMessage response = null;
+            //string UserId = _userService.LoggedInUser.Id;
+            response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Items"));
+            string str = await response.Content.ReadAsStringAsync();
+            var items = JsonConvert.DeserializeObject<List<Item>>(str);
+            return items;
+
+        }
+
     }
 }

@@ -4,12 +4,21 @@ namespace Renta;
 public partial class MyItemPage : ContentPage
 {
 	
-	public MyItemPage()
+	public MyItemPage(MyItemPageViewModel myItemPageViewModel)
 	{
-		BindingContext = new ItemPageViewModel();
+		BindingContext = myItemPageViewModel;
 		InitializeComponent();
 
 		
 		
 	}
+
+
+	protected override void OnAppearing()
+	{
+		base.OnAppearing();
+		(BindingContext as MyItemPageViewModel).deserializeString();
+		
+	}
+	
 }
