@@ -43,6 +43,7 @@ public static class MauiProgram
 		builder.Services.AddSingleton<UserService>();
 		builder.Services.AddSingleton<FileService>();
 		builder.Services.AddSingleton<ItemService>();
+		builder.Services.AddSingleton<TransactionService>();
 
 		builder.Services.AddTransient<LoginPage>();
 		builder.Services.AddTransient<LoginPageViewModel>(); //maybe shouldnt be singleton ...
@@ -66,6 +67,7 @@ public static class MauiProgram
 		builder.Services.AddSingleton<MenuPageViewModel>();
 
 		builder.Services.AddSingleton<RentingPage>();
+		builder.Services.AddSingleton<RentingPageViewModel>();
 		builder.Services.AddSingleton<RentalPage>();
 
 		builder.Services.AddSingleton<CreditsPage>();

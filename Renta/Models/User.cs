@@ -17,7 +17,9 @@ namespace Renta.Models
         //public string Password { get; set; }
         public string Email { get; set; }
 
-        public List<string> Items { get; set; }
+        public  List<string> Transactions { get; set; }
+
+        public List<string> Items { get; set; } = new List<string>();
 
         public User() { }
 
