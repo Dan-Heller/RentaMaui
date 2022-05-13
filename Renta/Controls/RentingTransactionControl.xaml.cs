@@ -1,9 +1,15 @@
+using Renta.ViewModels;
+
 namespace Renta.Controls;
 
-public partial class ItemInListControl : ContentView
+public partial class RentingTransactionControl : ContentView
 {
-	public ItemInListControl()
+	
+	
+
+	public RentingTransactionControl()
 	{
+		
 		InitializeComponent();
 	}
 
@@ -16,4 +22,6 @@ public partial class ItemInListControl : ContentView
 	{
 		await Shell.Current.GoToAsync($"{nameof(OtherUserProfilePage)}");
 	}
+
+	
 }

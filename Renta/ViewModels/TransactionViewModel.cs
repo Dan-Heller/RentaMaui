@@ -1,4 +1,5 @@
-﻿using Renta.enums;
+﻿using Renta.Services;
+using Renta.enums;
 using Renta.Models;
 using System;
 using System.Collections.Generic;
@@ -11,11 +12,12 @@ namespace Renta.ViewModels
     public class TransactionViewModel
     {
         public Transaction Transaction { get; set; }
+        public Item Item { get; set; }
 
-
+        private TransactionService _transactionService;
        
 
-    public string? Id { get => Transaction?.Id; }
+        public string? Id { get => Transaction?.Id; }
 
 
         public string? ItemOwner { get => Transaction?.ItemOwner; }
@@ -35,13 +37,58 @@ namespace Renta.ViewModels
 
         public ETransactionStatus Status { get => Transaction.Status; }
 
+        public delegate Task TransactionStatusChangedDelegate();
+        public TransactionStatusChangedDelegate TransactionStatusChanged;
 
 
+        //private ItemService _itemService;
+        public string FirstImageUrl { get { return Item.ImagesUrls[0]; } }
 
-        public TransactionViewModel(Transaction transaction)
+        public TransactionViewModel(TransactionLookedUp transaction, TransactionService transactionService)
         {
             Transaction = transaction;
+            Item = transaction.GetItem();
+            _transactionService = transactionService;
+           // ItemVM = new ItemViewModel(item);
+            //Task.Run(async () => await GetItem());
         }
+
+        public Command Approve_Clicked
+        => new Command(async () => await HandleApproveRequest());
+
+        private async Task HandleApproveRequest()
+        {
+            if(Status == ETransactionStatus.Pending)
+            {
+                Transaction.Status = ETransactionStatus.Approved;
+            }
+            await _transactionService.UpdateTransaction(Transaction); //update in database
+
+            TransactionStatusChanged?.Invoke(); // tells the page to update collection.
+
+        }
+
+        // create async factory pattern 
+        //private TransactionViewModel(Transaction transaction, Item item)
+        //{
+        //    Transaction = transaction;
+        //    ItemVM = new ItemViewModel(item);
+        //}
+
+
+
+        //public static async Task<TransactionViewModel> CreateTransactionViewModelAsync(Transaction transaction, ItemService itemService)
+        //{
+        //    var item = await itemService.GetItemById(transaction.ItemId); 
+        //    return new TransactionViewModel(transaction, item);
+        //}
+
+
+
+
+
+    }
+
 
 
 
@@ -65,5 +112,5 @@ namespace Renta.ViewModels
     //    }
 
 
-    }
+
 }

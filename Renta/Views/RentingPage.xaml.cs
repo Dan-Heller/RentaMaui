@@ -14,16 +14,20 @@ public partial class RentingPage : ContentPage
 
 	private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
 	{
-		RequestsLabel.TextColor = Color.FromArgb("808080");
-		ApprovedLabel.TextColor = Color.FromArgb("808080");
-		ActiveLabel.TextColor = Color.FromArgb("808080");
-		HistoryLabel.TextColor = Color.FromArgb("808080");
+		if((sender as Label).TextColor != Color.FromArgb("000000")) //check if open tab tapped.
+        {
+			RequestsLabel.TextColor = Color.FromArgb("808080");
+			ApprovedLabel.TextColor = Color.FromArgb("808080");
+			ActiveLabel.TextColor = Color.FromArgb("808080");
+			HistoryLabel.TextColor = Color.FromArgb("808080");
 
-		(sender as Label).TextColor = Color.FromArgb("000000");
+			(sender as Label).TextColor = Color.FromArgb("000000");
 
-		//change the selected tab in renting view model 
-		(BindingContext as RentingPageViewModel).selectedStatusInTabsController = switchClassIdToEnum((sender as Label).ClassId);
-		 await (BindingContext as RentingPageViewModel).FetchTransactionByStatus();
+			//change the selected tab in renting view model 
+			(BindingContext as RentingPageViewModel).selectedStatusInTabsController = switchClassIdToEnum((sender as Label).ClassId);
+			await (BindingContext as RentingPageViewModel).FetchTransactionByStatus();
+		}
+		
 	}
 
 	private ETransactionStatus switchClassIdToEnum(string ClassId)
@@ -47,6 +51,13 @@ public partial class RentingPage : ContentPage
 		}
 
 		return status;
+	}
+
+	protected override async void OnAppearing()
+	{
+		base.OnAppearing();
+		await (BindingContext as RentingPageViewModel).FetchTransactionByStatus();
+
 	}
 
 

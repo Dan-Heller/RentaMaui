@@ -47,6 +47,8 @@
                 </Grid.RowDefinitions>
                 <Image
                     Grid.Row="0"
+                    HeightRequest="300"
+                    Aspect="AspectFit"
                     Source="{Binding _ItemViewModel.FirstImageUrl}"
                     VerticalOptions="Start" />
             </Grid>

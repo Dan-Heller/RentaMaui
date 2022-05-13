@@ -35,4 +35,23 @@ namespace Renta.Models
         }
 
     }
+
+    public class TransactionLookedUp : Transaction
+    {
+        public List<Item>? items { get; set; }
+
+        public Item GetItem()
+        {
+            if(items != null && items.Count > 0)
+            {
+                return items[0];
+            }
+            else
+            {
+                return null;
+            }
+            
+        }
+
+    }
 }

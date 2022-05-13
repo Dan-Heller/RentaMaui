@@ -28,7 +28,7 @@
                    Margin ="0, 0, 0, 0"
         />
 
-        <ScrollView Orientation="Vertical">
+        <!--<ScrollView Orientation="Vertical">
             <StackLayout Orientation="Vertical">
                 <controls:ItemInListControl />
                 <controls:ItemInListControl />
@@ -37,7 +37,7 @@
                 <controls:ItemInListControl />
                 <controls:ItemInListControl />
             </StackLayout>
-        </ScrollView>
+        </ScrollView>-->
 
     </StackLayout>
 </ContentPage>

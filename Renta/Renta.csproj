@@ -84,6 +84,7 @@
 
 	<ItemGroup>
 	  <PackageReference Include="Autofac" Version="6.3.0" />
+	  <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
 	  <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 	  <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
@@ -100,6 +101,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Controls\RentingTransactionControl.xaml.cs">
+	    <DependentUpon>RentingTransactionControl.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Controls\MyItemCard.xaml.cs">
 	    <DependentUpon>MyItemCard.xaml</DependentUpon>
 	  </Compile>
@@ -130,7 +134,7 @@
 	  <MauiXaml Update="Controls\HeaderControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Controls\ItemInListControl.xaml">
+	  <MauiXaml Update="Controls\RentingTransactionControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Controls\MyItemCard.xaml">

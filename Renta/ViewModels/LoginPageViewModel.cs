@@ -1,7 +1,9 @@
-﻿using Renta.Dto_s;
+﻿
+using Renta.Dto_s;
 using Renta.Services;
 using System;
 using System.Collections.Generic;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,6 +49,10 @@ namespace Renta.ViewModels
 
         public async Task loginUser()
         {
+            //hide soft keyboard on android 
+           
+
+
             // todo add validation before sending
             LoginDto loginDto = new LoginDto(email, password);
             await m_userService.LoginUser(loginDto);

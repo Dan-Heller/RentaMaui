@@ -58,14 +58,33 @@
         />
 
         <ScrollView Orientation="Vertical">
-            <StackLayout Orientation="Vertical">
+
+            <CollectionView ItemsSource="{Binding TransactionCollection}"
+                        SelectionMode="None"
+                        >
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                                 Orientation="Vertical"
+                                 Span="{OnIdiom Phone=1, Tablet=1, Desktop=1}"
+                                 HorizontalItemSpacing="5"
+                                 VerticalItemSpacing="0" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <controls:RentingTransactionControl />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+            <!--<StackLayout Orientation="Vertical">
                 <controls:ItemInListControl />
                 <controls:ItemInListControl />
                 <controls:ItemInListControl />
                 <controls:ItemInListControl />
                 <controls:ItemInListControl />
                 <controls:ItemInListControl />
-            </StackLayout>
+            </StackLayout>-->
         </ScrollView>
 
     </StackLayout>

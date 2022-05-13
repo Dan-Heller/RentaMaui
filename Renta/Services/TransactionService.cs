@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Http;
 
 namespace Renta.Services
 {
@@ -40,21 +41,44 @@ namespace Renta.Services
         }
 
 
-        public async Task<List<Transaction>> GetSeekerTransactionsByStatus(ETransactionStatus status)
+        public async Task<List<TransactionLookedUp>> GetTransactionsByStatus(EUserType userType ,ETransactionStatus status)
         {
+            var queryString = new QueryString()
+            .Add("id", _userService.LoggedInUser.Id)
+            .Add("type", userType.ToString())
+            .Add("status", status.ToString());
+            
 
-            string json = JsonConvert.SerializeObject(status);
+            //string json = JsonConvert.SerializeObject(status);
+            //StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = null;
+
+
+            string UserId = _userService.LoggedInUser.Id;
+            response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Transactions/" + queryString));
+
+            string str = await response.Content.ReadAsStringAsync();
+            var Transactions = JsonConvert.DeserializeObject<List<TransactionLookedUp>>(str);
+            return Transactions;
+        }
+
+        public async Task UpdateTransaction(Transaction updatedTransaction)
+        {
+            string json = JsonConvert.SerializeObject(updatedTransaction);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
             HttpResponseMessage response = null;
 
-           
-            string UserId = _userService.LoggedInUser.Id;
-            response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Transactions/seeker/" + UserId + content));
+            
+            response = await httpclient.PutAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Transactions/" + updatedTransaction.Id), content);
 
             string str = await response.Content.ReadAsStringAsync();
-            var items = JsonConvert.DeserializeObject<List<Transaction>>(str);
+            var result = JsonConvert.DeserializeObject<Transaction>(str);
 
-            return items;
+            //if (UserUpdatedInvoker != null)
+            //{
+            //    UserUpdatedInvoker.Invoke();
+            //}
+
         }
     }
 
