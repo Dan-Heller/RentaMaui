@@ -68,7 +68,9 @@ public static class MauiProgram
 
 		builder.Services.AddSingleton<RentingPage>();
 		builder.Services.AddSingleton<RentingPageViewModel>();
+
 		builder.Services.AddSingleton<RentalPage>();
+		builder.Services.AddSingleton<RentalPageViewModel>();
 
 		builder.Services.AddSingleton<CreditsPage>();
 

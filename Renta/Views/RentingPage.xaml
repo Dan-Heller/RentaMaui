@@ -77,14 +77,7 @@
             </CollectionView>
 
 
-            <!--<StackLayout Orientation="Vertical">
-                <controls:ItemInListControl />
-                <controls:ItemInListControl />
-                <controls:ItemInListControl />
-                <controls:ItemInListControl />
-                <controls:ItemInListControl />
-                <controls:ItemInListControl />
-            </StackLayout>-->
+     
         </ScrollView>
 
     </StackLayout>

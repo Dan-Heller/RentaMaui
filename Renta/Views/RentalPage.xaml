@@ -18,7 +18,36 @@
 
         <Grid>
             <Frame Grid.Row="0" Margin="0,5,0,5" Padding="0" BorderColor="Transparent" HasShadow="False">
-                <controls:RentingPageTabsControl></controls:RentingPageTabsControl>
+                <!-- <controls:RentingPageTabsControl x:Name="TabsControl"> </controls:RentingPageTabsControl> -->
+                <Grid  ColumnDefinitions="*,*,*,*"   >
+
+
+                    <Label ClassId="Pending" x:Name="RequestsLabel"  Text="Requests (0)"   Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"  TextColor="Gray" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                        </Label.GestureRecognizers>
+
+                    </Label>
+                    <Label ClassId="Approved" x:Name="ApprovedLabel" Text="Approved (0)"   Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Gray" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <Label ClassId="Active" x:Name="ActiveLabel"  Text="Active (0)"  Grid.Column="2"  HorizontalOptions="Center" VerticalOptions="Center"  TextColor="Gray">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <Label ClassId="History" x:Name="HistoryLabel"  Text="History (0)"  Grid.Column="3"  HorizontalOptions="Center" VerticalOptions="Center"  TextColor="Gray">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                </Grid>
+
             </Frame>
         </Grid>
         <!-- line -->
@@ -28,16 +57,28 @@
                    Margin ="0, 0, 0, 0"
         />
 
-        <!--<ScrollView Orientation="Vertical">
-            <StackLayout Orientation="Vertical">
-                <controls:ItemInListControl />
-                <controls:ItemInListControl />
-                <controls:ItemInListControl />
-                <controls:ItemInListControl />
-                <controls:ItemInListControl />
-                <controls:ItemInListControl />
-            </StackLayout>
-        </ScrollView>-->
+        <ScrollView Orientation="Vertical">
+
+            <CollectionView ItemsSource="{Binding TransactionCollection}"
+                        SelectionMode="None"
+                        >
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                                 Orientation="Vertical"
+                                 Span="{OnIdiom Phone=1, Tablet=1, Desktop=1}"
+                                 HorizontalItemSpacing="5"
+                                 VerticalItemSpacing="0" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <controls:RentalTransactionControl />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+
+        </ScrollView>
 
     </StackLayout>
 </ContentPage>

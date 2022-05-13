@@ -8,7 +8,7 @@ public partial class RentingPage : ContentPage
 	{
 		BindingContext = rentingPageViewModel;
 		InitializeComponent();
-		//TabsControl.SelectedTab = enums.ETransactionStatus.Pending;
+		
 		RequestsLabel.TextColor = Color.FromArgb("000000");
 	}
 

@@ -56,6 +56,9 @@ namespace Renta.ViewModels
         public Command Approve_Clicked
         => new Command(async () => await HandleApproveRequest());
 
+        public Command Cancel_Clicked
+        => new Command(async () => await HandleCancelRequest());
+
         private async Task HandleApproveRequest()
         {
             if(Status == ETransactionStatus.Pending)
@@ -66,6 +69,13 @@ namespace Renta.ViewModels
 
             TransactionStatusChanged?.Invoke(); // tells the page to update collection.
 
+        }
+
+        private async Task HandleCancelRequest()
+        {
+           Transaction.Status = ETransactionStatus.Canceled;
+            await _transactionService.UpdateTransaction(Transaction); //update in database
+            TransactionStatusChanged?.Invoke(); // tells the page to update collection.
         }
 
         // create async factory pattern 

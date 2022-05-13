@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ViewModels="clr-namespace:Renta.ViewModels"
              x:DataType="ViewModels:TransactionViewModel"
-             x:Class="Renta.Controls.RentingTransactionControl"
+             x:Class="Renta.Controls.RentalTransactionControl"
              
              >
-    <ContentView.Content>
-        <Frame Padding="0" HeightRequest="85" BorderColor="DarkGray"> <!--this frame should in the end be in the page view so border wont eat each other -->
+    <ContentView.Content >
+        <Frame x:Name="MainFrame" ClassId="{Binding Status}" Padding="0" HeightRequest="85" BorderColor="DarkGray"> <!--this frame should in the end be in the page view so border wont eat each other -->
             <Grid ColumnDefinitions="70,2*,*,40,40,40" Padding="7,5,7,5">
                 <Frame  CornerRadius="13"  Padding="0,2,0,0" Grid.Column="0" >
                     <Frame.GestureRecognizers>
@@ -23,11 +23,11 @@
                 
                 <ImageButton Source="cancelicon.png" 
                     VerticalOptions="Center" Aspect="AspectFit" HeightRequest="35"
-                    WidthRequest="35" Padding="0"  CornerRadius="60" Grid.Column="3" Command="{Binding Cancel_Clicked}"/>
+                    WidthRequest="35" Padding="0"  CornerRadius="60" Grid.Column="3" Command="{Binding Cancel_Clicked}" />
                 
-                <ImageButton Source="accepticon.png" 
+                <ImageButton x:Name="AcceptButton" Source="accepticon.png" 
                     VerticalOptions="Center" Aspect="AspectFit" HeightRequest="43 "
-                    WidthRequest="43" Padding="0"  CornerRadius="60" Grid.Column="4" Command="{Binding Approve_Clicked}"/>
+                    WidthRequest="43" Padding="0"  CornerRadius="60" Grid.Column="4" IsVisible="False" Command="{Binding Approve_Clicked}"/>
                 
                 <ImageButton Source="blankprofileimage.png" 
                     VerticalOptions="Center" Aspect="AspectFit" HeightRequest="45"

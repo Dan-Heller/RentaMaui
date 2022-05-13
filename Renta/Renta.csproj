@@ -101,6 +101,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Controls\RentalTransactionControl.xaml.cs">
+	    <DependentUpon>RentalTransactionControl.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Controls\RentingTransactionControl.xaml.cs">
 	    <DependentUpon>RentingTransactionControl.xaml</DependentUpon>
 	  </Compile>
@@ -132,6 +135,9 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="Controls\HeaderControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Controls\RentalTransactionControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Controls\RentingTransactionControl.xaml">

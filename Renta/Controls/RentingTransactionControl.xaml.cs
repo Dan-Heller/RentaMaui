@@ -11,6 +11,7 @@ public partial class RentingTransactionControl : ContentView
 	{
 		
 		InitializeComponent();
+		
 	}
 
 	private async void ItemImage_Tapped(object sender, EventArgs e)
@@ -24,4 +25,6 @@ public partial class RentingTransactionControl : ContentView
 	}
 
 	
+
+
 }
