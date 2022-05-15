@@ -18,20 +18,20 @@
                 </Frame>
                 <Label Text="{Binding Item.Name}" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black"
                        FontSize="20" Padding="5,0,0,0"/>
-                <Label Text="5/6/21-  6/6/21" Grid.Column="2" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black"
+                <Label Text="{Binding DatesAsString}" Grid.Column="2" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black"
                        FontSize="15" Padding="5,0,0,0"/>
                 
                 <ImageButton Source="cancelicon.png" 
                     VerticalOptions="Center" Aspect="AspectFit" HeightRequest="35"
-                    WidthRequest="35" Padding="0"  CornerRadius="60" Grid.Column="3" Command="{Binding Cancel_Clicked}" />
+                    WidthRequest="35" Padding="0"  CornerRadius="20" Grid.Column="3" Command="{Binding Cancel_Clicked}" />
                 
                 <ImageButton x:Name="AcceptButton" Source="accepticon.png" 
                     VerticalOptions="Center" Aspect="AspectFit" HeightRequest="43 "
-                    WidthRequest="43" Padding="0"  CornerRadius="60" Grid.Column="4" IsVisible="False" Command="{Binding Approve_Clicked}"/>
+                    WidthRequest="43" Padding="0"  CornerRadius="20" Grid.Column="4" IsVisible="False" Command="{Binding Approve_Clicked}"/>
                 
                 <ImageButton Source="blankprofileimage.png" 
-                    VerticalOptions="Center" Aspect="AspectFit" HeightRequest="45"
-                    WidthRequest="45" Padding="0"  CornerRadius="60" Grid.Column="5" Clicked="OtherUserProfile_Tapped"/>
+                    VerticalOptions="Center" Aspect="AspectFill" HeightRequest="45" 
+                    WidthRequest="45" Padding="0"  CornerRadius="20" Grid.Column="5" Clicked="OtherUserProfile_Tapped"/>
 
             </Grid>
         </Frame>

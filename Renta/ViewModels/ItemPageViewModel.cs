@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿
+using Newtonsoft.Json;
 using Renta.Dto_s;
 using Renta.Models;
 using Renta.Services;
@@ -7,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XCalendar.Maui;
 
 namespace Renta.ViewModels
 {
@@ -18,6 +20,14 @@ namespace Renta.ViewModels
 
         private UserService _userService { get; set; }
         private TransactionService _transactionService { get; set; }
+
+        public DateTime StartDate { get; set; }
+
+        public DateTime EndDate { get; set; }
+
+        public DateTime Today { get; set; } = DateTime.Now;
+
+        public ObservableRangeCollection<DateTime> datesCollection { get; set; }
 
 
         private string _ItemString;
@@ -59,7 +69,7 @@ namespace Renta.ViewModels
         public Command SendRequestButton_Clicked
        => new Command(async () => await sendItemRequest());
 
-        private async Task sendItemRequest()
+        public async Task sendItemRequest()
         {
             var transactionDto = createTransaction();
             await _transactionService.CreateTransaction(transactionDto);
@@ -71,6 +81,8 @@ namespace Renta.ViewModels
             transaction.ItemSeeker = _userService.LoggedInUser.Id;
             transaction.ItemOwner = _ItemViewModel.OwnerId;
             transaction.ItemId = _ItemViewModel.Id;
+            transaction.StartDate = datesCollection[0];
+            transaction.EndDate = datesCollection[datesCollection.Count - 1];
             return transaction;
         }
 

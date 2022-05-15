@@ -41,4 +41,11 @@ public partial class ItemPage : ContentPage
 		SetHeartButton();
 
 	}
+
+
+    private async void SendRequestTapped(object sender, EventArgs e)
+    {
+        (BindingContext as ItemPageViewModel).datesCollection = xCalendar.SelectedDates;
+		await (BindingContext as ItemPageViewModel).sendItemRequest();
+    }
 }

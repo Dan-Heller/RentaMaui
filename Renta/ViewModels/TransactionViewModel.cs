@@ -40,6 +40,7 @@ namespace Renta.ViewModels
         public delegate Task TransactionStatusChangedDelegate();
         public TransactionStatusChangedDelegate TransactionStatusChanged;
 
+        public string DatesAsString { get; set; }
 
         //private ItemService _itemService;
         public string FirstImageUrl { get { return Item.ImagesUrls[0]; } }
@@ -49,8 +50,9 @@ namespace Renta.ViewModels
             Transaction = transaction;
             Item = transaction.GetItem();
             _transactionService = transactionService;
-           // ItemVM = new ItemViewModel(item);
+            // ItemVM = new ItemViewModel(item);
             //Task.Run(async () => await GetItem());
+            DatesAsString = StartDate.Value.Date.ToString() + "-  " + EndDate.Value.Date.ToString();
         }
 
         public Command Approve_Clicked
