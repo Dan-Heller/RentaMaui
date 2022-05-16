@@ -22,7 +22,7 @@ namespace Renta.Models
 
         public List<string>? ImagesUrls { get; set; } = new List<string>();
 
-        public List<DateTime>? UnAvailableDates { get; set; }
+        public List<DatesRange>? UnAvailableDates { get; set; } = new List<DatesRange>();
 
         
 

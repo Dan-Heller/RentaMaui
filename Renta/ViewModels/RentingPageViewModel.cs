@@ -42,6 +42,10 @@ namespace Renta.ViewModels
         {
            Transactions = await _transactionService.GetTransactionsByStatus(EUserType.Owner,selectedStatusInTabsController);
             
+            if(selectedStatusInTabsController == ETransactionStatus.Archived)
+            {
+                Transactions.AddRange(await _transactionService.GetTransactionsByStatus(EUserType.Owner, ETransactionStatus.Canceled));
+            }
 
             //if (podcastsModels == null)
             //{

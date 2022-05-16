@@ -141,12 +141,10 @@
                     TextColor="Black"
                     Margin="0,0,0,10"/>
 
-                <xcViews:CalendarView x:Name="xCalendar" Grid.Row="5" SelectionType="Range" DayRangeMinimumDate="{Binding Today}"/>
 
-               
-                
                 <Button
-                    Grid.Row="6"
+                    x:Name="RequestAndDatesButton"
+                    Grid.Row="5"
                     Grid.Column="0"
                     Grid.ColumnSpan="3"
                     Margin="40,20,40,20"
@@ -154,12 +152,19 @@
                     FontAttributes="Bold"
                     FontSize="17"
                     HeightRequest="45"
-                    Text="Submit rent request"
+                    Text="Select dates"
                     TextColor="White"
                    Clicked="SendRequestTapped"
                      
                     />
                 <!--Command="{Binding SendRequestButton_Clicked}"-->
+
+                <xcViews:CalendarView x:Name="xCalendar" Grid.Row="6" SelectionType="Range"
+                                      DayRangeMinimumDate="{Binding Today}" IsVisible="false" />
+
+               
+                
+               
                
             </Grid>
         </Grid>

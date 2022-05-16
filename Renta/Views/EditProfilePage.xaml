@@ -18,7 +18,7 @@
     <Grid RowDefinitions="100,20,20" Padding="10,0" BackgroundColor="LightGray">
 
         <!-- Image Profile-->
-        <Frame Grid.Row="1" Margin="0,-90,0,0" BorderColor="White" HorizontalOptions="Center" WidthRequest="110" HeightRequest="{OnPlatform iOS='110', Android='20'}" HasShadow="False" CornerRadius="55" Padding="0" IsClippedToBounds="True" >
+        <Frame Grid.Row="1" Margin="0,-90,0,0" BorderColor="White" HorizontalOptions="Center" WidthRequest="110" HeightRequest="100" HasShadow="False" CornerRadius="55" Padding="0" IsClippedToBounds="True" >
             <ImageButton Source="{Binding ProfileImageSource, Mode=TwoWay}"   Aspect="AspectFill" Command="{Binding ChangeProfileImage_Clicked}"/>
         </Frame>
         

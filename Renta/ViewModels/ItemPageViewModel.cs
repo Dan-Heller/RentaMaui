@@ -71,8 +71,22 @@ namespace Renta.ViewModels
 
         public async Task sendItemRequest()
         {
-            var transactionDto = createTransaction();
-            await _transactionService.CreateTransaction(transactionDto);
+            //check if dates overlap taken dates
+            bool IsOverlap = _ItemViewModel.CheckIfRequestedDatesOverlapUnavailableDates(datesCollection[0], datesCollection[datesCollection.Count - 1]);
+
+            if (!IsOverlap)
+            {
+                var transactionDto = createTransaction();
+                await _transactionService.CreateTransaction(transactionDto);
+                await Application.Current.MainPage.DisplayAlert(" ", "Request sent.", "close");
+            }
+            else
+            {
+                //show messege to ui ...  later convert to imessege 
+                await Application.Current.MainPage.DisplayAlert("Failed", "Dates Unavailable", "close");
+            }
+
+            
         }
 
         private CreateTransactionDto createTransaction()

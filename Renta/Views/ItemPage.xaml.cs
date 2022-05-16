@@ -45,7 +45,25 @@ public partial class ItemPage : ContentPage
 
     private async void SendRequestTapped(object sender, EventArgs e)
     {
-        (BindingContext as ItemPageViewModel).datesCollection = xCalendar.SelectedDates;
-		await (BindingContext as ItemPageViewModel).sendItemRequest();
+		if(RequestAndDatesButton.Text == "Select dates")
+        {
+            xCalendar.IsVisible = !(xCalendar.IsVisible);
+            RequestAndDatesButton.Text = "Send request";
+			RequestAndDatesButton.BackgroundColor = Color.FromArgb("#c5ff52");
+        }
+        else
+        {
+            if (xCalendar.SelectedDates.Count > 0)
+            {
+                (BindingContext as ItemPageViewModel).datesCollection = xCalendar.SelectedDates;
+                await (BindingContext as ItemPageViewModel).sendItemRequest();
+            }
+            else
+            {
+                await DisplayAlert(" ", "Please Select desired dates.", "close");
+            }
+        }
+
+		
     }
 }

@@ -21,11 +21,11 @@ namespace Renta.ViewModels
 
         public int? PricePerDay { get => Item?.PricePerDay; }
 
-        public string? Description { get => Item?.Description; }
+        public string? Description { get => Item?.Description.Trim(); }
 
         public List<string>? ImagesUrls { get => Item?.ImagesUrls; } 
 
-        public List<DateTime>? UnAvailableDates { get => Item?.UnAvailableDates; }
+        public List<DatesRange>? UnAvailableDates { get => Item?.UnAvailableDates; }
 
         public string FirstImageUrl { get { return ImagesUrls[0]; } }
        
@@ -56,5 +56,25 @@ namespace Renta.ViewModels
             await Shell.Current.GoToAsync($"{nameof(ItemPage)}?item={jsonStr}");
         }
 
+        public bool CheckIfRequestedDatesOverlapUnavailableDates(DateTime start, DateTime end)
+        {
+            bool IsOverlap = false;
+
+
+            foreach(var range in UnAvailableDates)
+            {
+                if(!(start.CompareTo(range.EndDate) > 0 || end.CompareTo(range.StartDate) < 0))
+                {
+                    IsOverlap = true;
+                    break;
+                }
+            }
+
+            return IsOverlap;
+        }
+
+
     }
+
+
 }

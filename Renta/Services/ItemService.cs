@@ -93,5 +93,18 @@ namespace Renta.Services
 
         }
 
+        public async Task UpdateTransaction(Item updatedItem)
+        {
+            string json = JsonConvert.SerializeObject(updatedItem);
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = null;
+
+
+            response = await httpclient.PutAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Items/" + updatedItem.Id), content);
+
+            string str = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<Item>(str);
+        }
+
     }
 }

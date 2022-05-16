@@ -52,7 +52,7 @@ namespace Renta.ViewModels
             _transactionService = transactionService;
             // ItemVM = new ItemViewModel(item);
             //Task.Run(async () => await GetItem());
-            DatesAsString = StartDate.Value.Date.ToString() + "-  " + EndDate.Value.Date.ToString();
+            DatesAsString = StartDate.Value.Date.ToString("dd/MM/yyyy") + "-  " + EndDate.Value.Date.ToString("dd/MM/yyyy");
         }
 
         public Command Approve_Clicked
@@ -70,6 +70,8 @@ namespace Renta.ViewModels
             await _transactionService.UpdateTransaction(Transaction); //update in database
 
             TransactionStatusChanged?.Invoke(); // tells the page to update collection.
+
+            
 
         }
 
