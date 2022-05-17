@@ -19,7 +19,7 @@
                 <Label Text="{Binding Item.Name}" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black"
                        FontSize="20" Padding="5,0,0,0"/>
                 <Label Text="{Binding DatesAsString}" Grid.Column="2" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black"
-                       FontSize="15" Padding="5,0,0,0"/>
+                       FontSize="11" FontAttributes="Bold" Padding="5,0,0,0"/>
                 
                 <ImageButton Source="cancelicon.png" 
                     VerticalOptions="Center" Aspect="AspectFit" HeightRequest="35"

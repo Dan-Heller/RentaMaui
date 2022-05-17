@@ -53,7 +53,8 @@ namespace Renta.ViewModels
             _transactionService = transactionService;
             // ItemVM = new ItemViewModel(item);
             //Task.Run(async () => await GetItem());
-            DatesAsString = StartDate.Value.Date.ToString("dd/MM/yyyy") + "-  " + EndDate.Value.Date.ToString("dd/MM/yyyy");
+            DatesAsString = StartDate.Value.Date.ToString("dd/MM/yyyy") + "\n-  " + EndDate.Value.Date.ToString("dd/MM/yyyy");
+            
         }
 
         public Command Approve_Clicked
