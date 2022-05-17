@@ -11,7 +11,7 @@
             <Grid ColumnDefinitions="70,2*,*,40,40,40" Padding="7,5,7,5">
                 <Frame  CornerRadius="13"  Padding="0,2,0,0" Grid.Column="0" >
                     <Frame.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ItemImage_Tapped" />
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding MyItemPhotoTapped}" />
                     </Frame.GestureRecognizers>
                     <Image Source="{Binding FirstImageUrl}"   VerticalOptions="Center" Margin="2"
                        HeightRequest="65" WidthRequest="65" Aspect="AspectFit"/>
@@ -33,7 +33,7 @@
                 
                 <ImageButton Source="blankprofileimage.png" 
                     VerticalOptions="Center" Aspect="AspectFit" HeightRequest="45"
-                    WidthRequest="45" Padding="0"  CornerRadius="20" Grid.Column="5" Clicked="OtherUserProfile_Tapped"/>
+                    WidthRequest="45" Padding="0"  CornerRadius="20" Grid.Column="5" Command="{Binding SeekerProfileLink_Tapped}"/>
 
             </Grid>
         </Frame>

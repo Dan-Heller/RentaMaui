@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Renta.ViewModels
 {
@@ -15,7 +16,7 @@ namespace Renta.ViewModels
         public Item Item { get; set; }
 
         private TransactionService _transactionService;
-       
+
 
         public string? Id { get => Transaction?.Id; }
 
@@ -63,7 +64,7 @@ namespace Renta.ViewModels
 
         private async Task HandleApproveRequest()
         {
-            if(Status == ETransactionStatus.Pending)
+            if (Status == ETransactionStatus.Pending)
             {
                 Transaction.Status = ETransactionStatus.Approved;
             }
@@ -71,60 +72,65 @@ namespace Renta.ViewModels
 
             TransactionStatusChanged?.Invoke(); // tells the page to update collection.
 
-            
+
 
         }
 
         private async Task HandleCancelRequest()
         {
-           Transaction.Status = ETransactionStatus.Canceled;
+            Transaction.Status = ETransactionStatus.Canceled;
             await _transactionService.UpdateTransaction(Transaction); //update in database
             TransactionStatusChanged?.Invoke(); // tells the page to update collection.
         }
 
-        // create async factory pattern 
-        //private TransactionViewModel(Transaction transaction, Item item)
-        //{
-        //    Transaction = transaction;
-        //    ItemVM = new ItemViewModel(item);
-        //}
+        public Command OwnerProfileLink_Tapped
+      => new Command(async () => await Shell.Current.GoToAsync($"{nameof(OtherUserProfilePage)}?OwnerId={ItemOwner}"));
+
+        public Command SeekerProfileLink_Tapped
+=> new Command(async () => await Shell.Current.GoToAsync($"{nameof(OtherUserProfilePage)}?OwnerId={ItemSeeker}"));
+
+        public Command ItemPhotoTapped
+=> new Command(async () => await GotoItemPage());
+
+        private async Task GotoItemPage()
+        {
+            var jsonStr = JsonConvert.SerializeObject(Item);
+            await Shell.Current.GoToAsync($"{nameof(ItemPage)}?item={jsonStr}");
+        }
+
+
+        public Command MyItemPhotoTapped
+  => new Command(async () => await GotoMyItemPage());
+
+        private async Task GotoMyItemPage()
+        {
+            var jsonStr = JsonConvert.SerializeObject(Item);
+            await Shell.Current.GoToAsync($"{nameof(MyItemPage)}?item={jsonStr}");
+        }
 
 
 
-        //public static async Task<TransactionViewModel> CreateTransactionViewModelAsync(Transaction transaction, ItemService itemService)
-        //{
-        //    var item = await itemService.GetItemById(transaction.ItemId); 
-        //    return new TransactionViewModel(transaction, item);
-        //}
+
+        //    public Command GoToMyItemPage
+        //  => new Command(async () => await MyItemCard_Tapped());
+
+        //    private async Task MyItemCard_Tapped()
+        //    {
+        //        var jsonStr = JsonConvert.SerializeObject(Item);
+        //        await Shell.Current.GoToAsync($"{nameof(MyItemPage)}?item={jsonStr}");
+        //    }
 
 
+        //    public Command GoToItemPage
+        //=> new Command(async () => await ItemCard_Tapped());
+
+        //    private async Task ItemCard_Tapped()
+        //    {
+        //        var jsonStr = JsonConvert.SerializeObject(Item);
+        //        await Shell.Current.GoToAsync($"{nameof(ItemPage)}?item={jsonStr}");
+        //    }
 
 
 
     }
-
-
-
-
-    //    public Command GoToMyItemPage
-    //  => new Command(async () => await MyItemCard_Tapped());
-
-    //    private async Task MyItemCard_Tapped()
-    //    {
-    //        var jsonStr = JsonConvert.SerializeObject(Item);
-    //        await Shell.Current.GoToAsync($"{nameof(MyItemPage)}?item={jsonStr}");
-    //    }
-
-
-    //    public Command GoToItemPage
-    //=> new Command(async () => await ItemCard_Tapped());
-
-    //    private async Task ItemCard_Tapped()
-    //    {
-    //        var jsonStr = JsonConvert.SerializeObject(Item);
-    //        await Shell.Current.GoToAsync($"{nameof(ItemPage)}?item={jsonStr}");
-    //    }
-
-
-
 }

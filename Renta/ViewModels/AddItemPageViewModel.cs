@@ -29,7 +29,7 @@ namespace Renta.ViewModels
         public string ItemName { get; set; }
         public string CoinsPerDay { get; set; }
         //public string MaxDaysPerRent { get; set; }
-        public string ItemDescription { get; set; }
+        public string ItemDescription { get; set; } = string.Empty;
         public string SelectedCategory { get; set; }
 
         private bool ImageAdded = false;
