@@ -15,25 +15,21 @@ public partial class AddItemPage : ContentPage
 
     private async void AddPhoto_Tapped(object sender, EventArgs e)
     {
-		string choosedOption = await DisplayActionSheet("Choose option:", "Cancel", null, "From Gallery", "Take a photo");
+		string choosedOption = await DisplayActionSheet("Choose option:", "Cancel", null, "From Gallery", "Take a photo","Remove image");
 		var image = sender as ImageButton;
 		var ImageId = image.ClassId;
 
 		if(choosedOption == "From Gallery")
         {
 			await (BindingContext as AddItemPageViewModel).AddPhotoFromGallery(ImageId);    //the of clicked -> init the method doesnt worked with onchanged
-			//await _addItemPageViewModel.AddPhotoFromGallery();
-			//(BindingContext as AddItemPageViewModel).AddPhotoFromGallery_Clicked.Execute(null);
-			//await _addItemPageViewModel.AddPhotoFromGallery();
-			//_addItemPageViewModel.AddPhotoFromGallery_Clicked.Execute(null);
-
-			//ImageSource1 = sourceResult;
-			//OnPropertyChanged(nameof(ImageSource1));
-
 		}
 		else if(choosedOption == "Take a photo")
         {
 			await (BindingContext as AddItemPageViewModel).TakeAPhoto(ImageId);
 		}
+		else if(choosedOption == "Remove image")
+        {
+            (BindingContext as AddItemPageViewModel).RemoveImage(ImageId);
+        }
     }
 }

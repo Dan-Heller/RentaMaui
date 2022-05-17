@@ -30,26 +30,23 @@
                   ColumnDefinitions="*,*,*,*" HorizontalOptions="FillAndExpand" >
                 <Frame CornerRadius="13"   BorderColor="#c6c1ea"    HasShadow="False" Grid.Column="0" Margin="3" Padding="0">
                     <ImageButton ClassId="1" Source="{Binding ImageSource1, Mode=TwoWay}"  Aspect="AspectFill" 
-                                 Command="{Binding AddPhotoFromGallery_Clicked}"
-                                 CommandParameter="1"/>
-                    
+                                 Clicked="AddPhoto_Tapped" ></ImageButton>
                 </Frame>
+                <!--Command="{Binding AddPhotoFromGallery_Clicked}"
+                                 CommandParameter="1"/>-->
                 <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="1" Margin="3"  Padding="0">
                     <ImageButton ClassId="2" Source="{Binding ImageSource2, Mode=TwoWay}"   Aspect="AspectFill"
-                                 Command="{Binding AddPhotoFromGallery_Clicked}" 
-                                 CommandParameter="2"/>
+                                 Clicked="AddPhoto_Tapped"/>
                     
                 </Frame>
                 <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="2" Margin="3" Padding="0">
                     <ImageButton ClassId="3" Source="{Binding ImageSource3, Mode=TwoWay}"   Aspect="AspectFill" 
-                                 Command="{Binding AddPhotoFromGallery_Clicked}"
-                                 CommandParameter="3"/>
+                                 Clicked="AddPhoto_Tapped"/>
                     
                 </Frame>
                 <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="3"  Margin="3" Padding="0">
                     <ImageButton ClassId="4" Source="{Binding ImageSource4, Mode=TwoWay}"   Aspect="AspectFill" 
-                                 Command="{Binding AddPhotoFromGallery_Clicked}"
-                                 CommandParameter="4"/>
+                                 Clicked="AddPhoto_Tapped"/>
                 </Frame>
             </Grid>
 

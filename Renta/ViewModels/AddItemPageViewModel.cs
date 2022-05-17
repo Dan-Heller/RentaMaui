@@ -68,18 +68,17 @@ namespace Renta.ViewModels
 
         public async Task AddPhotoFromGallery(string ImageId)
         {
-            //ImageSource chosenImageSource = getChosenImageSource(ImageId);
             chosenImageFile = await MediaPicker.PickPhotoAsync(new MediaPickerOptions { Title = "Please pick a photo" });
-
             if (chosenImageFile != null)
             {
                 UpdateImageSource(ImageId, chosenImageFile);
-                ImageAdded = true;
-                //return ImageSource1;
+                
+               
             }
-         // return ImageSource.FromFile("addphoto.jpg");
-
         }
+
+
+
 
         private async void UpdateImageSource(string ImageId,FileResult result)
         {
@@ -109,13 +108,14 @@ namespace Renta.ViewModels
 
         public async Task TakeAPhoto(string ImageId)
         {
-            var result = await MediaPicker.CapturePhotoAsync();
+            chosenImageFile = await MediaPicker.CapturePhotoAsync(new MediaPickerOptions { Title = "Please take a photo" });
+            
 
-            if (result != null)
+            if (chosenImageFile != null)
             {
-                var stream = await result.OpenReadAsync();
+                UpdateImageSource(ImageId, chosenImageFile);
+                
 
-                // resultImage.Source = ImageSource.FromStream(() => stream);
             }
         }
 
@@ -129,7 +129,7 @@ namespace Renta.ViewModels
 
             // MaxDaysPerRent != null && int.Parse(MaxDaysPerRent) >= 1 &&
 
-            if (ItemName != null && SelectedCategory != null &&  ImageAdded) //check minimal information inserted.
+            if (ItemName != null && SelectedCategory != null && chosenImagesFilesResult.Count > 0) //check minimal information inserted.
             {
                 foreach (var fileresult in chosenImagesFilesResult)
                 {
@@ -149,6 +149,35 @@ namespace Renta.ViewModels
 
                 await _itemService.UploadNewItem(NewItem);
                 await Shell.Current.GoToAsync("..");
+            }
+        }
+
+
+        public void RemoveImage(string ImageSlotNumber)
+        {
+            var NumberToInt = (Int32.Parse(ImageSlotNumber)) ;
+            if (chosenImagesFilesResult.Count >= NumberToInt)
+            {
+                chosenImagesFilesResult.RemoveAt(NumberToInt - 1);
+                switch (ImageSlotNumber)
+                {
+                    case "1":
+                        ImageSource1 = ImageSource.FromFile(AddPhotoImageSource);
+                        OnPropertyChanged(nameof(ImageSource1));
+                        break;
+                    case "2":
+                        ImageSource2 = ImageSource.FromFile(AddPhotoImageSource);
+                        OnPropertyChanged(nameof(ImageSource2));
+                        break;
+                    case "3":
+                        ImageSource3 = ImageSource.FromFile(AddPhotoImageSource);
+                        OnPropertyChanged(nameof(ImageSource3));
+                        break;
+                    case "4":
+                        ImageSource4 = ImageSource.FromFile(AddPhotoImageSource);
+                        OnPropertyChanged(nameof(ImageSource4));
+                        break;
+                }
             }
         }
     }
