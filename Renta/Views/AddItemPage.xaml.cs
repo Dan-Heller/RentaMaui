@@ -11,7 +11,9 @@ public partial class AddItemPage : ContentPage
 		BindingContext = addItemPageViewModel;
 		 _addItemPageViewModel = addItemPageViewModel;
 		InitializeComponent();
-	}
+        
+
+    }
 
     private async void AddPhoto_Tapped(object sender, EventArgs e)
     {

@@ -8,13 +8,15 @@
              Shell.TabBarIsVisible="False"
              BackgroundColor="White"
              Shell.TitleColor="MediumPurple"
-             Shell.ForegroundColor="black">
+             Shell.ForegroundColor="Black"
+             
+             >
 
   
     
     
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Command="{Binding AddItemClicked}" x:Name="AddToolBarItem" />
+    <ContentPage.ToolbarItems >
+        <ToolbarItem Text="Add"  Command="{Binding AddItemClicked}" x:Name="AddToolBarItem" />
     </ContentPage.ToolbarItems>
 
 

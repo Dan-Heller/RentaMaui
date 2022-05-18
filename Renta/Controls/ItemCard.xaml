@@ -26,10 +26,11 @@
                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GoToItemPage}" />
                 </Frame.GestureRecognizers>
                 <Image
+                    
                     Aspect="AspectFit"
-                    HeightRequest="150"
+                    HeightRequest="145"
                     HorizontalOptions="CenterAndExpand"
-                    WidthRequest="119"
+                    WidthRequest="115"
                     Source="{Binding FirstImageUrl}" />
             </Frame>
             <StackLayout
@@ -45,16 +46,17 @@
 
                 <Label
                     Grid.Row="1"
-                    Padding="8,2,0,0"
+                    Padding="6,2,0,0"
                     FontAttributes="Bold"
                     FontSize="16"
+                    VerticalOptions="Center"
                     Text="{Binding PricePerDay}" />
 
                
                 <Image
                         x:Name="HeartButton"
                         Grid.Row="1"
-                        Margin="42,0,0,0"
+                        Margin="37,0,0,0"
                         HeightRequest="25"
                         Source="hollowhearticon"
                         WidthRequest="25" >

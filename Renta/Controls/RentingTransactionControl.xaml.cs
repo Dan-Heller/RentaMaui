@@ -1,3 +1,4 @@
+using Renta.enums;
 using Renta.ViewModels;
 
 namespace Renta.Controls;
@@ -12,6 +13,10 @@ public partial class RentingTransactionControl : ContentView
 		
 		InitializeComponent();
 		
+		if(MainFrame.ClassId == ETransactionStatus.Canceled.ToString() || MainFrame.ClassId == ETransactionStatus.Archived.ToString())
+        {
+			ApproveButton.IsVisible = false;
+        }
 	}
 
 	private async void ItemImage_Tapped(object sender, EventArgs e)

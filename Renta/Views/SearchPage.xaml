@@ -41,10 +41,10 @@
                    Color="LightGray"
                    Margin ="0, 0, 0, 0"
         />
-        <ScrollView Padding="8,0,0,0" VerticalOptions="FillAndExpand">
+        <ScrollView Padding="5,0,5,0" VerticalOptions="FillAndExpand">
             <StackLayout>
                 <Grid ColumnDefinitions="*,*" Margin="5,10,5,10">
-                    <Label Text="XXX items" FontSize="18" TextColor="Black" HorizontalOptions="StartAndExpand" Grid.Column="0"/>
+                    <Label Text="{Binding ObservableCollectionCount, StringFormat='{0} items'}"  FontSize="18" TextColor="Black" HorizontalOptions="StartAndExpand" Grid.Column="0"/>
                     <Image Source="sorticon.png" HorizontalOptions="End" Grid.Column="1">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="SortByButton_Tapped" />

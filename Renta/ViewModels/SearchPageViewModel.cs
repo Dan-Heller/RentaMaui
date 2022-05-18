@@ -9,10 +9,12 @@ using System.Threading.Tasks;
 
 namespace Renta.ViewModels
 {
-    public class SearchPageViewModel
+    public class SearchPageViewModel : BaseViewModel
     {
         private List<Item> Items = new List<Item>();
         public ObservableRangeCollection<ItemViewModel> ItemsCollection { get; private set; } = new ObservableRangeCollection<ItemViewModel>();
+
+        public string ObservableCollectionCount { get => ItemsCollection.Count.ToString();}
 
         private List<ItemViewModel> ItemsViewModel;
 
@@ -46,6 +48,7 @@ namespace Renta.ViewModels
 
             ItemsViewModel = ConvertToViewModels(Items);
             UpdateItemsCollection(ItemsViewModel);
+            OnPropertyChanged(nameof(ObservableCollectionCount));
 
         }
 

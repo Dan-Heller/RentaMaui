@@ -37,7 +37,11 @@ namespace Renta.ViewModels
         public async Task FetchTransactionByStatus()
         {
            Transactions = await _transactionService.GetTransactionsByStatus(EUserType.Seeker,selectedStatusInTabsController);
-            
+            if (selectedStatusInTabsController == ETransactionStatus.Archived)
+            {
+                Transactions.AddRange(await _transactionService.GetTransactionsByStatus(EUserType.Seeker, ETransactionStatus.Canceled));
+            }
+
 
             //if (podcastsModels == null)
             //{
