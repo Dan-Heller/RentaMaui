@@ -17,6 +17,8 @@ namespace Renta.ViewModels
 
         private TransactionService _transactionService;
 
+       
+        public bool NeedApproveIcon { get; set; }
 
         public string? Id { get => Transaction?.Id; }
 
@@ -54,7 +56,10 @@ namespace Renta.ViewModels
             // ItemVM = new ItemViewModel(item);
             //Task.Run(async () => await GetItem());
             DatesAsString = StartDate.Value.Date.ToString("dd/MM/yyyy") + "\n-  " + EndDate.Value.Date.ToString("dd/MM/yyyy");
-            
+
+            NeedApproveIcon = !(Status == ETransactionStatus.Archived || Status == ETransactionStatus.Canceled);
+
+
         }
 
         public Command Approve_Clicked
