@@ -35,7 +35,7 @@
     </ContentPage.ToolbarItems>
 
 
-    <ScrollView>
+    <ScrollView Orientation="Vertical">
         <!--  Images  should be horizontal scroll  -->
         <Grid RowDefinitions="auto,auto">
 

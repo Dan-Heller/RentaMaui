@@ -47,7 +47,7 @@
 
                 <Grid Grid.Row="3" ColumnDefinitions="Auto,Auto" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,0">
                     <Image Grid.Column="0" Source="locationicon" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center" />
-                    <Label Grid.Column="1" Text="{Binding Address}" FontAttributes="Bold" TextColor="#383b67"  FontSize="16"/>
+                    <Label Grid.Column="1" Text="{Binding Address}" VerticalOptions="Center" FontAttributes="Bold" TextColor="#383b67"  FontSize="16"/>
                 </Grid>
             </Grid>
 
