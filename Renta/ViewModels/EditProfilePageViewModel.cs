@@ -21,6 +21,11 @@ namespace Renta.ViewModels
         private bool ProfileImageChanged = false;
        
 
+
+
+
+
+
         public EditProfilePageViewModel(FileService fileService, UserService userService)
         {
             //profileImageSource = ImageSource.FromFile("addprofileimage.png");

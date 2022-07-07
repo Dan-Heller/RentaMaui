@@ -29,7 +29,11 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    
+
+    <ContentPage.ToolbarItems>
+
+        <ToolbarItem IconImageSource="editicon" Command="{Binding EditButtonClicked}" />
+    </ContentPage.ToolbarItems>
 
 
     <ScrollView>

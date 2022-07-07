@@ -48,7 +48,7 @@
 
 	<ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
 		<!-- Required - WinUI does not yet have buildTransitive for everything -->
-		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.3" />
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.1.0" />
 		<!--<PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.0.30" />-->
 		<PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.3.1" />
 	</ItemGroup>
@@ -72,6 +72,7 @@
 	  <None Remove="Resources\Images\hollowhearticon.png" />
 	  <None Remove="Resources\Images\homeicon.png" />
 	  <None Remove="Resources\Images\locationicon.png" />
+	  <None Remove="Resources\Images\logouticon.png" />
 	  <None Remove="Resources\Images\menuicon.png" />
 	  <None Remove="Resources\Images\messageicon.png" />
 	  <None Remove="Resources\Images\musicinstrumentsphoto.png" />
@@ -117,6 +118,9 @@
 	  <Compile Update="Views\AppShell.xaml.cs">
 	    <DependentUpon>AppShell.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\EditItemPage.xaml.cs">
+	    <DependentUpon>EditItemPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\MyItemPage.xaml.cs">
 	    <DependentUpon>MyItemPage.xaml</DependentUpon>
 	  </Compile>
@@ -161,6 +165,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\CreditsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\EditItemPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\EditProfilePage.xaml">

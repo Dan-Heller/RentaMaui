@@ -24,6 +24,7 @@ public partial class AppShell: Shell
 		Routing.RegisterRoute(nameof(SavedItemsPage), typeof(SavedItemsPage));
 		Routing.RegisterRoute(nameof(RentingPage), typeof(RentingPage));
 		Routing.RegisterRoute(nameof(RentalPage), typeof(RentalPage));
-	}
+        Routing.RegisterRoute(nameof(EditItemPage), typeof(EditItemPage));
+    }
 }
 

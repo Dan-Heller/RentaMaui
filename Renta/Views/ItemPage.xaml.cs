@@ -49,7 +49,7 @@ public partial class ItemPage : ContentPage
         {
             xCalendar.IsVisible = !(xCalendar.IsVisible);
             RequestAndDatesButton.Text = "Send request";
-			RequestAndDatesButton.BackgroundColor = Color.FromArgb("#c5ff52");
+			RequestAndDatesButton.BackgroundColor = Color.FromArgb("#008000");
         }
         else
         {
@@ -63,7 +63,5 @@ public partial class ItemPage : ContentPage
                 await DisplayAlert(" ", "Please Select desired dates.", "close");
             }
         }
-
-		
     }
 }

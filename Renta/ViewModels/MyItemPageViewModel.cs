@@ -42,7 +42,20 @@ namespace Renta.ViewModels
         public Command ProfileLink_Tapped
        => new Command(async () => await Shell.Current.GoToAsync($"{nameof(ProfilePage)}"));
 
+   
+
+        public Command EditButtonClicked
+  => new Command(async () => await EditButton_Tapped());
+
+        private async Task EditButton_Tapped()
+        {
+            var jsonStr = JsonConvert.SerializeObject(_myItemViewModel.Item);
+            await Shell.Current.GoToAsync($"{nameof(EditItemPage)}?item={jsonStr}");
+        }
 
 
+
+
+      
     }
 }

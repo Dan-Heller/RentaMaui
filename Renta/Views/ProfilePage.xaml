@@ -13,7 +13,7 @@
     
     
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Logout" Command="{Binding LogoutClicked }">
+        <ToolbarItem IconImageSource="logouticon" Command="{Binding LogoutClicked }">
             
         </ToolbarItem>
         <ToolbarItem IconImageSource="editicon" Command="{Binding EditButtonClicked}"/>
