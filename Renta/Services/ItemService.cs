@@ -106,5 +106,28 @@ namespace Renta.Services
             var result = JsonConvert.DeserializeObject<Item>(str);
         }
 
+
+        public async Task UpdateItemInfo(Item item)
+        {
+            string json = JsonConvert.SerializeObject(item);
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = null;
+
+            string ItemId = item.Id;
+            response = await httpclient.PutAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Items/" + ItemId), content);
+
+            //string str = await response.Content.ReadAsStringAsync();
+
+            //need to make sure that after save button pressed the page will get item again . 
+
+            //LoggedInUser = JsonConvert.DeserializeObject<User>(str);
+
+            //if (UserUpdatedInvoker != null)
+            //{
+            //    UserUpdatedInvoker.Invoke();
+            //}
+
+        }
+
     }
 }

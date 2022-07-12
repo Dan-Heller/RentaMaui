@@ -17,11 +17,22 @@ public partial class AddItemPage : ContentPage
 
     private async void AddPhoto_Tapped(object sender, EventArgs e)
     {
-		string choosedOption = await DisplayActionSheet("Choose option:", "Cancel", null, "From Gallery", "Take a photo","Remove image");
+		
 		var image = sender as ImageButton;
 		var ImageId = image.ClassId;
 
-		if(choosedOption == "From Gallery")
+        //check that previous slot was used 
+        if (ImageId != "1")
+        {
+            if (!((BindingContext as AddItemPageViewModel).chosenImagesFilesResult.Count >= Int32.Parse(ImageId) - 1 ))
+            {
+                return;
+            }
+        }
+
+        string choosedOption = await DisplayActionSheet("Choose option:", "Cancel", null, "From Gallery", "Take a photo", "Remove image");
+
+        if (choosedOption == "From Gallery")
         {
 			await (BindingContext as AddItemPageViewModel).AddPhotoFromGallery(ImageId);    //the of clicked -> init the method doesnt worked with onchanged
 		}

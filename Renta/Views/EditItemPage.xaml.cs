@@ -19,21 +19,32 @@ public partial class EditItemPage : ContentPage
 
     private async void AddPhoto_Tapped(object sender, EventArgs e)
     {
-        string choosedOption = await DisplayActionSheet("Choose option:", "Cancel", null, "From Gallery", "Take a photo", "Remove image");
+       
         var image = sender as ImageButton;
         var ImageId = image.ClassId;
 
+        //check that previous slot was used 
+        if (ImageId != "1")
+        {
+            if ((BindingContext as EditItemPageViewModel).SlotHasImageArray[Int32.Parse(ImageId) - 2] == false )
+            {
+                return;
+            }
+        }
+
+        string choosedOption = await DisplayActionSheet("Choose option:", "Cancel", null, "From Gallery", "Take a photo", "Remove image");
+
         if (choosedOption == "From Gallery")
         {
-            await (BindingContext as AddItemPageViewModel).AddPhotoFromGallery(ImageId);    //the of clicked -> init the method doesnt worked with onchanged
+            await (BindingContext as EditItemPageViewModel).AddPhotoFromGallery(ImageId);    //the of clicked -> init the method doesnt worked with onchanged
         }
         else if (choosedOption == "Take a photo")
         {
-            await (BindingContext as AddItemPageViewModel).TakeAPhoto(ImageId);
+            await (BindingContext as EditItemPageViewModel).TakeAPhoto(ImageId);
         }
         else if (choosedOption == "Remove image")
         {
-            (BindingContext as AddItemPageViewModel).RemoveImage(ImageId);
+            (BindingContext as EditItemPageViewModel).RemoveImage(ImageId);
         }
     }
 

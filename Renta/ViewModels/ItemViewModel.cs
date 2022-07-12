@@ -56,6 +56,18 @@ namespace Renta.ViewModels
             await Shell.Current.GoToAsync($"{nameof(ItemPage)}?item={jsonStr}");
         }
 
+        public async Task GotoMyUpdatedItemPage()
+        {
+            var jsonStr = JsonConvert.SerializeObject(Item);
+            await Shell.Current.GoToAsync($"../../{nameof(MyItemPage)}?item={jsonStr}");
+        }
+
+        //public async Task GotoMyUpdatedItemPage()
+        //{
+        //    var jsonStr = JsonConvert.SerializeObject(Item);
+        //    await Shell.Current.GoToAsync("../../..");
+        //}
+
         public bool CheckIfRequestedDatesOverlapUnavailableDates(DateTime start, DateTime end)
         {
             bool IsOverlap = false;

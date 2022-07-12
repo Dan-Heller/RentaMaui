@@ -10,7 +10,7 @@
              Shell.TitleColor="MediumPurple">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Save" Command="{Binding SaveButtonClicked }"/>
+        <ToolbarItem IconImageSource="saveicon" Command="{Binding SaveButtonClicked }"/>
     </ContentPage.ToolbarItems>
 
 

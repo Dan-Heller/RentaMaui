@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using static Android.Renderscripts.ScriptGroup;
 
 
 namespace Renta.ViewModels
@@ -33,12 +34,13 @@ namespace Renta.ViewModels
         public string SelectedCategory { get; set; }
 
         private bool ImageAdded = false;
+
        
 
         private readonly int MaxImagesPerItem = 4;
         private FileResult chosenImageFile;
-        private List<FileResult> chosenImagesFilesResult = new List<FileResult>();
-       
+        public List<FileResult> chosenImagesFilesResult = new List<FileResult>();
+        private bool[] SlotHasImageArray = new bool[4];
 
         public AddItemPageViewModel(FileService fileService, UserService userService, ItemService itemService)
         {
@@ -82,8 +84,10 @@ namespace Renta.ViewModels
 
         private async void UpdateImageSource(string ImageId,FileResult result)
         {
-            var stream = await result.OpenReadAsync();
+            
 
+var stream = await result.OpenReadAsync();
+            SlotHasImageArray[Int32.Parse(ImageId) - 1] = true;
             switch (ImageId)
             {
                 case "1":
@@ -156,8 +160,9 @@ namespace Renta.ViewModels
         public void RemoveImage(string ImageSlotNumber)
         {
             var NumberToInt = (Int32.Parse(ImageSlotNumber)) ;
-            if (chosenImagesFilesResult.Count >= NumberToInt)
+            if (SlotHasImageArray[NumberToInt - 1] == true)
             {
+                SlotHasImageArray[NumberToInt - 1] = false;
                 chosenImagesFilesResult.RemoveAt(NumberToInt - 1);
                 switch (ImageSlotNumber)
                 {

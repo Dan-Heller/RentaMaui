@@ -57,8 +57,8 @@ public static class MauiProgram
 		builder.Services.AddSingleton<EditProfilePage>();
 		builder.Services.AddSingleton<EditProfilePageViewModel>();
 
-        builder.Services.AddSingleton<EditItemPage>();
-        builder.Services.AddSingleton<EditItemPageViewModel>();
+        builder.Services.AddTransient<EditItemPage>();
+        builder.Services.AddTransient<EditItemPageViewModel>();
 
         builder.Services.AddSingleton<SearchPage>();
 		builder.Services.AddSingleton<SearchPageViewModel>();
