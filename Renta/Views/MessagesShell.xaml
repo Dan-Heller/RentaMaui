@@ -7,8 +7,8 @@
               Title="Inbox"
              Shell.NavBarIsVisible="False"
              
-             Shell.TabBarUnselectedColor="black"
-             Shell.TabBarTitleColor="black"
+             Shell.TabBarUnselectedColor="Black"
+             Shell.TabBarTitleColor="Black"
              Shell.UnselectedColor="Gray"
              Shell.TitleColor="Black">
 

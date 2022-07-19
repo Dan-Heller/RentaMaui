@@ -3,14 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Renta.EditProfilePage"
              Title="Edit Profile"
-             Shell.ForegroundColor="black"
+             Shell.ForegroundColor="Black"
              Shell.NavBarIsVisible="true"
              Shell.TabBarIsVisible="False"
              BackgroundColor="White"
              Shell.TitleColor="MediumPurple">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Save" Command="{Binding SaveButtonClicked }"/>
+        <ToolbarItem IconImageSource="saveicon" Command="{Binding SaveButtonClicked }"/>
     </ContentPage.ToolbarItems>
 
 

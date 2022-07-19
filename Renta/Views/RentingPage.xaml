@@ -22,25 +22,25 @@
                 <Grid  ColumnDefinitions="*,*,*,*"   >
 
 
-                    <Label ClassId="Pending" x:Name="RequestsLabel"  Text="Requests (0)"   Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"  TextColor="Gray" >
+                    <Label ClassId="Pending" x:Name="RequestsLabel"  Text="Requests"   Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"  TextColor="Gray" >
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                         </Label.GestureRecognizers>
 
                     </Label>
-                    <Label ClassId="Approved" x:Name="ApprovedLabel" Text="Approved (0)"   Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Gray" >
+                    <Label ClassId="Approved" x:Name="ApprovedLabel" Text="Approved"   Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Gray" >
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                         </Label.GestureRecognizers>
                     </Label>
 
-                    <Label ClassId="Active" x:Name="ActiveLabel"  Text="Active (0)"  Grid.Column="2"  HorizontalOptions="Center" VerticalOptions="Center"  TextColor="Gray">
+                    <Label ClassId="Active" x:Name="ActiveLabel"  Text="Active"  Grid.Column="2"  HorizontalOptions="Center" VerticalOptions="Center"  TextColor="Gray">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                         </Label.GestureRecognizers>
                     </Label>
 
-                    <Label ClassId="History" x:Name="HistoryLabel"  Text="History (0)"  Grid.Column="3"  HorizontalOptions="Center" VerticalOptions="Center"  TextColor="Gray">
+                    <Label ClassId="History" x:Name="HistoryLabel"  Text="History"  Grid.Column="3"  HorizontalOptions="Center" VerticalOptions="Center"  TextColor="Gray">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                         </Label.GestureRecognizers>

@@ -36,7 +36,7 @@
                 <!-- Profile name & general description-->
                 <Label Grid.Row="1" Text="{Binding FullName, Mode=TwoWay}" FontAttributes="Bold" TextColor="#383b67" HorizontalTextAlignment="Center" Margin="0,10,0,0" FontSize="22" Padding="0"/>
 
-                <Grid Grid.Row="2" ColumnDefinitions="Auto,Auto,Auto,Auto,Auto" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10,0,0" >
+                <Grid Grid.Row="2" ColumnDefinitions="Auto,Auto,Auto,Auto,Auto" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,20,0,0" >
                     <Image Grid.Column="0" Source="blankstar" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center" />
                     <Image Grid.Column="1" Source="blankstar" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center" />
                     <Image Grid.Column="2" Source="blankstar" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center" />
@@ -52,7 +52,7 @@
             </Grid>
 
             <Grid Grid.Row="1" RowDefinitions="*,*,*,*,*" Margin="10,10,0,0" Padding="0">
-                <Label Grid.Row="0" Text="email" HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16" />
+                <Label Grid.Row="0" Text="email" TextColor="Black" TextDecorations="Underline"  HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16" />
                 <Label Grid.Row="1" HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16" Text="{Binding Email, Mode=TwoWay}"/>
                 <Label Grid.Row="2" Text="number" HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16"/>
                 <Label Grid.Row="3" Text="Renta credits" HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16"/>

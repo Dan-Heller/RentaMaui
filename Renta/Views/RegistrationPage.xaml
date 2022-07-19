@@ -9,6 +9,7 @@
     <ContentPage.Content>
         <StackLayout Padding="40" VerticalOptions="Center"
                      HorizontalOptions="FillAndExpand">
+            <Image Source="rentalogo1" Margin="0,0,0,100"></Image>
             <Label Text="Email:" />
             <Entry Placeholder="Email" Text="{Binding Email, Mode=TwoWay}"  />
             

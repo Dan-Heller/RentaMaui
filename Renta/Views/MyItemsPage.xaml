@@ -6,7 +6,7 @@
              Title="Your Items"
              xmlns:controls="clr-namespace:Renta.Controls"
              BackgroundColor="White"
-             Shell.ForegroundColor="black"
+            Shell.ForegroundColor="Black"
              Shell.NavBarIsVisible="true"
              Shell.TitleColor="Black">
 

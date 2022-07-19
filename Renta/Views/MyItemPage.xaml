@@ -7,7 +7,7 @@
     x:DataType="ViewModels:MyItemPageViewModel"
     Title=" "
     BackgroundColor="White"
-    Shell.ForegroundColor="black"
+    Shell.ForegroundColor="Black"
     Shell.NavBarIsVisible="true"
     Shell.TabBarIsVisible="False"
     Shell.TitleColor="MediumPurple">
@@ -132,7 +132,7 @@
                     FontAttributes="Bold"
                     FontSize="20"
                     Text="Description"
-                    TextColor="black" />
+                    TextColor="Black" />
                 <Label
                     Grid.Row="4"
                     Grid.Column="0"

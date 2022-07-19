@@ -8,7 +8,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using Android.Locations;
+//using Android.Locations;
 using Microsoft.Maui.Storage;
 
 namespace Renta.ViewModels

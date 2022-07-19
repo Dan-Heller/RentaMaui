@@ -4,7 +4,7 @@
              x:Class="Renta.CategoriesPage"
              Title="Categories"
              BackgroundColor="White"
-            Shell.ForegroundColor="black"
+            Shell.ForegroundColor="Black"
              Shell.NavBarIsVisible="true"
              Shell.TabBarIsVisible="False"
               Shell.TitleColor="MediumPurple">

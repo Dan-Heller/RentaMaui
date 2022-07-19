@@ -8,7 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using static Android.Renderscripts.ScriptGroup;
+//using static Android.Renderscripts.ScriptGroup;
 
 
 namespace Renta.ViewModels

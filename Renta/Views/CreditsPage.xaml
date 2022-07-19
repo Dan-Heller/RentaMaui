@@ -4,7 +4,7 @@
              x:Class="Renta.CreditsPage"
              Title="CreditsPage"
              Shell.NavBarIsVisible="true"
-               Shell.ForegroundColor="black"
+               Shell.ForegroundColor="Black"
              BackgroundColor="White">
     <StackLayout>
         <Label Text="Welcome to .NET MAUI!"
