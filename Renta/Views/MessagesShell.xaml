@@ -10,15 +10,16 @@
              Shell.TabBarUnselectedColor="Black"
              Shell.TabBarTitleColor="Black"
              Shell.UnselectedColor="Gray"
+             
              Shell.TitleColor="Black">
 
     <TabBar>
 
         <Tab  Title="Inbox">
             <ShellContent Title="Notifications" 
-                        ContentTemplate="{DataTemplate Pages:NotificationsPage}"  />
+                        ContentTemplate="{DataTemplate Pages:NotificationsPage}" Route="NotificationsPage"  />
             <ShellContent Title="Messages"
-                       ContentTemplate="{DataTemplate Pages:MessagesPage}"    />
+                       ContentTemplate="{DataTemplate Pages:MessagesPage}"   Route="MessagesPage" />
         </Tab>
     </TabBar>
 </Shell>

@@ -18,9 +18,13 @@
          Icon="homeicon.png">
             <ShellContent ContentTemplate="{DataTemplate Pages:FeedPage}" Route="FeedPage" />
         </Tab>
+        <!--<Tab Title="Messages"
+         Icon="messageicon.png">
+            <ShellContent ContentTemplate="{DataTemplate Pages:MessagesShell}" Route="MessagesShell" />
+        </Tab>-->
         <Tab Title="Messages"
          Icon="messageicon.png">
-            <ShellContent ContentTemplate="{DataTemplate Pages:MessagesShell}" Route="MessagesShell"/>
+            <ShellContent ContentTemplate="{DataTemplate Pages:MessagesPage}" Route="MessagesPage" />
         </Tab>
         <!--<Tab Title="Add"
          Icon="addicon.png">

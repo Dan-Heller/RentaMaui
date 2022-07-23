@@ -5,7 +5,7 @@
              x:Class="Renta.RentingPage"
              Title="RentingPage"
              BackgroundColor="White"
-             Shell.ForegroundColor="black"
+             Shell.ForegroundColor="Black"
              Shell.NavBarIsVisible="true"
              Shell.TitleColor="Black"
              Shell.TabBarIsVisible="False">

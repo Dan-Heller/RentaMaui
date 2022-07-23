@@ -75,4 +75,11 @@ public partial class HeaderControl : ContentView
     {
         await Shell.Current.GoToAsync($"{nameof(AddItemPage)}");
     }
+
+    private async void NotificationsButton_Tapped(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync($"{nameof(NotificationsPage)}");
+    }
+
+    
 }

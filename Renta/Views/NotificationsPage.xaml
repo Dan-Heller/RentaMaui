@@ -3,10 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Renta.NotificationsPage"
              Shell.NavBarIsVisible="True"
+             Shell.ForegroundColor="Black"
+             
              Title="Inbox"
              BackgroundColor="White">
     <StackLayout>
-        <Label Text="Motifications"
+        <Label Text="Notifications"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
     </StackLayout>

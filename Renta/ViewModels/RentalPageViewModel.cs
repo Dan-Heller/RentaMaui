@@ -19,16 +19,16 @@ namespace Renta.ViewModels
 
         private ItemService _itemService;
 
-        
+        private UserService _userService;
 
         public  ETransactionStatus selectedStatusInTabsController = ETransactionStatus.Pending;
 
         private TransactionService _transactionService;
 
-        public RentalPageViewModel(TransactionService transactionService)
+        public RentalPageViewModel(TransactionService transactionService , UserService userService)
         {
             _transactionService = transactionService;
-           
+            _userService = userService;
         }
 
 
@@ -67,7 +67,7 @@ namespace Renta.ViewModels
             foreach (var transaction in Transactions)
             {
                 
-                var transactionVM = new TransactionViewModel(transaction, _transactionService);
+                var transactionVM = new TransactionViewModel(transaction, _transactionService, _userService);
                 transactionVM.TransactionStatusChanged += FetchTransactionByStatus;
                
                 viewmodels.Add(transactionVM);

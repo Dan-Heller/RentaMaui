@@ -78,7 +78,7 @@ namespace Renta.ViewModels
             {
                 var transactionDto = createTransaction();
                 await _transactionService.CreateTransaction(transactionDto);
-                await Application.Current.MainPage.DisplayAlert(" ", "Request sent.", "close");
+                await Application.Current.MainPage.DisplayAlert(" ", "Request sent, you can watch it on Rental Page.", "close");
             }
             else
             {

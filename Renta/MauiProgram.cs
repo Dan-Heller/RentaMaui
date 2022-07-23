@@ -52,7 +52,8 @@ public static class MauiProgram
 		builder.Services.AddTransient<RegistrationPageViewModel>();
 
 		builder.Services.AddSingleton<MessagesPage>();
-		builder.Services.AddSingleton<MessagesShell>();
+        builder.Services.AddSingleton<NotificationsPage>();
+        builder.Services.AddSingleton<MessagesShell>();
 
 		builder.Services.AddSingleton<EditProfilePage>();
 		builder.Services.AddSingleton<EditProfilePageViewModel>();
@@ -94,11 +95,14 @@ public static class MauiProgram
 		builder.Services.AddTransient<OtherUserProfilePage>();
 		builder.Services.AddTransient<OtherUserProfilePageViewModel>();
 
+        builder.Services.AddTransient<ActivateTransactionPage>();
+        builder.Services.AddTransient<ActivateTransactionPageViewModel>();
 
 
-		builder.Services.AddSingleton<SearchPage>();
 
-		builder.Services.AddSingleton<NotificationsPage>();
+        builder.Services.AddSingleton<SearchPage>();
+
+		
 
 		
 

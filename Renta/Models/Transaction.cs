@@ -27,7 +27,14 @@ namespace Renta.Models
         public DateTime? CreatedAt { get; set; } = new DateTime();
 
         public ETransactionStatus Status { get; set; } = ETransactionStatus.Pending;
-       
+
+        public List<string>? SeekerImages { get; set; }
+
+        public List<string>? OwnerImages { get; set; }
+
+        public bool OwnerAcceptedActivation = false;
+
+        public bool SeekerAcceptedActivation = false;
 
         public Transaction()
         {

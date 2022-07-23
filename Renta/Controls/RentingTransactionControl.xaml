@@ -27,7 +27,7 @@
                     VerticalOptions="Center" Aspect="AspectFit" HeightRequest="35"
                     WidthRequest="35" Padding="0"  CornerRadius="20" Grid.Column="3" Command="{Binding Cancel_Clicked}"/>
 
-                <ImageButton Source="accepticon.png" x:Name="ApproveButton" IsVisible="{Binding NeedApproveIcon}"
+                <ImageButton Source="accepticon.png" x:Name="ApproveButton" IsVisible="{Binding NeedApproveIconOnOwner}"
                     VerticalOptions="Center" Aspect="AspectFit" HeightRequest="43 "
                     WidthRequest="43" Padding="0"  CornerRadius="20" Grid.Column="4" Command="{Binding Approve_Clicked}"/>
                 

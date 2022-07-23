@@ -121,6 +121,7 @@ namespace Renta.ViewModels
             Categories.Add("Sports");
             Categories.Add("Clothing");
             Categories.Add("Music");
+            Categories.Add("Travel");
 
             // ImageSource1 = _myItemViewModel.ImagesUrls[0];
             ImageSource1 = ImageSource.FromFile(AddPhotoImageSource);

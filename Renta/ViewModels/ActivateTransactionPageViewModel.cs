@@ -1,70 +1,89 @@
-﻿using Renta.Models;
+﻿using Newtonsoft.Json;
+using Renta.Models;
 using Renta.Services;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
-//using static Android.Renderscripts.ScriptGroup;
-
 
 namespace Renta.ViewModels
 {
-    public  class AddItemPageViewModel : BaseViewModel
+    [QueryProperty(nameof(TransactionString), "transaction")]
+    public class ActivateTransactionPageViewModel : BaseViewModel
     {
+
         private FileService _fileService;
         private UserService _userService;
-        private ItemService _itemService;
-        public List<string> Categories { get; set; }
-        public ImageSource ImageSource1 { get; set; }   
+        private TransactionService _transactionService;
+       // private ItemService _itemService;
+       // public List<string> Categories { get; set; }
+        public ImageSource ImageSource1 { get; set; }
         public ImageSource ImageSource2 { get; set; }
         public ImageSource ImageSource3 { get; set; }
         public ImageSource ImageSource4 { get; set; }
+        public Transaction transaction { get; set; }
 
-        private Item NewItem = new Item();
+        private string _TransactionString;
+        public String TransactionString
+        {
+            get => _TransactionString;
+            set
+            {
+                _TransactionString = Uri.UnescapeDataString(value ?? string.Empty);
+
+            }
+        }
+
+        public void deserializeString()
+        {
+            transaction = JsonConvert.DeserializeObject<Transaction>(_TransactionString);
+            //convertItemToViewModel(Item);
+        }
+
+
+
+        // private Item NewItem = new Item();
 
         private string AddPhotoImageSource = "addphoto.jpg";
-        public string ItemName { get; set; }
-        public string CoinsPerDay { get; set; }
+      //  public string ItemName { get; set; }
+      //  public string CoinsPerDay { get; set; }
         //public string MaxDaysPerRent { get; set; }
-        public string ItemDescription { get; set; } = string.Empty;
-        public string SelectedCategory { get; set; }
+      //  public string ItemDescription { get; set; } = string.Empty;
+      //  public string SelectedCategory { get; set; }
 
         private bool ImageAdded = false;
 
-       
+
 
         private readonly int MaxImagesPerItem = 4;
         private FileResult chosenImageFile;
         public List<FileResult> chosenImagesFilesResult = new List<FileResult>();
         private bool[] SlotHasImageArray = new bool[4];
 
-        public AddItemPageViewModel(FileService fileService, UserService userService, ItemService itemService)
+        public ActivateTransactionPageViewModel(FileService fileService, UserService userService, TransactionService transactionService)
         {
             _fileService = fileService;
             _userService = userService;
-            _itemService = itemService;
+            _transactionService = transactionService;
+            //_itemService = itemService;
 
 
-            Categories = new List<string>();
-            Categories.Add("Sports");
-            Categories.Add("Clothing");
-            Categories.Add("Music");
-            Categories.Add("Travel");
-
+            //Categories = new List<string>();
+            //Categories.Add("Sports");
+            //Categories.Add("Clothing");
+            //Categories.Add("Music");
+            //Categories.Add("Travel");
 
 
             ImageSource1 = ImageSource.FromFile(AddPhotoImageSource);
             ImageSource2 = ImageSource.FromFile(AddPhotoImageSource);
             ImageSource3 = ImageSource.FromFile(AddPhotoImageSource);
             ImageSource4 = ImageSource.FromFile(AddPhotoImageSource);
-
+            _transactionService = transactionService;
         }
 
-        
+
 
         public Command AddPhotoFromGallery_Clicked
         => new Command<string>(async (string ImageId) => await AddPhotoFromGallery(ImageId));
@@ -75,19 +94,19 @@ namespace Renta.ViewModels
             if (chosenImageFile != null)
             {
                 UpdateImageSource(ImageId, chosenImageFile);
-                
-               
+
+
             }
         }
 
 
 
 
-        private async void UpdateImageSource(string ImageId,FileResult result)
+        private async void UpdateImageSource(string ImageId, FileResult result)
         {
-            
 
-var stream = await result.OpenReadAsync();
+
+            var stream = await result.OpenReadAsync();
             SlotHasImageArray[Int32.Parse(ImageId) - 1] = true;
             switch (ImageId)
             {
@@ -114,53 +133,66 @@ var stream = await result.OpenReadAsync();
         public async Task TakeAPhoto(string ImageId)
         {
             chosenImageFile = await MediaPicker.CapturePhotoAsync(new MediaPickerOptions { Title = "Please take a photo" });
-            
+
 
             if (chosenImageFile != null)
             {
                 UpdateImageSource(ImageId, chosenImageFile);
-                
+
 
             }
         }
 
 
-        public Command AddItemClicked
-   => new Command(async () => await AddItem());
+        public Command ActivateClicked
+   => new Command(async () => await ActivateTransaction());
 
 
-        private async Task AddItem()
+        private async Task ActivateTransaction()
         {
 
             // MaxDaysPerRent != null && int.Parse(MaxDaysPerRent) >= 1 &&
+            // transaction.ItemOwner == _userService.LoggedInUser.Id ? transaction.OwnerImages : transaction.SeekerImages;
+            var UrlsList = new List<string>();
 
-            if (ItemName != null && SelectedCategory != null && chosenImagesFilesResult.Count > 0) //check minimal information inserted.
+            if (chosenImagesFilesResult.Count > 0) //check minimal information inserted.
             {
                 foreach (var fileresult in chosenImagesFilesResult)
                 {
                     //upload images to url 
-                        var stream = await fileresult.OpenReadAsync();
-                        var ImageUrl = await _fileService.UploadImageAsync(stream, fileresult.FileName);
-                        NewItem.ImagesUrls.Add(ImageUrl);
+                    var stream = await fileresult.OpenReadAsync();
+                    var ImageUrl = await _fileService.UploadImageAsync(stream, fileresult.FileName);
+                    UrlsList.Add(ImageUrl);
                 }
-                
 
-                NewItem.Name = ItemName;
-                NewItem.Category = SelectedCategory;
-                NewItem.Description = ItemDescription;
-                NewItem.PricePerDay = int.Parse(CoinsPerDay);
-                NewItem.OwnerId = _userService.LoggedInUser.Id;
+                if (transaction.ItemOwner == _userService.LoggedInUser.Id)
+                {
+                    transaction.OwnerImages = UrlsList;
+                    transaction.OwnerAcceptedActivation = true;
+                }
+                else
+                {
+                    transaction.SeekerImages = UrlsList;
+                    transaction.SeekerAcceptedActivation = true;
+                }
+               
 
 
-                await _itemService.UploadNewItem(NewItem);
+                //await _itemService.UploadNewItem(NewItem);
+                await  _transactionService.UpdateTransaction(transaction);
                 await Shell.Current.GoToAsync("..");
             }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert(" ", "Pleace add at least one image.", "close");
+            }
+            
         }
 
 
         public void RemoveImage(string ImageSlotNumber)
         {
-            var NumberToInt = (Int32.Parse(ImageSlotNumber)) ;
+            var NumberToInt = (Int32.Parse(ImageSlotNumber));
             if (SlotHasImageArray[NumberToInt - 1] == true)
             {
                 SlotHasImageArray[NumberToInt - 1] = false;
@@ -186,5 +218,6 @@ var stream = await result.OpenReadAsync();
                 }
             }
         }
+
     }
 }

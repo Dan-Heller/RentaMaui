@@ -76,12 +76,14 @@
 	  <None Remove="Resources\Images\menuicon.png" />
 	  <None Remove="Resources\Images\messageicon.png" />
 	  <None Remove="Resources\Images\musicinstrumentsphoto.png" />
+	  <None Remove="Resources\Images\notificationicon.png" />
 	  <None Remove="Resources\Images\profileicon.png" />
 	  <None Remove="Resources\Images\RentaLogo1.png" />
 	  <None Remove="Resources\Images\renticon.png" />
 	  <None Remove="Resources\Images\ricon.png" />
 	  <None Remove="Resources\Images\searchicon.png" />
 	  <None Remove="Resources\Images\sorticon.png" />
+	  <None Remove="Resources\Images\travelphoto.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -115,6 +117,9 @@
 	  </Compile>
 	  <Compile Update="Controls\RentingPageTabsControl.xaml.cs">
 	    <DependentUpon>RentingPageTabsControl.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\ActivateTransactionPage.xaml.cs">
+	    <DependentUpon>ActivateTransactionPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\AppShell.xaml.cs">
 	    <DependentUpon>AppShell.xaml</DependentUpon>
@@ -157,6 +162,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Controls\OtherUserItemsControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ActivateTransactionPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\AddItemPage.xaml">

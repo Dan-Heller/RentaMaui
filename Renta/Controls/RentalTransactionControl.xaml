@@ -27,7 +27,7 @@
                 
                 <ImageButton x:Name="AcceptButton" Source="accepticon.png" 
                     VerticalOptions="Center" Aspect="AspectFit" HeightRequest="43 "
-                    WidthRequest="43" Padding="0"  CornerRadius="20" Grid.Column="4" IsVisible="False" Command="{Binding Approve_Clicked}"/>
+                    WidthRequest="43" Padding="0"  CornerRadius="20" Grid.Column="4" IsVisible="{Binding NeedApproveIconOnSeeker}" Command="{Binding Approve_Clicked}"/>
                 
                 <ImageButton Source="blankprofileimage.png" 
                     VerticalOptions="Center" Aspect="AspectFill" HeightRequest="45" 

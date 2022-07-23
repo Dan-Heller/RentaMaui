@@ -53,6 +53,20 @@
                     <Image Grid.Column="2" Source="nextarrow.png" WidthRequest="20" HorizontalOptions="End"/>
                 </Grid>
             </Frame>
+            <!-- Travel -->
+            <Frame Grid.Row="3" Padding="0,2,0,2" BorderColor="LightGray" >
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="CategoryOption_Tapped"/>
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="*,*,*">
+                    <Image Grid.Column="0" Source="travelphoto.png" HorizontalOptions="Start"/>
+                    <Grid Grid.Column="1" RowDefinitions="*,*" >
+                        <Label Grid.Row="0" Text="Travel accessories" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Grid.Row="1" Text="XXX items" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Grid>
+                    <Image Grid.Column="2" Source="nextarrow.png" WidthRequest="20" HorizontalOptions="End"/>
+                </Grid>
+            </Frame>
 
         </StackLayout>
     </ScrollView>
