@@ -133,7 +133,7 @@
                     FontAttributes="Bold"
                     FontSize="20"
                     Text="Description"
-                    TextColor="black" />
+                    TextColor="Black" />
                 <Label
                     Grid.Row="4"
                     Grid.Column="0"
@@ -159,8 +159,8 @@
                     />
                 <!--Command="{Binding SendRequestButton_Clicked}"-->
 
-                <xcViews:CalendarView x:Name="xCalendar" Grid.Row="6" SelectionType="Range"
-                                      DayRangeMinimumDate="{Binding Today}" IsVisible="false" />
+                <xcViews:CalendarView x:Name="xCalendar" Grid.Row="6" SelectionType="Single"
+                                      DayRangeMinimumDate="{Binding Today}" IsVisible="false"  SelectionAction="Modify"   />
 
                
                 

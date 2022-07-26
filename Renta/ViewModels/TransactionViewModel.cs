@@ -60,20 +60,58 @@ namespace Renta.ViewModels
             //Task.Run(async () => await GetItem());
             DatesAsString = StartDate.Value.Date.ToString("dd/MM/yyyy") + "\n-  " + EndDate.Value.Date.ToString("dd/MM/yyyy");
 
-            NeedApproveIconOnOwner = Status == ETransactionStatus.Pending || (Status == ETransactionStatus.Approved  && CheckDateRange() && (!transaction.OwnerAcceptedActivation));
 
-           
-            NeedApproveIconOnSeeker = Status == ETransactionStatus.Approved && CheckDateRange() && !transaction.SeekerAcceptedActivation;
-            _userService = userService;
+            
+
+            //NeedApproveIconOnOwner = Status == ETransactionStatus.Pending || (Status == ETransactionStatus.Approved  && CheckDateRange() && (!transaction.OwnerAcceptedActivation));
+            NeedApproveIconOnOwner = checkedForOwnerApproveIcon(transaction);
+            NeedApproveIconOnSeeker = checkedForSeekerApproveIcon(transaction);
+
+           // NeedApproveIconOnSeeker = Status == ETransactionStatus.Approved && CheckDateRange() && !transaction.SeekerAcceptedActivation;
+            
+        }
+
+        private bool checkedForOwnerApproveIcon(TransactionLookedUp transaction)
+        {
+            return Status == ETransactionStatus.Pending ||
+                   (Status == ETransactionStatus.Approved && CheckDateRange() && (!transaction.OwnerAcceptedActivation)) ||
+                   (Status == ETransactionStatus.Active && CheckLastRentingDayArrive() && (!transaction.OwnerAcceptedCompletion));
+        }
+
+        private bool checkedForSeekerApproveIcon(TransactionLookedUp transaction)
+        {
+            return Status == ETransactionStatus.Approved && CheckDateRange() && !transaction.SeekerAcceptedActivation ||
+                    Status == ETransactionStatus.Active && CheckLastRentingDayArrive() && !transaction.SeekerAcceptedCompletion;
+        }
+
+
+
+        private bool CheckLastRentingDayArrive()
+        {
+
+            DateTime currentDate = DateTime.Now.Date;
+            DateTime start = this.StartDate.Value.Date;
+            DateTime end = this.EndDate.Value.Date;
+
+            return (currentDate >= end);
         }
 
         private bool CheckDateRange()
         {
-            DateTime currentDate = DateTime.Now;
-            DateTime start = this.StartDate.Value;
-            DateTime end = this.EndDate.Value;
+            DateTime currentDate = DateTime.Now.Date;
+            DateTime start = this.StartDate.Value.Date;
+            DateTime end = this.EndDate.Value.Date;
 
-            if (DateTime.Compare(currentDate, start) >= 0 && DateTime.Compare(currentDate, end) <= 0)
+            //if (DateTime.Compare(currentDate, start) >= 0 && DateTime.Compare(currentDate, end) <= 0)
+            //{
+            //    return true;
+            //}
+            //else
+            //{
+            //    return false;
+            //}
+
+            if (currentDate >= start && currentDate <= end)
             {
                 return true;
             }
@@ -93,7 +131,7 @@ namespace Renta.ViewModels
         private async Task HandleApproveRequest()
         {
 
-            if (Status == ETransactionStatus.Approved)
+            if (Status == ETransactionStatus.Approved || Status == ETransactionStatus.Active)
             {
                     var jsonStr = JsonConvert.SerializeObject(Transaction);
                     await Shell.Current.GoToAsync($"{nameof(ActivateTransactionPage)}?transaction={jsonStr}");

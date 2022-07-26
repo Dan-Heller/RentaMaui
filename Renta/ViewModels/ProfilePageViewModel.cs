@@ -15,6 +15,8 @@ namespace Renta.ViewModels
     {
        
         private string email;
+
+        private string coins;
         public string FullName { get; set; }
         
         public string Address   { get; set; }
@@ -37,6 +39,7 @@ namespace Renta.ViewModels
             FullName = _LoggedUser.GetFullName();
             ProfileImageUrl = _LoggedUser.ProfilePhotoUrl;
             Address = _LoggedUser.Address;
+            coins = _LoggedUser.Coins.ToString();
 
             OnPropertyChanged(nameof(ProfileImageUrl));
             OnPropertyChanged(nameof(FullName));
@@ -52,6 +55,16 @@ namespace Renta.ViewModels
                 // OnPropertyChanged();
             }
             get => email;
+        }
+
+        public string Coins
+        {
+            set
+            {
+                coins = value;
+                // OnPropertyChanged();
+            }
+            get => coins;
         }
 
         //public Command LogoutClicked

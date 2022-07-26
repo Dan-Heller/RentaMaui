@@ -28,13 +28,21 @@ namespace Renta.Models
 
         public ETransactionStatus Status { get; set; } = ETransactionStatus.Pending;
 
-        public List<string>? SeekerImages { get; set; }
+        public List<string>? SeekerImagesBefore { get; set; }
 
-        public List<string>? OwnerImages { get; set; }
+        public List<string>? OwnerImagesBefore { get; set; }
+
+        public List<string>? SeekerImagesAfter { get; set; }
+
+        public List<string>? OwnerImagesAfter { get; set; }
 
         public bool OwnerAcceptedActivation = false;
 
         public bool SeekerAcceptedActivation = false;
+
+        public bool OwnerAcceptedCompletion  = false;
+
+        public bool SeekerAcceptedCompletion  = false;
 
         public Transaction()
         {

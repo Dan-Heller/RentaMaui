@@ -51,11 +51,12 @@
                 </Grid>
             </Grid>
 
-            <Grid Grid.Row="1" RowDefinitions="*,*,*,*,*" Margin="10,10,0,0" Padding="0">
+            <Grid Grid.Row="1" RowDefinitions="*,*,*,*,*,*" Margin="10,10,0,0" Padding="0">
                 <Label Grid.Row="0" Text="email" TextColor="Black" TextDecorations="Underline"  HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16" />
                 <Label Grid.Row="1" HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16" Text="{Binding Email, Mode=TwoWay}"/>
-                <Label Grid.Row="2" Text="number" HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16"/>
-                <Label Grid.Row="3" Text="Renta credits" HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16"/>
+                <Label Grid.Row="2" HorizontalTextAlignment="Start" Margin="0,0,0,0" TextColor="Black" FontSize="16" Text="{Binding Coins, Mode=TwoWay}"/>
+                <Label Grid.Row="3" Text="number" HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16"/>
+                <Label Grid.Row="4" Text="Renta credits" HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16"/>
             </Grid>
         </Grid>
     </ScrollView>

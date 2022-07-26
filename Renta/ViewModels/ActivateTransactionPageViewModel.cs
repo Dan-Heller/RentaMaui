@@ -167,13 +167,30 @@ namespace Renta.ViewModels
 
                 if (transaction.ItemOwner == _userService.LoggedInUser.Id)
                 {
-                    transaction.OwnerImages = UrlsList;
-                    transaction.OwnerAcceptedActivation = true;
+                    if(transaction.Status == enums.ETransactionStatus.Approved)
+                    {
+                        transaction.OwnerImagesBefore = UrlsList;
+                        transaction.OwnerAcceptedActivation = true;
+                    }
+                    else
+                    {
+                        transaction.OwnerImagesAfter = UrlsList;
+                        transaction.OwnerAcceptedCompletion = true;
+                    }
+                   
                 }
                 else
                 {
-                    transaction.SeekerImages = UrlsList;
-                    transaction.SeekerAcceptedActivation = true;
+                    if (transaction.Status == enums.ETransactionStatus.Approved)
+                    {
+                        transaction.SeekerImagesBefore = UrlsList;
+                        transaction.SeekerAcceptedActivation = true;
+                    }
+                    else
+                    {
+                        transaction.SeekerImagesAfter = UrlsList;
+                        transaction.SeekerAcceptedCompletion = true;
+                    }
                 }
                
 

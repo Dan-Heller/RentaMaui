@@ -71,6 +71,10 @@ namespace Renta.ViewModels
 
         public async Task sendItemRequest()
         {
+            //check if user has enough coins.
+            //string numOfDays = (StartDate - EndDate).ToString();
+
+
             //check if dates overlap taken dates
             bool IsOverlap = _ItemViewModel.CheckIfRequestedDatesOverlapUnavailableDates(datesCollection[0], datesCollection[datesCollection.Count - 1]);
 
