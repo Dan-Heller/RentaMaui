@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Renta.Views;
 
 namespace Renta.ViewModels
 {
@@ -144,13 +145,6 @@ namespace Renta.ViewModels
                 TransactionStatusChanged?.Invoke(); // tells the page to update collection.
             }
             
-
-
-
-            
-
-
-
         }
 
         private async Task HandleCancelRequest()
@@ -185,8 +179,18 @@ namespace Renta.ViewModels
             await Shell.Current.GoToAsync($"{nameof(MyItemPage)}?item={jsonStr}");
         }
 
+        public Command GoToTransactionPage
+=> new Command(async () => await NavigateToTransactionPage());
 
+        private async Task NavigateToTransactionPage()
+        {
+            var jsonStr = JsonConvert.SerializeObject(Transaction);
+            await Shell.Current.GoToAsync($"{nameof(TransactionPage)}?transaction={jsonStr}");
+            //await Shell.Current.GoToAsync($"{nameof(TransactionPage)}");
+        }
 
+      
+        
 
         //    public Command GoToMyItemPage
         //  => new Command(async () => await MyItemCard_Tapped());

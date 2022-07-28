@@ -8,6 +8,9 @@
              >
     <ContentView.Content>
         <Frame Padding="0"  HeightRequest="85" BorderColor="DarkGray"> <!--this frame should in the end be in the page view so border wont eat each other -->
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GoToTransactionPage}" />
+            </Frame.GestureRecognizers>
             <Grid ColumnDefinitions="70,2*,*,40,40,40" Padding="7,5,7,5">
                 <Frame  CornerRadius="13"  Padding="0,2,0,0" Grid.Column="0" >
                     <Frame.GestureRecognizers>

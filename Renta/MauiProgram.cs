@@ -5,8 +5,7 @@ using Renta.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
 using System.Reflection;
-
-
+using Renta.Views;
 
 namespace Renta;
 
@@ -97,6 +96,9 @@ public static class MauiProgram
 
         builder.Services.AddTransient<ActivateTransactionPage>();
         builder.Services.AddTransient<ActivateTransactionPageViewModel>();
+
+        builder.Services.AddTransient<TransactionPage>();
+        builder.Services.AddTransient<TransactionPageViewModel>();
 
 
 

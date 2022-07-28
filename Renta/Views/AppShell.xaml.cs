@@ -1,5 +1,7 @@
 ﻿
 using Renta.ViewModels;
+using Renta.Views;
+
 namespace Renta;
 
 
@@ -27,6 +29,7 @@ public partial class AppShell: Shell
         Routing.RegisterRoute(nameof(EditItemPage), typeof(EditItemPage));
         Routing.RegisterRoute(nameof(NotificationsPage), typeof(NotificationsPage));
         Routing.RegisterRoute(nameof(ActivateTransactionPage), typeof(ActivateTransactionPage));
+        Routing.RegisterRoute(nameof(TransactionPage), typeof(TransactionPage));
 
 
         //      Routing.RegisterRoute(nameof(MessagesShell), typeof(MessagesShell));
