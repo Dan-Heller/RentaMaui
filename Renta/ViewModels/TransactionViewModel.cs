@@ -23,6 +23,8 @@ namespace Renta.ViewModels
 
         public bool NeedApproveIconOnSeeker { get; set; }
 
+        public bool NeedCancelIcon { get; set; }
+
         public string? Id { get => Transaction?.Id; }
 
 
@@ -62,7 +64,14 @@ namespace Renta.ViewModels
             DatesAsString = StartDate.Value.Date.ToString("dd/MM/yyyy") + "\n-  " + EndDate.Value.Date.ToString("dd/MM/yyyy");
 
 
-            
+            if(transaction.Status == ETransactionStatus.Approved || transaction.Status == ETransactionStatus.Active)
+            {
+                NeedCancelIcon = false;
+            }
+            else
+            {
+                NeedCancelIcon = true;
+            }
 
             //NeedApproveIconOnOwner = Status == ETransactionStatus.Pending || (Status == ETransactionStatus.Approved  && CheckDateRange() && (!transaction.OwnerAcceptedActivation));
             NeedApproveIconOnOwner = checkedForOwnerApproveIcon(transaction);

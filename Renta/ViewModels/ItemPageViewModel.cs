@@ -73,8 +73,18 @@ namespace Renta.ViewModels
         {
             //check if user has enough coins.
             //string numOfDays = (StartDate - EndDate).ToString();
+            var leasingSpan =  datesCollection[datesCollection.Count - 1]  - datesCollection[0];
+            int leasingLength = leasingSpan.Days;
+            leasingLength++;
+            bool enoughCoins = await _userService.GetIfBalanceIsValidForRent((int)_ItemViewModel.PricePerDay, leasingLength);
 
+            if (!enoughCoins)
+            {
+                await Application.Current.MainPage.DisplayAlert(" ", "You don't have enought RentA coins", "close");
+                return;
+            }
 
+            
             //check if dates overlap taken dates
             bool IsOverlap = _ItemViewModel.CheckIfRequestedDatesOverlapUnavailableDates(datesCollection[0], datesCollection[datesCollection.Count - 1]);
 

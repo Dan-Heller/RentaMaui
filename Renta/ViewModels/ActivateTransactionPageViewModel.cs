@@ -197,6 +197,7 @@ namespace Renta.ViewModels
 
                 //await _itemService.UploadNewItem(NewItem);
                 await  _transactionService.UpdateTransaction(transaction);
+                await _userService.UpdateLoggedInUser();
                 await Shell.Current.GoToAsync("..");
             }
             else

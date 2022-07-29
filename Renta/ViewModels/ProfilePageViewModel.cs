@@ -25,13 +25,22 @@ namespace Renta.ViewModels
 
         private User _LoggedUser;
 
+        private UserService _userService;
+
         public ProfilePageViewModel(UserService userService)
         {
+            _userService = userService;
             _LoggedUser = userService.LoggedInUser;
             getUserInformation();
             userService.UserUpdatedInvoker += new Action(getUserInformation); //tell me when user info updated .
         }
 
+        public async Task UpdateUserInfo()
+        {
+            await _userService.UpdateLoggedInUser();
+            _LoggedUser = _userService.LoggedInUser;
+            OnPropertyChanged(nameof(_LoggedUser));
+        }
    
         private void getUserInformation()
         {

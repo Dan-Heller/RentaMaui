@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using Renta.Models;
 using Renta.Dto_s;
 using RestSharp;
+using Microsoft.AspNetCore.Http;
 
 namespace Renta.Services
 {
@@ -95,6 +96,22 @@ namespace Renta.Services
             response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Users/" + Id));
             string str = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<User>(str);
+        }
+
+        public async Task<bool> GetIfBalanceIsValidForRent(int price, int daysCount)
+        {
+            QueryString queryString =
+              new QueryString()
+              .Add("price", price.ToString())
+              .Add("daysCount", daysCount.ToString());
+
+            HttpResponseMessage response = null;
+
+            response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Users/Balance/" + LoggedInUser.Id + queryString));
+            string str = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<bool>(str);
+            
+           
         }
 
 

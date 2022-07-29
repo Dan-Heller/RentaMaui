@@ -28,7 +28,7 @@
                 
                 <ImageButton Source="cancelicon.png" 
                     VerticalOptions="Center" Aspect="AspectFit" HeightRequest="35"
-                    WidthRequest="35" Padding="0"  CornerRadius="20" Grid.Column="3" Command="{Binding Cancel_Clicked}"/>
+                    WidthRequest="35" Padding="0"  CornerRadius="20" Grid.Column="3" Command="{Binding Cancel_Clicked}" IsVisible="{Binding NeedCancelIcon}"/>
 
                 <ImageButton Source="accepticon.png" x:Name="ApproveButton" IsVisible="{Binding NeedApproveIconOnOwner}"
                     VerticalOptions="Center" Aspect="AspectFit" HeightRequest="43 "

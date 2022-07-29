@@ -12,5 +12,12 @@ public partial class ProfilePage : ContentPage
 		InitializeComponent();
 	}
 
-   
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+       await  (BindingContext as ProfilePageViewModel).UpdateUserInfo();
+
+    }
+
+
 }

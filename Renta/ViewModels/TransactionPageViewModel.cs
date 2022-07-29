@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Renta.Models;
+using Renta.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,13 @@ namespace Renta.ViewModels
     [QueryProperty(nameof(TransactionString), "transaction")]
     public class TransactionPageViewModel : BaseViewModel
     {
-        public TransactionPageViewModel()
-        {
 
+        public Item Item { get; set; }
+        private ItemService _itemService;
+
+        public TransactionPageViewModel(ItemService itemService)
+        {
+            _itemService = itemService;
         }
 
         public string DatesAsString { get; set; }
@@ -35,10 +40,13 @@ namespace Renta.ViewModels
 
 
 
-        public void deserializeString()
+        public async Task  deserializeString()
         {
             _transaction = JsonConvert.DeserializeObject<Transaction>(_TransactionString);
-            DatesAsString = _transaction.StartDate.Date.ToString("dd/MM/yyyy") + "\n-  " + _transaction.EndDate.Date.ToString("dd/MM/yyyy");
+            DatesAsString = _transaction.StartDate.Date.ToString("dd/MM/yyyy") + "  -  " + _transaction.EndDate.Date.ToString("dd/MM/yyyy");
+            Item = await _itemService.GetItemById(_transaction.ItemId);
+            OnPropertyChanged(nameof(Item));
+            OnPropertyChanged(nameof(DatesAsString));
         }
     }
 }

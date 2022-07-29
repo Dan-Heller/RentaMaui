@@ -1,12 +1,89 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:ViewModels="clr-namespace:Renta.ViewModels"
+              x:DataType="ViewModels:TransactionPageViewModel"
              x:Class="Renta.Views.TransactionPage"
+             Shell.ForegroundColor="Black"
+    Shell.NavBarIsVisible="true"
              Title="TransactionPage">
     <VerticalStackLayout>
+        <Image
+                   
+                    HeightRequest="200"
+                    Aspect="AspectFit"
+                    Source="{Binding Item.ImagesUrls[0]}"
+                    VerticalOptions="Start" />
         <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
+            TextColor="Black"
+            FontSize="35"
+            Text="{Binding Item.Name}"
+            VerticalOptions="Start" 
             HorizontalOptions="Center" />
+
+        <Label TextColor="Black" 
+            Text="{Binding DatesAsString}"
+             FontSize="20"
+            HorizontalOptions="Center" >
+        </Label>
+       
+       <Label Text="Image of previous condition"  x:Name="BeforeConditionLabel"/>
+        <Grid Grid.Row="1"  x:Name="BeforeConditionGrid" 
+                 
+                 HeightRequest="100"
+                  ColumnDefinitions="*,*,*,*" HorizontalOptions="FillAndExpand" >
+                <Frame CornerRadius="13"   BorderColor="#c6c1ea"    HasShadow="False" Grid.Column="0" Margin="3" Padding="0">
+                    <ImageButton   Aspect="AspectFill"  x:Name="BeforeImage1"
+                                 ></ImageButton>
+                </Frame>
+                <!--Command="{Binding AddPhotoFromGallery_Clicked}"
+                                 CommandParameter="1"/>-->
+                <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="1" Margin="3"  Padding="0">
+                <ImageButton    Aspect="AspectFill" x:Name="BeforeImage2"
+                               />
+
+                </Frame>
+                <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="2" Margin="3" Padding="0">
+                <ImageButton  Aspect="AspectFill" x:Name="BeforeImage3"
+                                />
+
+                </Frame>
+                <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="3"  Margin="3" Padding="0">
+                <ImageButton  Aspect="AspectFill" x:Name="BeforeImage4"
+                                 />
+                </Frame>
+        </Grid>
+
+        <Label Text="Image of complition condition"  x:Name="AfterConditionLabel"/>
+        <Grid   x:Name="AfterConditionGrid" 
+                 
+                 HeightRequest="100"
+                  ColumnDefinitions="*,*,*,*" HorizontalOptions="FillAndExpand" >
+            <Frame CornerRadius="13"   BorderColor="#c6c1ea"    HasShadow="False" Grid.Column="0" Margin="3" Padding="0">
+                <ImageButton    Aspect="AspectFill"  x:Name="AfterImage1"
+                                 ></ImageButton>
+            </Frame>
+            <!--Command="{Binding AddPhotoFromGallery_Clicked}"
+                                 CommandParameter="1"/>-->
+            <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="1" Margin="3"  Padding="0">
+                <ImageButton     Aspect="AspectFill" x:Name="AfterImage2"
+                               />
+
+            </Frame>
+            <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="2" Margin="3" Padding="0">
+                <ImageButton    Aspect="AspectFill" x:Name="AfterImage3"
+                                />
+
+            </Frame>
+            <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="3"  Margin="3" Padding="0">
+                <ImageButton   Aspect="AspectFill" x:Name="AfterImage4"
+                                 />
+            </Frame>
+        </Grid>
+
+
+        <!--<ScrollView Orientation="Horizontal">
+            <StackLayout BindingContext="{Binding _transaction.}"
+        </ScrollView>-->
     </VerticalStackLayout>
 </ContentPage>
