@@ -100,7 +100,8 @@ public static class MauiProgram
         builder.Services.AddTransient<TransactionPage>();
         builder.Services.AddTransient<TransactionPageViewModel>();
 
-
+        builder.Services.AddTransient<PhotoDisplayPage>();
+        builder.Services.AddTransient<PhotoDisplayPageViewModel>();
 
         builder.Services.AddSingleton<SearchPage>();
 

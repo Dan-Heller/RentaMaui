@@ -207,6 +207,10 @@ namespace Renta.ViewModels
             
         }
 
+      
+
+
+
 
         public void RemoveImage(string ImageSlotNumber)
         {

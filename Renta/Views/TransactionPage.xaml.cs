@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using Renta.Services;
 using Renta.ViewModels;
 
@@ -70,4 +71,10 @@ public partial class TransactionPage : ContentPage
 
     }
 
+    private async void ImageTapped(object sender, EventArgs e)
+    {
+        ImageButton Img = sender as ImageButton;
+        var jsonStr = JsonConvert.SerializeObject(Img.Source);
+        await Shell.Current.GoToAsync($"{nameof(PhotoDisplayPage)}?url={jsonStr}");
+    }
 }

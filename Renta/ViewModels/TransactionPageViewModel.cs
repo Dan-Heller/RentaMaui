@@ -38,6 +38,7 @@ namespace Renta.ViewModels
             }
         }
 
+      
 
 
         public async Task  deserializeString()

@@ -33,23 +33,23 @@
                  HeightRequest="100"
                   ColumnDefinitions="*,*,*,*" HorizontalOptions="FillAndExpand" >
                 <Frame CornerRadius="13"   BorderColor="#c6c1ea"    HasShadow="False" Grid.Column="0" Margin="3" Padding="0">
-                    <ImageButton   Aspect="AspectFill"  x:Name="BeforeImage1"
+                    <ImageButton   Aspect="AspectFill"  x:Name="BeforeImage1" Clicked="ImageTapped"
                                  ></ImageButton>
                 </Frame>
                 <!--Command="{Binding AddPhotoFromGallery_Clicked}"
                                  CommandParameter="1"/>-->
                 <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="1" Margin="3"  Padding="0">
-                <ImageButton    Aspect="AspectFill" x:Name="BeforeImage2"
+                <ImageButton    Aspect="AspectFill" x:Name="BeforeImage2"   Clicked="ImageTapped"
                                />
 
                 </Frame>
                 <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="2" Margin="3" Padding="0">
-                <ImageButton  Aspect="AspectFill" x:Name="BeforeImage3"
+                <ImageButton  Aspect="AspectFill" x:Name="BeforeImage3"   Clicked="ImageTapped"
                                 />
 
                 </Frame>
                 <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="3"  Margin="3" Padding="0">
-                <ImageButton  Aspect="AspectFill" x:Name="BeforeImage4"
+                <ImageButton  Aspect="AspectFill" x:Name="BeforeImage4"   Clicked="ImageTapped"
                                  />
                 </Frame>
         </Grid>
@@ -60,23 +60,23 @@
                  HeightRequest="100"
                   ColumnDefinitions="*,*,*,*" HorizontalOptions="FillAndExpand" >
             <Frame CornerRadius="13"   BorderColor="#c6c1ea"    HasShadow="False" Grid.Column="0" Margin="3" Padding="0">
-                <ImageButton    Aspect="AspectFill"  x:Name="AfterImage1"
+                <ImageButton    Aspect="AspectFill"  x:Name="AfterImage1"  Clicked="ImageTapped"
                                  ></ImageButton>
             </Frame>
             <!--Command="{Binding AddPhotoFromGallery_Clicked}"
                                  CommandParameter="1"/>-->
             <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="1" Margin="3"  Padding="0">
-                <ImageButton     Aspect="AspectFill" x:Name="AfterImage2"
+                <ImageButton     Aspect="AspectFill" x:Name="AfterImage2"  Clicked="ImageTapped"
                                />
 
             </Frame>
             <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="2" Margin="3" Padding="0">
-                <ImageButton    Aspect="AspectFill" x:Name="AfterImage3"
+                <ImageButton    Aspect="AspectFill" x:Name="AfterImage3"  Clicked="ImageTapped"
                                 />
 
             </Frame>
             <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="3"  Margin="3" Padding="0">
-                <ImageButton   Aspect="AspectFill" x:Name="AfterImage4"
+                <ImageButton   Aspect="AspectFill" x:Name="AfterImage4"  Clicked="ImageTapped"
                                  />
             </Frame>
         </Grid>
