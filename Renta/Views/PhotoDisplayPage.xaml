@@ -5,10 +5,11 @@
              x:DataType="ViewModels:PhotoDisplayPageViewModel"
              x:Class="Renta.Views.PhotoDisplayPage"
                Shell.ForegroundColor="Black"
-             Shell.NavBarIsVisible="true"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
              Title=" ">
-    <VerticalStackLayout>
+    <VerticalStackLayout BackgroundColor="Black">
 
-        <Image x:Name="Img" Source="{Binding _imageSource}" Aspect="AspectFill" HorizontalOptions="Center" VerticalOptions="Center" />
+        <Image x:Name="Img" Margin="0,100,0,0" Source="{Binding _imageSource}"  VerticalOptions="Center"  />
     </VerticalStackLayout>
 </ContentPage>
