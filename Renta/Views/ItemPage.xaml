@@ -3,6 +3,7 @@
     x:Class="Renta.ItemPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Renta.Controls"
     xmlns:ViewModels="clr-namespace:Renta.ViewModels"
     x:DataType="ViewModels:ItemPageViewModel"
     xmlns:xcViews="clr-namespace:XCalendar.Maui.Views;assembly=XCalendar.Maui"
@@ -67,7 +68,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
-                
+                    <RowDefinition Height="Auto" />
 
                 </Grid.RowDefinitions>
 
@@ -162,10 +163,33 @@
                 <xcViews:CalendarView x:Name="xCalendar" Grid.Row="6" SelectionType="Single"
                                       DayRangeMinimumDate="{Binding Today}" IsVisible="false"  SelectionAction="Modify"   />
 
-               
-                
-               
-               
+
+                <Grid Grid.Row="7" RowDefinitions="30,*" Margin="5,10,0,0" Padding="0">
+             
+
+                    <CollectionView ItemsSource="{Binding ItemReviewsCollection}"
+                        SelectionMode="None"
+                                Grid.Row="1"
+                                Margin="0,3,5,0"
+                                x:Name="ReviewsCollection"
+                        >
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout
+                                 Orientation="Vertical"
+                                 Span="{OnIdiom Phone=1, Tablet=3, Desktop=3}"
+                                 HorizontalItemSpacing="5"
+                                 VerticalItemSpacing="5" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <controls:ReviewController />
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                </Grid>
+
+
             </Grid>
         </Grid>
     </ScrollView>

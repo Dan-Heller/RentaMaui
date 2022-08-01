@@ -20,7 +20,7 @@ namespace Renta.ViewModels
 
         private UserService _userService { get; set; }
         private TransactionService _transactionService { get; set; }
-
+        private ReviewsService _reviewService { get; set; }
         public DateTime StartDate { get; set; }
 
         public DateTime EndDate { get; set; }
@@ -28,7 +28,7 @@ namespace Renta.ViewModels
         public DateTime Today { get; set; } = DateTime.Now;
 
         public ObservableRangeCollection<DateTime> datesCollection { get; set; }
-
+        public ObservableRangeCollection<ItemReview> ItemReviewsCollection { get; private set; } = new ObservableRangeCollection<ItemReview>();
 
         private string _ItemString;
         public String ItemString
@@ -48,6 +48,11 @@ namespace Renta.ViewModels
             convertItemToViewModel(Item);
         }
 
+        public async Task FetchItemReviews()
+        {
+            ItemReviewsCollection.ReplaceRange(await _reviewService.GetReviewsOnItem(_ItemViewModel.Id));
+        }
+
         private void convertItemToViewModel(Item item)
         {
             _ItemViewModel = new ItemViewModel(item);
@@ -55,11 +60,12 @@ namespace Renta.ViewModels
         }
 
 
-        public ItemPageViewModel(UserService userService, TransactionService transactionService)
+        public ItemPageViewModel(UserService userService, TransactionService transactionService, ReviewsService reviewsService)
         {
             ItemLiked = false; //should be set according to the user liked items in data base/
             _userService = userService;
             _transactionService = transactionService;
+            _reviewService = reviewsService;
         }
 
        

@@ -21,16 +21,20 @@ namespace Renta.Models
 
         public string? ItemId { get; set; }
 
-        public string? Review { get; set; }
+        public string? Review { get ;   set; }
 
+        
 
         public DateTime? DateOfReview { get; set; }
 
+        public float Rating { get => UserRating; }
 
         public UserReview()
         {
 
         }
+
+    
 
         public UserReview(string revieweeId, string reviewerId, int userRating, string transactionId, string itemId, string review)
         {

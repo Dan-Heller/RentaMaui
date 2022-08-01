@@ -26,12 +26,13 @@ public partial class ItemPage : ContentPage
 		}
     }
 
-	protected override void OnAppearing()
+	protected async override void OnAppearing()
 	{
 		base.OnAppearing();
 		(BindingContext as ItemPageViewModel).deserializeString();
+        await (BindingContext as ItemPageViewModel).FetchItemReviews();
 
-	}
+    }
 
 
 

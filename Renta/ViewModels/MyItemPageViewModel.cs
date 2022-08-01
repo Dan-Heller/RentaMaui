@@ -1,6 +1,7 @@
 ﻿using MvvmHelpers;
 using Newtonsoft.Json;
 using Renta.Models;
+using Renta.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,10 @@ namespace Renta.ViewModels
     {
         //private Item _myItem;
         public ItemViewModel _myItemViewModel { get; set; }
-        
+        public ReviewsService _reviewService { get; set; }
+
+        public ObservableRangeCollection<ItemReview> ItemReviewsCollection { get; private set; } = new ObservableRangeCollection<ItemReview>();
+
         private string _MyItemString;
         public String MyItemString
         {
@@ -26,7 +30,18 @@ namespace Renta.ViewModels
             }
         }
 
-     
+        public MyItemPageViewModel(ReviewsService reviewsService)
+        {
+            _reviewService = reviewsService;
+        }
+
+
+        public async Task FetchItemReviews()
+        {
+            ItemReviewsCollection.ReplaceRange(await _reviewService.GetReviewsOnItem(_myItemViewModel.Id));
+        }
+
+
         public void deserializeString()
         {
             var Item = JsonConvert.DeserializeObject<Item>(_MyItemString);

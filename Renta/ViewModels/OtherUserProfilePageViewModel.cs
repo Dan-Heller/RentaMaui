@@ -16,7 +16,8 @@ namespace Renta.ViewModels
         public User _OtherUser { get; set; }
         public string FullName { get; set; }
         private UserService _userService;
-        
+        private ReviewsService _reviewService;
+
         private string _OtherUserId;
         public String UserId
         {
@@ -33,17 +34,26 @@ namespace Renta.ViewModels
         private List<ItemViewModel> ItemsViewModel;
         private ItemService _itemService;
 
+        public ObservableRangeCollection<UserReview> UserReviewsCollection { get; private set; } = new ObservableRangeCollection<UserReview>();
 
 
-        public OtherUserProfilePageViewModel(UserService userService, ItemService itemService)
+
+        public OtherUserProfilePageViewModel(UserService userService, ItemService itemService, ReviewsService reviewsService)
         {
             _userService = userService;
             _itemService = itemService;
+            _reviewService = reviewsService;
         }
 
         internal async Task InitializeAsync()
         {
             await FetchUserAsync();
+            await FetchUserReviews();
+        }
+
+        private async Task FetchUserReviews()
+        {
+            UserReviewsCollection.ReplaceRange(await _reviewService.GetReviewsOnUser(_OtherUser.Id));
         }
 
         private async Task FetchUserAsync()

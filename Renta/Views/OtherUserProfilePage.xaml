@@ -45,16 +45,33 @@
             </Grid>
         </Grid>
 
-        <Grid Grid.Row="1" RowDefinitions="30,*" Margin="10,10,0,0" Padding="0">
-            <Frame Grid.Row="0" Margin="0,5,10,0" Padding="0">
-                <controls:OtherUserItemsControl></controls:OtherUserItemsControl>
-            </Frame>
+        <Grid Grid.Row="1" RowDefinitions="30,*" Margin="5,10,0,0" Padding="0">
+            <!--<Frame Grid.Row="0" Margin="0,5,10,0" Padding="0">
+                <controls:OtherUserItemsControl ></controls:OtherUserItemsControl>
+            </Frame>-->
+
+                <Frame Grid.Row="0" Margin="0,5,10,0" Padding="0">
+                    <Grid  ColumnDefinitions="*,*"   >
+                        <Label x:Name="Items"  Text="Items"   Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"  TextColor="Gray" >
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                            </Label.GestureRecognizers>
+
+                        </Label>
+                        <Label x:Name="Reviews" Text="Reviews"   Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Gray" >
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Grid>
+                </Frame>
 
 
                 <CollectionView ItemsSource="{Binding ItemsCollection}"
                         SelectionMode="None"
                                 Grid.Row="1"
                                 Margin="0,3,0,0"
+                                x:Name="ItemsCollection"
                         >
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout
@@ -71,22 +88,27 @@
                 </CollectionView>
 
 
+                <CollectionView ItemsSource="{Binding UserReviewsCollection}"
+                        SelectionMode="None"
+                                Grid.Row="1"
+                                Margin="0,3,5,0"
+                                x:Name="ReviewsCollection"
+                        >
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout
+                                 Orientation="Vertical"
+                                 Span="{OnIdiom Phone=1, Tablet=3, Desktop=3}"
+                                 HorizontalItemSpacing="5"
+                                 VerticalItemSpacing="5" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <controls:ReviewController />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
 
-                <!--<Grid Grid.Row="1" ColumnDefinitions="*,*,*" RowDefinitions="*,*,*,*">
-                <controls:ItemCard Grid.Column="0" Grid.Row="0"/>
-                <controls:ItemCard Grid.Column="1" Grid.Row="0"/>
-                <controls:ItemCard Grid.Column="2" Grid.Row="0"/>
-                <controls:ItemCard Grid.Column="0" Grid.Row="1"/>
-                <controls:ItemCard Grid.Column="1" Grid.Row="1"/>
-                <controls:ItemCard Grid.Column="2" Grid.Row="1"/>
-                <controls:ItemCard Grid.Column="0" Grid.Row="2"/>
-                <controls:ItemCard Grid.Column="1" Grid.Row="2"/>
-                <controls:ItemCard Grid.Column="2" Grid.Row="2"/>
-                <controls:ItemCard Grid.Column="0" Grid.Row="3"/>
-                <controls:ItemCard Grid.Column="1" Grid.Row="3"/>
-                <controls:ItemCard Grid.Column="2" Grid.Row="3"/>
-            </Grid>-->
-        </Grid>
+            </Grid>
     </Grid>
     </ScrollView>
 </ContentPage>

@@ -59,7 +59,7 @@ namespace Renta.Services
         {
             HttpResponseMessage response = null;
 
-            string UserId = _userService.LoggedInUser.Id;
+            
             response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Reviews/item/" + itemId));
 
             string str = await response.Content.ReadAsStringAsync();
@@ -67,13 +67,13 @@ namespace Renta.Services
             return itemReviews;
         }
 
-        public async Task<List<UserReview>> GetReviewsOnUser(string userReview)
+        public async Task<List<UserReview>> GetReviewsOnUser(string userId)
         {
 
             HttpResponseMessage response = null;
 
-            string UserId = _userService.LoggedInUser.Id;
-            response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Reviews/user/" + userReview));
+           
+            response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Reviews/user/" + userId));
 
             string str = await response.Content.ReadAsStringAsync();
             var userReviews = JsonConvert.DeserializeObject<List<UserReview>>(str);

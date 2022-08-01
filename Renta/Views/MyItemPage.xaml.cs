@@ -14,11 +14,13 @@ public partial class MyItemPage : ContentPage
 	}
 
 
-	protected override void OnAppearing()
+	protected async override void OnAppearing()
 	{
 		base.OnAppearing();
 		(BindingContext as MyItemPageViewModel).deserializeString();
-		
-	}
-	
+        await(BindingContext as MyItemPageViewModel).FetchItemReviews();
+    }
+
+   
+
 }

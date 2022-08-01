@@ -23,6 +23,7 @@ namespace Renta.Models
 
         public string? Review { get; set; }
 
+        public float Rating { get => ItemRating; }
 
         public DateTime? DateOfReview { get; set; }
 
