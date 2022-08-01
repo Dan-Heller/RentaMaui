@@ -13,6 +13,7 @@ namespace Renta.Models
         public string LastName { get; set; }
         public string ProfilePhotoUrl { get; set; }
 
+        public float UserRating { get; set; }
         public int Coins { get; set; }
         public string Address { get; set; }
         public string Id { get; set; }

@@ -44,6 +44,12 @@ namespace Renta.Models
 
         public bool SeekerAcceptedCompletion  = false;
 
+        public bool OwnerReviewedSeeker = false;
+
+        public bool SeekerReviewedOwner = false;
+
+        public bool SeekerReviewedItem = false;
+
         public Transaction()
         {
 

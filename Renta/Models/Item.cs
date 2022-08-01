@@ -16,6 +16,8 @@ namespace Renta.Models
 
         public string? Category { get; set; }
 
+        public float ItemRating { get; set; }
+
         public int? PricePerDay { get; set; }
 
         public string? Description { get; set; }

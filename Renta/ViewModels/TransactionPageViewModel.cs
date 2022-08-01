@@ -16,10 +16,18 @@ namespace Renta.ViewModels
 
         public Item Item { get; set; }
         private ItemService _itemService;
+        private UserService _userService;
+        private ReviewsService _reviewService;
+        public string UserReview { get; set; } = string.Empty;
+        public string ItemReview { get; set; } = string.Empty;
+        public string SelectedUserRating { get; set; } = "5";
+        public string SelectedItemRating { get; set; } = "5";
 
-        public TransactionPageViewModel(ItemService itemService)
+        public TransactionPageViewModel(ItemService itemService, UserService userService, ReviewsService reviewsService)
         {
             _itemService = itemService;
+            _userService = userService;
+            _reviewService = reviewsService;
         }
 
         public string DatesAsString { get; set; }
@@ -39,6 +47,55 @@ namespace Renta.ViewModels
         }
 
       
+
+        public async Task CreateUserReview()
+        {
+           
+            UserReview newUserReview = new UserReview();
+            newUserReview.ItemId = _transaction.ItemId;
+            newUserReview.TransactionId = _transaction.Id;
+            newUserReview.ReviewerId = _userService.LoggedInUser.Id;
+            newUserReview.Review = UserReview;
+            newUserReview.UserRating = float.Parse(SelectedUserRating);
+            newUserReview.DateOfReview = DateTime.Now;
+
+            if(_userService.LoggedInUser.Id == _transaction.ItemOwner)
+            {
+                newUserReview.RevieweeId = _transaction.ItemSeeker;
+              
+            }
+            else
+            {
+                newUserReview.RevieweeId = _transaction.ItemOwner;
+                
+            }
+
+            await _reviewService.CreateUserReview(newUserReview);
+
+            
+        }
+
+
+        //public Command ItemReviewButtonClicked
+        //=> new Command(async () => await CreateItemReview());
+
+        public async Task CreateItemReview()
+        {
+
+            ItemReview newItemReview = new ItemReview();
+            newItemReview.ItemId = _transaction.ItemId;
+            newItemReview.TransactionId = _transaction.Id;
+            newItemReview.SeekerId = _userService.LoggedInUser.Id;
+            newItemReview.Review = ItemReview;
+            newItemReview.ItemRating = float.Parse(SelectedUserRating);
+            newItemReview.OwnerId = _transaction.ItemOwner;
+            newItemReview.DateOfReview = DateTime.Now;
+           
+            await _reviewService.CreateItemReview(newItemReview);
+
+        }
+
+
 
 
         public async Task  deserializeString()

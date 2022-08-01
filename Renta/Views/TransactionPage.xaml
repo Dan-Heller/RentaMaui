@@ -7,28 +7,30 @@
              Shell.ForegroundColor="Black"
     Shell.NavBarIsVisible="true"
              Title="TransactionPage">
-    <VerticalStackLayout>
-        <Image
+
+    <ScrollView Padding="0,0,0,0"  Orientation="Vertical" >
+        <VerticalStackLayout>
+            <Image
                    
                     HeightRequest="200"
                     Aspect="AspectFit"
                     Source="{Binding Item.ImagesUrls[0]}"
                     VerticalOptions="Start" />
-        <Label 
+            <Label 
             TextColor="Black"
             FontSize="35"
             Text="{Binding Item.Name}"
             VerticalOptions="Start" 
             HorizontalOptions="Center" />
 
-        <Label TextColor="Black" 
+            <Label TextColor="Black" 
             Text="{Binding DatesAsString}"
              FontSize="20"
             HorizontalOptions="Center" >
-        </Label>
-       
-       <Label Text="Image of previous condition"  x:Name="BeforeConditionLabel"/>
-        <Grid Grid.Row="1"  x:Name="BeforeConditionGrid" 
+            </Label>
+
+            <Label Text="Image of previous condition"  x:Name="BeforeConditionLabel"/>
+            <Grid Grid.Row="1"  x:Name="BeforeConditionGrid" 
                  
                  HeightRequest="100"
                   ColumnDefinitions="*,*,*,*" HorizontalOptions="FillAndExpand" >
@@ -39,51 +41,111 @@
                 <!--Command="{Binding AddPhotoFromGallery_Clicked}"
                                  CommandParameter="1"/>-->
                 <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="1" Margin="3"  Padding="0">
-                <ImageButton    Aspect="AspectFill" x:Name="BeforeImage2"   Clicked="ImageTapped"
+                    <ImageButton    Aspect="AspectFill" x:Name="BeforeImage2"   Clicked="ImageTapped"
                                />
 
                 </Frame>
                 <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="2" Margin="3" Padding="0">
-                <ImageButton  Aspect="AspectFill" x:Name="BeforeImage3"   Clicked="ImageTapped"
+                    <ImageButton  Aspect="AspectFill" x:Name="BeforeImage3"   Clicked="ImageTapped"
                                 />
 
                 </Frame>
                 <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="3"  Margin="3" Padding="0">
-                <ImageButton  Aspect="AspectFill" x:Name="BeforeImage4"   Clicked="ImageTapped"
+                    <ImageButton  Aspect="AspectFill" x:Name="BeforeImage4"   Clicked="ImageTapped"
                                  />
                 </Frame>
-        </Grid>
+            </Grid>
 
-        <Label Text="Image of complition condition"  x:Name="AfterConditionLabel"/>
-        <Grid   x:Name="AfterConditionGrid" 
+            <Label Text="Image of complition condition"  x:Name="AfterConditionLabel"/>
+            <Grid   x:Name="AfterConditionGrid" 
                  
                  HeightRequest="100"
                   ColumnDefinitions="*,*,*,*" HorizontalOptions="FillAndExpand" >
-            <Frame CornerRadius="13"   BorderColor="#c6c1ea"    HasShadow="False" Grid.Column="0" Margin="3" Padding="0">
-                <ImageButton    Aspect="AspectFill"  x:Name="AfterImage1"  Clicked="ImageTapped"
+                <Frame CornerRadius="13"   BorderColor="#c6c1ea"    HasShadow="False" Grid.Column="0" Margin="3" Padding="0">
+                    <ImageButton    Aspect="AspectFill"  x:Name="AfterImage1"  Clicked="ImageTapped"
                                  ></ImageButton>
-            </Frame>
-            <!--Command="{Binding AddPhotoFromGallery_Clicked}"
+                </Frame>
+                <!--Command="{Binding AddPhotoFromGallery_Clicked}"
                                  CommandParameter="1"/>-->
-            <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="1" Margin="3"  Padding="0">
-                <ImageButton     Aspect="AspectFill" x:Name="AfterImage2"  Clicked="ImageTapped"
+                <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="1" Margin="3"  Padding="0">
+                    <ImageButton     Aspect="AspectFill" x:Name="AfterImage2"  Clicked="ImageTapped"
                                />
 
-            </Frame>
-            <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="2" Margin="3" Padding="0">
-                <ImageButton    Aspect="AspectFill" x:Name="AfterImage3"  Clicked="ImageTapped"
+                </Frame>
+                <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="2" Margin="3" Padding="0">
+                    <ImageButton    Aspect="AspectFill" x:Name="AfterImage3"  Clicked="ImageTapped"
                                 />
 
-            </Frame>
-            <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="3"  Margin="3" Padding="0">
-                <ImageButton   Aspect="AspectFill" x:Name="AfterImage4"  Clicked="ImageTapped"
+                </Frame>
+                <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="3"  Margin="3" Padding="0">
+                    <ImageButton   Aspect="AspectFill" x:Name="AfterImage4"  Clicked="ImageTapped"
                                  />
+                </Frame>
+            </Grid>
+
+            <Frame BorderColor="Black" Margin="5" Padding="8"  x:Name="UserReviewFrame"  >
+                <Grid RowDefinitions="auto,auto,auto,auto,auto" Margin="0" Padding="0">
+                    <Label Grid.Row="0" Text="Review the other user" Padding="0" TextDecorations="Underline"/>
+                    <Grid Grid.Row="1" RowDefinitions="*"  ColumnDefinitions="*,*" Padding="0">
+                        <Label Text="Give rate: " Grid.Row="0" Grid.Column="0" Padding="0,10,0,10"/>
+                        <Picker x:Name="UserRatepicker"  Grid.Row="0" Grid.Column="1" SelectedIndex="4" Margin="0"
+                        Title= "Rating"   SelectedItem="{Binding SelectedUserRating}">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>1</x:String>
+                                    <x:String>2</x:String>
+                                    <x:String>3</x:String>
+                                    <x:String>4</x:String>
+                                    <x:String>5</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                    </Grid>
+                    <Label Grid.Row="2" Text="Write your review: "  Padding="0" Margin="0"/>
+                    <Editor  Grid.Row="3" Placeholder="Your text" PlaceholderColor="LightGray" 
+                    FontSize="15" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Start"
+                   HeightRequest="100" WidthRequest="370" BackgroundColor="WhiteSmoke" IsSpellCheckEnabled="false" MaxLength="250"
+                     Margin="0,0,0,0" AutoSize="TextChanges"  Text="{Binding UserReview, Mode=TwoWay}"
+                    />
+                    <Button Text="Send review" Grid.Row="4" WidthRequest="100" Margin="5" Clicked="UserReview_Sent"/>
+                </Grid>
             </Frame>
-        </Grid>
+
+            <Frame BorderColor="Black" Margin="5" Padding="8" x:Name="ItemReviewFrame" >
+                <Grid  RowDefinitions="auto,auto,auto,auto,auto" Margin="0" Padding="0">
+                    <Label Grid.Row="0" Text="Review the item" Padding="0" TextDecorations="Underline"/>
+                    <Grid Grid.Row="1" RowDefinitions="*"  ColumnDefinitions="*,*" Padding="0">
+                        <Label Text="Give rate: " Grid.Row="0" Grid.Column="0" Padding="0,10,0,10"/>
+                        <Picker x:Name="ItemRatingPicker" Grid.Row="0" Grid.Column="1" SelectedIndex="4" Margin="0" Title="Item Rating" SelectedItem="{Binding SelectedItemRating}">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>1</x:String>
+                                    <x:String>2</x:String>
+                                    <x:String>3</x:String>
+                                    <x:String>4</x:String>
+                                    <x:String>5</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                    </Grid>
+                    <Label Grid.Row="2" Text="Write your review: "  Padding="0" Margin="0"/>
+                    <Editor  Grid.Row="3" Placeholder="Your text" PlaceholderColor="LightGray" 
+                    FontSize="15" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Start"
+                   HeightRequest="100" WidthRequest="370" BackgroundColor="WhiteSmoke" IsSpellCheckEnabled="false" MaxLength="250"
+                     Margin="0,0,0,0" AutoSize="TextChanges"  Text="{Binding ItemReview, Mode=TwoWay}"
+                    />
+                    <Button Text="Send review" Grid.Row="4" WidthRequest="100" Margin="5"  Clicked="ItemReview_Sent"/>
+                </Grid>
+            </Frame>
 
 
-        <!--<ScrollView Orientation="Horizontal">
+
+
+
+
+            <!--<ScrollView Orientation="Horizontal">
             <StackLayout BindingContext="{Binding _transaction.}"
         </ScrollView>-->
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
