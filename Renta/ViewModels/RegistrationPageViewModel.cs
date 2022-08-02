@@ -24,6 +24,10 @@ namespace Renta.ViewModels
         public RegistrationPageViewModel(UserService userService)
         {
             m_userService = userService;
+            password = string.Empty;
+            email = string.Empty;
+            FirstName = string.Empty;
+            LastName = string.Empty;
         }
 
         public string Password
@@ -56,10 +60,13 @@ namespace Renta.ViewModels
 
         private async Task registerUser()
         {
-            RegisterDto registerDto = new RegisterDto(email, password,FirstName, LastName);
-            await m_userService.RegisterUser(registerDto);
+            if(password.Length > 0 && email.Length > 0  && FirstName.Length > 0 && LastName.Length > 0)
+            {
+                RegisterDto registerDto = new RegisterDto(email, password, FirstName, LastName);
+                await m_userService.RegisterUser(registerDto);
 
-            await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+                await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+            }
         }
     }
 }

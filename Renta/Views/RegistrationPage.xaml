@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Renta.RegistrationPage"
              Title="RegistrationPage"
-             Shell.ForegroundColor="black"
+             Shell.ForegroundColor="Black"
              Shell.NavBarIsVisible="true"
              BackgroundColor="White">
     <ContentPage.Content>
