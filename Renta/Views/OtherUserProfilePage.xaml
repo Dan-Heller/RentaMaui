@@ -30,14 +30,19 @@
             <!-- Profile name & general description-->
                 <Label Grid.Row="1" Text="{Binding FullName}" FontAttributes="Bold" TextColor="#383b67" HorizontalTextAlignment="Center" Margin="0,10,0,0" FontSize="22" Padding="0"/>
 
-            <Grid Grid.Row="2" ColumnDefinitions="Auto,Auto,Auto,Auto,Auto" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,20,0,0" >
+            <!--<Grid Grid.Row="2" ColumnDefinitions="Auto,Auto,Auto,Auto,Auto" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,20,0,0" >
                 <Image Grid.Column="0" Source="blankstar" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center" />
                 <Image Grid.Column="1" Source="blankstar" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center" />
                 <Image Grid.Column="2" Source="blankstar" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center" />
                 <Image Grid.Column="3" Source="blankstar" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center" />
                 <Image Grid.Column="4" Source="blankstar" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center" />
 
-            </Grid>
+            </Grid>-->
+
+                <Grid Grid.Row="2" ColumnDefinitions="auto, auto" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,20,0,0"  >
+                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding _OtherUser.RatingAsString}"  FontSize="25" TextColor="Black"/>
+                    <Image Source="blankstar" Grid.Row="0" Grid.Column="1" Margin="0,0,7,0"/>
+                </Grid>
 
             <Grid Grid.Row="3" ColumnDefinitions="Auto,Auto" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,0">
                 <Image Grid.Column="0" Source="locationicon" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center" />

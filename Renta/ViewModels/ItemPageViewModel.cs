@@ -27,6 +27,8 @@ namespace Renta.ViewModels
 
         public DateTime Today { get; set; } = DateTime.Now;
 
+       
+
         public ObservableRangeCollection<DateTime> datesCollection { get; set; }
         public ObservableRangeCollection<ItemReview> ItemReviewsCollection { get; private set; } = new ObservableRangeCollection<ItemReview>();
 
@@ -51,7 +53,15 @@ namespace Renta.ViewModels
         public async Task FetchItemReviews()
         {
             ItemReviewsCollection.ReplaceRange(await _reviewService.GetReviewsOnItem(_ItemViewModel.Id));
+            //List<ItemReview> itemReviews = await _reviewService.GetReviewsOnItem(_ItemViewModel.Id);
+            //ItemReviewsViewModel = await ConvertReviewsToViewModels(itemReviews);
+            //ItemReviewsCollection.ReplaceRange(ItemReviewsViewModel);
+            ////OnPropertyChanged(nameof(ObservableCollectionCount));
         }
+
+      
+
+
 
         private void convertItemToViewModel(Item item)
         {

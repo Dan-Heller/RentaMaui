@@ -69,6 +69,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
 
                 </Grid.RowDefinitions>
 
@@ -94,7 +95,13 @@
                         FontSize="16"
                         Text="{Binding _ItemViewModel.PricePerDay}"
                         TextColor="Black" />
-                    
+
+
+                    <Grid Grid.Row="0" Grid.Column="2" ColumnDefinitions="auto, auto" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,0"  >
+                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding  _ItemViewModel.Item.RatingAsString}"  FontSize="25" TextColor="Black"/>
+                        <Image Source="blankstar" Grid.Row="0" Grid.Column="1" Margin="0,0,0,0"/>
+                    </Grid>
+
                     <!-- item owner profile link -->
 
                     <Image  
@@ -163,8 +170,17 @@
                 <xcViews:CalendarView x:Name="xCalendar" Grid.Row="6" SelectionType="Single"
                                       DayRangeMinimumDate="{Binding Today}" IsVisible="false"  SelectionAction="Modify"   />
 
+                <Label
+                    Grid.Row="7"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Margin="0,0,0,0"
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    Text="Reviews:"
+                    TextColor="Black" />
 
-                <Grid Grid.Row="7" RowDefinitions="30,*" Margin="5,10,0,0" Padding="0">
+                <Grid Grid.Row="8" RowDefinitions="30,*" Margin="5,0,0,0" Padding="0">
              
 
                     <CollectionView ItemsSource="{Binding ItemReviewsCollection}"
@@ -182,7 +198,7 @@
                         </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <controls:ReviewController />
+                                <controls:ItemReviewController />
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>

@@ -14,6 +14,9 @@ namespace Renta.Models
         public string ProfilePhotoUrl { get; set; }
 
         public float UserRating { get; set; }
+
+        public string RatingAsString { get => UserRating.ToString("0.0"); }
+
         public int Coins { get; set; }
         public string Address { get; set; }
         public string Id { get; set; }

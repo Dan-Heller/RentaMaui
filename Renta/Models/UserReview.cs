@@ -15,6 +15,8 @@ namespace Renta.Models
 
         public string? ReviewerId { get; set; }
 
+        public string? ReviewerName { get; set; }
+
         public float UserRating { get; set; }
 
         public string? TransactionId { get; set; }

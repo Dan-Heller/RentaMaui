@@ -58,8 +58,9 @@ namespace Renta.ViewModels
             newUserReview.Review = UserReview;
             newUserReview.UserRating = float.Parse(SelectedUserRating);
             newUserReview.DateOfReview = DateTime.Now;
+            newUserReview.ReviewerName = _userService.LoggedInUser.FirstName + " " + _userService.LoggedInUser.LastName;
 
-            if(_userService.LoggedInUser.Id == _transaction.ItemOwner)
+            if (_userService.LoggedInUser.Id == _transaction.ItemOwner)
             {
                 newUserReview.RevieweeId = _transaction.ItemSeeker;
               
@@ -90,7 +91,9 @@ namespace Renta.ViewModels
             newItemReview.ItemRating = float.Parse(SelectedUserRating);
             newItemReview.OwnerId = _transaction.ItemOwner;
             newItemReview.DateOfReview = DateTime.Now;
-           
+            newItemReview.SeekerName = _userService.LoggedInUser.FirstName + " " + _userService.LoggedInUser.LastName;
+
+
             await _reviewService.CreateItemReview(newItemReview);
 
         }

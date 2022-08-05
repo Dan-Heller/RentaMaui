@@ -18,6 +18,8 @@ namespace Renta.Models
 
         public float ItemRating { get; set; }
 
+        public string RatingAsString { get => ItemRating.ToString("0.0"); }
+
         public int? PricePerDay { get; set; }
 
         public string? Description { get; set; }

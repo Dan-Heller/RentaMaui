@@ -148,6 +148,9 @@
 	  <MauiXaml Update="Controls\HeaderControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Controls\ItemReviewController.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Controls\RentalTransactionControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -23,7 +23,7 @@ namespace Renta.ViewModels
 
         public string ProfileImageUrl { get; set; }
 
-        private User _LoggedUser;
+        public User _LoggedUser { get; set; }
 
         private UserService _userService;
 
