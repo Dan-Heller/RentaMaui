@@ -39,4 +39,11 @@ public partial class SearchPage : ContentPage
 		//	await (BindingContext as AddItemPageViewModel).TakeAPhoto();
 		//}
 	}
+
+	private async void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+	{
+
+		await (BindingContext as SearchPageViewModel).FetchItemsByText();
+
+    }
 }

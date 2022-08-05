@@ -64,7 +64,7 @@ namespace Renta.ViewModels
             DatesAsString = StartDate.Value.Date.ToString("dd/MM/yyyy") + "\n-  " + EndDate.Value.Date.ToString("dd/MM/yyyy");
 
 
-            if(transaction.Status == ETransactionStatus.Approved || transaction.Status == ETransactionStatus.Active)
+            if(transaction.Status == ETransactionStatus.Approved || transaction.Status == ETransactionStatus.Active || transaction.Status == ETransactionStatus.Archived || transaction.Status == ETransactionStatus.Canceled)
             {
                 NeedCancelIcon = false;
             }

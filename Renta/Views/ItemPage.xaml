@@ -6,6 +6,7 @@
     xmlns:controls="clr-namespace:Renta.Controls"
     xmlns:ViewModels="clr-namespace:Renta.ViewModels"
     x:DataType="ViewModels:ItemPageViewModel"
+   
     xmlns:xcViews="clr-namespace:XCalendar.Maui.Views;assembly=XCalendar.Maui"
     Title="ItemPage"
     BackgroundColor="White"

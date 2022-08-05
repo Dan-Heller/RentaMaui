@@ -34,6 +34,8 @@ namespace Renta.ViewModels
 
         public Transaction _transaction { get; set; }
 
+        public string StatusAsString { get => _transaction.Status.ToString(); }
+
         private string _TransactionString;
 
         public String TransactionString

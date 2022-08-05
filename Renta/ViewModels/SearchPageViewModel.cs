@@ -18,6 +18,8 @@ namespace Renta.ViewModels
 
         private List<ItemViewModel> ItemsViewModel;
 
+        public string SearchText { get; set; } = string.Empty;
+
         private ItemService _itemService;
 
         public SearchPageViewModel(ItemService itemService)
@@ -32,7 +34,7 @@ namespace Renta.ViewModels
 
         private async Task FetchAsync()
         {
-            Items = await _itemService.GetItems();
+            Items = await _itemService.GetOtherUsersItems();
 
 
             //if (podcastsModels == null)
@@ -68,7 +70,13 @@ namespace Renta.ViewModels
             ItemsCollection.ReplaceRange(ItemsVM);
         }
 
-
+        public async Task FetchItemsByText()
+        {
+            var newList = Items.FindAll(x => x.Name.ToLower().Contains(SearchText.Trim().ToLower()));
+            ItemsViewModel = ConvertToViewModels(newList);
+            UpdateItemsCollection(ItemsViewModel);
+            OnPropertyChanged(nameof(ObservableCollectionCount));
+        }
 
 
 

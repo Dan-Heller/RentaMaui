@@ -29,6 +29,12 @@
             HorizontalOptions="Center" >
             </Label>
 
+            <Label TextColor="Black" 
+            Text="{Binding  _transaction.Status}"
+             FontSize="20"
+            HorizontalOptions="Center" >
+            </Label>
+
             <Label Text="Image of previous condition"  x:Name="BeforeConditionLabel"/>
             <Grid Grid.Row="1"  x:Name="BeforeConditionGrid" 
                  

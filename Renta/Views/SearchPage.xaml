@@ -9,7 +9,7 @@
         
         <Grid RowDefinitions="50,50" HeightRequest="100" >
             <Frame CornerRadius="13"   BorderColor="LightGray"    HasShadow="True" Grid.Row="0" Margin="5" Padding="0">
-                <SearchBar Placeholder="Search items..."  HorizontalOptions="StartAndExpand" TextColor="Black"  TextTransform="Lowercase"
+                <SearchBar Placeholder="Search items..." Text="{Binding SearchText, Mode=TwoWay}" HorizontalOptions="StartAndExpand" TextColor="Black"  TextTransform="Lowercase" TextChanged="SearchBar_TextChanged"
            FontSize="Medium"
            FontAttributes="Italic"/>
             </Frame>
