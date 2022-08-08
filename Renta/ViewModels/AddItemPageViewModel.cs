@@ -137,6 +137,15 @@ var stream = await result.OpenReadAsync();
 
             // MaxDaysPerRent != null && int.Parse(MaxDaysPerRent) >= 1 &&
 
+            if (int.Parse(CoinsPerDay) > 100)
+            {
+                CoinsPerDay = "0";
+                OnPropertyChanged(nameof(CoinsPerDay));
+                await Application.Current.MainPage.DisplayAlert(" ", "Price should not be more than 2000.", "close");
+                return;
+            }
+
+
             if (ItemName != null && SelectedCategory != null && chosenImagesFilesResult.Count > 0) //check minimal information inserted.
             {
                 foreach (var fileresult in chosenImagesFilesResult)
@@ -154,6 +163,7 @@ var stream = await result.OpenReadAsync();
                 NewItem.PricePerDay = int.Parse(CoinsPerDay);
                 NewItem.OwnerId = _userService.LoggedInUser.Id;
                 NewItem.UploadDate = DateTime.Now;
+                NewItem.City = _userService.LoggedInUser.Address;
 
 
                 await _itemService.UploadNewItem(NewItem);

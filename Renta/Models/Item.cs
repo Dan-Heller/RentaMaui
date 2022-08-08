@@ -24,6 +24,8 @@ namespace Renta.Models
 
         public string? Description { get; set; }
 
+        public string? City { get; set; }
+
         public List<string>? ImagesUrls { get; set; } = new List<string>();
 
         public List<DatesRange>? UnAvailableDates { get; set; } = new List<DatesRange>();

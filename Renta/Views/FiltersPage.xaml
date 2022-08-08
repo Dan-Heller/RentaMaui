@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Renta.FiltersPage"
+             xmlns:sliders="clr-namespace:Syncfusion.Maui.Sliders;assembly=Syncfusion.Maui.Sliders"
              Title="Filters"
                 Shell.ForegroundColor="Black"
              Shell.NavBarIsVisible="true"
@@ -9,11 +10,11 @@
               Shell.TitleColor="MediumPurple"
              BackgroundColor="White">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Show" />
+        <ToolbarItem Text="Show"  Clicked="Show_Clicked"/>
     </ContentPage.ToolbarItems>
 
     <StackLayout>
-        <Grid RowDefinitions="*,*,*">
+        <Grid RowDefinitions="*,*,*,*">
             <Label 
                Text="Price range"
                FontSize="Medium"
@@ -21,8 +22,24 @@
                VerticalOptions="CenterAndExpand" 
                    Grid.Row="0"/>
 
-            <Slider  Maximum="360" 
-                 Grid.Row="2" />
+            <sliders:SfRangeSlider x:Name="PriceSlider"  Grid.Row="1"
+                       Minimum="0" 
+                       Maximum="100" 
+                       RangeStart="0"  
+                       RangeEnd="100"
+                       Interval="10" 
+                       ShowLabels="True"
+                                    
+                                    >
+            </sliders:SfRangeSlider>
+            <!--<Slider  Maximum="360" 
+                 Grid.Row="2" />-->
+
+            <Label Text="City: " Grid.Row="2"  Padding="0,10,0,10"/>
+            <Picker x:Name="CityPicker" Grid.Row="3"  SelectedIndex="4" Margin="0" Title="Select a city" 
+                ItemsSource="{Binding Cities}" 
+                >
+            </Picker>
 
         </Grid>
 

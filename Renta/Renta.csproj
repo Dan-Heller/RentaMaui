@@ -102,6 +102,7 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+		<PackageReference Include="Syncfusion.Maui.Sliders" Version="20.2.43" />
 		<PackageReference Include="XCalendar.Maui" Version="3.0.0-pre1" />
 	</ItemGroup>
 

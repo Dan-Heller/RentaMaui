@@ -45,4 +45,6 @@ public partial class AddItemPage : ContentPage
             (BindingContext as AddItemPageViewModel).RemoveImage(ImageId);
         }
     }
+
+   
 }

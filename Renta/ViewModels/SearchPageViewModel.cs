@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Renta.ViewModels
 {
-    [QueryProperty(nameof(CategoryString), "categoryStr")]
+    //[QueryProperty(nameof(CategoryString), "categoryStr")]
     public class SearchPageViewModel : BaseViewModel
     {
         private List<Item> Items = new List<Item>();
@@ -24,28 +24,30 @@ namespace Renta.ViewModels
 
         public string SearchText { get; set; } = string.Empty;
 
-       
+        private SearchPageStateService _searchPageStateService;
 
         private ItemService _itemService;
 
-        private string _CategoryString;
-        public String CategoryString
-        {
-            get => _CategoryString;
-            set
-            {
-                _CategoryString = Uri.UnescapeDataString(value ?? string.Empty);
+        private string CategoryString;
+        //public String CategoryString
+        //{
+        //    get => _CategoryString;
+        //    set
+        //    {
+        //        _CategoryString = Uri.UnescapeDataString(value ?? string.Empty);
 
-            }
-        }
-
-
+        //    }
+        //}
 
 
-        public SearchPageViewModel(ItemService itemService)
+
+
+        public SearchPageViewModel(ItemService itemService, SearchPageStateService searchPageStateService)
         {
             _itemService = itemService;
+            _searchPageStateService = searchPageStateService;
             
+
         }
 
         internal async Task InitializeAsync()
@@ -56,6 +58,7 @@ namespace Renta.ViewModels
         private async Task FetchAsync()
         {
             Items = await _itemService.GetOtherUsersItems();
+            CategoryString = _searchPageStateService._CategoryString;
 
 
             //if (podcastsModels == null)
@@ -70,10 +73,13 @@ namespace Renta.ViewModels
 
 
             ItemsViewModelFiltered = ItemsViewModel = ConvertToViewModels(Items);
-            UpdateItemsCollection(ItemsViewModel);
-            OnPropertyChanged(nameof(ObservableCollectionCount));
+           
 
             FilterByCategory();
+            FilterByPriceRange();
+            FilterByCity();
+            UpdateItemsCollection(ItemsViewModelFiltered);
+            OnPropertyChanged(nameof(ObservableCollectionCount));
 
         }
 
@@ -158,11 +164,24 @@ namespace Renta.ViewModels
                     ItemsViewModelFiltered = ItemsViewModel.FindAll(item => item.Category == Ecategories.Sport.ToString()).ToList();
                     break;
             }
-            UpdateItemsCollection(ItemsViewModelFiltered);
-            OnPropertyChanged(nameof(ObservableCollectionCount));
+      
         }
 
-      
+        public void FilterByPriceRange()
+        {
+            ItemsViewModelFiltered = ItemsViewModelFiltered.FindAll(item => item.PricePerDay >= _searchPageStateService.PriceRangeStart && item.PricePerDay <= _searchPageStateService.PriceRangeEnd).ToList();
+        }
+
+        public void FilterByCity()
+        {
+            if(_searchPageStateService.SelectedCity != "All")
+            {
+                ItemsViewModelFiltered = ItemsViewModelFiltered.FindAll(item => item.Item.City == _searchPageStateService.SelectedCity).ToList();
+            }
+        }
+
+
+
 
 
 

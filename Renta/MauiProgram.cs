@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
 using System.Reflection;
 using Renta.Views;
+using Syncfusion.Maui.Core.Hosting;
 
 namespace Renta;
 
@@ -16,7 +17,8 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
-			.ConfigureFonts(fonts =>
+            .ConfigureSyncfusionCore()
+            .ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 			});
@@ -44,6 +46,7 @@ public static class MauiProgram
 		builder.Services.AddSingleton<ItemService>();
 		builder.Services.AddSingleton<TransactionService>();
         builder.Services.AddSingleton<ReviewsService>();
+        builder.Services.AddSingleton<SearchPageStateService>();
 
         builder.Services.AddTransient<LoginPage>();
 		builder.Services.AddTransient<LoginPageViewModel>(); //maybe shouldnt be singleton ...
@@ -65,9 +68,12 @@ public static class MauiProgram
 		builder.Services.AddSingleton<SearchPageViewModel>();
 
 		builder.Services.AddSingleton<CategoriesPage>();
+        builder.Services.AddSingleton<FiltersPage>();
         builder.Services.AddSingleton<CategoriesPageViewModel>();
+        builder.Services.AddSingleton<FilterPageViewModel>();
 
-		builder.Services.AddSingleton<MenuPage>();
+
+        builder.Services.AddSingleton<MenuPage>();
 		builder.Services.AddSingleton<MenuPageViewModel>();
 
 		builder.Services.AddSingleton<RentingPage>();
