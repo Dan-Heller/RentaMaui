@@ -20,9 +20,11 @@ namespace Renta.ViewModels
 
         private ItemService _itemService;
 
-        public  MyItemsPageViewModel(ItemService itemService )
-        {
+        private UserService _userService;
 
+        public  MyItemsPageViewModel(ItemService itemService, UserService userService )
+        {
+            _userService = userService;
             _itemService = itemService;
             //Task.Run(async () => await GetItems(itemService));
             
@@ -66,7 +68,7 @@ namespace Renta.ViewModels
             var viewmodels = new List<ItemViewModel>();
             foreach (var item in Items)
             {
-                var itemVM = new ItemViewModel(item);
+                var itemVM = new ItemViewModel(item, _userService);
                 viewmodels.Add(itemVM);
             }
             return viewmodels;

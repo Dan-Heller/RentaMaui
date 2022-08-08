@@ -75,7 +75,7 @@ namespace Renta.ViewModels
             var viewmodels = new List<ItemViewModel>();
             foreach (var item in Items)
             {
-                var itemVM = new ItemViewModel(item);
+                var itemVM = new ItemViewModel(item, _userService);
                 viewmodels.Add(itemVM);
             }
             return viewmodels;

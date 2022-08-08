@@ -58,10 +58,10 @@
                         Grid.Row="1"
                         Margin="37,0,0,0"
                         HeightRequest="25"
-                        Source="hollowhearticon"
+                        Source="{Binding HeartImageSource}"
                         WidthRequest="25" >
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="onCardHeartTapped" />
+                            <TapGestureRecognizer NumberOfTapsRequired="1"  Command="{Binding HeartButtonClicked}" />
                         </Image.GestureRecognizers>
                  </Image>
                

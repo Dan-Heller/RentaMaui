@@ -8,10 +8,8 @@ public partial class ItemPage : ContentPage
 	public ItemPage(ItemPageViewModel itemPageViewModel)
 	{
 		BindingContext = itemPageViewModel;
-		InitializeComponent();
-
-		SetHeartButton();
-		
+        
+        InitializeComponent();
 	}
 
 	private  void SetHeartButton()
@@ -31,7 +29,7 @@ public partial class ItemPage : ContentPage
 		base.OnAppearing();
 		(BindingContext as ItemPageViewModel).deserializeString();
         await (BindingContext as ItemPageViewModel).FetchItemReviews();
-
+        SetHeartButton();
     }
 
 

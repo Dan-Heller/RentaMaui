@@ -17,6 +17,8 @@ namespace Renta.ViewModels
         public ItemViewModel _myItemViewModel { get; set; }
         public ReviewsService _reviewService { get; set; }
 
+        private UserService _userService { get; set; }
+
         public ObservableRangeCollection<ItemReview> ItemReviewsCollection { get; private set; } = new ObservableRangeCollection<ItemReview>();
 
         private string _MyItemString;
@@ -30,9 +32,10 @@ namespace Renta.ViewModels
             }
         }
 
-        public MyItemPageViewModel(ReviewsService reviewsService)
+        public MyItemPageViewModel(ReviewsService reviewsService, UserService userService)
         {
             _reviewService = reviewsService;
+            _userService = userService;
         }
 
 
@@ -50,7 +53,7 @@ namespace Renta.ViewModels
 
         private void convertItemToViewModel(Item item)
         {
-            _myItemViewModel = new ItemViewModel(item);
+            _myItemViewModel = new ItemViewModel(item, _userService);
             OnPropertyChanged(nameof(_myItemViewModel));
         }
 

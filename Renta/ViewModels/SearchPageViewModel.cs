@@ -28,6 +28,8 @@ namespace Renta.ViewModels
 
         private ItemService _itemService;
 
+        private UserService _userService;
+
         private string CategoryString;
         //public String CategoryString
         //{
@@ -42,12 +44,11 @@ namespace Renta.ViewModels
 
 
 
-        public SearchPageViewModel(ItemService itemService, SearchPageStateService searchPageStateService)
+        public SearchPageViewModel(ItemService itemService, SearchPageStateService searchPageStateService, UserService userService)
         {
             _itemService = itemService;
             _searchPageStateService = searchPageStateService;
-            
-
+            _userService = userService;
         }
 
         internal async Task InitializeAsync()
@@ -88,7 +89,7 @@ namespace Renta.ViewModels
             var viewmodels = new List<ItemViewModel>();
             foreach (var item in Items)
             {
-                var itemVM = new ItemViewModel(item);
+                var itemVM = new ItemViewModel(item, _userService);
                 viewmodels.Add(itemVM);
             }
             return viewmodels;

@@ -86,7 +86,7 @@ namespace Renta.ViewModels
         {
             if(password.Length > 0 && email.Length > 0  && FirstName.Length > 0 && LastName.Length > 0 && SelectedCity.Length > 0)
             {
-                RegisterDto registerDto = new RegisterDto(email, password, FirstName, LastName);
+                RegisterDto registerDto = new RegisterDto(email, password, FirstName, LastName, SelectedCity);
                 await m_userService.RegisterUser(registerDto);
 
                 await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");

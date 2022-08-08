@@ -62,7 +62,7 @@ namespace Renta.ViewModels
 
         private void convertItemToViewModelandFetchInfo(Item item)
         {
-            _myItemViewModel = new ItemViewModel(item);
+            _myItemViewModel = new ItemViewModel(item, _userService);
             fetchCurrentInfo();
             OnPropertyChanged(nameof(_myItemViewModel));
         }

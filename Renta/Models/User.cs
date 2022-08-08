@@ -25,6 +25,8 @@ namespace Renta.Models
 
         public  List<string> Transactions { get; set; }
 
+        public List<string> LikedItems { get; set; }
+
         public List<string> Items { get; set; } = new List<string>();
 
         public User() { }

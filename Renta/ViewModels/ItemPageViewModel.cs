@@ -49,6 +49,7 @@ namespace Renta.ViewModels
         {
             var Item = JsonConvert.DeserializeObject<Item>(_ItemString);
             convertItemToViewModel(Item);
+            ItemLiked = _ItemViewModel.ItemLiked;
         }
 
         public async Task FetchItemReviews()
@@ -66,14 +67,14 @@ namespace Renta.ViewModels
 
         private void convertItemToViewModel(Item item)
         {
-            _ItemViewModel = new ItemViewModel(item);
+            _ItemViewModel = new ItemViewModel(item, _userService);
             OnPropertyChanged(nameof(_ItemViewModel));
         }
 
 
         public ItemPageViewModel(UserService userService, TransactionService transactionService, ReviewsService reviewsService)
         {
-            ItemLiked = false; //should be set according to the user liked items in data base/
+            
             _userService = userService;
             _transactionService = transactionService;
             _reviewService = reviewsService;

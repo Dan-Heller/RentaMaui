@@ -33,7 +33,7 @@
     </ContentPage.Resources>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="HeartButton" Clicked="HeartButton_Clicked" />
+        <ToolbarItem x:Name="HeartButton" Command="{Binding _ItemViewModel.HeartButtonClicked}" Clicked="HeartButton_Clicked"/>
     </ContentPage.ToolbarItems>
 
 
