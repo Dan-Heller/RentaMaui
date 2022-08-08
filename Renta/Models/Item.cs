@@ -28,7 +28,8 @@ namespace Renta.Models
 
         public List<DatesRange>? UnAvailableDates { get; set; } = new List<DatesRange>();
 
-        
+        public DateTime? UploadDate { get; set; }
+
 
         public Item() { }
 

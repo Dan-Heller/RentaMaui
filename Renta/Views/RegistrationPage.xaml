@@ -6,6 +6,10 @@
              Shell.ForegroundColor="Black"
              Shell.NavBarIsVisible="true"
              BackgroundColor="White">
+    
+  
+             
+     
     <ContentPage.Content>
         <StackLayout Padding="40" VerticalOptions="Center"
                      HorizontalOptions="FillAndExpand">
@@ -23,8 +27,15 @@
             <Label Text="Last Name:" />
             <Entry Placeholder="Last Name" Text="{Binding LastName, Mode=TwoWay}"  />
            
+            <Label Text="City: "  Padding="0,10,0,10"/>
+            <Picker x:Name="CityPicker"  SelectedIndex="4" Margin="0" Title="Select your city" 
+                ItemsSource="{Binding Cities}" 
+                SelectedItem="{Binding SelectedCity}">
+            </Picker>
+
             <Button Text="Register" Command="{Binding RegisterCompleted_Clicked }" />
-           
+
+
 
         </StackLayout>
     </ContentPage.Content>

@@ -1,4 +1,5 @@
-﻿using Renta.Models;
+﻿using Renta.enums;
+using Renta.Models;
 using Renta.Services;
 using System;
 using System.Collections.Generic;
@@ -50,10 +51,12 @@ namespace Renta.ViewModels
 
 
             Categories = new List<string>();
-            Categories.Add("Sports");
-            Categories.Add("Clothing");
-            Categories.Add("Music");
-            Categories.Add("Travel");
+            Categories.Add(Ecategories.Sport.ToString());
+            Categories.Add(Ecategories.Music.ToString());
+            Categories.Add(Ecategories.Travel.ToString());
+            Categories.Add(Ecategories.Clothing.ToString());
+            Categories.Add(Ecategories.Books.ToString());
+
 
 
 
@@ -150,6 +153,7 @@ var stream = await result.OpenReadAsync();
                 NewItem.Description = ItemDescription;
                 NewItem.PricePerDay = int.Parse(CoinsPerDay);
                 NewItem.OwnerId = _userService.LoggedInUser.Id;
+                NewItem.UploadDate = DateTime.Now;
 
 
                 await _itemService.UploadNewItem(NewItem);
