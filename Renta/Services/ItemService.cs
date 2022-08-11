@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using Renta.Models;
 using Renta.Dto_s;
 using RestSharp;
+using Autofac.Features.OwnedInstances;
 
 namespace Renta.Services
 {
@@ -57,6 +58,21 @@ namespace Renta.Services
         {
             return  await GetItemsByOwner(_userService.LoggedInUser.Id);
         }
+
+        public async Task<List<Item>> GetLoggedInUserLikedItems()
+        {
+            HttpResponseMessage response = null;
+
+            string UserId = _userService.LoggedInUser.Id;
+            response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Users/ItemsFromIds/" + UserId));
+
+            string str = await response.Content.ReadAsStringAsync();
+            var items = JsonConvert.DeserializeObject<List<Item>>(str);
+
+            return items;
+        }
+
+
 
 
         public ItemService(IConfiguration config, UserService userService)

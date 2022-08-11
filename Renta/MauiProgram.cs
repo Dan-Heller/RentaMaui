@@ -110,27 +110,32 @@ public static class MauiProgram
         builder.Services.AddTransient<PhotoDisplayPage>();
         builder.Services.AddTransient<PhotoDisplayPageViewModel>();
 
-        builder.Services.AddSingleton<SearchPage>();
+        
 
-		
-
-		
-
-
-
-		//builder.Services.AddTransient<AppShell>();  ///???
-		//builder.Services.AddTransient<AppShellViewModel>();
-
-		//      builder.Services.AddTransient<FeedPage>();
-		//      builder.Services.AddTransient<FeedPageViewModel>();
-
-		//      builder.Services.AddTransient<ProfilePage>();
-		//      builder.Services.AddTransient<ProfilePageViewModel>();
-
-		//      builder.Services.AddSingleton<INavigationService, NavigationService>();
+        builder.Services.AddSingleton<SavedItemsPage>();
+        builder.Services.AddSingleton<SavedItemsPageViewModel>();
 
 
 
-		return builder.Build();
+
+
+
+
+
+
+        //builder.Services.AddTransient<AppShell>();  ///???
+        //builder.Services.AddTransient<AppShellViewModel>();
+
+        //      builder.Services.AddTransient<FeedPage>();
+        //      builder.Services.AddTransient<FeedPageViewModel>();
+
+        //      builder.Services.AddTransient<ProfilePage>();
+        //      builder.Services.AddTransient<ProfilePageViewModel>();
+
+        //      builder.Services.AddSingleton<INavigationService, NavigationService>();
+
+
+
+        return builder.Build();
 	}
 }
