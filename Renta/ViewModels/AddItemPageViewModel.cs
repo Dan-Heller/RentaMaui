@@ -163,7 +163,7 @@ var stream = await result.OpenReadAsync();
                 NewItem.PricePerDay = int.Parse(CoinsPerDay);
                 NewItem.OwnerId = _userService.LoggedInUser.Id;
                 NewItem.UploadDate = DateTime.Now;
-                NewItem.City = _userService.LoggedInUser.Address;
+                NewItem.Region = _userService.LoggedInUser.Region;
 
 
                 await _itemService.UploadNewItem(NewItem);

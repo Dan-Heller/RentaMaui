@@ -12,6 +12,6 @@ namespace Renta.Services
         public int PriceRangeStart { get; set; } = 0;
         public int PriceRangeEnd { get; set; } = 100;
 
-        public string SelectedCity { get; set; } = "All";
+        public string SelectedRegion { get; set; } = "All";
     }
 }

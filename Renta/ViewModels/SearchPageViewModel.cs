@@ -78,7 +78,7 @@ namespace Renta.ViewModels
 
             FilterByCategory();
             FilterByPriceRange();
-            FilterByCity();
+            FilterByRegion();
             UpdateItemsCollection(ItemsViewModelFiltered);
             OnPropertyChanged(nameof(ObservableCollectionCount));
 
@@ -173,11 +173,11 @@ namespace Renta.ViewModels
             ItemsViewModelFiltered = ItemsViewModelFiltered.FindAll(item => item.PricePerDay >= _searchPageStateService.PriceRangeStart && item.PricePerDay <= _searchPageStateService.PriceRangeEnd).ToList();
         }
 
-        public void FilterByCity()
+        public void FilterByRegion()
         {
-            if(_searchPageStateService.SelectedCity != "All")
+            if(_searchPageStateService.SelectedRegion != "All")
             {
-                ItemsViewModelFiltered = ItemsViewModelFiltered.FindAll(item => item.Item.City == _searchPageStateService.SelectedCity).ToList();
+                ItemsViewModelFiltered = ItemsViewModelFiltered.FindAll(item => item.Item.Region == _searchPageStateService.SelectedRegion).ToList();
             }
         }
 

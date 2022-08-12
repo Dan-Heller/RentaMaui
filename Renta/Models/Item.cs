@@ -24,7 +24,7 @@ namespace Renta.Models
 
         public string? Description { get; set; }
 
-        public string? City { get; set; }
+        public string? Region { get; set; }
 
         public List<string>? ImagesUrls { get; set; } = new List<string>();
 

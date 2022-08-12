@@ -13,12 +13,14 @@ namespace Renta.Dto_s
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
+        public string Region { get; set; }
+
         public string City { get; set; }
 
 
         public RegisterDto() { }
 
-        public RegisterDto(string i_Email, string i_Password, string i_FirstName, string i_LastName,string i_City) 
+        public RegisterDto(string i_Email, string i_Password, string i_FirstName, string i_LastName,string i_City, string i_Region) 
         {
            
             this.Password = i_Password;
@@ -26,6 +28,7 @@ namespace Renta.Dto_s
             this.FirstName = i_FirstName;
             this.LastName = i_LastName;
             this.City = i_City;
+            this.Region = i_Region;
         }
     }
 }

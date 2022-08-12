@@ -33,11 +33,13 @@
             <Entry Placeholder="Last Name" Text="{Binding LastName, Mode=TwoWay}"/>
             <!--<Label Text="Address:" />-->
             <!--<Entry Placeholder="Address" Text="{Binding Address, Mode=TwoWay}"/>-->
-            <Label Text="City: "  Padding="0,10,0,10"/>
+            <Label Text="Region: "  Padding="0,10,0,10"/>
             <Picker x:Name="CityPicker"  SelectedIndex="4" Margin="0" Title="Select your city" 
-                ItemsSource="{Binding Cities}" 
-                SelectedItem="{Binding Address}">
+                ItemsSource="{Binding Regions}" 
+                SelectedItem="{Binding Region}">
             </Picker>
+            <Label Text="City:" />
+            <Entry Placeholder="City" Text="{Binding City, Mode=TwoWay}"/>
 
         </StackLayout>
 

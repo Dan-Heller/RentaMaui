@@ -15,6 +15,7 @@ namespace Renta.ViewModels
     {
         public User _OtherUser { get; set; }
         public string FullName { get; set; }
+        public string Address { get; set; }
         private UserService _userService;
         private ReviewsService _reviewService;
 
@@ -43,6 +44,7 @@ namespace Renta.ViewModels
             _userService = userService;
             _itemService = itemService;
             _reviewService = reviewsService;
+            
         }
 
         internal async Task InitializeAsync()
@@ -60,9 +62,11 @@ namespace Renta.ViewModels
         {
             _OtherUser = await _userService.GetUserById(_OtherUserId);
             FullName = _OtherUser.GetFullName();
+            Address = _OtherUser.City.Length > 0 ? _OtherUser.Region + ", " + _OtherUser.City : _OtherUser.Region;
             OnPropertyChanged(nameof(_OtherUser));
            OnPropertyChanged(nameof(FullName));
-           
+            OnPropertyChanged(nameof(Address));
+
 
             Items = await _itemService.GetItemsByOwner(_OtherUserId);
             ItemsViewModel = ConvertToViewModels(Items);

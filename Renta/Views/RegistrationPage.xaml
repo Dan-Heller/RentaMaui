@@ -27,11 +27,13 @@
             <Label Text="Last Name:" />
             <Entry Placeholder="Last Name" Text="{Binding LastName, Mode=TwoWay}"  />
            
-            <Label Text="City: "  Padding="0,10,0,10"/>
-            <Picker x:Name="CityPicker"  SelectedIndex="4" Margin="0" Title="Select your city" 
-                ItemsSource="{Binding Cities}" 
-                SelectedItem="{Binding SelectedCity}">
+            <Label Text="Region: "  Padding="0,10,0,10"/>
+            <Picker x:Name="RegionPicker"  SelectedIndex="4" Margin="0" Title="Select your Region" 
+                ItemsSource="{Binding Regions}" 
+                SelectedItem="{Binding SelectedRegion}">
             </Picker>
+            <Label Text="City (optional):" />
+            <Entry Placeholder="City" Text="{Binding SelectedCity, Mode=TwoWay}"  />
 
             <Button Text="Register" Command="{Binding RegisterCompleted_Clicked }" />
 

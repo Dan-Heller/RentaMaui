@@ -47,7 +47,7 @@ namespace Renta.ViewModels
             email = _LoggedUser.Email;
             FullName = _LoggedUser.GetFullName();
             ProfileImageUrl = _LoggedUser.ProfilePhotoUrl;
-            Address = _LoggedUser.Address;
+            Address = _LoggedUser.City.Length > 0 ? _LoggedUser.Region + ", " + _LoggedUser.City : _LoggedUser.Region;
             coins = _LoggedUser.Coins.ToString();
 
             OnPropertyChanged(nameof(ProfileImageUrl));

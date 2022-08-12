@@ -19,13 +19,13 @@ public partial class FiltersPage : ContentPage
 		_searchPageStateService.PriceRangeStart = (int)PriceSlider.RangeStart;
         _searchPageStateService.PriceRangeEnd = (int)PriceSlider.RangeEnd;
 
-		if(CityPicker.SelectedItem != null)
+		if(RegionPicker.SelectedItem != null)
 		{
-            _searchPageStateService.SelectedCity = CityPicker.SelectedItem.ToString();
+            _searchPageStateService.SelectedRegion = RegionPicker.SelectedItem.ToString();
         }
 		else
 		{
-			_searchPageStateService.SelectedCity = "All";
+			_searchPageStateService.SelectedRegion = "All";
         }
 		
 
