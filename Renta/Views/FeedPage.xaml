@@ -30,14 +30,22 @@
                     Text="Near You:"
                     TextColor="Black" />
                     <ScrollView Orientation="Horizontal" Grid.Row="1">
-                        <StackLayout Orientation="Horizontal">
-                            <controls:ItemCard />
-                            <controls:ItemCard />
-                            <controls:ItemCard />
-                            <controls:ItemCard />
-                            <controls:ItemCard />
-                            <controls:ItemCard />
-                        </StackLayout>
+                        <CollectionView ItemsSource="{Binding ItemsNearYouCollection}"
+                        SelectionMode="None"
+                        >
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout
+                                 Orientation="Horizontal"
+                                 Span="{OnIdiom Phone=1, Tablet=1, Desktop=1}"
+                                 HorizontalItemSpacing="5"
+                                 VerticalItemSpacing="5" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <controls:ItemCard />
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
                     </ScrollView>
                 </Grid>
 

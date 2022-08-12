@@ -25,6 +25,7 @@ public partial class FeedPage : ContentPage
 		base.OnAppearing();
         GreetingUser = "Hello " + (BindingContext as FeedPageViewModel)._userService.LoggedInUser.FirstName;
         GreetingsLabel.Text = GreetingUser;
+		await (BindingContext as FeedPageViewModel).InitializeAsync();
 
     }
 
