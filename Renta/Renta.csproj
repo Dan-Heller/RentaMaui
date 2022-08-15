@@ -89,6 +89,7 @@
 	<ItemGroup>
 	  <PackageReference Include="Autofac" Version="6.3.0" />
 	  <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+	  <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.8" />
 	  <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 	  <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />

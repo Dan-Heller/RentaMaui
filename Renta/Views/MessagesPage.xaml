@@ -8,9 +8,36 @@
              BackgroundColor="White">
 
     <StackLayout>
-        <Label Text="Messages!" 
+        <Label
+            x:Name="chatMessages"
+            Text="Messages!" 
         VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+
+        <Frame BorderColor="Black">
+            <Grid ColumnDefinitions="3*,auto">
+                <Entry Grid.Column="0"
+            x:Name="myChatMessage"
+            Placeholder="Type your Message"
+            FontSize="18"
+            HorizontalOptions="Center"
+            />
+                <Button Grid.Column="1"
+                    Text="Send"
+                    x:Name="SendButton"
+                    HorizontalOptions="Center"
+                        Clicked="SendButton_Clicked"
+                    
+                    />
+
+            </Grid>
+        </Frame>
+       
+    
+            
+            
+         
+        
     </StackLayout>
        
     
