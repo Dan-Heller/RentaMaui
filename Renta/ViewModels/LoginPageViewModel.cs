@@ -56,6 +56,9 @@ namespace Renta.ViewModels
             // todo add validation before sending
             LoginDto loginDto = new LoginDto(email, password);
             await m_userService.LoginUser(loginDto);
+
+            
+
             await Shell.Current.GoToAsync($"//{nameof(FeedPage)}");  //  "//" remove backstack.
         }
 
