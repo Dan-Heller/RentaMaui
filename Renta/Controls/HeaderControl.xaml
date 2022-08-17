@@ -45,8 +45,9 @@
                                HorizontalOptions="Start" /> -->
                             <Label
                                 Text="RentA"
-                                FontSize="20"
+                                FontSize="25"
                                 Grid.Column="0"
+                               
                                VerticalOptions="Center"
                                HorizontalOptions="Start"
                                >

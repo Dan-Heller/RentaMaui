@@ -91,7 +91,8 @@
                         Grid.Column="1"
                         Padding="8,2,0,0"
                         FontAttributes="Bold"
-                        FontSize="16"
+                        FontSize="20"
+                        VerticalOptions="Center"
                         Text="{Binding _myItemViewModel.PricePerDay}"
                         TextColor="Black" />
 
@@ -125,12 +126,21 @@
                     FontSize="20"
                     Text="{Binding _myItemViewModel.Name}"
                     TextColor="Black" />
-                <Label
-                    Grid.Row="2"
+                
+                <Grid Grid.Row="2" ColumnDefinitions="auto,*">
+                    <Label
+                    
                     Grid.Column="0"
                     FontSize="16"
-                    Text="Upload date"
+                    Text="Upload date: "
                     TextColor="#a5a2a2" />
+                    <Label
+                   
+                    Grid.Column="1"
+                    FontSize="16"
+                    Text="{Binding _myItemViewModel.UploadDate}"
+                    TextColor="#a5a2a2" />
+                </Grid>
                 <Label
                     Grid.Row="3"
                     Grid.Column="0"
@@ -143,7 +153,7 @@
                 <Label
                     Grid.Row="4"
                     Grid.Column="0"
-                    Text="text"
+                    Text="{Binding _myItemViewModel.Description}"
                     TextColor="Black" />
 
                 <Grid Grid.Row="5" RowDefinitions="30,*" Margin="5,10,0,0" Padding="0">

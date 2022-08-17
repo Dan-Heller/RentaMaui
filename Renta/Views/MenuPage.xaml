@@ -40,7 +40,7 @@
                 FontSize="24"
                 Text="Settings"
                 VerticalOptions="CenterAndExpand" />
-                    <BoxView
+                    <!--<BoxView
                 x:Name="settingItemNotificationBox"
                 Grid.Column="3"
                 BackgroundColor="#999999"
@@ -58,7 +58,7 @@
                 Text="15"
                 TextColor="White"
                 VerticalOptions="Center"
-                ZIndex="3" />
+                ZIndex="3" />-->
                     <Image
                 Grid.Column="4"
                 HorizontalOptions="Center"
@@ -93,7 +93,7 @@
                 FontSize="24"
                 Text="My items"
                 VerticalOptions="CenterAndExpand" />
-                    <BoxView
+                    <!--<BoxView
                 
                 x:Name="MyItemsItemNotificationBox"
                 Grid.Column="3"
@@ -113,7 +113,7 @@
                 Text="15"
                 TextColor="White"
                 VerticalOptions="Center"
-                ZIndex="3" />
+                ZIndex="3" />-->
                     <Image
                 
                 Grid.Column="4"
@@ -147,7 +147,7 @@
                 FontSize="24"
                 Text="Renting"
                 VerticalOptions="CenterAndExpand" />
-            <BoxView
+            <!--<BoxView
                 x:Name="rentingItemNotificationBox"
                 
                 Grid.Column="3"
@@ -168,7 +168,7 @@
                 Text="15"
                 TextColor="White"
                 VerticalOptions="Center"
-                ZIndex="3" />
+                ZIndex="3" />-->
             <Image
               
                 Grid.Column="4"
@@ -202,7 +202,7 @@
                 FontSize="24"
                 Text="Rental"
                 VerticalOptions="CenterAndExpand" />
-                    <BoxView
+                    <!--<BoxView
                 x:Name="rentalItemNotifiactionBox"
                
                 Grid.Column="3"
@@ -222,7 +222,7 @@
                 Text="15"
                 TextColor="White"
                 VerticalOptions="Center"
-                ZIndex="3" />
+                ZIndex="3" />-->
                     <Image
                
                 Grid.Column="4"
@@ -256,7 +256,7 @@
                 FontSize="24"
                 Text="Saved items"
                 VerticalOptions="CenterAndExpand" />
-                    <BoxView
+                    <!--<BoxView
                 x:Name="favoritesItemNotifiactionBox"
               
                 Grid.Column="3"
@@ -275,7 +275,7 @@
                 HorizontalOptions="Center"
                 Text="15"
                 TextColor="White"
-                VerticalOptions="Center" />
+                VerticalOptions="Center" />-->
                     <Image
                
                 Grid.Column="4"

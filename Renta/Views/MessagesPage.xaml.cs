@@ -15,7 +15,7 @@ public partial class MessagesPage : ContentPage
         userId = _userService.LoggedInUser.Id;
         InitializeComponent();
 		
-		_connection = new HubConnectionBuilder().WithUrl("https://ada6-85-65-247-184.eu.ngrok.io/chat?userid=" + userId).Build();
+		_connection = new HubConnectionBuilder().WithUrl("https://ef57-85-65-247-184.eu.ngrok.io/chat?userid=" + userId).Build();
 		
 		_connection.On<string>("MessageReceived", (message) =>
 		{

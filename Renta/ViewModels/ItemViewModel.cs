@@ -28,6 +28,8 @@ namespace Renta.ViewModels
 
         public List<DatesRange>? UnAvailableDates { get => Item?.UnAvailableDates; }
 
+        public string? UploadDate { get => Item.UploadDate.Value.Date.ToString("dd/MM/yyyy"); }
+
         public bool ItemLiked { get; set; } = false;
 
         public string FirstImageUrl { get { return ImagesUrls[0]; } }
