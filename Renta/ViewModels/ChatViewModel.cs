@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using Renta.Models;
+using Renta.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +12,21 @@ namespace Renta.ViewModels
     public class ChatViewModel
     {
 
-        public ChatViewModel()
-        {
+        public Chat _chat;
+        public string OtherUserId;
+        public UserService _userService;
+        public User _otherUser;
+        public string OtherUserFullName { get => _otherUser.FirstName + " " + _otherUser.LastName;   }
+        public string LastMessage;
+        public string LastMessageTime;
 
+        public ChatViewModel(Chat chat, UserService userService, User OtherUser)
+        {
+            _chat = chat;
+            _userService = userService;
+            _otherUser = OtherUser;
+            LastMessage = _chat.Messages.LastOrDefault().Text;
+            LastMessageTime = _chat.Messages.LastOrDefault().Time.ToString("HH:mm");
         }
 
 
@@ -23,8 +37,8 @@ namespace Renta.ViewModels
 
         private async Task GoToChat()
         {
-            //var jsonStr = JsonConvert.SerializeObject(Item);
-            await Shell.Current.GoToAsync($"{nameof(MessagesPage)}");
+            var jsonStr = JsonConvert.SerializeObject(this);
+            await Shell.Current.GoToAsync($"{nameof(MessagesPage)}?chatvm={jsonStr}");
         }
     }
 }

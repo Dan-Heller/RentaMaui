@@ -67,7 +67,7 @@
                     
                     Style="{StaticResource RecentEllipseStyle}"/>
                 <Image
-                    Source="blankprofileimage.jpg"
+                    Source="{Binding _otherUser.ProfilePhotoUrl}"
                     Style="{StaticResource RecentImageStyle}"/>
             </Grid>
             <Grid
@@ -75,15 +75,15 @@
                 ColumnDefinitions="*, Auto">
                 <StackLayout>
                     <Label        
-                        Text="User1"
+                        Text="{Binding OtherUserFullName}"
                         Style="{StaticResource NameTextStyle}"/>
                     <Label         
-                        Text="message content"
+                        Text="{Binding LastMessage}"
                         Style="{StaticResource MessageTextStyle}"/>
                 </StackLayout>
                 <Label 
                     Grid.Column="1"
-                    Text="15:30"
+                    Text="{Binding LastMessageTime}"
                     Style="{StaticResource TimeTextStyle}"/>
             </Grid>
         </Grid>

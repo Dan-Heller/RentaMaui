@@ -30,7 +30,8 @@ public static class MauiProgram
                     .Build();
         builder.Configuration.AddConfiguration(config);
 
-        builder.Services.AddSingleton<ListChatPage>();
+        builder.Services.AddTransient<ListChatPage>();
+        builder.Services.AddTransient<ListChatPageViewModel>();
         builder.Services.AddSingleton<ChatViewModel>(); // delete this. only for test 
 
         builder.Services.AddSingleton<AppShell>(); 
@@ -57,6 +58,7 @@ public static class MauiProgram
 
         
         builder.Services.AddTransient<MessagesPage>();
+        builder.Services.AddTransient<MessagesPageViewModel>();
 
         builder.Services.AddSingleton<NotificationsPage>();
         builder.Services.AddSingleton<MessagesShell>();

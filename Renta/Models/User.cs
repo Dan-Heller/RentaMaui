@@ -30,6 +30,10 @@ namespace Renta.Models
 
         public List<string> LikedItems { get; set; }
 
+        public List<string>? Chats { get; set; }
+
+        public List<Chat>? PopulatedChats { get; set; }
+
         public List<string> Items { get; set; } = new List<string>();
 
         public User() { }
@@ -47,4 +51,6 @@ namespace Renta.Models
             return this.FirstName + " " + this.LastName;
         }
     }
+
+
 }

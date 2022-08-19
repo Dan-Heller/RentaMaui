@@ -16,13 +16,29 @@
 
         <ScrollView Orientation="Vertical">
 
+            <CollectionView ItemsSource="{Binding ChatsCollection}"
+                        SelectionMode="None"
+                        >
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                                 Orientation="Vertical"
+                                 Span="{OnIdiom Phone=1, Tablet=1, Desktop=1}"
+                                 HorizontalItemSpacing="5"
+                                 VerticalItemSpacing="0" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <controls:ListChatControl />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
 
-            <Grid  RowDefinitions="*,*">
+            <!--<Grid  RowDefinitions="*,*">
                 <controls:ListChatControl  Grid.Row="0"/>
                 <controls:ListChatControl  Grid.Row="1"/>
 
-            </Grid>
+            </Grid>-->
 
         </ScrollView>
     </StackLayout>

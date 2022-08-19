@@ -8,11 +8,45 @@
              BackgroundColor="White">
 
     <StackLayout>
-        <Label
+        <!--<Label
             x:Name="chatMessages"
             Text="Messages!" 
         VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="CenterAndExpand" />-->
+
+        <ScrollView Orientation="Vertical">
+
+            <CollectionView ItemsSource="{Binding MessagesCollection}"
+                        SelectionMode="None"
+                        >
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                                 Orientation="Vertical"
+                                 Span="{OnIdiom Phone=1, Tablet=1, Desktop=1}"
+                                 HorizontalItemSpacing="5"
+                                 VerticalItemSpacing="0" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label
+                          x:Name="chatMessages"
+                          Text="Messages!" 
+                          VerticalOptions="CenterAndExpand" 
+                          HorizontalOptions="CenterAndExpand">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label"
+                                             Binding="{Binding Sender}"
+                                             Value="{StaticResource loggedInUserId}"
+                                             >
+                                    <Setter Property="TextColor"
+                                            Value="Red" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
 
         <Frame BorderColor="Black">
             <Grid ColumnDefinitions="3*,auto">
