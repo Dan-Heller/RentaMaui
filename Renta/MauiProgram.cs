@@ -49,6 +49,8 @@ public static class MauiProgram
 		builder.Services.AddSingleton<TransactionService>();
         builder.Services.AddSingleton<ReviewsService>();
         builder.Services.AddSingleton<SearchPageStateService>();
+        builder.Services.AddSingleton<ChatService>();
+
 
         builder.Services.AddTransient<LoginPage>();
 		builder.Services.AddTransient<LoginPageViewModel>(); //maybe shouldnt be singleton ...

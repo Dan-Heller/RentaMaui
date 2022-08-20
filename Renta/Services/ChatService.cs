@@ -64,13 +64,14 @@ namespace Renta.Services
             await _connection.InvokeCoreAsync("SendMessageToGroup", args: new[] { messageDto });
         }
 
-        public async Task CreateNewChat(CreateChatDto createChatDto)
+        public async Task<Chat> CreateNewChat(CreateChatDto createChatDto)
         {
             string json = JsonConvert.SerializeObject(createChatDto);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
             HttpResponseMessage response = null;
             response = await httpclient.PostAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Users/Chat/"), content);
-           
+            string str = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<Chat>(str);
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using MvvmHelpers;
+using Newtonsoft.Json;
+using Renta.Dto_s;
 using Renta.Models;
 using Renta.Services;
 using System;
@@ -18,6 +20,7 @@ namespace Renta.ViewModels
         public string Address { get; set; }
         private UserService _userService;
         private ReviewsService _reviewService;
+        private ChatService _chatService;
 
         private string _OtherUserId;
         public String UserId
@@ -39,12 +42,12 @@ namespace Renta.ViewModels
 
 
 
-        public OtherUserProfilePageViewModel(UserService userService, ItemService itemService, ReviewsService reviewsService)
+        public OtherUserProfilePageViewModel(UserService userService, ItemService itemService, ReviewsService reviewsService, ChatService chatService)
         {
             _userService = userService;
             _itemService = itemService;
             _reviewService = reviewsService;
-            
+            _chatService = chatService;
         }
 
         internal async Task InitializeAsync()
@@ -91,6 +94,18 @@ namespace Renta.ViewModels
         }
 
 
+        public Command MessageIcon_Tapped
+       => new Command(async () => await GoToMessagesPage());
+
+        private async Task GoToMessagesPage()
+        {
+            CreateChatDto newChatDto = new CreateChatDto(_userService.LoggedInUser.Id, _OtherUser.Id);
+            Chat newChat = await _chatService.CreateNewChat(newChatDto);
+            ChatViewModel newChatVM = new ChatViewModel(newChat, _userService, _OtherUser);
+
+            var jsonStr = JsonConvert.SerializeObject(newChatVM);
+            await Shell.Current.GoToAsync($"{nameof(MessagesPage)}?chatvm={jsonStr}");
+        }
 
 
 

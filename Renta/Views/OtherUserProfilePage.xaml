@@ -15,7 +15,7 @@
 
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="messageicon.png" />
+        <ToolbarItem IconImageSource="messageicon.png" Command="{Binding MessageIcon_Tapped}" />
     </ContentPage.ToolbarItems>
 
     <ScrollView>
