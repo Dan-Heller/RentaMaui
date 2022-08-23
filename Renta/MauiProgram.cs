@@ -32,7 +32,7 @@ public static class MauiProgram
 
         builder.Services.AddTransient<ListChatPage>();
         builder.Services.AddTransient<ListChatPageViewModel>();
-        builder.Services.AddSingleton<ChatViewModel>(); // delete this. only for test 
+        //builder.Services.AddSingleton<ChatViewModel>(); // delete this. only for test 
 
         builder.Services.AddSingleton<AppShell>(); 
 		builder.Services.AddSingleton<AppShellViewModel>();
