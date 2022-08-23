@@ -13,50 +13,50 @@
             Text="Messages!" 
         VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />-->
+        <Grid RowDefinitions="530,*">
+            <ScrollView Orientation="Vertical" Grid.Row="0">
 
-        <ScrollView Orientation="Vertical">
-
-            <CollectionView ItemsSource="{Binding MessagesCollection}"
+                <CollectionView ItemsSource="{Binding MessagesCollection}"
                         SelectionMode="None"
                         >
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout
                                  Orientation="Vertical"
                                  Span="{OnIdiom Phone=1, Tablet=1, Desktop=1}"
                                  HorizontalItemSpacing="5"
                                  VerticalItemSpacing="0" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Label
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Label
                           x:Name="chatMessages"
                           Text="Messages!" 
                           VerticalOptions="CenterAndExpand" 
                           HorizontalOptions="CenterAndExpand">
-                            <Label.Triggers>
-                                <DataTrigger TargetType="Label"
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label"
                                              Binding="{Binding Sender}"
                                              Value="{StaticResource loggedInUserId}"
                                              >
-                                    <Setter Property="TextColor"
+                                        <Setter Property="TextColor"
                                             Value="Red" />
-                                </DataTrigger>
-                            </Label.Triggers>
-                        </Label>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </ScrollView>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
 
-        <Frame BorderColor="Black">
-            <Grid ColumnDefinitions="3*,auto">
-                <Entry Grid.Column="0"
+            <Frame BorderColor="Black" Grid.Row="1" >
+                <Grid ColumnDefinitions="3*,auto">
+                    <Entry Grid.Column="0"
             x:Name="myChatMessage"
             Placeholder="Type your Message"
             FontSize="18"
             HorizontalOptions="Center"
             />
-                <Button Grid.Column="1"
+                    <Button Grid.Column="1"
                     Text="Send"
                     x:Name="SendButton"
                     HorizontalOptions="Center"
@@ -64,8 +64,10 @@
                     
                     />
 
-            </Grid>
-        </Frame>
+                </Grid>
+            </Frame>
+        </Grid>
+       
        
     
             

@@ -10,12 +10,13 @@ using Newtonsoft.Json;
 
 namespace Renta.ViewModels
 {
-    [QueryProperty(nameof(ChatString), "chatvm")]
+    [QueryProperty(nameof(ChatString), "chat")]
     public class MessagesPageViewModel : BaseViewModel
     {
 
         private UserService _userService;
-        public ChatViewModel _currentChat;
+        public Chat _currentChat;
+        public ChatViewModel _currentChatViewModel;
         private ChatService _chatService;
         private List<Message> messages;
         public ObservableRangeCollection<Message> MessagesCollection { get; private set; } = new ObservableRangeCollection<Message>();
@@ -31,16 +32,19 @@ namespace Renta.ViewModels
             }
         }
 
-        public void deserializeString()
+        public async Task deserializeString()
         {
-            _currentChat = JsonConvert.DeserializeObject<ChatViewModel>(_ChatString);
-           
+            _currentChat = JsonConvert.DeserializeObject<Chat>(_ChatString);
+
+            User otherUser =  _userService.LoggedInUser.Id == _currentChat.UserA ? await _userService.GetUserById(_currentChat.UserB) : await _userService.GetUserById(_currentChat.UserA);
+
+            _currentChatViewModel = new ChatViewModel(_currentChat, _userService, otherUser);
         }
 
-        public MessagesPageViewModel(UserService userService, ChatViewModel currentChat, ChatService chatService)
+        public MessagesPageViewModel(UserService userService, ChatService chatService)
         {
             _userService = userService;
-            _currentChat = currentChat;
+           // _currentChat = currentChat;
             _chatService = chatService;
             _chatService.currentMessagesPage = this;
 
@@ -50,7 +54,7 @@ namespace Renta.ViewModels
         public void FetchMessagesFromChat()
         {
             deserializeString();
-            messages = _currentChat._chat.Messages;
+            messages = _currentChat.Messages;
             UpdateTransactionsCollection(messages);
 
         }

@@ -99,12 +99,19 @@ namespace Renta.ViewModels
 
         private async Task GoToMessagesPage()
         {
-            CreateChatDto newChatDto = new CreateChatDto(_userService.LoggedInUser.Id, _OtherUser.Id);
-            Chat newChat = await _chatService.CreateNewChat(newChatDto);
-            ChatViewModel newChatVM = new ChatViewModel(newChat, _userService, _OtherUser);
+            var chat = _userService.LoggedInUser.PopulatedChats?.Find(chat => chat.UserA == _OtherUserId || chat.UserB == _OtherUserId);
 
-            var jsonStr = JsonConvert.SerializeObject(newChatVM);
-            await Shell.Current.GoToAsync($"{nameof(MessagesPage)}?chatvm={jsonStr}");
+            if (chat == null)
+            {
+                CreateChatDto newChatDto = new CreateChatDto(_userService.LoggedInUser.Id, _OtherUser.Id);
+                chat = await _chatService.CreateNewChat(newChatDto);
+                
+            }
+            //ChatViewModel newChatVM = new ChatViewModel(chat, _userService, _OtherUser);
+
+
+            var jsonStr = JsonConvert.SerializeObject(chat);
+            await Shell.Current.GoToAsync($"{nameof(MessagesPage)}?chat={jsonStr}");
         }
 
 

@@ -59,7 +59,7 @@
           Margin="12, 24">
             <Grid.GestureRecognizers>
                 <TapGestureRecognizer                
-                  NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped"/>
+                  NumberOfTapsRequired="1" Command="{Binding ListChatTapped}"/>
             </Grid.GestureRecognizers>
             <Grid
                 Style="{StaticResource RecentImageContainerStyle}">

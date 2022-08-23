@@ -1,4 +1,4 @@
-using AndroidX.Lifecycle;
+//using AndroidX.Lifecycle;
 using Microsoft.AspNetCore.SignalR.Client;
 using Renta.Services;
 using Renta.ViewModels;

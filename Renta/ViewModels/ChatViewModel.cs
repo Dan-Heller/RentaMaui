@@ -18,16 +18,21 @@ namespace Renta.ViewModels
         public User _otherUser;
         public ImageSource otherUserProfilePhoto { get => _otherUser.ProfilePhotoUrl  ;  }
         public string OtherUserFullName { get => _otherUser.FirstName + " " + _otherUser.LastName;   }
-        public string LastMessage { get; set; }
-        public string LastMessageTime { get; set; }
+        public string LastMessage { get; set; } = string.Empty;
+        public string LastMessageTime { get; set; } = string.Empty;
 
         public ChatViewModel(Chat chat, UserService userService, User OtherUser)
         {
             _chat = chat;
             _userService = userService;
             _otherUser = OtherUser;
-            LastMessage = _chat.Messages.LastOrDefault().Text;
-            LastMessageTime = _chat.Messages.LastOrDefault().Time.ToString("HH:mm");
+            OtherUserId = OtherUser.Id;
+            if (chat.Messages.Count > 0)
+            {
+                LastMessage = _chat.Messages.LastOrDefault().Text;
+                LastMessageTime = _chat.Messages.LastOrDefault().Time.ToString("HH:mm");
+            }
+           
         }
 
 
@@ -38,8 +43,8 @@ namespace Renta.ViewModels
 
         private async Task GoToChat()
         {
-            var jsonStr = JsonConvert.SerializeObject(this);
-            await Shell.Current.GoToAsync($"{nameof(MessagesPage)}?chatvm={jsonStr}");
+            var jsonStr = JsonConvert.SerializeObject(_chat);
+            await Shell.Current.GoToAsync($"{nameof(MessagesPage)}?chat={jsonStr}");
         }
     }
 }

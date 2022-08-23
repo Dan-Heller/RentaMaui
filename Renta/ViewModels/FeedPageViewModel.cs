@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using System.Threading.Tasks;
-using Android.Net.Wifi.Aware;
+//using Android.Net.Wifi.Aware;
 using Renta.Services;
 using Renta.Models;
 using MvvmHelpers;

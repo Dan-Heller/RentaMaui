@@ -60,7 +60,7 @@ namespace Renta.Services
         public async Task InvokeSend(string message)
         {
             //string sender, string receiver, string message, string chatId, DateTime createdAt
-            MessageDto messageDto = new MessageDto(userId, currentMessagesPage._currentChat.OtherUserId, message, currentMessagesPage._currentChat._chat.Id, DateTime.Now);
+            MessageDto messageDto = new MessageDto(userId, currentMessagesPage._currentChatViewModel.OtherUserId, message, currentMessagesPage._currentChat.Id, DateTime.Now);
             await _connection.InvokeCoreAsync("SendMessageToGroup", args: new[] { messageDto });
         }
 
