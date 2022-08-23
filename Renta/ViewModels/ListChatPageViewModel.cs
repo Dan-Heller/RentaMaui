@@ -19,7 +19,7 @@ namespace Renta.ViewModels
         public ListChatPageViewModel(UserService userService)
         {
             _userService = userService;
-            
+            chatsViewModels = new List<ChatViewModel>();
         }
 
         public async Task PageAppeared()

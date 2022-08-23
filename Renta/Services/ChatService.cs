@@ -31,7 +31,7 @@ namespace Renta.Services
             userId = userService.LoggedInUser.Id;
 
             //create the signalRT group for the user 
-            _connection = new HubConnectionBuilder().WithUrl("https://ef57-85-65-247-184.eu.ngrok.io/chat?userid=" + userId).Build();
+            _connection = new HubConnectionBuilder().WithUrl(configuration.GetSection("Settings:ApiUrl").Value + "/chat?userid=" + userId).Build();
 
             //_connection.On<string>("MessageReceived", (message) =>
             //{

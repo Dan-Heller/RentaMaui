@@ -8,7 +8,7 @@ namespace Renta.Models
 {
     public class LoginResponse
     {
-        public User user { get; set; }
+        public UserLookedUp user { get; set; }
         public string Token { get; set; }
     }
 }

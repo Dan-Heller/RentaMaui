@@ -32,7 +32,7 @@ namespace Renta.Models
 
         public List<string>? Chats { get; set; }
 
-        public List<Chat>? PopulatedChats { get; set; }
+        //public List<Chat>? PopulatedChats { get; set; }
 
         public List<string> Items { get; set; } = new List<string>();
 
@@ -52,5 +52,10 @@ namespace Renta.Models
         }
     }
 
+
+    public class UserLookedUp : User
+    {
+        public List<Chat>? PopulatedChats { get; set; }
+    }
 
 }

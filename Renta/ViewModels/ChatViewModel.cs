@@ -16,9 +16,10 @@ namespace Renta.ViewModels
         public string OtherUserId;
         public UserService _userService;
         public User _otherUser;
+        public ImageSource otherUserProfilePhoto { get => _otherUser.ProfilePhotoUrl  ;  }
         public string OtherUserFullName { get => _otherUser.FirstName + " " + _otherUser.LastName;   }
-        public string LastMessage;
-        public string LastMessageTime;
+        public string LastMessage { get; set; }
+        public string LastMessageTime { get; set; }
 
         public ChatViewModel(Chat chat, UserService userService, User OtherUser)
         {

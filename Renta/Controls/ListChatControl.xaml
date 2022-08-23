@@ -67,7 +67,7 @@
                     
                     Style="{StaticResource RecentEllipseStyle}"/>
                 <Image
-                    Source="{Binding _otherUser.ProfilePhotoUrl}"
+                    Source="{Binding otherUserProfilePhoto}"
                     Style="{StaticResource RecentImageStyle}"/>
             </Grid>
             <Grid

@@ -14,7 +14,7 @@ namespace Renta.Services
 {
     public class UserService
     {
-        public User LoggedInUser = null;
+        public UserLookedUp LoggedInUser = null;
 
         IConfiguration configuration;
         HttpClient httpclient;
@@ -32,7 +32,7 @@ namespace Renta.Services
             response = await httpclient.PutAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Users/" + UserId), content);
 
             string str = await response.Content.ReadAsStringAsync();
-            LoggedInUser  = JsonConvert.DeserializeObject<User>(str);
+            LoggedInUser  = JsonConvert.DeserializeObject<UserLookedUp>(str);
 
             if (UserUpdatedInvoker != null)
             {
@@ -82,20 +82,33 @@ namespace Renta.Services
 
         public async Task UpdateLoggedInUser()
         {
-            HttpResponseMessage response = null;
-            string UserId = LoggedInUser.Id;
-            response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Users/" + UserId));
-            string str = await response.Content.ReadAsStringAsync();
-            LoggedInUser = JsonConvert.DeserializeObject<User>(str);
+            //HttpResponseMessage response = null;
+            //string UserId = LoggedInUser.Id;
+
+            //try
+            //{
+            //    response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Users/" + UserId));
+            //    string str = await response.Content.ReadAsStringAsync();
+            //    LoggedInUser = JsonConvert.DeserializeObject<UserLookedUp>(str);
+            //}
+            //catch(ArgumentNullException e)
+            //{
+            //    var y = e;
+            //    var x = response;
+            //}
+            LoggedInUser = await GetUserById(LoggedInUser.Id);
+
+            //string str = await response.Content.ReadAsStringAsync();
+            //LoggedInUser = JsonConvert.DeserializeObject<UserLookedUp>(str);
         }
 
-        public async Task<User> GetUserById(string Id)
+        public async Task<UserLookedUp> GetUserById(string Id)
         {
             HttpResponseMessage response = null;
            
             response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Users/" + Id));
             string str = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<User>(str);
+            return JsonConvert.DeserializeObject<UserLookedUp>(str);
         }
 
         public async Task<bool> GetIfBalanceIsValidForRent(int price, int daysCount)
