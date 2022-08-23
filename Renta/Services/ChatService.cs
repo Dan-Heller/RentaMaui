@@ -62,6 +62,9 @@ namespace Renta.Services
             //string sender, string receiver, string message, string chatId, DateTime createdAt
             MessageDto messageDto = new MessageDto(userId, currentMessagesPage._currentChatViewModel.OtherUserId, message, currentMessagesPage._currentChat.Id, DateTime.Now);
             await _connection.InvokeCoreAsync("SendMessageToGroup", args: new[] { messageDto });
+
+            Message newMessage = new Message(_userService.LoggedInUser.Id, message, DateTime.Now);
+            currentMessagesPage.AddMessageToCollection(newMessage);
         }
 
         public async Task<Chat> CreateNewChat(CreateChatDto createChatDto)
