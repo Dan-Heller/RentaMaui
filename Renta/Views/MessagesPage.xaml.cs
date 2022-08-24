@@ -55,10 +55,13 @@ public partial class MessagesPage : ContentPage
     //	myChatMessage.Text = string.Empty;
     //}
 
-    protected override  void OnAppearing()
+    protected override  async void OnAppearing()
     {
-		base.OnAppearing();
-		(BindingContext as MessagesPageViewModel).FetchMessagesFromChat();
+		
+
+        base.OnAppearing();
+		await (BindingContext as MessagesPageViewModel).FetchMessagesFromChat();
+        ChatHeader.Text = "Chat with " + (BindingContext as MessagesPageViewModel)._currentChatViewModel._otherUser.GetFullName();
 
     }
 

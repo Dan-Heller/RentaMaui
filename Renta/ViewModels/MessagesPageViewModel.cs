@@ -51,9 +51,9 @@ namespace Renta.ViewModels
         }
 
 
-        public void FetchMessagesFromChat()
+        public async Task FetchMessagesFromChat()
         {
-            deserializeString();
+            await deserializeString();
             messages = _currentChat.Messages;
             UpdateTransactionsCollection(messages);
 
