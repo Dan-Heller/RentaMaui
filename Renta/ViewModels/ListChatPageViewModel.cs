@@ -29,8 +29,16 @@ namespace Renta.ViewModels
 
             chatsViewModels = await ConvertToViewModels(chats);
             UpdateMyItemsCollection(chatsViewModels);
-
+            OnPropertyChanged(nameof(ChatsCollection));
         }
+
+        public void PageDisappeared()
+        {
+            chatsViewModels.Clear();
+            UpdateMyItemsCollection(chatsViewModels);
+            OnPropertyChanged(nameof(ChatsCollection));
+        }
+
 
         private async Task<List<ChatViewModel>> ConvertToViewModels(List<Chat> Chats)
         {

@@ -63,7 +63,7 @@ namespace Renta.ViewModels
         {
             messages.Add(newMessage);
             UpdateTransactionsCollection(messages);
-            OnPropertyChanged("MessagesCollection");
+            OnPropertyChanged(nameof(MessagesCollection));
         }
 
 

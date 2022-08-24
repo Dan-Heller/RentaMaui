@@ -64,9 +64,11 @@
             <Grid
                 Style="{StaticResource RecentImageContainerStyle}">
                 <Ellipse
-                    
+                     Stroke="Black"
+                     StrokeThickness="1"
                     Style="{StaticResource RecentEllipseStyle}"/>
                 <Image
+                    HeightRequest="60"
                     Source="{Binding otherUserProfilePhoto}"
                     Style="{StaticResource RecentImageStyle}"/>
             </Grid>

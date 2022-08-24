@@ -13,8 +13,8 @@
             Text="Messages!" 
         VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />-->
-        <Grid RowDefinitions="530,*">
-            <ScrollView Orientation="Vertical" Grid.Row="0">
+        <Grid RowDefinitions="*,*">
+            <ScrollView Orientation="Vertical" Grid.Row="0"  HeightRequest="500">
 
                 <CollectionView ItemsSource="{Binding MessagesCollection}"
                         SelectionMode="None"
@@ -32,7 +32,7 @@
                           x:Name="chatMessages"
                           Text="{Binding Text}" 
                           VerticalOptions="CenterAndExpand" 
-                          HorizontalOptions="CenterAndExpand">
+                          HorizontalOptions="End">
                                 <Label.Triggers>
                                     <DataTrigger TargetType="Label"
                                              Binding="{Binding Sender}"
@@ -40,6 +40,8 @@
                                              >
                                         <Setter Property="TextColor"
                                             Value="Red" />
+                                        <Setter Property="HorizontalOptions"
+                                                Value="Start"/>
                                     </DataTrigger>
                                 </Label.Triggers>
                             </Label>

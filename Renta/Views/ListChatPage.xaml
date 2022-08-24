@@ -4,14 +4,17 @@
              xmlns:controls="clr-namespace:Renta.Controls"
              x:Class="Renta.ListChatPage"
              Shell.ForegroundColor="Black"
-             Shell.NavBarIsVisible="true"
+             Shell.NavBarIsVisible="False"
              Title="ListChatPage"
            
              >
 
     <StackLayout>
         <Label 
+            Margin="0,10,0,0"
             Text="Chats"
+            FontSize="30"
+            TextColor="Black"
             VerticalOptions="Center" 
             HorizontalOptions="Start" />
 

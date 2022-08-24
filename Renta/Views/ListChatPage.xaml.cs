@@ -16,4 +16,12 @@ public partial class ListChatPage : ContentPage
         await (BindingContext as ListChatPageViewModel).PageAppeared();
 
     }
+
+    protected  override void OnDisappearing()
+    {
+        base.OnDisappearing();
+        (BindingContext as ListChatPageViewModel).PageDisappeared();
+
+    }
+    
 }
