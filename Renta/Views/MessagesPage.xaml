@@ -5,7 +5,7 @@
              Shell.ForegroundColor="Black"
              Shell.NavBarIsVisible="True"
                 
-             BackgroundColor="White">
+             BackgroundColor="GhostWhite">
 
     <StackLayout>
         <!--<Label
@@ -14,15 +14,17 @@
         VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />-->
         <Label
-            HorizontalOptions="Start"
-            FontSize="20"
+            
+            FontSize="25"
+            FontAttributes="None"
+            HorizontalOptions="Center"
             Margin="0,0,0,10"
             x:Name="ChatHeader"
             TextColor="Black"
             />
        
             <ScrollView x:Name="MessagesScroll"  Orientation="Vertical" Grid.Row="0"  HeightRequest="550">
-
+                
                 <CollectionView ItemsSource="{Binding MessagesCollection}"
                         SelectionMode="None"
                         >
@@ -36,7 +38,7 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Border Margin="0" Padding="5" Stroke="gray"
-                                StrokeThickness="1"
+                                StrokeThickness="1" MaximumWidthRequest="300"
                                  StrokeShape="RoundRectangle 10,10,10,10"  HorizontalOptions="Start">
                                 <Border.Triggers>
                                     <DataTrigger TargetType="Border"
@@ -74,6 +76,7 @@
                         
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+           
             </ScrollView>
 
             <Frame BorderColor="Black" Grid.Row="1" HeightRequest="80" >
