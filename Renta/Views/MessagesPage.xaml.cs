@@ -72,5 +72,11 @@ public partial class MessagesPage : ContentPage
 		await _chatService.InvokeSend(myChatMessage.Text);
 
         myChatMessage.Text = string.Empty;
+        MessagesScroll.HeightRequest = 550;
     }
+
+	private void myChatMessage_Focused(object sender, FocusEventArgs e)
+	{
+		MessagesScroll.HeightRequest = 300;
+	}
 }

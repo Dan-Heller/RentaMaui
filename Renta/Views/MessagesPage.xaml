@@ -20,8 +20,8 @@
             x:Name="ChatHeader"
             TextColor="Black"
             />
-        <Grid RowDefinitions="*,*">
-            <ScrollView Orientation="Vertical" Grid.Row="0"  HeightRequest="500">
+       
+            <ScrollView x:Name="MessagesScroll"  Orientation="Vertical" Grid.Row="0"  HeightRequest="550">
 
                 <CollectionView ItemsSource="{Binding MessagesCollection}"
                         SelectionMode="None"
@@ -79,6 +79,7 @@
             <Frame BorderColor="Black" Grid.Row="1" HeightRequest="80" >
                 <Grid ColumnDefinitions="3*,auto">
                     <Entry Grid.Column="0"
+                           Focused="myChatMessage_Focused"
             x:Name="myChatMessage"
             Placeholder="Type your Message"
             FontSize="18"
@@ -94,7 +95,7 @@
 
                 </Grid>
             </Frame>
-        </Grid>
+     
        
        
     
