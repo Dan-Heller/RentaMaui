@@ -12,8 +12,8 @@ namespace Renta.ViewModels
 {
     public class LoginPageViewModel
     {
-        public string password;
-        public string email;
+        public string password = "123";
+        public string email = "dan";
         private UserService m_userService;
         public LoginPageViewModel(UserService userService)
         {
