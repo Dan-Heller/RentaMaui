@@ -15,12 +15,6 @@ public partial class App : Application
 		//navigationService.NavigateToMainPage(MainPage.Navigation);
 		
 		MainPage = appShell;
-
-		CrossFirebasePushNotification.Current.OnTokenRefresh += Current_OnTokenRefresh;
 	}
-
-	private void Current_OnTokenRefresh(object source, FirebasePushNotificationTokenEventArgs e)
-	{
-		System.Diagnostics.Debug.WriteLine($"blablabla token: {e.Token}");
-	}
+	
 }
