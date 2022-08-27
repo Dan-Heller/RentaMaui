@@ -273,6 +273,12 @@
 	  <PackageReference Include="Xamarin.GooglePlayServices.Basement" Version="117.6.0.6" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Reference Include="Mono.Android">
+	    <HintPath>..\..\..\..\..\..\usr\local\share\dotnet\packs\Microsoft.Android.Ref.31\32.0.448\ref\net6.0\Mono.Android.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+
 	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
 		<OutputType>WinExe</OutputType>
 		<RuntimeIdentifier>win10-x64</RuntimeIdentifier>
