@@ -36,7 +36,7 @@ namespace Renta.Models
 
         public List<string> Items { get; set; } = new List<string>();
         
-        public string AppFCMToken { get; set; }
+        public string FCMToken { get; set; }
 
         public User() { }
 
