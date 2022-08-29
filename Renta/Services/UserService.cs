@@ -46,7 +46,8 @@ namespace Renta.Services
         public async Task RegisterUser(RegisterDto registerDto)
         {
             registerDto.FCMApptoken = await SecureStorage.Default.GetAsync("FCMToken");
-            Console.WriteLine("token: " + registerDto.FCMApptoken);
+            System.Diagnostics.Debug.WriteLine($"recived token reg: {registerDto.FCMApptoken}");
+
 
             string json = JsonConvert.SerializeObject(registerDto);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -59,7 +60,7 @@ namespace Renta.Services
         {
             loginDto.FCMToken = await SecureStorage.Default.GetAsync("FCMToken");
             
-            Console.WriteLine("token: " + loginDto.FCMToken);
+            System.Diagnostics.Debug.WriteLine($"recived token login: {loginDto.FCMToken}");
 
 
             string json = JsonConvert.SerializeObject(loginDto);
