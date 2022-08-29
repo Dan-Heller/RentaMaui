@@ -16,6 +16,8 @@ namespace Renta.Dto_s
         public string Region { get; set; }
 
         public string City { get; set; }
+        
+        public string FCMApptoken { get; set; }
 
 
         public RegisterDto() { }

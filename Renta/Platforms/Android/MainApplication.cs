@@ -3,22 +3,27 @@ using Android.OS;
 using Android.Runtime;
 using Firebase.Messaging;
 using Plugin.FirebasePushNotification;
+using Renta.Services;
 
 namespace Renta;
 
 [Application]
 public class MainApplication : MauiApplication
 {
-	public MainApplication(IntPtr handle, JniHandleOwnership ownership)
+	private readonly UserService _userService;
+
+	public MainApplication(IntPtr handle, JniHandleOwnership ownership, UserService usrService)
 		: base(handle, ownership)
 	{
+		_userService = usrService;
 		CrossFirebasePushNotification.Current.OnTokenRefresh += Current_OnTokenRefresh;
 	}
 	
-	private void Current_OnTokenRefresh(object source, FirebasePushNotificationTokenEventArgs e)
+	private async void Current_OnTokenRefresh(object source, FirebasePushNotificationTokenEventArgs e)
 	{
 		System.Diagnostics.Debug.WriteLine($"blablabla token: {e.Token}");
-		Console.WriteLine($"cw token: {e.Token}");
+		await SecureStorage.Default.SetAsync("FCMToken", e.Token);
+		_userService.AppFCMToken = e.Token; // only happens once - when app opens for the first time;
 	}
 	
 	public override void OnCreate()
@@ -56,11 +61,11 @@ public class MainApplication : MauiApplication
 		}
  
 		//If debug you should reset the token each time.
-		#if DEBUG
-		FirebasePushNotificationManager.Initialize(this,true);
-		#else
-		FirebasePushNotificationManager.Initialize(this,false);
-		#endif
+		// #if DEBUG
+		// FirebasePushNotificationManager.Initialize(this,false);
+		// #else
+		// FirebasePushNotificationManager.Initialize(this,false);
+		// #endif
 
 		//Handle notification when app is closed here
 		CrossFirebasePushNotification.Current.OnNotificationReceived += (s,p) =>

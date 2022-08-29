@@ -35,6 +35,8 @@ namespace Renta.Models
         //public List<Chat>? PopulatedChats { get; set; }
 
         public List<string> Items { get; set; } = new List<string>();
+        
+        public string AppFCMToken { get; set; }
 
         public User() { }
 
