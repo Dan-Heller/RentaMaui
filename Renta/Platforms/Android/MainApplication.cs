@@ -10,12 +10,9 @@ namespace Renta;
 [Application]
 public class MainApplication : MauiApplication
 {
-	private readonly UserService _userService;
-
-	public MainApplication(IntPtr handle, JniHandleOwnership ownership, UserService usrService)
+	public MainApplication(IntPtr handle, JniHandleOwnership ownership)
 		: base(handle, ownership)
 	{
-		_userService = usrService;
 		CrossFirebasePushNotification.Current.OnTokenRefresh += Current_OnTokenRefresh;
 	}
 	
@@ -23,7 +20,6 @@ public class MainApplication : MauiApplication
 	{
 		System.Diagnostics.Debug.WriteLine($"blablabla token: {e.Token}");
 		await SecureStorage.Default.SetAsync("FCMToken", e.Token);
-		_userService.AppFCMToken = e.Token; // only happens once - when app opens for the first time;
 	}
 	
 	public override void OnCreate()
