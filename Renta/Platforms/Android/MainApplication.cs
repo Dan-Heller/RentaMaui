@@ -45,8 +45,6 @@ public class MainApplication : MauiApplication
 		// });
 		
 		
-
-
 		//Set the default notification channel for your app when running Android Oreo
 		if (Build.VERSION.SdkInt >= global::Android.OS.BuildVersionCodes.O)
 		{
@@ -59,7 +57,7 @@ public class MainApplication : MauiApplication
  
 		//If debug you should reset the token each time.
 		#if DEBUG
-		FirebasePushNotificationManager.Initialize(this,false);
+		FirebasePushNotificationManager.Initialize(this,true);
 		#else
 		FirebasePushNotificationManager.Initialize(this,false);
 		#endif
@@ -67,6 +65,8 @@ public class MainApplication : MauiApplication
 		//Handle notification when app is closed here
 		CrossFirebasePushNotification.Current.OnNotificationReceived += (s,p) =>
 		{ 
+			System.Diagnostics.Debug.WriteLine($"recived token: {p.Data}");
+			Console.WriteLine($"recived token: {p}");
 		}; 
 	}
 
