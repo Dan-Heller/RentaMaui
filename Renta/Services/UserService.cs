@@ -10,7 +10,7 @@ namespace Renta.Services
     public class UserService
     {
         public UserLookedUp LoggedInUser;
-        public string AppFCMToken;
+        //public string AppFCMToken;
         IConfiguration configuration;
         HttpClient httpclient;
 
