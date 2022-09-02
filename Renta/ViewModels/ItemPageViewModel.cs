@@ -129,6 +129,7 @@ namespace Renta.ViewModels
             transaction.ItemId = _ItemViewModel.Id;
             transaction.StartDate = datesCollection[0];
             transaction.EndDate = datesCollection[datesCollection.Count - 1];
+            transaction.CreatedAt = DateTime.Now;
             return transaction;
         }
 

@@ -156,6 +156,9 @@
 	  <MauiXaml Update="Controls\ListChatControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Controls\NotificationControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Controls\RentalTransactionControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
