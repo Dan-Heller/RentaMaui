@@ -28,6 +28,7 @@ namespace Renta.ViewModels
             notifications = _userService.LoggedInUser.Notifications;
 
             notificationsViewModels = await ConvertToViewModels(notifications);
+            notificationsViewModels = notificationsViewModels.OrderByDescending(notification => notification.NotificationTime).ToList();
             UpdateMyNotifcationsCollection(notificationsViewModels);
             OnPropertyChanged(nameof(NotificationsCollection));
         }
@@ -60,6 +61,7 @@ namespace Renta.ViewModels
         private void UpdateMyNotifcationsCollection(IEnumerable<NotificationViewModel> NotificationsVM)
         {
             NotificationsCollection.ReplaceRange(NotificationsVM);
+           
         }
 
 

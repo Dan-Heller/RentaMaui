@@ -30,6 +30,7 @@ namespace Renta.ViewModels
             _userService = userService;
             _otherUser = OtherUser;
             OtherUserId = OtherUser.Id;
+            NotificationTime = notification.Time.ToString("HH:mm");
             insertNotificationMessage();
 
         }
@@ -38,15 +39,15 @@ namespace Renta.ViewModels
         {
             if(_notification.NotificationType == enums.ENotificationType.Chat)
             {
-                _message = "You recieved a message from" + OtherUserFullName;
+                _message = "You recieved a message from " + OtherUserFullName;
             }
             else if(_notification.NotificationType == enums.ENotificationType.ItemRequest)
             {
-                _message = OtherUserFullName + "is interested in your item.";
+                _message = OtherUserFullName + " is interested in your item.";
             }
             else
             {
-                _message = OtherUserFullName + "approved your item request.";
+                _message = OtherUserFullName + " approved your item request.";
             }
         }
 
