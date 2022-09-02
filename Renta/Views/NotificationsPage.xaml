@@ -2,14 +2,44 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Renta.NotificationsPage"
+             xmlns:controls="clr-namespace:Renta.Controls"
              Shell.NavBarIsVisible="True"
              Shell.ForegroundColor="Black"
              
              Title="Inbox"
              BackgroundColor="White">
     <StackLayout>
-        <Label Text="Notifications"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <Label 
+            Margin="0,10,0,0"
+            Text="Notifications"
+            FontSize="30"
+            TextColor="Black"
+            VerticalOptions="Center" 
+            HorizontalOptions="Start" />
+
+
+        <ScrollView Orientation="Vertical">
+
+            <CollectionView ItemsSource="{Binding NotificationsCollection}"
+                        SelectionMode="None"
+                        >
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                                 Orientation="Vertical"
+                                 Span="{OnIdiom Phone=1, Tablet=1, Desktop=1}"
+                                 HorizontalItemSpacing="5"
+                                 VerticalItemSpacing="0" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <controls:NotificationControl />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+         
+
+        </ScrollView>
     </StackLayout>
 </ContentPage>

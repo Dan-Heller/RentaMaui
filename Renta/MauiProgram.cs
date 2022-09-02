@@ -60,7 +60,9 @@ public static class MauiProgram
         builder.Services.AddTransient<MessagesPage>();
         builder.Services.AddTransient<MessagesPageViewModel>();
 
-        builder.Services.AddSingleton<NotificationsPage>();
+        builder.Services.AddTransient<NotificationsPage>();
+        builder.Services.AddTransient<NotificationsPageViewModel>();
+
         builder.Services.AddSingleton<MessagesShell>();
 
 		builder.Services.AddSingleton<EditProfilePage>();

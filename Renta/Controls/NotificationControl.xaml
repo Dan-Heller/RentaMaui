@@ -85,7 +85,7 @@
                 </StackLayout>
                 <Label 
                     Grid.Column="1"
-                    Text="{Binding MessageTime}"
+                    Text="{Binding NotificationTime}"
                     Style="{StaticResource TimeTextStyle}"/>
             </Grid>
         </Grid>
