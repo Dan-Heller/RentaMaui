@@ -18,8 +18,7 @@ public static class MauiProgram
 		builder
 			.UseMauiApp<App>()
             .ConfigureSyncfusionCore()
-            .ConfigureFonts(fonts =>
-			{
+            .ConfigureFonts(fonts => {
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 			});
 		
@@ -57,8 +56,7 @@ public static class MauiProgram
 
 		builder.Services.AddTransient<RegistrationPage>();
 		builder.Services.AddTransient<RegistrationPageViewModel>();
-
-        
+		
         builder.Services.AddTransient<MessagesPage>();
         builder.Services.AddTransient<MessagesPageViewModel>();
 
@@ -78,8 +76,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<FiltersPage>();
         builder.Services.AddSingleton<CategoriesPageViewModel>();
         builder.Services.AddSingleton<FilterPageViewModel>();
-
-
+        
         builder.Services.AddSingleton<MenuPage>();
 		builder.Services.AddSingleton<MenuPageViewModel>();
 
@@ -116,19 +113,10 @@ public static class MauiProgram
 
         builder.Services.AddTransient<PhotoDisplayPage>();
         builder.Services.AddTransient<PhotoDisplayPageViewModel>();
-
         
-
         builder.Services.AddSingleton<SavedItemsPage>();
         builder.Services.AddSingleton<SavedItemsPageViewModel>();
-
-
-
-
-
-
-
-
+        
 
         //builder.Services.AddTransient<AppShell>();  ///???
         //builder.Services.AddTransient<AppShellViewModel>();
@@ -141,8 +129,7 @@ public static class MauiProgram
 
         //      builder.Services.AddSingleton<INavigationService, NavigationService>();
 
-
-
+        
         return builder.Build();
 	}
 }

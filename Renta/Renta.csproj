@@ -54,6 +54,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Platforms\Android\google-services.json" />
 	  <None Remove="Platforms\Android\Resources\xml\network_security_config.xml" />
 	  <None Remove="Resources\Images\accepticon.png" />
 	  <None Remove="Resources\Images\addicon.png" />
@@ -92,12 +93,17 @@
 	  <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.8" />
 	  <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	  <PackageReference Include="Plugin.FirebasePushNotification" Version="3.4.22" />
 	  <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
 	  <PackageReference Include="RestSharp" Version="107.3.0" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<EmbeddedResource Include="appsettings.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <GoogleServicesJson Include="Platforms\Android\google-services.json" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -261,6 +267,19 @@
 	  <MauiXaml Update="Views\TransactionPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0-android'">
+	  <PackageReference Include="Xamarin.Firebase.Messaging" Version="122.0.0" />
+	  <PackageReference Include="Xamarin.Google.Dagger" Version="2.39.1" />
+	  <PackageReference Include="Xamarin.GooglePlayServices.Base" Version="117.6.0.5" />
+	  <PackageReference Include="Xamarin.GooglePlayServices.Basement" Version="117.6.0.6" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="Mono.Android">
+	    <HintPath>..\..\..\..\..\..\usr\local\share\dotnet\packs\Microsoft.Android.Ref.31\32.0.448\ref\net6.0\Mono.Android.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">

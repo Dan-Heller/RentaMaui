@@ -1,6 +1,8 @@
 ﻿using Autofac;
 
 using System.Reflection;
+using Android.OS;
+using Plugin.FirebasePushNotification;
 
 namespace Renta;
 
@@ -12,7 +14,7 @@ public partial class App : Application
 		//MainPage = new NavigationPage();
 		//navigationService.NavigateToMainPage(MainPage.Navigation);
 		
-
 		MainPage = appShell;
 	}
+	
 }

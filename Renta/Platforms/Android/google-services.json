@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "913776702370",
+    "project_id": "push-notification-dc644",
+    "storage_bucket": "push-notification-dc644.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:913776702370:android:58106d21eb96b63bdab8fb",
+        "android_client_info": {
+          "package_name": "com.companyname.renta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "913776702370-1p947flfuds6c91f525pmpig91kb93ki.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB119RXQATqbiyaVVI4KlyNSiAhHGykARc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "913776702370-1p947flfuds6c91f525pmpig91kb93ki.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
