@@ -6,6 +6,7 @@ using Renta.Models;
 using Renta.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,7 +29,7 @@ namespace Renta.ViewModels
 
         public DateTime Today { get; set; } = DateTime.Now;
 
-       
+        //public ObservableRangeCollection<ImageData> ItemImagesUrlsCollection { get; set; } 
 
         public ObservableRangeCollection<DateTime> datesCollection { get; set; }
         public ObservableRangeCollection<ItemReview> ItemReviewsCollection { get; private set; } = new ObservableRangeCollection<ItemReview>();
@@ -50,15 +51,28 @@ namespace Renta.ViewModels
             var Item = JsonConvert.DeserializeObject<Item>(_ItemString);
             convertItemToViewModel(Item);
             ItemLiked = _ItemViewModel.ItemLiked;
+
+
+            //UpdateImagesCollection();
+            //OnPropertyChanged(nameof(ItemImagesUrlsCollection));
         }
+
+        //private void UpdateImagesCollection()
+        //{
+        //    ItemImagesUrlsCollection = new ObservableRangeCollection<ImageData>();
+        //    foreach (var uri in _ItemViewModel.ImagesUrls)
+        //    {
+        //        ItemImagesUrlsCollection.Add(new ImageData()
+        //        {
+        //            ImageUri = uri
+        //        });
+        //    }
+        //}
 
         public async Task FetchItemReviews()
         {
             ItemReviewsCollection.ReplaceRange(await _reviewService.GetReviewsOnItem(_ItemViewModel.Id));
-            //List<ItemReview> itemReviews = await _reviewService.GetReviewsOnItem(_ItemViewModel.Id);
-            //ItemReviewsViewModel = await ConvertReviewsToViewModels(itemReviews);
-            //ItemReviewsCollection.ReplaceRange(ItemReviewsViewModel);
-            ////OnPropertyChanged(nameof(ObservableCollectionCount));
+   
         }
 
       
@@ -78,6 +92,8 @@ namespace Renta.ViewModels
             _userService = userService;
             _transactionService = transactionService;
             _reviewService = reviewsService;
+
+
         }
 
        
@@ -134,6 +150,23 @@ namespace Renta.ViewModels
         }
 
 
+        public Command NextImage_Clicked
+      => new Command( () =>  ShowNextImage());
 
+        public void ShowNextImage()
+        {
+            _ItemViewModel.CurrentImageIndex++;
+            OnPropertyChanged(nameof(_ItemViewModel));
+        }
+
+        public Command PreviousImage_Clicked
+   => new Command(() => ShowPreviousImage());
+
+        public void ShowPreviousImage()
+        {
+            _ItemViewModel.CurrentImageIndex = _ItemViewModel.CurrentImageIndex == 0 ?   _ItemViewModel.ImagesUrls.Count-1 : _ItemViewModel.CurrentImageIndex-1;
+            OnPropertyChanged(nameof(_ItemViewModel));
+        }
     }
+  
 }

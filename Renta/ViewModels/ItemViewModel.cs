@@ -34,6 +34,10 @@ namespace Renta.ViewModels
 
         public string FirstImageUrl { get { return ImagesUrls[0]; } }
 
+        public int CurrentImageIndex { get; set; } = 0;
+
+        public string CurrentImage { get { return ImagesUrls[CurrentImageIndex%ImagesUrls.Count]; } }
+
         private UserService _userService;
 
         

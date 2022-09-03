@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 //using Android.Locations;
 using Microsoft.Maui.Storage;
+using Renta.enums;
 
 namespace Renta.ViewModels
 {
@@ -118,10 +119,16 @@ namespace Renta.ViewModels
 
 
             Categories = new List<string>();
-            Categories.Add("Sports");
-            Categories.Add("Clothing");
-            Categories.Add("Music");
-            Categories.Add("Travel");
+            Categories.Add(Ecategories.Sport.ToString());
+            Categories.Add(Ecategories.Music.ToString());
+            Categories.Add(Ecategories.Travel.ToString());
+            Categories.Add(Ecategories.Clothing.ToString());
+            Categories.Add(Ecategories.Books.ToString());
+            Categories.Add(Ecategories.Home.ToString());
+            Categories.Add(Ecategories.Electronics.ToString());
+            Categories.Add(Ecategories.Bikes.ToString());
+            Categories.Add(Ecategories.Tools.ToString());
+
 
             // ImageSource1 = _myItemViewModel.ImagesUrls[0];
             ImageSource1 = ImageSource.FromFile(AddPhotoImageSource);

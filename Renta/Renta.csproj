@@ -81,6 +81,7 @@
 	  <None Remove="Resources\Images\menuicon.png" />
 	  <None Remove="Resources\Images\messageicon.png" />
 	  <None Remove="Resources\Images\musicinstrumentsphoto.png" />
+	  <None Remove="Resources\Images\nexticon.png" />
 	  <None Remove="Resources\Images\notificationicon.png" />
 	  <None Remove="Resources\Images\profileicon.png" />
 	  <None Remove="Resources\Images\RentaLogo1.png" />

@@ -6,7 +6,7 @@
     xmlns:controls="clr-namespace:Renta.Controls"
     xmlns:ViewModels="clr-namespace:Renta.ViewModels"
     x:DataType="ViewModels:ItemPageViewModel"
-   
+     
     xmlns:xcViews="clr-namespace:XCalendar.Maui.Views;assembly=XCalendar.Maui"
     Title="ItemPage"
     BackgroundColor="White"
@@ -41,6 +41,30 @@
         <!--  Images  should be horizontal scroll  -->
         <Grid RowDefinitions="auto,auto">
 
+            <!--<ScrollView Orientation="Horizontal" Grid.Row="0">
+                <CollectionView ItemsSource="{Binding ItemImagesUrlsCollection}"
+                        SelectionMode="None"
+                        >
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout
+                                 Orientation="Horizontal"
+                                 Span="{OnIdiom Phone=1, Tablet=1, Desktop=1}"
+                                 HorizontalItemSpacing="5"
+                                 VerticalItemSpacing="5" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Image
+                                
+                                 HeightRequest="300"
+                                   Aspect="AspectFit"
+                                  Source="{Binding ImageUri}"
+                                  VerticalOptions="Start" />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>-->
+            
             <Grid
                 Grid.Row="0"
                 Padding="0,0,0,0"
@@ -52,8 +76,12 @@
                     Grid.Row="0"
                     HeightRequest="300"
                     Aspect="AspectFit"
-                    Source="{Binding _ItemViewModel.FirstImageUrl}"
+                    Source="{Binding _ItemViewModel.CurrentImage}"
                     VerticalOptions="Start" />
+                <ImageButton Command="{Binding NextImage_Clicked}" Source="nexticon.png" HeightRequest="30" HorizontalOptions="End" />
+                <ImageButton Command="{Binding PreviousImage_Clicked}" Source="nexticon.png" HeightRequest="30" HorizontalOptions="Start" Rotation="180" />
+
+
             </Grid>
 
             <Grid

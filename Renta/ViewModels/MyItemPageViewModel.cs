@@ -72,8 +72,24 @@ namespace Renta.ViewModels
         }
 
 
+        public Command NextImage_Clicked
+      => new Command(() => ShowNextImage());
+
+        public void ShowNextImage()
+        {
+            _myItemViewModel.CurrentImageIndex++;
+            OnPropertyChanged(nameof(_myItemViewModel));
+        }
+
+        public Command PreviousImage_Clicked
+   => new Command(() => ShowPreviousImage());
+
+        public void ShowPreviousImage()
+        {
+            _myItemViewModel.CurrentImageIndex = _myItemViewModel.CurrentImageIndex == 0 ? _myItemViewModel.ImagesUrls.Count - 1 : _myItemViewModel.CurrentImageIndex - 1;
+            OnPropertyChanged(nameof(_myItemViewModel));
+        }
 
 
-      
     }
 }

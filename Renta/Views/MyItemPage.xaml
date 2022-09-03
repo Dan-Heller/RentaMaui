@@ -52,8 +52,10 @@
                     Grid.Row="0"
                     HeightRequest="300"
                     Aspect="AspectFit"
-                    Source="{Binding _myItemViewModel.FirstImageUrl}"
+                    Source="{Binding _myItemViewModel.CurrentImage}"
                     VerticalOptions="Start" />
+                <ImageButton Command="{Binding NextImage_Clicked}" Source="nexticon.png" HeightRequest="30" HorizontalOptions="End" />
+                <ImageButton Command="{Binding PreviousImage_Clicked}" Source="nexticon.png" HeightRequest="30" HorizontalOptions="Start" Rotation="180" />
             </Grid>
 
             <Grid
