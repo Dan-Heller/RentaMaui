@@ -14,6 +14,10 @@ namespace Renta.enums
         Books,
         Music,
         Travel,
-        Clothing
+        Clothing,
+        Electronics,
+        Bikes,
+        Home,
+        Tools
     }
 }

@@ -56,6 +56,11 @@ namespace Renta.ViewModels
             Categories.Add(Ecategories.Travel.ToString());
             Categories.Add(Ecategories.Clothing.ToString());
             Categories.Add(Ecategories.Books.ToString());
+            Categories.Add(Ecategories.Home.ToString());
+            Categories.Add(Ecategories.Electronics.ToString());
+            Categories.Add(Ecategories.Bikes.ToString());
+            Categories.Add(Ecategories.Tools.ToString());
+           
 
 
 

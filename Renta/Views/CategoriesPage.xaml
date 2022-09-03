@@ -10,7 +10,7 @@
               Shell.TitleColor="MediumPurple">
     
     <ScrollView Padding="0,0,0,0" VerticalOptions="FillAndExpand">
-        <StackLayout>
+        <StackLayout Padding="2,0,0,0">
             <!-- All items -->
             <Frame  ClassId="0" Grid.Row="0" Padding="0,2,0,2" BorderColor="LightGray" >
                 <Frame.GestureRecognizers>
@@ -20,7 +20,7 @@
                     <Image Grid.Column="0" Source="allitemsphoto.png" HorizontalOptions="Start"/>
                     <Grid Grid.Column="1" RowDefinitions="*,*" >
                         <Label Grid.Row="0" Text="All items" HorizontalOptions="Center" VerticalOptions="Center"/>
-                        <Label Grid.Row="1" Text="XXX items" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Grid.Row="1"  TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center"/>
                     </Grid>
                     <Image Grid.Column="2" Source="nextarrow.png" WidthRequest="20" HorizontalOptions="End"/>
                 </Grid>
@@ -34,7 +34,7 @@
                     <Image Grid.Column="0" Source="booksphoto.png" HorizontalOptions="Start"/>
                     <Grid Grid.Column="1" RowDefinitions="*,*" >
                         <Label Grid.Row="0" Text="Books" HorizontalOptions="Center" VerticalOptions="Center"/>
-                        <Label Grid.Row="1" Text="XXX items" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Grid.Row="1"  TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center"/>
                     </Grid>
                     <Image Grid.Column="2"  Source="nextarrow.png" WidthRequest="20" HorizontalOptions="End"/>
                 </Grid>
@@ -48,7 +48,7 @@
                     <Image Grid.Column="0" Source="musicinstrumentsphoto.png" HorizontalOptions="Start"/>
                     <Grid Grid.Column="1" RowDefinitions="*,*" >
                         <Label Grid.Row="0" Text="Music accessories" HorizontalOptions="Center" VerticalOptions="Center"/>
-                        <Label Grid.Row="1" Text="XXX items" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Grid.Row="1"  TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center"/>
                     </Grid>
                     <Image Grid.Column="2" Source="nextarrow.png" WidthRequest="20" HorizontalOptions="End"/>
                 </Grid>
@@ -62,35 +62,91 @@
                     <Image Grid.Column="0" Source="travelphoto.png" HorizontalOptions="Start"/>
                     <Grid Grid.Column="1" RowDefinitions="*,*" >
                         <Label Grid.Row="0" Text="Travel accessories" HorizontalOptions="Center" VerticalOptions="Center"/>
-                        <Label Grid.Row="1" Text="XXX items" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Grid.Row="1"  TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center"/>
                     </Grid>
                     <Image Grid.Column="2" Source="nextarrow.png" WidthRequest="20" HorizontalOptions="End"/>
                 </Grid>
             </Frame>
             <!-- Clothing -->
-            <Frame ClassId="4" Grid.Row="4" Padding="0,2,0,2" BorderColor="LightGray" >
+            <Frame ClassId="4" Grid.Row="4" Padding="0,2,0,2" BorderColor="LightGray" HeightRequest="65" >
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="CategoryOption_Tapped"/>
                 </Frame.GestureRecognizers>
                 <Grid ColumnDefinitions="*,*,*">
-                    <Image Grid.Column="0" Source="travelphoto.png" HorizontalOptions="Start"/>
+                    <Image Grid.Column="0" Source="clothing.png" HorizontalOptions="Start"/>
                     <Grid Grid.Column="1" RowDefinitions="*,*" >
                         <Label Grid.Row="0" Text="Clothing" HorizontalOptions="Center" VerticalOptions="Center"/>
-                        <Label Grid.Row="1" Text="XXX items" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Grid.Row="1"  TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center"/>
                     </Grid>
                     <Image Grid.Column="2" Source="nextarrow.png" WidthRequest="20" HorizontalOptions="End"/>
                 </Grid>
             </Frame>
             <!-- Sport -->
-            <Frame ClassId="5" Grid.Row="5" Padding="0,2,0,2" BorderColor="LightGray" >
+            <Frame ClassId="5" Grid.Row="5" Padding="0,2,0,2" BorderColor="LightGray" HeightRequest="65">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="CategoryOption_Tapped"/>
                 </Frame.GestureRecognizers>
                 <Grid ColumnDefinitions="*,*,*">
-                    <Image Grid.Column="0" Source="travelphoto.png" HorizontalOptions="Start"/>
+                    <Image Grid.Column="0" Source="sports.png" HorizontalOptions="Start"/>
                     <Grid Grid.Column="1" RowDefinitions="*,*" >
                         <Label Grid.Row="0" Text="Sport" HorizontalOptions="Center" VerticalOptions="Center"/>
-                        <Label Grid.Row="1" Text="XXX items" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Grid.Row="1"  TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Grid>
+                    <Image Grid.Column="2" Source="nextarrow.png" WidthRequest="20" HorizontalOptions="End"/>
+                </Grid>
+            </Frame>
+            <!-- Electronics -->
+            <Frame ClassId="6" Grid.Row="6" Padding="0,2,0,2" BorderColor="LightGray" HeightRequest="65">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="CategoryOption_Tapped"/>
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="*,*,*">
+                    <Image Grid.Column="0" Source="electronics.png" HorizontalOptions="Start"/>
+                    <Grid Grid.Column="1" RowDefinitions="*,*" >
+                        <Label Grid.Row="0" Text="Electronics" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Grid.Row="1"  TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Grid>
+                    <Image Grid.Column="2" Source="nextarrow.png" WidthRequest="20" HorizontalOptions="End"/>
+                </Grid>
+            </Frame>
+            <!-- Home -->
+            <Frame ClassId="7" Grid.Row="7" Padding="0,2,0,2" BorderColor="LightGray" HeightRequest="65">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="CategoryOption_Tapped"/>
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="*,*,*">
+                    <Image Grid.Column="0" Source="home.png" HorizontalOptions="Start"/>
+                    <Grid Grid.Column="1" RowDefinitions="*,*" >
+                        <Label Grid.Row="0" Text="Home" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Grid.Row="1"  TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Grid>
+                    <Image Grid.Column="2" Source="nextarrow.png" WidthRequest="20" HorizontalOptions="End"/>
+                </Grid>
+            </Frame>
+            <!-- Bikes -->
+            <Frame ClassId="8" Grid.Row="8" Padding="0,2,0,2" BorderColor="LightGray" HeightRequest="65">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="CategoryOption_Tapped"/>
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="*,*,*">
+                    <Image Grid.Column="0" Source="bicycle.png" HorizontalOptions="Start"/>
+                    <Grid Grid.Column="1" RowDefinitions="*,*" >
+                        <Label Grid.Row="0" Text="Bikes and scooters" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Grid.Row="1"  TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Grid>
+                    <Image Grid.Column="2" Source="nextarrow.png" WidthRequest="20" HorizontalOptions="End"/>
+                </Grid>
+            </Frame>
+            <!-- Tools -->
+            <Frame ClassId="9" Grid.Row="9" Padding="0,2,0,2" BorderColor="LightGray" HeightRequest="65">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="CategoryOption_Tapped"/>
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="*,*,*">
+                    <Image Grid.Column="0" Source="tools.png" HorizontalOptions="Start"/>
+                    <Grid Grid.Column="1" RowDefinitions="*,*" >
+                        <Label Grid.Row="0" Text="Tools" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Grid.Row="1"  TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center"/>
                     </Grid>
                     <Image Grid.Column="2" Source="nextarrow.png" WidthRequest="20" HorizontalOptions="End"/>
                 </Grid>

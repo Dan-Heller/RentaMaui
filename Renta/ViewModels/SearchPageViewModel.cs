@@ -164,6 +164,18 @@ namespace Renta.ViewModels
                 case "5": // sport
                     ItemsViewModelFiltered = ItemsViewModel.FindAll(item => item.Category == Ecategories.Sport.ToString()).ToList();
                     break;
+                case "6": // electronics
+                    ItemsViewModelFiltered = ItemsViewModel.FindAll(item => item.Category == Ecategories.Electronics.ToString()).ToList();
+                    break;
+                case "7": // home
+                    ItemsViewModelFiltered = ItemsViewModel.FindAll(item => item.Category == Ecategories.Home.ToString()).ToList();
+                    break;
+                case "8": // bikes
+                    ItemsViewModelFiltered = ItemsViewModel.FindAll(item => item.Category == Ecategories.Bikes.ToString()).ToList();
+                    break;
+                case "9": // tools
+                    ItemsViewModelFiltered = ItemsViewModel.FindAll(item => item.Category == Ecategories.Tools.ToString()).ToList();
+                    break;
             }
       
         }
