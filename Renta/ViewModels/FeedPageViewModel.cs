@@ -16,7 +16,7 @@ namespace Renta.ViewModels
     public class FeedPageViewModel : BaseViewModel
     {
         public ItemService _itemService;
-        public UserService _userService;
+        public UserService _userService { get; set; }
         private List<Item> Items = new List<Item>();
         public ObservableRangeCollection<ItemViewModel> ItemsNearYouCollection { get; private set; } = new ObservableRangeCollection<ItemViewModel>();
         private List<ItemViewModel> ItemsNearYouViewModel;

@@ -18,6 +18,8 @@ namespace Renta.Models
         public string RatingAsString { get => UserRating.ToString("0.0"); }
 
         public int Coins { get; set; }
+
+        public string CoinsAsString { get => Coins.ToString(); }
         public string? City { get; set; }
 
         public string? Region { get; set; }

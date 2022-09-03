@@ -21,8 +21,33 @@
 
         <ScrollView Padding="8,0,0,0" Grid.Row="1"  Orientation="Vertical" >
             <StackLayout Spacing="0">
-                <Label x:Name="GreetingsLabel" TextColor="Black"  Margin="0,5,0,0" FontSize="25"/>
-
+                <Grid ColumnDefinitions="9*,1*,1*">
+                    <Label x:Name="GreetingsLabel" TextColor="Black"  Margin="0,5,0,0" FontSize="25" Grid.Column="0"/>
+                    <Label
+                                FontSize="25"
+                        Padding="0"
+                                Grid.Column="1"
+                                FontAttributes="Bold"
+                                Text="{Binding  _userService.LoggedInUser.CoinsAsString}"
+                                TextColor="Black"
+                                 VerticalOptions="Center"
+                               HorizontalOptions="End"
+                               HeightRequest="30"
+                               WidthRequest="30"
+                                />
+                    <Image Source="coinicon.png"
+                               Grid.Column="2"
+                               Margin="0,1,1,0"
+                               VerticalOptions="Center"
+                               HorizontalOptions="End"
+                               HeightRequest="30"
+                               WidthRequest="30"
+                            
+                               >
+                    </Image>
+                </Grid>
+               
+                
                 <Grid RowDefinitions="50,*" >
                     <Label Grid.Row="0"
                     Margin="0,20,0,0"

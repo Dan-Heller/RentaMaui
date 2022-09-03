@@ -1,3 +1,4 @@
+using Renta.ViewModels;
 using System.Windows.Input;
 
 namespace Renta.Controls;
@@ -66,10 +67,10 @@ public partial class HeaderControl : ContentView
         await Shell.Current.GoToAsync($"{nameof(ProfilePage)}");
     }
 
-    private async void CreditButton_Tapped(object sender, EventArgs e)
-    {
-        await Shell.Current.GoToAsync($"{nameof(CreditsPage)}");
-    }
+    //private async void CreditButton_Tapped(object sender, EventArgs e)
+    //{
+    //    await Shell.Current.GoToAsync($"{nameof(CreditsPage)}");
+    //}
 
     private async void AddITtemButton_Tapped(object sender, EventArgs e)
     {
@@ -81,5 +82,6 @@ public partial class HeaderControl : ContentView
         await Shell.Current.GoToAsync($"{nameof(NotificationsPage)}");
     }
 
-    
+ 
+
 }
