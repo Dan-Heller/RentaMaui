@@ -1,4 +1,5 @@
-﻿using Renta.Services;
+﻿using Renta.enums;
+using Renta.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,12 @@ namespace Renta.ViewModels
         public string City { get; set; }
         private bool ProfileImageChanged = false;
         public List<string> Regions { get; set; }
+
+        public List<string> Categories { get; set; } = new List<string>();
+        public string SelectedCategory1 { get; set; } = string.Empty;
+        public string SelectedCategory2 { get; set; } = string.Empty;
+        public List<ECategories> SelectedFavoritesCategories { get; set; } = new List<ECategories>();
+
 
 
         private void FetchRegionsFromString()
@@ -53,6 +60,16 @@ namespace Renta.ViewModels
             Region = _userService.LoggedInUser.Region;
             City = _userService.LoggedInUser.City;
             FetchRegionsFromString();
+
+            SelectedCategory1 = _userService.LoggedInUser.FavoritesCategories[0].ToString();
+            SelectedCategory2 = _userService.LoggedInUser.FavoritesCategories[1].ToString();
+            //SelectedFavoritesCategories = _userService.LoggedInUser.FavoritesCategories;
+
+            foreach (var value in Enum.GetNames(typeof(ECategories)))
+            {
+                Categories.Add(value);
+            }
+            Categories.RemoveAt(0);
         }
 
 
@@ -74,6 +91,14 @@ namespace Renta.ViewModels
 
         private async Task updateUser()
         {
+            //update favorites categoirs
+           SelectedFavoritesCategories.Add(Enum.Parse<ECategories>(SelectedCategory1));
+           SelectedFavoritesCategories.Add(Enum.Parse<ECategories>(SelectedCategory2));
+            _userService.LoggedInUser.FavoritesCategories = new List<ECategories>();
+            _userService.LoggedInUser.FavoritesCategories = SelectedFavoritesCategories;
+
+
+
             //check if image changed
             if (ProfileImageChanged)
             {

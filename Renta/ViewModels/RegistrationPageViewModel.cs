@@ -5,8 +5,10 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-
+using MvvmHelpers;
 using Renta.Dto_s;
+using Renta.enums;
+using Renta.Models;
 using Renta.Services;
 
 namespace Renta.ViewModels
@@ -18,6 +20,13 @@ namespace Renta.ViewModels
         public string email;
         public string FirstName { get; set; }
         public string LastName { get; set;}
+
+        //public ObservableRangeCollection<string> FavoritesCategoriesCollection { get; set; }
+
+        public List<string> Categories { get; set; } = new List<string>();
+        public string SelectedCategory1 { get; set; } = string.Empty;
+        public string SelectedCategory2 { get; set; } = string.Empty;
+        public List<ECategories> SelectedFavoritesCategories { get; set; } = new List<ECategories>();
 
         public List<string> Regions { get; set; }
         public string SelectedRegion { get; set; }
@@ -35,14 +44,30 @@ namespace Renta.ViewModels
             SelectedRegion = String.Empty;
 
             FetchRegionsFromString();
-           // var test1 = FileSystem.Current.AppDataDirectory;
+
+            //FavoritesCategoriesCollection = new ObservableRangeCollection<string>();
+            //foreach (var value in Enum.GetNames(typeof(ECategories)))
+            //{
+            //    FavoritesCategoriesCollection.Add(value);
+            //}
+            //FavoritesCategoriesCollection.RemoveAt(0); // removes the ALL
+
+           
+            foreach (var value in Enum.GetNames(typeof(ECategories)))
+            {
+                Categories.Add(value);
+            }
+            Categories.RemoveAt(0);
+
+
+            // var test1 = FileSystem.Current.AppDataDirectory;
 
             //var citiesFile = File.ReadAllLines(@"e:\Users\Dan\Desktop\Renta UI\Renta\Renta\Resources\cities.txt");
             //var Cities = new List<string>(citiesFile);
 
         }
 
-      
+
 
         //public async Task FetchCities()
         //{
@@ -86,9 +111,19 @@ namespace Renta.ViewModels
 
         private async Task registerUser()
         {
-            if(password.Length > 0 && email.Length > 0  && FirstName.Length > 0 && LastName.Length > 0 && SelectedRegion.Length > 0)
+            if(SelectedCategory1 != string.Empty)
             {
-                RegisterDto registerDto = new RegisterDto(email, password, FirstName, LastName, SelectedCity, SelectedRegion);
+                SelectedFavoritesCategories.Add( Enum.Parse<ECategories>(SelectedCategory1));
+            }
+            if (SelectedCategory2 != string.Empty)
+            {
+                SelectedFavoritesCategories.Add(Enum.Parse<ECategories>(SelectedCategory2));
+            }
+
+
+            if (password.Length > 0 && email.Length > 0  && FirstName.Length > 0 && LastName.Length > 0 && SelectedRegion.Length > 0)
+            {
+                RegisterDto registerDto = new RegisterDto(email, password, FirstName, LastName, SelectedCity, SelectedRegion, SelectedFavoritesCategories);
                 await m_userService.RegisterUser(registerDto);
 
                 await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");

@@ -26,9 +26,21 @@
             
             <Label Text="Last Name:" />
             <Entry Placeholder="Last Name" Text="{Binding LastName, Mode=TwoWay}"  />
-           
+
+            <Grid RowDefinitions="*,*" ColumnDefinitions="*,*">
+                <Label Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0"  Text="Pick prefered categories." />
+                <Picker Grid.Row="1" Grid.Column="0" x:Name="CategoryPicker1"  SelectedIndex="4" Margin="0" Title=""  
+                ItemsSource="{Binding Categories}" 
+                SelectedItem="{Binding SelectedCategory1}">
+                </Picker>
+                <Picker Grid.Row="1" Grid.Column="1" x:Name="CategoryPicker2"  SelectedIndex="4" Margin="0" Title=""  
+                ItemsSource="{Binding Categories}" 
+                SelectedItem="{Binding SelectedCategory2}">
+                </Picker>
+            </Grid>
+            
             <Label Text="Region: "  Padding="0,10,0,10"/>
-            <Picker x:Name="RegionPicker"  SelectedIndex="4" Margin="0" Title="Select your Region" 
+            <Picker x:Name="RegionPicker"  SelectedIndex="4" Margin="0" Title="Select your Region"  
                 ItemsSource="{Binding Regions}" 
                 SelectedItem="{Binding SelectedRegion}">
             </Picker>

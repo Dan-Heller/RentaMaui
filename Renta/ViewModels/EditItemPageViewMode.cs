@@ -119,15 +119,15 @@ namespace Renta.ViewModels
 
 
             Categories = new List<string>();
-            Categories.Add(Ecategories.Sport.ToString());
-            Categories.Add(Ecategories.Music.ToString());
-            Categories.Add(Ecategories.Travel.ToString());
-            Categories.Add(Ecategories.Clothing.ToString());
-            Categories.Add(Ecategories.Books.ToString());
-            Categories.Add(Ecategories.Home.ToString());
-            Categories.Add(Ecategories.Electronics.ToString());
-            Categories.Add(Ecategories.Bikes.ToString());
-            Categories.Add(Ecategories.Tools.ToString());
+            Categories.Add(ECategories.Sport.ToString());
+            Categories.Add(ECategories.Music.ToString());
+            Categories.Add(ECategories.Travel.ToString());
+            Categories.Add(ECategories.Clothing.ToString());
+            Categories.Add(ECategories.Books.ToString());
+            Categories.Add(ECategories.Home.ToString());
+            Categories.Add(ECategories.Electronics.ToString());
+            Categories.Add(ECategories.Bikes.ToString());
+            Categories.Add(ECategories.Tools.ToString());
 
 
             // ImageSource1 = _myItemViewModel.ImagesUrls[0];

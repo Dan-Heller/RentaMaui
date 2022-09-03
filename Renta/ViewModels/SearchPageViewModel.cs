@@ -150,31 +150,31 @@ namespace Renta.ViewModels
                     ItemsViewModelFiltered = ItemsViewModel;
                     break;
                 case "1": // books
-                    ItemsViewModelFiltered = ItemsViewModel.FindAll(item => item.Category == Ecategories.Books.ToString()).ToList();
+                    ItemsViewModelFiltered = ItemsViewModel.FindAll(item => item.Category == ECategories.Books.ToString()).ToList();
                     break;
                 case "2": // music
-                    ItemsViewModelFiltered = ItemsViewModel.FindAll(item => item.Category == Ecategories.Music.ToString()).ToList();
+                    ItemsViewModelFiltered = ItemsViewModel.FindAll(item => item.Category == ECategories.Music.ToString()).ToList();
                     break;
                 case "3": // travel
-                    ItemsViewModelFiltered = ItemsViewModel.FindAll(item => item.Category == Ecategories.Travel.ToString()).ToList();
+                    ItemsViewModelFiltered = ItemsViewModel.FindAll(item => item.Category == ECategories.Travel.ToString()).ToList();
                     break;
                 case "4": // clothing
-                    ItemsViewModelFiltered = ItemsViewModel.FindAll(item => item.Category == Ecategories.Clothing.ToString()).ToList();
+                    ItemsViewModelFiltered = ItemsViewModel.FindAll(item => item.Category == ECategories.Clothing.ToString()).ToList();
                     break;
                 case "5": // sport
-                    ItemsViewModelFiltered = ItemsViewModel.FindAll(item => item.Category == Ecategories.Sport.ToString()).ToList();
+                    ItemsViewModelFiltered = ItemsViewModel.FindAll(item => item.Category == ECategories.Sport.ToString()).ToList();
                     break;
                 case "6": // electronics
-                    ItemsViewModelFiltered = ItemsViewModel.FindAll(item => item.Category == Ecategories.Electronics.ToString()).ToList();
+                    ItemsViewModelFiltered = ItemsViewModel.FindAll(item => item.Category == ECategories.Electronics.ToString()).ToList();
                     break;
                 case "7": // home
-                    ItemsViewModelFiltered = ItemsViewModel.FindAll(item => item.Category == Ecategories.Home.ToString()).ToList();
+                    ItemsViewModelFiltered = ItemsViewModel.FindAll(item => item.Category == ECategories.Home.ToString()).ToList();
                     break;
                 case "8": // bikes
-                    ItemsViewModelFiltered = ItemsViewModel.FindAll(item => item.Category == Ecategories.Bikes.ToString()).ToList();
+                    ItemsViewModelFiltered = ItemsViewModel.FindAll(item => item.Category == ECategories.Bikes.ToString()).ToList();
                     break;
                 case "9": // tools
-                    ItemsViewModelFiltered = ItemsViewModel.FindAll(item => item.Category == Ecategories.Tools.ToString()).ToList();
+                    ItemsViewModelFiltered = ItemsViewModel.FindAll(item => item.Category == ECategories.Tools.ToString()).ToList();
                     break;
             }
       

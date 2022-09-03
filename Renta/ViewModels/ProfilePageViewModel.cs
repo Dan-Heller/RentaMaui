@@ -19,6 +19,10 @@ namespace Renta.ViewModels
         private string coins;
         public string FullName { get; set; }
         
+        public string Category1 { get => _LoggedUser.FavoritesCategories[0].ToString(); }
+
+        public string Category2 { get => _LoggedUser.FavoritesCategories[1].ToString(); }
+
         public string Address   { get; set; }
 
         public string ProfileImageUrl { get; set; }
@@ -53,6 +57,8 @@ namespace Renta.ViewModels
             OnPropertyChanged(nameof(ProfileImageUrl));
             OnPropertyChanged(nameof(FullName));
             OnPropertyChanged(nameof(Address));
+            OnPropertyChanged(nameof(Category1));
+            OnPropertyChanged(nameof(Category2));
 
         }
 

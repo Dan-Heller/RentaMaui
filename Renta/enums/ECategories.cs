@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Renta.enums
 {
    
-    public enum Ecategories
+    public enum ECategories
     {
         All,
         Sport,

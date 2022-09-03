@@ -52,7 +52,7 @@
                 </Grid>
             </Grid>
 
-            <Grid Grid.Row="1" RowDefinitions="*,*,*,*,*,*,*,*" Margin="10,10,0,0" Padding="0" RowSpacing="5">
+            <Grid Grid.Row="1" RowDefinitions="*,*,*,*,*,*,*,*,*,*,*" Margin="10,10,0,0" Padding="0" RowSpacing="5">
                 <Label Grid.Row="0" Text="Email"  TextColor="Black"   HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16" />
                 <Label Grid.Row="1" HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16" Text="{Binding Email, Mode=TwoWay}"/>
                 <Label Grid.Row="2" Text="Renta credits" TextColor="Black" HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16"/>
@@ -61,6 +61,11 @@
                 <Label Grid.Row="5" HorizontalTextAlignment="Start" Margin="0,0,0,0"  FontSize="16" Text="052??????"/>
                 <Label Grid.Row="6" Text="Location" HorizontalTextAlignment="Start" TextColor="Black" Margin="0,0,0,0" FontSize="16"/>
                 <Label Grid.Row="7" HorizontalTextAlignment="Start" Margin="0,0,0,0"  FontSize="16" Text="{Binding Address, Mode=TwoWay}"/>
+                
+                    <Label Grid.Row="8" Text="Favorites categories:"  TextColor="Black"   HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16" />
+                    <Label Grid.Row="9" Text="{Binding Category1}"    HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16" />
+                    <Label Grid.Row="10" Text="{Binding Category2}"    HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16" />
+              
 
             </Grid>
         </Grid>

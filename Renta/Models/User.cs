@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Renta.enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,6 +34,8 @@ namespace Renta.Models
         public List<string> LikedItems { get; set; }
 
         public List<string>? Chats { get; set; }
+
+        public List<ECategories>? FavoritesCategories { get; set; } 
 
         public List<Notification>? Notifications { get; set; }
 

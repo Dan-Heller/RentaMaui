@@ -33,6 +33,17 @@
             <Entry Placeholder="Last Name" Text="{Binding LastName, Mode=TwoWay}"/>
             <!--<Label Text="Address:" />-->
             <!--<Entry Placeholder="Address" Text="{Binding Address, Mode=TwoWay}"/>-->
+            <Grid RowDefinitions="*,*" ColumnDefinitions="*,*">
+                <Label Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0"  Text="Pick prefered categories." />
+                <Picker Grid.Row="1" Grid.Column="0"   SelectedIndex="4" Margin="0" Title=""  
+                ItemsSource="{Binding Categories}" 
+                SelectedItem="{Binding SelectedCategory1}">
+                </Picker>
+                <Picker Grid.Row="1" Grid.Column="1"   SelectedIndex="4" Margin="0" Title=""  
+                ItemsSource="{Binding Categories}" 
+                SelectedItem="{Binding SelectedCategory2}">
+                </Picker>
+            </Grid>
             <Label Text="Region: "  Padding="0,10,0,10"/>
             <Picker x:Name="CityPicker"  SelectedIndex="4" Margin="0" Title="Select your city" 
                 ItemsSource="{Binding Regions}" 
@@ -40,7 +51,8 @@
             </Picker>
             <Label Text="City:" />
             <Entry Placeholder="City" Text="{Binding City, Mode=TwoWay}"/>
-
+            
+          
         </StackLayout>
 
     </Grid>
