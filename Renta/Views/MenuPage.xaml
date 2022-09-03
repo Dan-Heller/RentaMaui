@@ -19,11 +19,11 @@
             BackgroundColor="White"
            
             HeightRequest="400"
-            RowDefinitions="80,80,80,80,80">
+            RowDefinitions="80,80,80,80">
 
 
             <!--  Settings Menu Item  -->
-            <Frame  Grid.Row="0" Padding="0" HasShadow="False">
+            <!--<Frame  Grid.Row="0" Padding="0" HasShadow="False">
                 <Grid ColumnDefinitions="30, 60 , *, 30, 50">
                    
                     <BoxView
@@ -40,25 +40,7 @@
                 FontSize="24"
                 Text="Settings"
                 VerticalOptions="CenterAndExpand" />
-                    <!--<BoxView
-                x:Name="settingItemNotificationBox"
-                Grid.Column="3"
-                BackgroundColor="#999999"
-                CornerRadius="100"
-                HeightRequest="30"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                WidthRequest="30" />
-                    <Label
-                x:Name="settingsNotificationBadge"
-                Grid.Column="3"
-                FontAttributes="Bold"
-                FontSize="14"
-                HorizontalOptions="Center"
-                Text="15"
-                TextColor="White"
-                VerticalOptions="Center"
-                ZIndex="3" />-->
+                 
                     <Image
                 Grid.Column="4"
                 HorizontalOptions="Center"
@@ -67,10 +49,10 @@
 
                 </Grid>
              
-            </Frame>
+            </Frame>-->
             
             <!--  My items Menu Item  -->
-            <Frame Grid.Row="1" Padding="0" HasShadow="False">
+            <Frame Grid.Row="0" Padding="0" HasShadow="False">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding MyItems_Tapped}" />
                 </Frame.GestureRecognizers>
@@ -125,7 +107,7 @@
             
 
             <!--  Renting Menu Item  -->
-            <Frame  Grid.Row="2" Padding="0" HasShadow="False">
+            <Frame  Grid.Row="1" Padding="0" HasShadow="False">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Renting_Tapped}" />
                 </Frame.GestureRecognizers>
@@ -179,7 +161,7 @@
              </Frame>
 
                     <!--  rental  -->
-            <Frame  Grid.Row="3" Padding="0" HasShadow="False">
+            <Frame  Grid.Row="2" Padding="0" HasShadow="False">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Rental_Tapped}" />
                 </Frame.GestureRecognizers>
@@ -233,7 +215,7 @@
             </Frame>
 
             <!--  Wish List Menu Item  -->
-            <Frame  Grid.Row="4" Padding="0"  HasShadow="False">
+            <Frame  Grid.Row="3" Padding="0"  HasShadow="False">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding SavedItems_Tapped}" />
                 </Frame.GestureRecognizers>
