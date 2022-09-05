@@ -120,6 +120,17 @@ namespace Renta.Services
 
         }
 
+        public async Task<List<Item>> GetItemsByFavoritesCategories()
+        {
+            HttpResponseMessage response = null;
+            string Id = _userService.LoggedInUser.Id;
+            response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Items/might-like/" + Id));
+            string str = await response.Content.ReadAsStringAsync();
+            var items = JsonConvert.DeserializeObject<List<Item>>(str);
+            return items;
+
+        }
+
         public async Task<List<Item>> GetItemsByText(string text)
         {
             HttpResponseMessage response = null;
