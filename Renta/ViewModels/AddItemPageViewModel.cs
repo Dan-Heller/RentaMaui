@@ -80,8 +80,11 @@ namespace Renta.ViewModels
         public async Task AddPhotoFromGallery(string ImageId)
         {
             chosenImageFile = await MediaPicker.PickPhotoAsync(new MediaPickerOptions { Title = "Please pick a photo" });
+
             if (chosenImageFile != null)
             {
+                chosenImageFile.FileName = string.Format(@"{0}{1}", DateTime.Now.Ticks, chosenImageFile.FileName);
+               
                 UpdateImageSource(ImageId, chosenImageFile);
                 
                

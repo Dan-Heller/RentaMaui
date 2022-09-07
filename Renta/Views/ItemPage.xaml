@@ -208,7 +208,7 @@
                     />
                 <!--Command="{Binding SendRequestButton_Clicked}"-->
 
-                <xcViews:CalendarView x:Name="xCalendar" Grid.Row="6" SelectionType="Single"
+                <xcViews:CalendarView x:Name="xCalendar" Grid.Row="6" SelectionType="Single" 
                                       DayRangeMinimumDate="{Binding Today}" IsVisible="false"  SelectionAction="Modify"   />
 
                 <Label
