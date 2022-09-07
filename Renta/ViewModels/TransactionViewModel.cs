@@ -25,6 +25,8 @@ namespace Renta.ViewModels
 
         public bool NeedCancelIcon { get; set; }
 
+  
+
         public string? Id { get => Transaction?.Id; }
 
 
@@ -79,6 +81,8 @@ namespace Renta.ViewModels
 
            // NeedApproveIconOnSeeker = Status == ETransactionStatus.Approved && CheckDateRange() && !transaction.SeekerAcceptedActivation;
             
+
+
         }
 
         private bool checkedForOwnerApproveIcon(TransactionLookedUp transaction)

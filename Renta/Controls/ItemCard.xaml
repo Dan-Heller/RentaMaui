@@ -26,11 +26,11 @@
                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GoToItemPage}" />
                 </Frame.GestureRecognizers>
                 <Image
-                    
-                    Aspect="AspectFit"
-                    HeightRequest="145"
+                    Margin="5"
+                    Aspect="AspectFill"
+                    HeightRequest="125"
                     HorizontalOptions="CenterAndExpand"
-                    WidthRequest="115"
+                    WidthRequest="120"
                     Source="{Binding FirstImageUrl}" />
             </Frame>
             <StackLayout

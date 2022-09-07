@@ -56,22 +56,22 @@
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding MyItems_Tapped}" />
                 </Frame.GestureRecognizers>
-                <Grid  ColumnDefinitions="30, 60 , *, 30, 50">
+                <Grid  ColumnDefinitions="60 , *, 30, 10">
                    
-                    <BoxView
+                    <!--<BoxView
                 
                 BackgroundColor="Red"
                 HeightRequest="80"
-                WidthRequest="8" />
+                WidthRequest="8" />-->
                     <Image
                
-                Grid.Column="1"
+                Grid.Column="0"
                 Source="mylistingicon.png"
                 VerticalOptions="Center"
                 WidthRequest="30" />
                     <Label
                 
-                Grid.Column="2"
+                Grid.Column="1"
                 FontSize="24"
                 Text="My items"
                 VerticalOptions="CenterAndExpand" />
@@ -98,7 +98,7 @@
                 ZIndex="3" />-->
                     <Image
                 
-                Grid.Column="4"
+                Grid.Column="2"
                 HorizontalOptions="Center"
                 Source="nextarrow"
                 WidthRequest="20" />
@@ -111,21 +111,21 @@
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Renting_Tapped}" />
                 </Frame.GestureRecognizers>
-                <Grid ColumnDefinitions="30, 60 , *, 30, 50">
+                <Grid ColumnDefinitions="60 , *, 30, 10">
            
-            <BoxView
+            <!--<BoxView
                 BackgroundColor="LawnGreen"
                 HeightRequest="80"
-                WidthRequest="8" />
+                WidthRequest="8" />-->
             <Image
                 
-                Grid.Column="1"
+                Grid.Column="0"
                 Source="renticon"
                 VerticalOptions="Center"
                 WidthRequest="30" />
             <Label
                
-                Grid.Column="2"
+                Grid.Column="1"
                 FontSize="24"
                 Text="Renting"
                 VerticalOptions="CenterAndExpand" />
@@ -153,7 +153,7 @@
                 ZIndex="3" />-->
             <Image
               
-                Grid.Column="4"
+                Grid.Column="2"
                 HorizontalOptions="Center"
                 Source="nextarrow"
                 WidthRequest="20" />
@@ -165,22 +165,22 @@
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Rental_Tapped}" />
                 </Frame.GestureRecognizers>
-                <Grid ColumnDefinitions="30, 60 , *, 30, 50">
+                <Grid ColumnDefinitions="60 , *, 30,10">
                    
-                    <BoxView
+                    <!--<BoxView
                
                 BackgroundColor="Yellow"
                 HeightRequest="80"
-                WidthRequest="8" />
+                WidthRequest="8" />-->
                     <Image
                 
-                Grid.Column="1"
+                Grid.Column="0"
                 Source="itemsicon"
                 VerticalOptions="Center"
                 WidthRequest="30" />
                     <Label
                 
-                Grid.Column="2"
+                Grid.Column="1"
                 FontSize="24"
                 Text="Rental"
                 VerticalOptions="CenterAndExpand" />
@@ -207,7 +207,7 @@
                 ZIndex="3" />-->
                     <Image
                
-                Grid.Column="4"
+                Grid.Column="2"
                 HorizontalOptions="Center"
                 Source="nextarrow"
                 WidthRequest="20" />
@@ -219,22 +219,22 @@
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding SavedItems_Tapped}" />
                 </Frame.GestureRecognizers>
-                <Grid ColumnDefinitions="30, 60 , *, 30, 50">
+                <Grid ColumnDefinitions=" 60 , *, 30, 10">
                    
-                    <BoxView
+                    <!--<BoxView
               
                 BackgroundColor="Orange"
                 HeightRequest="80"
-                WidthRequest="8" />
+                WidthRequest="8" />-->
                     <Image
               
-                Grid.Column="1"
+                Grid.Column="0"
                 Source="favlisticon"
                 VerticalOptions="Center"
                 WidthRequest="30" />
                     <Label
                
-                Grid.Column="2"
+                Grid.Column="1"
                 FontSize="24"
                 Text="Saved items"
                 VerticalOptions="CenterAndExpand" />
@@ -260,7 +260,7 @@
                 VerticalOptions="Center" />-->
                     <Image
                
-                Grid.Column="4"
+                Grid.Column="2"
                 HorizontalOptions="Center"
                 Source="nextarrow"
                 WidthRequest="20" />

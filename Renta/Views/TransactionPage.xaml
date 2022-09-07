@@ -91,7 +91,7 @@
 
             <Frame BorderColor="Black" Margin="5" Padding="8"  x:Name="UserReviewFrame"  >
                 <Grid RowDefinitions="auto,auto,auto,auto,auto" Margin="0" Padding="0">
-                    <Label Grid.Row="0" Text="Review the other user" Padding="0" TextDecorations="Underline"/>
+                    <Label Grid.Row="0" Text="Review the Renter" Padding="0" TextDecorations="Underline"/>
                     <Grid Grid.Row="1" RowDefinitions="*"  ColumnDefinitions="*,*" Padding="0">
                         <Label Text="Give rate: " Grid.Row="0" Grid.Column="0" Padding="0,10,0,10"/>
                         <Picker x:Name="UserRatepicker"  Grid.Row="0" Grid.Column="1" SelectedIndex="4" Margin="0"
