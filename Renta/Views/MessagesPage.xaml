@@ -27,7 +27,7 @@
                     FlexLayout.Grow="1"
                     FlexLayout.Shrink="1"
                     Orientation="Vertical"
-                    Margin="0,0,0,25">
+                    Margin="5,0,5,25">
             <CollectionView ItemsSource="{Binding MessagesCollection}"
                             SelectionMode="None">
                 <CollectionView.ItemsLayout>
@@ -68,6 +68,7 @@
                                     </DataTrigger>
                                 </Label.Triggers>
                             </Label>
+                            
                         </Border>
                     </DataTemplate>
 
