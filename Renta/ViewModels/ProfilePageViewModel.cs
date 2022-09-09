@@ -1,4 +1,5 @@
 ﻿
+using Renta.Dto_s;
 using Renta.Models;
 using Renta.Services;
 using System;
@@ -90,6 +91,9 @@ namespace Renta.ViewModels
 
         private async Task Logout()
         {
+            SecureStorage.Remove("AuthToken");
+            
+            
             await Shell.Current.Navigation.PopAsync();
             await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
             

@@ -55,11 +55,19 @@ namespace Renta.ViewModels
 
             // todo add validation before sending
             LoginDto loginDto = new LoginDto(email, password);
-            await m_userService.LoginUser(loginDto);
+           bool LoginSuccess  = await m_userService.LoginUser(loginDto);
 
             
-
-            await Shell.Current.GoToAsync($"//{nameof(FeedPage)}");  //  "//" remove backstack.
+         
+            //  "//" remove backstack.
+            if (LoginSuccess)
+            {
+                await Shell.Current.GoToAsync($"//{nameof(FeedPage)}");
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert(" ", "User not found, Please try again.", "close");
+            }
         }
 
 

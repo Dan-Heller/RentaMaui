@@ -175,6 +175,7 @@ var stream = await result.OpenReadAsync();
 
 
                 await _itemService.UploadNewItem(NewItem);
+                await Application.Current.MainPage.DisplayAlert(" ", "Item added successfully!", "close");
                 await Shell.Current.GoToAsync("..");
             }
         }

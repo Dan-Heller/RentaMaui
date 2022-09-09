@@ -59,6 +59,7 @@ namespace Renta.ViewModels
 
            
             MyItemsViewModel = ConvertToViewModels(MyItems);
+            MyItemsViewModel = MyItemsViewModel.OrderByDescending(item => item.Item.UploadDate).ToList();
             UpdateMyItemsCollection(MyItemsViewModel);
 
         }

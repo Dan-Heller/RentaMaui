@@ -9,6 +9,7 @@ namespace Renta.Services
 {
     public class UserService
     {
+        
         public UserLookedUp LoggedInUser { get; set; }
         //public string AppFCMToken;
         IConfiguration configuration;
@@ -56,24 +57,44 @@ namespace Renta.Services
                 new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Auth/register"), content);
         }
 
-        public async Task LoginUser(LoginDto loginDto)
+        public async Task<bool> LoginUser(LoginDto loginDto)
         {
-            loginDto.FCMToken = await SecureStorage.GetAsync("FCMToken");
-            
-            System.Diagnostics.Debug.WriteLine($"recived token login: {loginDto.FCMToken}");
+            try
+            {
+                loginDto.FCMToken = await SecureStorage.GetAsync("FCMToken");
 
+                System.Diagnostics.Debug.WriteLine($"recived token login: {loginDto.FCMToken}");
 
-            string json = JsonConvert.SerializeObject(loginDto);
-            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                string json = JsonConvert.SerializeObject(loginDto);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
+                var response = await httpclient.PostAsync(
+                    new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Auth/login"), content);
+                string str = await response.Content.ReadAsStringAsync();
+                LoginResponse loginResponse = JsonConvert.DeserializeObject<LoginResponse>(str);
 
-            var response = await httpclient.PostAsync(
-                new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Auth/login"), content);
-            string str = await response.Content.ReadAsStringAsync();
-            LoginResponse loginResponse = JsonConvert.DeserializeObject<LoginResponse>(str);
+                LoggedInUser = loginResponse?.user;
+                await SecureStorage.Default.SetAsync("AuthToken", loginResponse.Token);
 
+                return true;
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+
+           
+        }
+
+        public async Task GetUserFromToken(string token)
+        {
+            var response = await httpclient.GetAsync(
+                new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Auth/"+token));
+            string responseAsString = await response.Content.ReadAsStringAsync();
+            LoginResponse loginResponse = JsonConvert.DeserializeObject<LoginResponse>(responseAsString);
             LoggedInUser = loginResponse?.user;
         }
+
 
         public async Task UpdateLoggedInUser()
         {
