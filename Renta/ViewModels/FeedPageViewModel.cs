@@ -20,8 +20,11 @@ namespace Renta.ViewModels
         private List<Item> Items = new List<Item>();
         public ObservableRangeCollection<ItemViewModel> ItemsNearYouCollection { get; private set; } = new ObservableRangeCollection<ItemViewModel>();
         public ObservableRangeCollection<ItemViewModel> ItemsMightLikeCollection { get; private set; } = new ObservableRangeCollection<ItemViewModel>();
+
+        public ObservableRangeCollection<ItemViewModel> NewestItemsCollection { get; private set; } = new ObservableRangeCollection<ItemViewModel>();
         private List<ItemViewModel> ItemsNearYouViewModel;
         private List<ItemViewModel> ItemsMightLikeViewModel;
+        private List<ItemViewModel> NewestItemsViewModel;
 
         public FeedPageViewModel(UserService userService, ItemService itemService)
         {
@@ -34,6 +37,7 @@ namespace Renta.ViewModels
         {
             await FetchNearYouAsync();
             await FetchMightLikeItems();
+            await FetchNewestItems();
         }
 
         private async Task FetchNearYouAsync()
@@ -42,6 +46,15 @@ namespace Renta.ViewModels
             ItemsNearYouViewModel = ConvertToViewModels(Items);
             UpdateItemsNearYouCollection(ItemsNearYouViewModel);
             OnPropertyChanged(nameof(ItemsNearYouCollection));
+
+        }
+
+        private async Task FetchNewestItems()
+        {
+            Items = await _itemService.GetNewestItems();
+            NewestItemsViewModel = ConvertToViewModels(Items);
+            UpdateNewestItemsCollection(NewestItemsViewModel);
+            OnPropertyChanged(nameof(NewestItemsCollection));
 
         }
 
@@ -75,6 +88,12 @@ namespace Renta.ViewModels
             ItemsMightLikeCollection.ReplaceRange(ItemsVM);
         }
 
+       
+
+        private void UpdateNewestItemsCollection(IEnumerable<ItemViewModel> ItemsVM)
+        {
+            NewestItemsCollection.ReplaceRange(ItemsVM);
+        }
 
 
         public Command ProfileButtonTapped

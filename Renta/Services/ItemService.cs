@@ -131,6 +131,17 @@ namespace Renta.Services
 
         }
 
+        public async Task<List<Item>> GetNewestItems()
+        {
+            HttpResponseMessage response = null;
+            string Id = _userService.LoggedInUser.Id;
+            response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Items/newest/" + Id));
+            string str = await response.Content.ReadAsStringAsync();
+            var items = JsonConvert.DeserializeObject<List<Item>>(str);
+            return items;
+
+        }
+
         public async Task<List<Item>> GetItemsByText(string text)
         {
             HttpResponseMessage response = null;
