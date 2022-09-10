@@ -74,16 +74,23 @@ namespace Renta.Services
                 LoginResponse loginResponse = JsonConvert.DeserializeObject<LoginResponse>(str);
 
                 LoggedInUser = loginResponse?.user;
-                await SecureStorage.Default.SetAsync("AuthToken", loginResponse.Token);
+                if(DeviceInfo.Current.Platform == DevicePlatform.iOS)
+                {
+                    //iOS stuff
+                }
+                else if(DeviceInfo.Current.Platform == DevicePlatform.Android)
+                {
+                    await SecureStorage.Default.SetAsync("AuthToken", loginResponse.Token);
+                }
 
                 return true;
             }
             catch(Exception e)
             {
+                Console.WriteLine("login failed");
+                Console.WriteLine(e.Message);
                 return false;
             }
-
-           
         }
 
         public async Task GetUserFromToken(string token)

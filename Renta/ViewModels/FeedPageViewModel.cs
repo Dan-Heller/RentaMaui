@@ -30,7 +30,6 @@ namespace Renta.ViewModels
         {
             _userService = userService;
             _itemService = itemService;
-          
         }
 
         internal async Task InitializeAsync()
@@ -46,7 +45,6 @@ namespace Renta.ViewModels
             ItemsNearYouViewModel = ConvertToViewModels(Items);
             UpdateItemsNearYouCollection(ItemsNearYouViewModel);
             OnPropertyChanged(nameof(ItemsNearYouCollection));
-
         }
 
         private async Task FetchNewestItems()
