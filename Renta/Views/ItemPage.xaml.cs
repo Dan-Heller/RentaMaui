@@ -1,3 +1,4 @@
+
 using Renta.ViewModels;
 namespace Renta;
 
@@ -24,16 +25,14 @@ public partial class ItemPage : ContentPage
 		}
     }
 
-	protected async override void OnAppearing()
+	protected override async void OnAppearing()
 	{
 		base.OnAppearing();
 		(BindingContext as ItemPageViewModel).deserializeString();
         await (BindingContext as ItemPageViewModel).FetchItemReviews();
         SetHeartButton();
-    }
-
-
-
+	}
+	
 	private void HeartButton_Clicked(object sender, EventArgs e)
     {
 		(BindingContext as ItemPageViewModel).ItemLiked = !(BindingContext as ItemPageViewModel).ItemLiked;
@@ -46,15 +45,15 @@ public partial class ItemPage : ContentPage
     {
 		if(RequestAndDatesButton.Text == "Select dates")
         {
-            xCalendar.IsVisible = !(xCalendar.IsVisible);
+            MainCalendarView.IsVisible = !(MainCalendarView.IsVisible);
             RequestAndDatesButton.Text = "Send request";
 			RequestAndDatesButton.BackgroundColor = Color.FromArgb("#008000");
         }
         else
         {
-            if (xCalendar.SelectedDates.Count > 0)
+            if ((BindingContext as ItemPageViewModel).EventCalendar.SelectedDates.Count > 0)
             {
-                (BindingContext as ItemPageViewModel).datesCollection = xCalendar.SelectedDates;
+                // (BindingContext as ItemPageViewModel).datesCollection = xCalendar.date;
                 await (BindingContext as ItemPageViewModel).sendItemRequest();
             }
             else

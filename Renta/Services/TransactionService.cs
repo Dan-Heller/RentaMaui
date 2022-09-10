@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace Renta.Services
 {
-    public  class TransactionService
+    public class TransactionService
     {
         UserService _userService;
         IConfiguration configuration;
@@ -22,7 +22,7 @@ namespace Renta.Services
         {
             var httpClientHandler = new HttpClientHandler();
             httpClientHandler.ServerCertificateCustomValidationCallback =
-            (message, cert, chain, errors) => { return true; };
+                (message, cert, chain, errors) => { return true; };
             httpclient = new HttpClient(httpClientHandler);
             configuration = config;
             httpclient.MaxResponseContentBufferSize = 256000;
@@ -32,22 +32,25 @@ namespace Renta.Services
 
         public async Task CreateTransaction(CreateTransactionDto transactionDto)
         {
-           
+            transactionDto.StartDate = transactionDto.StartDate.Value.AddHours(2);
+            transactionDto.EndDate = transactionDto.EndDate.Value.AddHours(2);
             string json = JsonConvert.SerializeObject(transactionDto);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-           
+            System.Diagnostics.Debug.WriteLine(content);
 
-            await httpclient.PostAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Transactions"), content);
+            await httpclient.PostAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Transactions"),
+                content);
         }
 
 
-        public async Task<List<TransactionLookedUp>> GetTransactionsByStatus(EUserType userType ,ETransactionStatus status)
+        public async Task<List<TransactionLookedUp>> GetTransactionsByStatus(EUserType userType,
+            ETransactionStatus status)
         {
             var queryString = new QueryString()
-            .Add("id", _userService.LoggedInUser.Id)
-            .Add("type", userType.ToString())
-            .Add("status", status.ToString());
-            
+                .Add("id", _userService.LoggedInUser.Id)
+                .Add("type", userType.ToString())
+                .Add("status", status.ToString());
+
 
             //string json = JsonConvert.SerializeObject(status);
             //StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -55,7 +58,8 @@ namespace Renta.Services
 
 
             string UserId = _userService.LoggedInUser.Id;
-            response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Transactions/" + queryString));
+            response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value +
+                                                         "/Transactions/" + queryString));
 
             string str = await response.Content.ReadAsStringAsync();
             var Transactions = JsonConvert.DeserializeObject<List<TransactionLookedUp>>(str);
@@ -68,8 +72,10 @@ namespace Renta.Services
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
             HttpResponseMessage response = null;
 
-            
-            response = await httpclient.PutAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Transactions/" + updatedTransaction.Id), content);
+
+            response = await httpclient.PutAsync(
+                new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Transactions/" + updatedTransaction.Id),
+                content);
 
             string str = await response.Content.ReadAsStringAsync();
             var result = JsonConvert.DeserializeObject<Transaction>(str);
@@ -78,9 +84,6 @@ namespace Renta.Services
             //{
             //    UserUpdatedInvoker.Invoke();
             //}
-
         }
     }
-
-   
 }
