@@ -1,69 +1,75 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="Renta.FeedPage"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:controls="clr-namespace:Renta.Controls"
-    xmlns:ViewModels="clr-namespace:Renta.ViewModels"
-             x:DataType="ViewModels:FeedPageViewModel"
     BackgroundColor="White"
-    Shell.NavBarIsVisible="False">
+    Shell.NavBarIsVisible="False"
+    x:Class="Renta.FeedPage"
+    x:DataType="ViewModels:FeedPageViewModel"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:ViewModels="clr-namespace:Renta.ViewModels"
+    xmlns:controls="clr-namespace:Renta.Controls"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
 
     <Grid RowDefinitions="57,*">
-        
-        <controls:HeaderControl VerticalOptions="Start" Grid.Row="0"/>
+
+        <controls:HeaderControl Grid.Row="0" VerticalOptions="Start" />
         <!--
             TextToSearch="{Binding Text, Mode=OneWayToSource}"
             SearchCommand="{Binding SearchCommand}"
         -->
 
 
-        <ScrollView Padding="8,0,0,0" Grid.Row="1"  Orientation="Vertical" >
+        <ScrollView
+            Grid.Row="1"
+            Orientation="Vertical"
+            Padding="8,0,0,0">
             <StackLayout Spacing="0">
                 <Grid ColumnDefinitions="9*,1*,1*">
-                    <Label x:Name="GreetingsLabel" TextColor="Black"  Margin="0,5,0,0" FontSize="25" Grid.Column="0"/>
                     <Label
-                                FontSize="25"
+                        FontSize="25"
+                        Grid.Column="0"
+                        Margin="0,5,0,0"
+                        TextColor="Black"
+                        x:Name="GreetingsLabel" />
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="25"
+                        Grid.Column="1"
+                        HeightRequest="30"
+                        HorizontalOptions="End"
                         Padding="0"
-                                Grid.Column="1"
-                                FontAttributes="Bold"
-                                Text="{Binding  _userService.LoggedInUser.CoinsAsString}"
-                                TextColor="Black"
-                                 VerticalOptions="Center"
-                               HorizontalOptions="End"
-                               HeightRequest="30"
-                               WidthRequest="30"
-                                />
-                    <Image Source="coinicon.png"
-                               Grid.Column="2"
-                               Margin="0,1,1,0"
-                               VerticalOptions="Center"
-                               HorizontalOptions="End"
-                               HeightRequest="30"
-                               WidthRequest="30"
-                            
-                               >
-                    </Image>
+                        Text="{Binding _userService.LoggedInUser.CoinsAsString}"
+                        TextColor="Black"
+                        VerticalOptions="Center"
+                        WidthRequest="30" />
+                    <Image
+                        Grid.Column="2"
+                        HeightRequest="30"
+                        HorizontalOptions="End"
+                        Margin="0,1,1,0"
+                        Source="coinicon.png"
+                        VerticalOptions="Center"
+                        WidthRequest="30" />
                 </Grid>
-               
-                
-                <Grid RowDefinitions="50,*" >
-                    <Label Grid.Row="0"
-                    Margin="0,20,0,0"
-                    FontSize="16"
-                    Text="Near You:"
-                    TextColor="Black" />
-                    <ScrollView Orientation="Horizontal" Grid.Row="1">
-                        <CollectionView ItemsSource="{Binding ItemsNearYouCollection}"
-                        SelectionMode="None"
-                        >
+
+
+                <Grid RowDefinitions="50,*">
+                    <Label
+                        FontSize="16"
+                        Grid.Row="0"
+                        Margin="0,20,0,0"
+                        Text="Near You:"
+                        TextColor="Black" />
+                    <ScrollView Grid.Row="1" Orientation="Horizontal">
+                        <CollectionView ItemsSource="{Binding ItemsNearYouCollection}" SelectionMode="None">
                             <CollectionView.ItemsLayout>
                                 <GridItemsLayout
-                                 Orientation="Horizontal"
-                                 Span="{OnIdiom Phone=1, Tablet=1, Desktop=1}"
-                                 HorizontalItemSpacing="5"
-                                 VerticalItemSpacing="5" />
+                                    HorizontalItemSpacing="5"
+                                    Orientation="Horizontal"
+                                    Span="{OnIdiom Phone=1,
+                                                   Tablet=1,
+                                                   Desktop=1}"
+                                    VerticalItemSpacing="5" />
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
@@ -75,21 +81,22 @@
                 </Grid>
 
                 <Grid RowDefinitions="50,*">
-                    <Label Grid.Row="0"
-                    Margin="0,20,0,0"
-                    FontSize="16"
-                    Text="You Might Like:"
-                    TextColor="Black" />
-                    <ScrollView Orientation="Horizontal" Grid.Row="1">
-                        <CollectionView ItemsSource="{Binding ItemsMightLikeCollection}"
-                        SelectionMode="None"
-                        >
+                    <Label
+                        FontSize="16"
+                        Grid.Row="0"
+                        Margin="0,20,0,0"
+                        Text="You Might Like:"
+                        TextColor="Black" />
+                    <ScrollView Grid.Row="1" Orientation="Horizontal">
+                        <CollectionView ItemsSource="{Binding ItemsMightLikeCollection}" SelectionMode="None">
                             <CollectionView.ItemsLayout>
                                 <GridItemsLayout
-                                 Orientation="Horizontal"
-                                 Span="{OnIdiom Phone=1, Tablet=1, Desktop=1}"
-                                 HorizontalItemSpacing="5"
-                                 VerticalItemSpacing="5" />
+                                    HorizontalItemSpacing="5"
+                                    Orientation="Horizontal"
+                                    Span="{OnIdiom Phone=1,
+                                                   Tablet=1,
+                                                   Desktop=1}"
+                                    VerticalItemSpacing="5" />
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
@@ -101,21 +108,22 @@
                 </Grid>
 
                 <Grid RowDefinitions="50,*">
-                    <Label Grid.Row="0"
-                    Margin="0,20,0,0"
-                    FontSize="16"
-                    Text="You Might Like:"
-                    TextColor="Black" />
-                    <ScrollView Orientation="Horizontal" Grid.Row="1">
-                        <CollectionView ItemsSource="{Binding NewestItemsCollection}"
-                        SelectionMode="None"
-                        >
+                    <Label
+                        FontSize="16"
+                        Grid.Row="0"
+                        Margin="0,20,0,0"
+                        Text="Newest items:"
+                        TextColor="Black" />
+                    <ScrollView Grid.Row="1" Orientation="Horizontal">
+                        <CollectionView ItemsSource="{Binding NewestItemsCollection}" SelectionMode="None">
                             <CollectionView.ItemsLayout>
                                 <GridItemsLayout
-                                 Orientation="Horizontal"
-                                 Span="{OnIdiom Phone=1, Tablet=1, Desktop=1}"
-                                 HorizontalItemSpacing="5"
-                                 VerticalItemSpacing="5" />
+                                    HorizontalItemSpacing="5"
+                                    Orientation="Horizontal"
+                                    Span="{OnIdiom Phone=1,
+                                                   Tablet=1,
+                                                   Desktop=1}"
+                                    VerticalItemSpacing="5" />
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>

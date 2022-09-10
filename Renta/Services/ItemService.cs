@@ -123,8 +123,8 @@ namespace Renta.Services
         public async Task<List<Item>> GetItemsByFavoritesCategories()
         {
             HttpResponseMessage response = null;
-            string Id = _userService.LoggedInUser.Id;
-            response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Items/might-like/" + Id));
+            string id = _userService.LoggedInUser.Id;
+            response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Items/might-like/" + id));
             string str = await response.Content.ReadAsStringAsync();
             var items = JsonConvert.DeserializeObject<List<Item>>(str);
             return items;
@@ -134,8 +134,8 @@ namespace Renta.Services
         public async Task<List<Item>> GetNewestItems()
         {
             HttpResponseMessage response = null;
-            string Id = _userService.LoggedInUser.Id;
-            response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Items/newest/"));
+            string id = _userService.LoggedInUser.Id;
+            response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Items/newest/"+ id));
             string str = await response.Content.ReadAsStringAsync();
             var items = JsonConvert.DeserializeObject<List<Item>>(str);
             return items;

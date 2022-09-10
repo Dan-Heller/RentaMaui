@@ -46,7 +46,6 @@ public partial class TransactionPage : ContentPage
 
 
             UserReviewFrame.IsVisible = !(ViewModel._transaction.OwnerReviewedSeeker) && ViewModel._transaction.Status == enums.ETransactionStatus.Archived;
-
         }
         else
         {
@@ -64,16 +63,12 @@ public partial class TransactionPage : ContentPage
 
             UserReviewFrame.IsVisible = !(ViewModel._transaction.SeekerReviewedOwner) && ViewModel._transaction.Status == enums.ETransactionStatus.Archived;
             ItemReviewFrame.IsVisible = !(ViewModel._transaction.SeekerReviewedItem) && ViewModel._transaction.Status == enums.ETransactionStatus.Archived;
-
         }
 
         //setting after image
-
         //if (_userService.LoggedInUser.Id == ViewModel._transaction.ItemOwner)
         //{
         //    AfterConditionLabel.IsVisible = AfterConditionGrid.IsVisible = ViewModel._transaction.OwnerImagesAfter != null;
-
-
         //    AfterImage1.Source = ViewModel._transaction.OwnerImagesAfter?.Count >= 1 ? ViewModel._transaction.OwnerImagesAfter[0] : null;
         //    AfterImage2.Source = ViewModel._transaction.OwnerImagesAfter?.Count >= 2 ? ViewModel._transaction.OwnerImagesAfter[1] : null;
         //    AfterImage3.Source = ViewModel._transaction.OwnerImagesAfter?.Count >= 3 ? ViewModel._transaction.OwnerImagesAfter[2] : null;
@@ -82,7 +77,6 @@ public partial class TransactionPage : ContentPage
         //else
         //{
         //    AfterConditionLabel.IsVisible = AfterConditionGrid.IsVisible = ViewModel._transaction.SeekerImagesAfter != null;
-
         //    AfterImage1.Source = ViewModel._transaction.SeekerImagesAfter?.Count >= 1 ? ViewModel._transaction.SeekerImagesAfter[0] : null;
         //    AfterImage2.Source = ViewModel._transaction.SeekerImagesAfter?.Count >= 2 ? ViewModel._transaction.SeekerImagesAfter[1] : null;
         //    AfterImage3.Source = ViewModel._transaction.SeekerImagesAfter?.Count >= 3 ? ViewModel._transaction.SeekerImagesAfter[2] : null;

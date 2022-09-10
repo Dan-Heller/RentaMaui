@@ -1,66 +1,111 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Renta.SearchPage"
-             xmlns:controls="clr-namespace:Renta.Controls"
-             Title="SearchPage"
-             BackgroundColor="White">
+
+<ContentPage
+    BackgroundColor="White"
+    Title="SearchPage"
+    x:Class="Renta.SearchPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:controls="clr-namespace:Renta.Controls"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <StackLayout>
-        
-        <Grid RowDefinitions="50,50" HeightRequest="100" >
-            <Frame CornerRadius="13"   BorderColor="LightGray"    HasShadow="True" Grid.Row="0" Margin="5" Padding="0">
-                <SearchBar Placeholder="Search items..." Text="{Binding SearchText, Mode=TwoWay}" HorizontalOptions="StartAndExpand" TextColor="Black"  TextTransform="Lowercase" TextChanged="SearchBar_TextChanged"
-           FontSize="Medium"
-           FontAttributes="Italic"/>
+
+        <Grid HeightRequest="100" RowDefinitions="50,50">
+            <Frame
+                BorderColor="LightGray"
+                CornerRadius="13"
+                Grid.Row="0"
+                HasShadow="True"
+                Margin="5"
+                Padding="0">
+                <SearchBar
+                    FontAttributes="Italic"
+                    FontSize="Medium"
+                    HorizontalOptions="StartAndExpand"
+                    Placeholder="Search items..."
+                    Text="{Binding SearchText, Mode=TwoWay}"
+                    TextChanged="SearchBar_TextChanged"
+                    TextColor="Black"
+                    TextTransform="Lowercase" />
             </Frame>
             <Grid ColumnDefinitions="*,*" Grid.Row="1">
-                <Frame CornerRadius="13"   BorderColor="LightGray"    HasShadow="True"  Grid.Column="0" Padding="5,0,0,0" Margin="30,5,20,5">
+                <Frame
+                    BorderColor="LightGray"
+                    CornerRadius="13"
+                    Grid.Column="0"
+                    HasShadow="True"
+                    Margin="30,5,20,5"
+                    Padding="5,0,0,0">
                     <Frame.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding FiltersButton_Tapped}" />
+                        <TapGestureRecognizer Command="{Binding FiltersButton_Tapped}" NumberOfTapsRequired="1" />
                     </Frame.GestureRecognizers>
                     <Grid ColumnDefinitions="auto,*">
-                        <Image Source="filtericon.png" Grid.Column="0"></Image>
-                        <Label Text="Filters" Grid.Column="1" VerticalOptions="Center" Padding="5,0,0,0" TextColor="Black" FontSize="18"/>
+                        <Image Grid.Column="0" Source="filtericon.png" />
+                        <Label
+                            FontSize="18"
+                            Grid.Column="1"
+                            Padding="5,0,0,0"
+                            Text="Filters"
+                            TextColor="Black"
+                            VerticalOptions="Center" />
                     </Grid>
                 </Frame>
-                <Frame CornerRadius="13"   BorderColor="LightGray"    HasShadow="True"  Grid.Column="1" Padding="5,0,0,0" Margin="30,5,20,5">
+                <Frame
+                    BorderColor="LightGray"
+                    CornerRadius="13"
+                    Grid.Column="1"
+                    HasShadow="True"
+                    Margin="30,5,20,5"
+                    Padding="5,0,0,0">
                     <Frame.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding CategoriesButton_Tapped}" />
+                        <TapGestureRecognizer Command="{Binding CategoriesButton_Tapped}" NumberOfTapsRequired="1" />
                     </Frame.GestureRecognizers>
                     <Grid ColumnDefinitions="auto,*">
-                        <Image Source="categoriesicon.png" Grid.Column="0"></Image>
-                        <Label Text="Categories" Grid.Column="1" VerticalOptions="Center" Padding="5,0,0,0" TextColor="Black" FontSize="18"/>
+                        <Image Grid.Column="0" Source="categoriesicon.png" />
+                        <Label
+                            FontSize="18"
+                            Grid.Column="1"
+                            Padding="5,0,0,0"
+                            Text="Categories"
+                            TextColor="Black"
+                            VerticalOptions="Center" />
                     </Grid>
                 </Frame>
 
             </Grid>
         </Grid>
-        <!-- line -->
-        <BoxView 
-                   HeightRequest="1"
-                   Color="LightGray"
-                   Margin ="0, 0, 0, 0"
-        />
+        <!--  line  -->
+        <BoxView
+            Color="LightGray"
+            HeightRequest="1"
+            Margin="0,0,0,0" />
         <ScrollView Padding="5,0,5,0" VerticalOptions="FillAndExpand">
             <StackLayout>
                 <Grid ColumnDefinitions="*,*" Margin="5,10,5,10">
-                    <Label Text="{Binding ObservableCollectionCount, StringFormat='{0} items'}"  FontSize="18" TextColor="Black" HorizontalOptions="StartAndExpand" Grid.Column="0"/>
-                    <Image Source="sorticon.png" HorizontalOptions="End" Grid.Column="1">
+                    <Label
+                        FontSize="18"
+                        Grid.Column="0"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{Binding ObservableCollectionCount, StringFormat='{0} items'}"
+                        TextColor="Black" />
+                    <Image
+                        Grid.Column="1"
+                        HorizontalOptions="End"
+                        Source="sorticon.png">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="SortByButton_Tapped" />
                         </Image.GestureRecognizers>
                     </Image>
                 </Grid>
 
-                <CollectionView ItemsSource="{Binding ItemsCollection}"
-                        SelectionMode="None"
-                        >
+                <CollectionView ItemsSource="{Binding ItemsCollection}" SelectionMode="None">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout
-                                 Orientation="Vertical"
-                                 Span="{OnIdiom Phone=3, Tablet=3, Desktop=3}"
-                                 HorizontalItemSpacing="5"
-                                 VerticalItemSpacing="5" />
+                            HorizontalItemSpacing="5"
+                            Orientation="Vertical"
+                            Span="{OnIdiom Phone=3,
+                                           Tablet=3,
+                                           Desktop=3}"
+                            VerticalItemSpacing="5" />
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
@@ -68,7 +113,7 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-                
+
             </StackLayout>
         </ScrollView>
 

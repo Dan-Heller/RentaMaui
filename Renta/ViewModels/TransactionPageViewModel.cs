@@ -65,17 +65,13 @@ namespace Renta.ViewModels
             if (_userService.LoggedInUser.Id == _transaction.ItemOwner)
             {
                 newUserReview.RevieweeId = _transaction.ItemSeeker;
-              
             }
             else
             {
                 newUserReview.RevieweeId = _transaction.ItemOwner;
-                
             }
 
             await _reviewService.CreateUserReview(newUserReview);
-
-            
         }
 
 
