@@ -121,13 +121,19 @@ namespace Renta.ViewModels
             }
 
 
-            if (password.Length > 0 && email.Length > 0  && FirstName.Length > 0 && LastName.Length > 0 && SelectedRegion.Length > 0)
+            if (password.Length > 0 && email.Length > 0  && FirstName.Length > 0 && LastName.Length > 0 && SelectedRegion.Length > 0 && SelectedFavoritesCategories.Count == 2)
             {
                 RegisterDto registerDto = new RegisterDto(email, password, FirstName, LastName, SelectedCity, SelectedRegion, SelectedFavoritesCategories);
                 await m_userService.RegisterUser(registerDto);
 
                 await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
             }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert(" ", "Please fill all the details", "close");
+                SelectedFavoritesCategories = new List<ECategories>();
+            }
+           
         }
 
 
