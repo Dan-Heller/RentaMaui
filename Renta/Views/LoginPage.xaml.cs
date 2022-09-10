@@ -21,14 +21,14 @@ public partial class LoginPage : ContentPage
     {
         base.OnAppearing();
 
-        string authToken = await SecureStorage.GetAsync("AuthToken");
-        if(authToken is not null)
-        {
-            await _userService.GetUserFromToken(authToken);
-            await Shell.Current.GoToAsync($"//{nameof(FeedPage)}");
-        }
-
-        
-
+        if(DeviceInfo.Current.Platform == DevicePlatform.Android)
+		{
+			string authToken = await SecureStorage.GetAsync("AuthToken");
+			if(authToken is not null)
+			{
+				await _userService.GetUserFromToken(authToken);
+				await Shell.Current.GoToAsync($"//{nameof(FeedPage)}");
+			}
+		}
     }
 }

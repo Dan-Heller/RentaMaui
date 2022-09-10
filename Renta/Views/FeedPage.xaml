@@ -85,7 +85,7 @@
                         FontSize="16"
                         Grid.Row="0"
                         Margin="0,20,0,0"
-                        Text="You Might Like:"
+                        Text="Newest items:"
                         TextColor="Black" />
                     <ScrollView Grid.Row="1" Orientation="Horizontal">
                         <CollectionView ItemsSource="{Binding ItemsMightLikeCollection}" SelectionMode="None">
@@ -112,7 +112,7 @@
                         FontSize="16"
                         Grid.Row="0"
                         Margin="0,20,0,0"
-                        Text="Newest items:"
+                        Text="You Might Like:"
                         TextColor="Black" />
                     <ScrollView Grid.Row="1" Orientation="Horizontal">
                         <CollectionView ItemsSource="{Binding NewestItemsCollection}" SelectionMode="None">
