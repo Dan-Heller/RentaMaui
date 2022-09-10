@@ -120,22 +120,19 @@ namespace Renta.ViewModels
 
         public bool CheckIfRequestedDatesOverlapUnavailableDates(DateTime start, DateTime end)
         {
-            bool IsOverlap = false;
-
-
+            bool isOverlap = false;
+            
             foreach(var range in UnAvailableDates)
             {
                 if(!(start.CompareTo(range.EndDate) > 0 || end.CompareTo(range.StartDate) < 0))
                 {
-                    IsOverlap = true;
+                    isOverlap = true;
                     break;
                 }
             }
 
-            return IsOverlap;
+            return isOverlap;
         }
-
-
     }
 
 

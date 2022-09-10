@@ -32,7 +32,7 @@ namespace Renta.Services
            await httpclient.PostAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Items"), content);
            await _userService.UpdateLoggedInUser(); 
 
-            //if (UserUpdatedInvoker != null)
+            //if (UserUpdatedInvoker != null )
             //{
             //    UserUpdatedInvoker.Invoke();
             //}
