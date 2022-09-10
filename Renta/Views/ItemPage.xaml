@@ -187,13 +187,13 @@
                     Margin="0,10,0,0"
                     Text="Description: "
                     TextColor="Black" />
+
                 <Label
                     Grid.Column="0"
                     Grid.Row="4"
                     Margin="0,0,0,10"
                     Text="{Binding _ItemViewModel.Description}"
                     TextColor="Black" />
-
 
                 <Button
                     BackgroundColor="#2193f3"
@@ -216,7 +216,7 @@
                     DaysOfWeek="{Binding EventCalendar.DayNamesOrder}"
                     ForwardsArrowCommand="{Binding NavigateCalendarCommand}"
                     ForwardsArrowCommandParameter="{Binding EventCalendar.ForwardsNavigationAmount}"
-                    Grid.Row="0"
+                    Grid.Row="6"
                     IsVisible="False"
                     NavigatedDate="{Binding EventCalendar.NavigatedDate}"
                     Style="{StaticResource DefaultCalendarViewStyle}"

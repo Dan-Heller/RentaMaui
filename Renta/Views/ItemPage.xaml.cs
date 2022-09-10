@@ -25,13 +25,13 @@ public partial class ItemPage : ContentPage
 		}
     }
 
-	protected async override void OnAppearing()
+	protected override async void OnAppearing()
 	{
 		base.OnAppearing();
 		(BindingContext as ItemPageViewModel).deserializeString();
         await (BindingContext as ItemPageViewModel).FetchItemReviews();
         SetHeartButton();
-    }
+	}
 	
 	private void HeartButton_Clicked(object sender, EventArgs e)
     {
@@ -51,7 +51,7 @@ public partial class ItemPage : ContentPage
         }
         else
         {
-            if ((BindingContext as ItemPageViewModel).SelectedEvents.Count > 0)
+            if ((BindingContext as ItemPageViewModel).EventCalendar.SelectedDates.Count > 0)
             {
                 // (BindingContext as ItemPageViewModel).datesCollection = xCalendar.date;
                 await (BindingContext as ItemPageViewModel).sendItemRequest();
