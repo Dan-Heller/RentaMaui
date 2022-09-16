@@ -49,17 +49,11 @@ namespace Renta.ViewModels
 
         public async Task loginUser()
         {
-            //hide soft keyboard on android 
-           
-
-
+            //hide soft keyboaxrd on android 
             // todo add validation before sending
             LoginDto loginDto = new LoginDto(email, password);
            bool LoginSuccess  = await m_userService.LoginUser(loginDto);
-
-            
-         
-            //  "//" remove backstack.
+           //  "//" remove backstack.
             if (LoginSuccess)
             {
                 await Shell.Current.GoToAsync($"//{nameof(FeedPage)}");

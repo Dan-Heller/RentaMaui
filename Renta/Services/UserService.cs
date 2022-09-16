@@ -9,8 +9,8 @@ namespace Renta.Services
 {
     public class UserService
     {
-        
         public UserLookedUp LoggedInUser { get; set; }
+
         //public string AppFCMToken;
         IConfiguration configuration;
         HttpClient httpclient;
@@ -74,22 +74,23 @@ namespace Renta.Services
                 LoginResponse loginResponse = JsonConvert.DeserializeObject<LoginResponse>(str);
 
                 LoggedInUser = loginResponse?.user;
-                await SecureStorage.Default.SetAsync("AuthToken", loginResponse.Token);
+                if (DeviceInfo.Current.Platform == DevicePlatform.Android)
+                {
+                    await SecureStorage.Default.SetAsync("AuthToken", loginResponse.Token);
+                }
 
                 return true;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return false;
             }
-
-           
         }
 
         public async Task GetUserFromToken(string token)
         {
             var response = await httpclient.GetAsync(
-                new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Auth/"+token));
+                new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Auth/" + token));
             string responseAsString = await response.Content.ReadAsStringAsync();
             LoginResponse loginResponse = JsonConvert.DeserializeObject<LoginResponse>(responseAsString);
             LoggedInUser = loginResponse?.user;

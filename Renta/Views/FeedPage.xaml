@@ -10,15 +10,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
 
-    <Grid RowDefinitions="57,*">
+    <Grid RowDefinitions="57,*" WidthRequest="380">
 
         <controls:HeaderControl Grid.Row="0" VerticalOptions="Start" />
-        <!--
-            TextToSearch="{Binding Text, Mode=OneWayToSource}"
-            SearchCommand="{Binding SearchCommand}"
-        -->
-
-
         <ScrollView
             Grid.Row="1"
             Orientation="Vertical"
@@ -52,7 +46,6 @@
                         WidthRequest="30" />
                 </Grid>
 
-
                 <Grid RowDefinitions="50,*">
                     <Label
                         FontSize="16"
@@ -61,7 +54,10 @@
                         Text="Near You:"
                         TextColor="Black" />
                     <ScrollView Grid.Row="1" Orientation="Horizontal">
-                        <CollectionView ItemsSource="{Binding ItemsNearYouCollection}" SelectionMode="None">
+                        <CollectionView
+                            ItemsSource="{Binding ItemsNearYouCollection}"
+                            MaximumHeightRequest="280"
+                            SelectionMode="None">
                             <CollectionView.ItemsLayout>
                                 <GridItemsLayout
                                     HorizontalItemSpacing="5"
@@ -88,7 +84,10 @@
                         Text="Newest items:"
                         TextColor="Black" />
                     <ScrollView Grid.Row="1" Orientation="Horizontal">
-                        <CollectionView ItemsSource="{Binding ItemsMightLikeCollection}" SelectionMode="None">
+                        <CollectionView
+                            ItemsSource="{Binding ItemsMightLikeCollection}"
+                            MaximumHeightRequest="280"
+                            SelectionMode="None">
                             <CollectionView.ItemsLayout>
                                 <GridItemsLayout
                                     HorizontalItemSpacing="5"
@@ -115,7 +114,10 @@
                         Text="You Might Like:"
                         TextColor="Black" />
                     <ScrollView Grid.Row="1" Orientation="Horizontal">
-                        <CollectionView ItemsSource="{Binding NewestItemsCollection}" SelectionMode="None">
+                        <CollectionView
+                            ItemsSource="{Binding NewestItemsCollection}"
+                            MaximumHeightRequest="280"
+                            SelectionMode="None">
                             <CollectionView.ItemsLayout>
                                 <GridItemsLayout
                                     HorizontalItemSpacing="5"
