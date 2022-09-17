@@ -30,19 +30,7 @@ namespace Renta.ViewModels
 
         private UserService _userService;
 
-        private string CategoryString;
-        //public String CategoryString
-        //{
-        //    get => _CategoryString;
-        //    set
-        //    {
-        //        _CategoryString = Uri.UnescapeDataString(value ?? string.Empty);
-
-        //    }
-        //}
-
-
-
+        private string CategoryString;       
 
         public SearchPageViewModel(ItemService itemService, SearchPageStateService searchPageStateService, UserService userService)
         {
@@ -60,22 +48,8 @@ namespace Renta.ViewModels
         {
             Items = await _itemService.GetOtherUsersItems();
             CategoryString = _searchPageStateService._CategoryString;
-
-
-            //if (podcastsModels == null)
-            //{
-            //    await Shell.Current.DisplayAlert(
-            //        AppResource.Error_Title,
-            //        AppResource.Error_Message,
-            //        AppResource.Close);
-
-            //    return;
-            //}
-
-
             ItemsViewModelFiltered = ItemsViewModel = ConvertToViewModels(Items);
            
-
             FilterByCategory();
             FilterByPriceRange();
             FilterByRegion();
@@ -131,10 +105,6 @@ namespace Renta.ViewModels
             UpdateItemsCollection(ItemsViewModelFiltered);
             OnPropertyChanged(nameof(ObservableCollectionCount));
         }
-
-
-
-
 
         public void FilterByCategory()
         {
@@ -192,12 +162,6 @@ namespace Renta.ViewModels
                 ItemsViewModelFiltered = ItemsViewModelFiltered.FindAll(item => item.Item.Region == _searchPageStateService.SelectedRegion).ToList();
             }
         }
-
-
-
-
-
-
 
         public Command FiltersButton_Tapped
         => new Command(async () => await Shell.Current.GoToAsync($"{nameof(FiltersPage)}"));

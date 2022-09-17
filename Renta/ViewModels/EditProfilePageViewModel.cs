@@ -28,8 +28,6 @@ namespace Renta.ViewModels
         public string SelectedCategory2 { get; set; } = string.Empty;
         public List<ECategories> SelectedFavoritesCategories { get; set; } = new List<ECategories>();
 
-
-
         private void FetchRegionsFromString()
         {
             string RegionsStr = "Ashkelon \r\nBeer Sheva \r\nBethlehem \r\nGolan \r\nJenin \r\nHasharon \r\nHebron \r\nHadera \r\nHolon \r\nHaifa \r\nTulkarm \r\nJericho \r\nJerusalem \r\nKinneret \r\nNazareth \r\nAcre \r\nAfula \r\nPetah Tikva \r\nSafed \r\nRamallah \r\nRehovot \r\nRamla \r\nRamat Gan \r\nNablus \r\nTel Aviv";
@@ -42,7 +40,7 @@ namespace Renta.ViewModels
 
         public EditProfilePageViewModel(FileService fileService, UserService userService)
         {
-            //profileImageSource = ImageSource.FromFile("addprofileimage.png");
+            
             _fileService = fileService;
             _userService = userService;
 
@@ -63,7 +61,7 @@ namespace Renta.ViewModels
 
             SelectedCategory1 = _userService.LoggedInUser.FavoritesCategories[0].ToString();
             SelectedCategory2 = _userService.LoggedInUser.FavoritesCategories[1].ToString();
-            //SelectedFavoritesCategories = _userService.LoggedInUser.FavoritesCategories;
+            
 
             foreach (var value in Enum.GetNames(typeof(ECategories)))
             {
@@ -82,10 +80,7 @@ namespace Renta.ViewModels
                OnPropertyChanged();
             }
         }
-
-
        
-
         public Command SaveButtonClicked
        => new Command(async () => await updateUser());
 
@@ -134,12 +129,7 @@ namespace Renta.ViewModels
                 profileImageSource = ImageSource.FromStream(() => stream);
                 OnPropertyChanged(nameof(ProfileImageSource));
                 ProfileImageChanged = true;
-            }
-            
-            //if (stream != null)
-            //{
-            //    var str = await _fileService.UploadImageAsync(stream, "ProfilePicture");
-            //}
+            }                       
         }
     }
 }

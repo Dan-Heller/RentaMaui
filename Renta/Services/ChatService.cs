@@ -33,25 +33,15 @@ namespace Renta.Services
             //create the signalRT group for the user 
             _connection = new HubConnectionBuilder().WithUrl(configuration.GetSection("Settings:ApiUrl").Value + "/chat?userid=" + userId).Build();
 
-            //_connection.On<string>("MessageReceived", (message) =>
-            //{
-            //    chatMessages.Text += $"{Environment.NewLine}{message}";
-            //});
-
             _connection.On<string, string>("ReceiveMessage", (sender, message) =>
             {
                 Message newMessage = new Message(sender, message, DateTime.Now);
                 currentMessagesPage.AddMessageToCollection(newMessage);
 
-                //chatMessages.Text += $"{Environment.NewLine}{message}";
-                //chatMessages.Text += $"{Environment.NewLine}{sender}";
             });
 
             Task.Run(async () =>
             {
-               //Dispatcher.Dispatch(async () =>
-               // await _connection.StartAsync());
-
                 await _connection.StartAsync();
             });
 
@@ -59,7 +49,6 @@ namespace Renta.Services
 
         public async Task InvokeSend(string message)
         {
-            //string sender, string receiver, string message, string chatId, DateTime createdAt
             MessageDto messageDto = new MessageDto(userId, currentMessagesPage._currentChatViewModel.OtherUserId, message, currentMessagesPage._currentChat.Id, DateTime.Now);
             await _connection.InvokeCoreAsync("SendMessageToGroup", args: new[] { messageDto });
 

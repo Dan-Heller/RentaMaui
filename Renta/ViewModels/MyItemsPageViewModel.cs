@@ -25,18 +25,9 @@ namespace Renta.ViewModels
         public  MyItemsPageViewModel(ItemService itemService, UserService userService )
         {
             _userService = userService;
-            _itemService = itemService;
-            //Task.Run(async () => await GetItems(itemService));
-            
-            // MyItems =  itemService.GetLoggedInUserItems();
+            _itemService = itemService;         
         }
-
-        //private async Task GetItems(ItemService itemService)
-        //{
-        //    MyItems = await itemService.GetLoggedInUserItems();
-        //}
-
-
+       
         internal async Task InitializeAsync()
         {
             await FetchAsync();
@@ -44,20 +35,7 @@ namespace Renta.ViewModels
 
         private async Task FetchAsync()
         {
-            MyItems = await _itemService.GetLoggedInUserItems();
-
-    
-            //if (podcastsModels == null)
-            //{
-            //    await Shell.Current.DisplayAlert(
-            //        AppResource.Error_Title,
-            //        AppResource.Error_Message,
-            //        AppResource.Close);
-
-            //    return;
-            //}
-
-           
+            MyItems = await _itemService.GetLoggedInUserItems();                          
             MyItemsViewModel = ConvertToViewModels(MyItems);
             MyItemsViewModel = MyItemsViewModel.OrderByDescending(item => item.Item.UploadDate).ToList();
             UpdateMyItemsCollection(MyItemsViewModel);
@@ -79,12 +57,5 @@ namespace Renta.ViewModels
         {
             MyItemsCollection.ReplaceRange(myItemsVM);
         }
-
-        //Task CallAndForget()
-        //{
-        //    return 
-        //}
-
-
     }
 }

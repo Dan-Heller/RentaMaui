@@ -18,18 +18,12 @@
          Icon="homeicon.png">
             <ShellContent ContentTemplate="{DataTemplate Pages:FeedPage}" Route="FeedPage" />
         </Tab>
-        <!--<Tab Title="Messages"
-         Icon="messageicon.png">
-            <ShellContent ContentTemplate="{DataTemplate Pages:MessagesShell}" Route="MessagesShell" />
-        </Tab>-->
+       
         <Tab Title="Messages"
          Icon="messageicon.png">
             <ShellContent ContentTemplate="{DataTemplate Pages:ListChatPage}" Route="ListChatPage" />
         </Tab>
-        <!--<Tab Title="Add"
-         Icon="addicon.png">
-            <ShellContent ContentTemplate="{DataTemplate Pages:AddItemPage}" Route="AddItemPage"/>
-        </Tab>-->
+      
         <Tab Title="Search"
          Icon="searchicon.png">
             <ShellContent ContentTemplate="{DataTemplate Pages:SearchPage}" Route="SearchPage"/>

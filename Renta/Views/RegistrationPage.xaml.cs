@@ -9,11 +9,4 @@ public partial class RegistrationPage : ContentPage
 		BindingContext = registrationPageViewModel;
 		InitializeComponent();
 	}
-
-    //protected override async void OnAppearing()
-    //{
-    //    base.OnAppearing();
-    //    await (BindingContext as RegistrationPageViewModel).FetchCities();
-
-    //}
 }

@@ -13,12 +13,10 @@ namespace Renta.Models
 
         public string UserA { get; set; }
 
-       
         public string UserB { get; set; }
 
         public List<Message> Messages { get; set; } = new List<Message>();
 
-       
         public Chat() { }
 
         public Chat(string userA, string userB)

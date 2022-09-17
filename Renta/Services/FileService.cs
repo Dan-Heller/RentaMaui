@@ -26,11 +26,10 @@ namespace Renta.Services
             {
                 formData.Add(fileStreamContent);
                 var response = await client.PostAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Files/upload"), formData);
-                string str = await response.Content.ReadAsStringAsync();
-                return str;
+                string imageUrl = await response.Content.ReadAsStringAsync();
+
+                return imageUrl;
             }
         }
-
-
     }
 }

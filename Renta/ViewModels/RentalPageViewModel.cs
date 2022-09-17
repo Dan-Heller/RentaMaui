@@ -31,9 +31,6 @@ namespace Renta.ViewModels
             _userService = userService;
         }
 
-
-
-
         public async Task FetchTransactionByStatus()
         {
            Transactions = await _transactionService.GetTransactionsByStatus(EUserType.Seeker,selectedStatusInTabsController);
@@ -41,19 +38,7 @@ namespace Renta.ViewModels
             {
                 Transactions.AddRange(await _transactionService.GetTransactionsByStatus(EUserType.Seeker, ETransactionStatus.Canceled));
             }
-
-
-            //if (podcastsModels == null)
-            //{
-            //    await Shell.Current.DisplayAlert(
-            //        AppResource.Error_Title,
-            //        AppResource.Error_Message,
-            //        AppResource.Close);
-
-            //    return;
-            //}
-
-
+          
             TransactionsViewModel =  ConvertToViewModels(Transactions);
             UpdateTransactionsCollection(TransactionsViewModel);
 
@@ -75,8 +60,6 @@ namespace Renta.ViewModels
            
             return viewmodels;
         }
-
-
 
         private void UpdateTransactionsCollection(IEnumerable<TransactionViewModel> TransactionsVM)
         {

@@ -28,8 +28,7 @@
         <Entry Grid.Row="3" Placeholder="First Name" Text="{Binding FirstName, Mode=TwoWay}"/>
         <Label Grid.Row="4" Text="Last Name:" />
         <Entry Grid.Row="5" Placeholder="Last Name" Text="{Binding LastName, Mode=TwoWay}"/>
-            <!--<Label Text="Address:" />-->
-            <!--<Entry Placeholder="Address" Text="{Binding Address, Mode=TwoWay}"/>-->
+       
         <Grid Grid.Row="6" RowDefinitions="*,*"  ColumnDefinitions="*,*">
                 <Label Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,10" Grid.Column="0"  Text="Pick prefered categories." />
                 <Picker Grid.Row="1" Grid.Column="0"   SelectedIndex="4" Margin="0" Title=""  
@@ -48,42 +47,6 @@
             </Picker>
         <Label Grid.Row="9" Text="City:" />
         <Entry Grid.Row="10" Placeholder="City" Text="{Binding City, Mode=TwoWay}"/>
-
-
-       
-
-
-
-        <!-- Profile name & general description-->
-        <!--<StackLayout Grid.Row="2" Padding="10" 
-                     HorizontalOptions="FillAndExpand">
-            <Label Text="First Name:" />
-            <Entry Placeholder="First Name" Text="{Binding FirstName, Mode=TwoWay}"/>
-            <Label Text="Last Name:" />
-            <Entry Placeholder="Last Name" Text="{Binding LastName, Mode=TwoWay}"/>
-            --><!--<Label Text="Address:" />-->
-            <!--<Entry Placeholder="Address" Text="{Binding Address, Mode=TwoWay}"/>--><!--
-            <Grid RowDefinitions="*,*" ColumnDefinitions="*,*">
-                <Label Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0"  Text="Pick prefered categories." />
-                <Picker Grid.Row="1" Grid.Column="0"   SelectedIndex="4" Margin="0" Title=""  
-                ItemsSource="{Binding Categories}" 
-                SelectedItem="{Binding SelectedCategory1}">
-                </Picker>
-                <Picker Grid.Row="1" Grid.Column="1"   SelectedIndex="4" Margin="0" Title=""  
-                ItemsSource="{Binding Categories}" 
-                SelectedItem="{Binding SelectedCategory2}">
-                </Picker>
-            </Grid>
-            <Label Text="Region: "  Padding="0,10,0,10"/>
-            <Picker x:Name="CityPicker"  SelectedIndex="4" Margin="0" Title="Select your city" 
-                ItemsSource="{Binding Regions}" 
-                SelectedItem="{Binding Region}">
-            </Picker>
-            <Label Text="City:" />
-            <Entry Placeholder="City" Text="{Binding City, Mode=TwoWay}"/>
-            
-          
-        </StackLayout>-->
 
     </Grid>
 </ContentPage>

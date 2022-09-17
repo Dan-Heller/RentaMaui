@@ -11,11 +11,7 @@ public partial class FeedPage : ContentPage
 
     public FeedPage(FeedPageViewModel feedPageViewModel)
 	{
-		BindingContext = feedPageViewModel;
-		
-		
-
-
+		BindingContext = feedPageViewModel;				
         InitializeComponent();
 		
 	}
@@ -28,6 +24,4 @@ public partial class FeedPage : ContentPage
 		await (BindingContext as FeedPageViewModel).InitializeAsync();
 
     }
-
-
 }

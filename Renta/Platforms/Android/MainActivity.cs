@@ -19,7 +19,5 @@ public class MainActivity : MauiAppCompatActivity
         base.OnCreate(savedInstanceState);
         
         FirebasePushNotificationManager.ProcessIntent(this, Intent);
-        
-        //var intent = new Intent(this, typeof(FirebaseRegistrationService));
     }
 }

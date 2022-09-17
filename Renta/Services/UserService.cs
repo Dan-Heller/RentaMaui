@@ -10,8 +10,7 @@ namespace Renta.Services
     public class UserService
     {
         
-        public UserLookedUp LoggedInUser { get; set; }
-        //public string AppFCMToken;
+        public UserLookedUp LoggedInUser { get; set; }       
         IConfiguration configuration;
         HttpClient httpclient;
 
@@ -32,7 +31,6 @@ namespace Renta.Services
 
             UserUpdatedInvoker?.Invoke();
         }
-
 
         public UserService(IConfiguration config)
         {
@@ -81,9 +79,7 @@ namespace Renta.Services
             catch(Exception e)
             {
                 return false;
-            }
-
-           
+            }           
         }
 
         public async Task GetUserFromToken(string token)
@@ -94,7 +90,6 @@ namespace Renta.Services
             LoginResponse loginResponse = JsonConvert.DeserializeObject<LoginResponse>(responseAsString);
             LoggedInUser = loginResponse?.user;
         }
-
 
         public async Task UpdateLoggedInUser()
         {

@@ -52,8 +52,7 @@ public partial class ItemPage : ContentPage
         else
         {
             if ((BindingContext as ItemPageViewModel).EventCalendar.SelectedDates.Count > 0)
-            {
-                // (BindingContext as ItemPageViewModel).datesCollection = xCalendar.date;
+            {               
                 await (BindingContext as ItemPageViewModel).sendItemRequest();
             }
             else

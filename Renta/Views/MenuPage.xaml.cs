@@ -9,6 +9,4 @@ public partial class MenuPage : ContentPage
         BindingContext = menuPageViewModel;
 		InitializeComponent();
 	}
-
-
 }

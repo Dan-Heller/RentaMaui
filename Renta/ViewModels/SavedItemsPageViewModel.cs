@@ -13,22 +13,15 @@ namespace Renta.ViewModels
     {
         private List<Item> SavedItems = new List<Item>();
         public ObservableRangeCollection<ItemViewModel> SavedItemsCollection { get; private set; } = new ObservableRangeCollection<ItemViewModel>();
-
         private List<ItemViewModel> SavedItemsViewModel;
-
         private ItemService _itemService;
         private UserService _userService;
-
         public SavedItemsPageViewModel(ItemService itemService, UserService userService)
         {
             _userService = userService;
-            _itemService = itemService;
-           
+            _itemService = itemService;           
         }
-
         
-
-
         internal async Task InitializeAsync()
         {
             await FetchAsync();
@@ -40,7 +33,6 @@ namespace Renta.ViewModels
 
             SavedItemsViewModel = ConvertToViewModels(SavedItems);
             UpdateMyItemsCollection(SavedItemsViewModel);
-
         }
 
         private List<ItemViewModel> ConvertToViewModels(List<Item> Items)
@@ -57,8 +49,6 @@ namespace Renta.ViewModels
         private void UpdateMyItemsCollection(IEnumerable<ItemViewModel> myItemsVM)
         {
             SavedItemsCollection.ReplaceRange(myItemsVM);
-        }
-
-       
+        }       
     }
 }

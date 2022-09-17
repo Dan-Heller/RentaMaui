@@ -13,32 +13,12 @@ namespace Renta.Common.Navigation
     {
         readonly IServiceProvider _services;
 
-
         private INavigation Navigation;
-        //protected INavigation Navigation
-        //{
-        //    get
-        //    {
-        //        INavigation? navigation = Application.Current?.MainPage?.Navigation;
-        //        if (navigation is not null)
-        //            return navigation;
-        //        else
-        //        {
-        //            //This is not good!
-        //            if (Debugger.IsAttached)
-        //                Debugger.Break();
-        //            throw new Exception();
-        //        }
-        //    }
-        //}
+       
         public NavigationService(IServiceProvider services)
             => _services = services;
 
         public Task NavigateToProfilePage(INavigation navigation) => NavigateToPage<ProfilePage>(navigation);
-
-       // public Task NavigateToMainPage(INavigation navigation) => NavigateToPage<MainPage>(navigation);
-
-
 
         private Task NavigateToPage<T>(INavigation navigation) where T : Page
         {
@@ -52,7 +32,6 @@ namespace Renta.Common.Navigation
 
         private T? ResolvePage<T>() where T : Page
             => _services.GetService<T>();
-
 
         public Task NavigateBack()
         {

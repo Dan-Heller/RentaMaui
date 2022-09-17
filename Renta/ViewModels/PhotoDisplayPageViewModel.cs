@@ -10,11 +10,8 @@ namespace Renta.ViewModels
     [QueryProperty(nameof(ImageSourceString), "url")]
     public class PhotoDisplayPageViewModel : BaseViewModel
     {
-
         public string _imageSource { get; set; }
-
         public string _ImageSource { get; set; }
-
         public String ImageSourceString
         {
             get => _ImageSource;
@@ -30,6 +27,5 @@ namespace Renta.ViewModels
             _imageSource = JsonConvert.DeserializeObject<string>(_ImageSource);
             OnPropertyChanged(nameof(_imageSource));
         }
-
     }
 }

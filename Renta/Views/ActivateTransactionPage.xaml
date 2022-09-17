@@ -11,13 +11,7 @@
              Shell.ForegroundColor="Black"
              
              >
-
-  
-    
-    
-    <!--<ContentPage.ToolbarItems >
-        <ToolbarItem Text="Add"  Command="{Binding AddItemClicked}" x:Name="AddToolBarItem" />
-    </ContentPage.ToolbarItems>-->
+              
 
 
     <ScrollView>
@@ -34,8 +28,7 @@
                     <ImageButton ClassId="1" Source="{Binding ImageSource1, Mode=TwoWay}"  Aspect="AspectFill" 
                                  Clicked="AddPhoto_Tapped" ></ImageButton>
                 </Frame>
-                <!--Command="{Binding AddPhotoFromGallery_Clicked}"
-                                 CommandParameter="1"/>-->
+               
                 <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="1" Margin="3"  Padding="0">
                     <ImageButton ClassId="2" Source="{Binding ImageSource2, Mode=TwoWay}"   Aspect="AspectFill"
                                  Clicked="AddPhoto_Tapped"/>

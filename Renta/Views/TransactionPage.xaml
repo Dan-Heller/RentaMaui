@@ -55,10 +55,7 @@
                         Clicked="ImageTapped"
                         x:Name="BeforeImage1" />
                 </Frame>
-                <!--
-                    Command="{Binding AddPhotoFromGallery_Clicked}"
-                    CommandParameter="1"/>
-                -->
+             
                 <Frame
                     BorderColor="#c6c1ea"
                     CornerRadius="13"
@@ -117,10 +114,7 @@
                         Clicked="ImageTapped"
                         x:Name="AfterImage1" />
                 </Frame>
-                <!--
-                    Command="{Binding AddPhotoFromGallery_Clicked}"
-                    CommandParameter="1"/>
-                -->
+              
                 <Frame
                     BorderColor="#c6c1ea"
                     CornerRadius="13"
@@ -306,11 +300,7 @@
                         WidthRequest="100" />
                 </Grid>
             </Frame>
-
-
-            <!--<ScrollView Orientation="Horizontal">
-            <StackLayout BindingContext="{Binding _transaction.}"
-        </ScrollView>-->
+      
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

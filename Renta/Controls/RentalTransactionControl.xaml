@@ -7,7 +7,7 @@
              
              >
     <ContentView.Content >
-        <Frame x:Name="MainFrame" ClassId="{Binding Status}" Padding="0" HeightRequest="85" BorderColor="DarkGray"> <!--this frame should in the end be in the page view so border wont eat each other -->
+        <Frame x:Name="MainFrame" ClassId="{Binding Status}" Padding="0" HeightRequest="85" BorderColor="DarkGray"> 
             <Frame.GestureRecognizers>
                 <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GoToTransactionPage}" />
             </Frame.GestureRecognizers>

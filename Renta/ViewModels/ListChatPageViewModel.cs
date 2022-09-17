@@ -31,7 +31,6 @@ namespace Renta.ViewModels
             UpdateMyItemsCollection(chatsViewModels);
             OnPropertyChanged(nameof(ChatsCollection));
         }
-
         public void PageDisappeared()
         {
             chatsViewModels.Clear();
@@ -39,18 +38,8 @@ namespace Renta.ViewModels
             OnPropertyChanged(nameof(ChatsCollection));
         }
 
-
         private async Task<List<ChatViewModel>> ConvertToViewModels(List<Chat> Chats)
-        {
-            //var viewmodels = new List<ChatViewModel>();
-            //foreach (var chat in Chats)
-            //{
-            //    var chatVM = new ChatViewModel(chat, _userService);
-            //    chatsViewModels.Add(chatVM);
-            //}
-            //return chatsViewModels;
-
-
+        {           
             var tasks = Chats.Select(async (chat) => {
                 string OtherUserId = _userService.LoggedInUser.Id == chat.UserA ? chat.UserB : chat.UserA;
                 User otherUser = await _userService.GetUserById(OtherUserId);
@@ -68,10 +57,5 @@ namespace Renta.ViewModels
         {
             ChatsCollection.ReplaceRange(ChatsVM);
         }
-
-
-    }
-
- 
-
+    } 
 }

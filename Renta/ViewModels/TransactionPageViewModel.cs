@@ -46,10 +46,7 @@ namespace Renta.ViewModels
                 _TransactionString = Uri.UnescapeDataString(value ?? string.Empty);
 
             }
-        }
-
-      
-
+        }      
         public async Task CreateUserReview()
         {
            
@@ -73,11 +70,7 @@ namespace Renta.ViewModels
 
             await _reviewService.CreateUserReview(newUserReview);
         }
-
-
-        //public Command ItemReviewButtonClicked
-        //=> new Command(async () => await CreateItemReview());
-
+      
         public async Task CreateItemReview()
         {
 
@@ -95,9 +88,6 @@ namespace Renta.ViewModels
             await _reviewService.CreateItemReview(newItemReview);
 
         }
-
-
-
 
         public async Task  deserializeString()
         {

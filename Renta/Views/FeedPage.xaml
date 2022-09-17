@@ -13,10 +13,7 @@
     <Grid RowDefinitions="57,*">
 
         <controls:HeaderControl Grid.Row="0" VerticalOptions="Start" />
-        <!--
-            TextToSearch="{Binding Text, Mode=OneWayToSource}"
-            SearchCommand="{Binding SearchCommand}"
-        -->
+    
 
 
         <ScrollView

@@ -14,14 +14,11 @@ public partial class ListChatPage : ContentPage
     {
         base.OnAppearing();
         await (BindingContext as ListChatPageViewModel).PageAppeared();
-
     }
 
     protected  override void OnDisappearing()
     {
         base.OnDisappearing();
         (BindingContext as ListChatPageViewModel).PageDisappeared();
-
-    }
-    
+    }    
 }

@@ -9,7 +9,6 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-//using static Android.Renderscripts.ScriptGroup;
 
 
 namespace Renta.ViewModels
@@ -29,11 +28,9 @@ namespace Renta.ViewModels
 
         private string AddPhotoImageSource = "addphoto.jpg";
         public string ItemName { get; set; }
-        public string CoinsPerDay { get; set; }
-        //public string MaxDaysPerRent { get; set; }
+        public string CoinsPerDay { get; set; }        
         public string ItemDescription { get; set; } = string.Empty;
         public string SelectedCategory { get; set; }
-
         private bool ImageAdded = false;
 
        
@@ -61,10 +58,6 @@ namespace Renta.ViewModels
             Categories.Add(ECategories.Bikes.ToString());
             Categories.Add(ECategories.Tools.ToString());
            
-
-
-
-
             ImageSource1 = ImageSource.FromFile(AddPhotoImageSource);
             ImageSource2 = ImageSource.FromFile(AddPhotoImageSource);
             ImageSource3 = ImageSource.FromFile(AddPhotoImageSource);
@@ -85,15 +78,9 @@ namespace Renta.ViewModels
             {
                 chosenImageFile.FileName = string.Format(@"{0}{1}", DateTime.Now.Ticks, chosenImageFile.FileName);
                
-                UpdateImageSource(ImageId, chosenImageFile);
-                
-               
+                UpdateImageSource(ImageId, chosenImageFile);                               
             }
         }
-
-
-
-
         private async void UpdateImageSource(string ImageId,FileResult result)
         {
             
@@ -126,12 +113,9 @@ var stream = await result.OpenReadAsync();
         {
             chosenImageFile = await MediaPicker.CapturePhotoAsync(new MediaPickerOptions { Title = "Please take a photo" });
             
-
             if (chosenImageFile != null)
             {
-                UpdateImageSource(ImageId, chosenImageFile);
-                
-
+                UpdateImageSource(ImageId, chosenImageFile);                
             }
         }
 
@@ -141,10 +125,7 @@ var stream = await result.OpenReadAsync();
 
 
         private async Task AddItem()
-        {
-
-            // MaxDaysPerRent != null && int.Parse(MaxDaysPerRent) >= 1 &&
-
+        {            
             if (int.Parse(CoinsPerDay) > 100)
             {
                 CoinsPerDay = "0";

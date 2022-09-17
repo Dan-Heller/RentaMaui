@@ -13,29 +13,19 @@ using Autofac.Features.OwnedInstances;
 namespace Renta.Services
 {
     public class ItemService
-    {
-        //public User LoggedInUser = null;
+    {        
         UserService _userService;
         IConfiguration configuration;
-        HttpClient httpclient;
-        // https://rentaapidev.azurewebsites.net
+        HttpClient httpclient;        
         public event Action UserUpdatedInvoker;
 
 
         public async Task UploadNewItem(Item item)
         {
             string json = JsonConvert.SerializeObject(item);
-            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-            //HttpResponseMessage response = null;
-
-            
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");                        
            await httpclient.PostAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Items"), content);
            await _userService.UpdateLoggedInUser(); 
-
-            //if (UserUpdatedInvoker != null )
-            //{
-            //    UserUpdatedInvoker.Invoke();
-            //}
 
         }
 
@@ -44,7 +34,6 @@ namespace Renta.Services
 
             HttpResponseMessage response = null;
 
-            //string UserId = _userService.LoggedInUser.Id;
             response =  await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Items/owner/" + OwnerId));
            
             string str = await response.Content.ReadAsStringAsync();
@@ -72,9 +61,6 @@ namespace Renta.Services
             return items;
         }
 
-
-
-
         public ItemService(IConfiguration config, UserService userService)
         {
             var httpClientHandler = new HttpClientHandler();
@@ -89,8 +75,7 @@ namespace Renta.Services
 
         public async Task<List<Item>> GetItems()
         {
-            HttpResponseMessage response = null;
-            //string UserId = _userService.LoggedInUser.Id;
+            HttpResponseMessage response = null;            
             response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Items"));
             string str = await response.Content.ReadAsStringAsync();
             var items = JsonConvert.DeserializeObject<List<Item>>(str);
@@ -154,8 +139,7 @@ namespace Renta.Services
 
         public async Task<Item> GetItemById(string ItemId)
         {
-            HttpResponseMessage response = null;
-            //string UserId = _userService.LoggedInUser.Id;
+            HttpResponseMessage response = null;            
             response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Items/" + ItemId));
             string str = await response.Content.ReadAsStringAsync();
             var item = JsonConvert.DeserializeObject<Item>(str);
@@ -168,10 +152,7 @@ namespace Renta.Services
             string json = JsonConvert.SerializeObject(updatedItem);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
             HttpResponseMessage response = null;
-
-
             response = await httpclient.PutAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Items/" + updatedItem.Id), content);
-
             string str = await response.Content.ReadAsStringAsync();
             var result = JsonConvert.DeserializeObject<Item>(str);
         }
@@ -182,22 +163,8 @@ namespace Renta.Services
             string json = JsonConvert.SerializeObject(item);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
             HttpResponseMessage response = null;
-
             string ItemId = item.Id;
-            response = await httpclient.PutAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Items/" + ItemId), content);
-
-            //string str = await response.Content.ReadAsStringAsync();
-
-            //need to make sure that after save button pressed the page will get item again . 
-
-            //LoggedInUser = JsonConvert.DeserializeObject<User>(str);
-
-            //if (UserUpdatedInvoker != null)
-            //{
-            //    UserUpdatedInvoker.Invoke();
-            //}
-
+            response = await httpclient.PutAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Items/" + ItemId), content);         
         }
-
     }
 }

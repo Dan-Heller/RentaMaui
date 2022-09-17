@@ -28,40 +28,25 @@ namespace Renta.Services
             httpclient.MaxResponseContentBufferSize = 256000;
         }
 
-
         public async Task CreateItemReview(ItemReview itemReview)
         {
-
             string json = JsonConvert.SerializeObject(itemReview);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json" );
-
-
             await httpclient.PostAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Reviews/item/"), content);
         }
 
 
         public async Task CreateUserReview(UserReview userReview)
         {
-
             string json = JsonConvert.SerializeObject(userReview);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json" );
-
-
             await httpclient.PostAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Reviews/user/"), content);
         }
 
-
-
-
-
-
         public async Task<List<ItemReview>> GetReviewsOnItem(string itemId)
         {
-            HttpResponseMessage response = null;
-
-            
+            HttpResponseMessage response = null;            
             response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Reviews/item/" + itemId));
-
             string str = await response.Content.ReadAsStringAsync();
             var itemReviews = JsonConvert.DeserializeObject<List<ItemReview>>(str);
             return itemReviews;
@@ -70,17 +55,11 @@ namespace Renta.Services
         public async Task<List<UserReview>> GetReviewsOnUser(string userId)
         {
 
-            HttpResponseMessage response = null;
-
-           
+            HttpResponseMessage response = null;           
             response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Reviews/user/" + userId));
-
             string str = await response.Content.ReadAsStringAsync();
             var userReviews = JsonConvert.DeserializeObject<List<UserReview>>(str);
             return userReviews;
         }
-
-
-
     }
 }

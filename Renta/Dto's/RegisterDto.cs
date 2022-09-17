@@ -17,16 +17,16 @@ namespace Renta.Dto_s
         public string Region { get; set; }
 
         public string City { get; set; }
-        
+
         public string FCMToken { get; set; }
 
-        public List<ECategories>? FavoritesCategories { get; set; } 
+        public List<ECategories>? FavoritesCategories { get; set; }
 
         public RegisterDto() { }
 
-        public RegisterDto(string i_Email, string i_Password, string i_FirstName, string i_LastName,string i_City, string i_Region, List<ECategories> i_FavoritesCategories) 
+        public RegisterDto(string i_Email, string i_Password, string i_FirstName, string i_LastName, string i_City, string i_Region, List<ECategories> i_FavoritesCategories)
         {
-           
+
             this.Password = i_Password;
             this.Email = i_Email;
             this.FirstName = i_FirstName;

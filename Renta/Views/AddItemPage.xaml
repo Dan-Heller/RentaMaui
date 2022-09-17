@@ -34,8 +34,7 @@
                     <ImageButton ClassId="1" Source="{Binding ImageSource1, Mode=TwoWay}"  Aspect="AspectFill" 
                                  Clicked="AddPhoto_Tapped" ></ImageButton>
                 </Frame>
-                <!--Command="{Binding AddPhotoFromGallery_Clicked}"
-                                 CommandParameter="1"/>-->
+               
                 <Frame CornerRadius="13"  BorderColor="#c6c1ea" HasShadow="False" Grid.Column="1" Margin="3"  Padding="0">
                     <ImageButton ClassId="2" Source="{Binding ImageSource2, Mode=TwoWay}"   Aspect="AspectFill"
                                  Clicked="AddPhoto_Tapped"/>
@@ -69,12 +68,7 @@
                     Margin="5,2,0,10" FontSize="15" HorizontalOptions="FillAndExpand" Keyboard="Numeric"   Placeholder="0"
                     Text="{Binding CoinsPerDay, Mode=TwoWay}"/>
 
-           <!-- <Label  Grid.Row="7" Text="Max days"  FontAttributes="Bold" 
-                    Margin="5,10,0,10" FontSize="15" HorizontalOptions="StartAndExpand"/>
-
-            <Entry  Grid.Row="8" Placeholder="1" PlaceholderColor="LightGray"
-                    Margin="5,2,0,10" FontSize="15" HorizontalOptions="FillAndExpand" Keyboard="Numeric"
-                    Text="{Binding MaxDaysPerRent, Mode=TwoWay}"/> -->
+          
 
             <Label  Grid.Row="7" Text="Category"  FontAttributes="Bold" 
                     Margin="5,10,0,10" FontSize="15" HorizontalOptions="StartAndExpand"/>
@@ -84,7 +78,7 @@
                      HorizontalOptions="FillAndExpand"
                  ItemsSource="{Binding Categories}" 
                      SelectedItem="{Binding SelectedCategory}">
-                <!-- selecteditem = {Binding selectemCategory }   -->
+             
             </Picker>
 
             <Label  Grid.Row="9" Text="Description"  FontAttributes="Bold" 

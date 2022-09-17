@@ -31,13 +31,6 @@ public partial class AppShell: Shell
         Routing.RegisterRoute(nameof(ActivateTransactionPage), typeof(ActivateTransactionPage));
         Routing.RegisterRoute(nameof(TransactionPage), typeof(TransactionPage));
         Routing.RegisterRoute(nameof(PhotoDisplayPage), typeof(PhotoDisplayPage));
-        Routing.RegisterRoute(nameof(MessagesPage), typeof(MessagesPage));
-
-
-        //      Routing.RegisterRoute(nameof(MessagesShell), typeof(MessagesShell));
-        //Routing.RegisterRoute(nameof(MessagesPage), typeof(MessagesPage));
-
-
+        Routing.RegisterRoute(nameof(MessagesPage), typeof(MessagesPage));        
     }
 }
-

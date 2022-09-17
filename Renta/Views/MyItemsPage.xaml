@@ -28,21 +28,6 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-
-
-        <!--<Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*,*,*">
-            <controls:MyItemCard Grid.Column="0" Grid.Row="0"/>
-            <controls:MyItemCard Grid.Column="1" Grid.Row="0"/>
-            <controls:MyItemCard Grid.Column="2" Grid.Row="0"/>
-            <controls:MyItemCard Grid.Column="0" Grid.Row="1"/>
-            <controls:MyItemCard Grid.Column="1" Grid.Row="1"/>
-            <controls:MyItemCard Grid.Column="2" Grid.Row="1"/>
-            <controls:MyItemCard Grid.Column="0" Grid.Row="2"/>
-            <controls:MyItemCard Grid.Column="1" Grid.Row="2"/>
-            <controls:MyItemCard Grid.Column="2" Grid.Row="2"/>
-            <controls:MyItemCard Grid.Column="0" Grid.Row="3"/>
-            <controls:MyItemCard Grid.Column="1" Grid.Row="3"/>
-            <controls:MyItemCard Grid.Column="2" Grid.Row="3"/>
-        </Grid>-->
+        
     </ScrollView>
 </ContentPage>

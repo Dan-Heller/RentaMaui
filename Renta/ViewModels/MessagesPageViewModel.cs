@@ -13,14 +13,12 @@ namespace Renta.ViewModels
     [QueryProperty(nameof(ChatString), "chat")]
     public class MessagesPageViewModel : BaseViewModel
     {
-
         private UserService _userService;
         public Chat _currentChat;
         public ChatViewModel _currentChatViewModel;
         private ChatService _chatService;
         private List<Message> messages;
         public ObservableRangeCollection<Message> MessagesCollection { get; private set; } = new ObservableRangeCollection<Message>();
-
         private string _ChatString;
         public String ChatString
         {
@@ -43,13 +41,10 @@ namespace Renta.ViewModels
 
         public MessagesPageViewModel(UserService userService, ChatService chatService)
         {
-            _userService = userService;
-           // _currentChat = currentChat;
+            _userService = userService;           
             _chatService = chatService;
             _chatService.currentMessagesPage = this;
-
         }
-
 
         public async Task FetchMessagesFromChat()
         {
@@ -65,15 +60,10 @@ namespace Renta.ViewModels
             UpdateTransactionsCollection(messages);
             OnPropertyChanged(nameof(MessagesCollection));
         }
-
-
     
-
         private void UpdateTransactionsCollection(IEnumerable<Message> MessagesVM)
         {
             MessagesCollection.ReplaceRange(MessagesVM);
         }
-
-
     }
 }

@@ -39,9 +39,7 @@ namespace Renta.ViewModels
         public string CurrentImage { get { return ImagesUrls[CurrentImageIndex%ImagesUrls.Count]; } }
 
         private UserService _userService;
-
         
-
         public ImageSource HeartImageSource { get; set; }
         
 
@@ -110,13 +108,7 @@ namespace Renta.ViewModels
         {
             var jsonStr = JsonConvert.SerializeObject(Item);
             await Shell.Current.GoToAsync($"../../{nameof(MyItemPage)}?item={jsonStr}");
-        }
-
-        //public async Task GotoMyUpdatedItemPage()
-        //{
-        //    var jsonStr = JsonConvert.SerializeObject(Item);
-        //    await Shell.Current.GoToAsync("../../..");
-        //}
+        }        
 
         public bool CheckIfRequestedDatesOverlapUnavailableDates(DateTime start, DateTime end)
         {
@@ -134,6 +126,4 @@ namespace Renta.ViewModels
             return isOverlap;
         }
     }
-
-
 }

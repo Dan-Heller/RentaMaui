@@ -2,15 +2,11 @@ using Renta.ViewModels;
 namespace Renta;
 
 public partial class MyItemPage : ContentPage
-{
-	
+{	
 	public MyItemPage(MyItemPageViewModel myItemPageViewModel)
 	{
 		BindingContext = myItemPageViewModel;
-		InitializeComponent();
-
-		
-		
+		InitializeComponent();				
 	}
 
 
@@ -19,8 +15,5 @@ public partial class MyItemPage : ContentPage
 		base.OnAppearing();
 		(BindingContext as MyItemPageViewModel).deserializeString();
         await(BindingContext as MyItemPageViewModel).FetchItemReviews();
-    }
-
-   
-
+    }   
 }

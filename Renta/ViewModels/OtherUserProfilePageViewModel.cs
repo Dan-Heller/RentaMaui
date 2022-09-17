@@ -37,11 +37,7 @@ namespace Renta.ViewModels
         public ObservableRangeCollection<ItemViewModel> ItemsCollection { get; private set; } = new ObservableRangeCollection<ItemViewModel>();
         private List<ItemViewModel> ItemsViewModel;
         private ItemService _itemService;
-
         public ObservableRangeCollection<UserReview> UserReviewsCollection { get; private set; } = new ObservableRangeCollection<UserReview>();
-
-
-
         public OtherUserProfilePageViewModel(UserService userService, ItemService itemService, ReviewsService reviewsService, ChatService chatService)
         {
             _userService = userService;
@@ -76,7 +72,6 @@ namespace Renta.ViewModels
             UpdateItemsCollection(ItemsViewModel);
         }
 
-
         private List<ItemViewModel> ConvertToViewModels(List<Item> Items)
         {
             var viewmodels = new List<ItemViewModel>();
@@ -106,15 +101,9 @@ namespace Renta.ViewModels
                 CreateChatDto newChatDto = new CreateChatDto(_userService.LoggedInUser.Id, _OtherUser.Id);
                 chat = await _chatService.CreateNewChat(newChatDto);
                 
-            }
-            //ChatViewModel newChatVM = new ChatViewModel(chat, _userService, _OtherUser);
-
-
+            }            
             var jsonStr = JsonConvert.SerializeObject(chat);
             await Shell.Current.GoToAsync($"{nameof(MessagesPage)}?chat={jsonStr}");
         }
-
-
-
     }
 }

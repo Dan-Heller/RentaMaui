@@ -1,4 +1,3 @@
-//using AndroidX.Lifecycle;
 using Renta.ViewModels;
 
 namespace Renta;
@@ -15,6 +14,5 @@ public partial class SavedItemsPage : ContentPage
     {
         base.OnAppearing();
         await (BindingContext as SavedItemsPageViewModel).InitializeAsync();
-
     }
 }

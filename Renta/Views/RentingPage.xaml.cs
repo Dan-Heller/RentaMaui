@@ -59,7 +59,4 @@ public partial class RentingPage : ContentPage
 		await (BindingContext as RentingPageViewModel).FetchTransactionByStatus();
 
 	}
-
-
-
 }

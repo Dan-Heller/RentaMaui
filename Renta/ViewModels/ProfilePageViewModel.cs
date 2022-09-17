@@ -18,12 +18,9 @@ namespace Renta.ViewModels
         private string email;
 
         private string coins;
-        public string FullName { get; set; }
-        
+        public string FullName { get; set; }        
         public string Category1 { get => _LoggedUser.FavoritesCategories[0].ToString(); }
-
         public string Category2 { get => _LoggedUser.FavoritesCategories[1].ToString(); }
-
         public string Address   { get; set; }
 
         public string ProfileImageUrl { get; set; }
@@ -67,8 +64,7 @@ namespace Renta.ViewModels
         {
             set
             {
-                email = value;
-                // OnPropertyChanged();
+                email = value;               
             }
             get => email;
         }
@@ -77,15 +73,11 @@ namespace Renta.ViewModels
         {
             set
             {
-                coins = value;
-                // OnPropertyChanged();
+                coins = value;                
             }
             get => coins;
         }
-
-        //public Command LogoutClicked
-        // => new Command(async () => await  Shell.Current.GoToAsync($"///{nameof(LoginPage)}"));
-
+       
         public Command LogoutClicked
         => new Command(async () => await Logout());
 
@@ -98,7 +90,6 @@ namespace Renta.ViewModels
             await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
             
         }
-
 
         public Command EditButtonClicked
         => new Command(async () => await Shell.Current.GoToAsync($"{nameof(EditProfilePage)}"));

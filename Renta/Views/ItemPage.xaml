@@ -20,24 +20,7 @@
     xmlns:xc="clr-namespace:XCalendar.Maui.Views;assembly=XCalendar.Maui">
 
     <ContentPage.Resources>
-        <!--  Returns true if all bindings evaluate to true  -->
-        <!-- <mct:VariableMultiValueConverter ConditionType="All" x:Key="AllTrueConverter" /> -->
-        <!--  ~1~  Inverts a binded boolean value  @1@  -->
-        <!-- <mct:InvertedBoolConverter x:Key="InvertedBoolConverter" /> -->
-        <!-- <ResourceDictionary> -->
-        <!--     <Style TargetType="Label" x:Key="stlBoardTitle"> -->
-        <!--         <Setter Property="Padding" Value="0,30,0,5" /> -->
-        <!--         <Setter Property="TextColor" Value="#a5a2a2" /> -->
-        <!--         <Setter Property="FontSize" Value="16" /> -->
-        <!--         <Setter Property="HorizontalOptions" Value="Center" /> -->
-        <!--     </Style> -->
-        <!--    -->
-        <!--     <Style TargetType="Label" x:Key="stlBoardDesc"> -->
-        <!--         <Setter Property="FontAttributes" Value="Bold" /> -->
-        <!--         <Setter Property="FontSize" Value="16" /> -->
-        <!--         <Setter Property="HorizontalOptions" Value="Center" /> -->
-        <!--     </Style> -->
-        <!-- </ResourceDictionary> -->
+       
     </ContentPage.Resources>
 
     <ContentPage.ToolbarItems>
@@ -287,14 +270,7 @@
                                                         Spacing="2.5">
 
 
-                                                        <!--  todo: resolve this issue man  -->
-                                                        <!--  I want the event indicators to only be visible when the DateTime is in the currently navigated month  -->
-                                                        <!-- <StackLayout.IsVisible> -->
-                                                        <!--     <MultiBinding Converter="{StaticResource AllTrueConverter}"> -->
-                                                        <!--         <Binding Path="IsCurrentMonth" /> -->
-                                                        <!--         <Binding Converter="{StaticResource InvertedBoolConverter}" Path="IsInvalid" /> -->
-                                                        <!--     </MultiBinding> -->
-                                                        <!-- </StackLayout.IsVisible> -->
+                                                  
 
                                                         <BindableLayout.ItemTemplate>
                                                             <DataTemplate x:DataType="{x:Type Models:Event}">

@@ -32,8 +32,7 @@
                                     
                                     >
             </sliders:SfRangeSlider>
-            <!--<Slider  Maximum="360" 
-                 Grid.Row="2" />-->
+          
 
             <Label Text="Region: " Grid.Row="2"  Padding="0,10,0,10"/>
             <Picker x:Name="RegionPicker" Grid.Row="3"  SelectedIndex="4" Margin="0" Title="Select a Region" 

@@ -38,13 +38,6 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-
-            <!--<Grid  RowDefinitions="*,*">
-                <controls:ListChatControl  Grid.Row="0"/>
-                <controls:ListChatControl  Grid.Row="1"/>
-
-            </Grid>-->
-
         </ScrollView>
     </StackLayout>
        

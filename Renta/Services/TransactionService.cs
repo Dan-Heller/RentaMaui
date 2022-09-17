@@ -29,7 +29,6 @@ namespace Renta.Services
             _userService = userService;
         }
 
-
         public async Task CreateTransaction(CreateTransactionDto transactionDto)
         {
             transactionDto.StartDate = transactionDto.StartDate.Value.AddHours(2);
@@ -50,17 +49,11 @@ namespace Renta.Services
                 .Add("id", _userService.LoggedInUser.Id)
                 .Add("type", userType.ToString())
                 .Add("status", status.ToString());
-
-
-            //string json = JsonConvert.SerializeObject(status);
-            //StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+           
             HttpResponseMessage response = null;
-
-
-            string UserId = _userService.LoggedInUser.Id;
+            string userId = _userService.LoggedInUser.Id;
             response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value +
                                                          "/Transactions/" + queryString));
-
             string str = await response.Content.ReadAsStringAsync();
             var Transactions = JsonConvert.DeserializeObject<List<TransactionLookedUp>>(str);
             return Transactions;
@@ -71,19 +64,12 @@ namespace Renta.Services
             string json = JsonConvert.SerializeObject(updatedTransaction);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
             HttpResponseMessage response = null;
-
-
             response = await httpclient.PutAsync(
                 new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Transactions/" + updatedTransaction.Id),
                 content);
 
             string str = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<Transaction>(str);
-
-            //if (UserUpdatedInvoker != null)
-            //{
-            //    UserUpdatedInvoker.Invoke();
-            //}
+            var result = JsonConvert.DeserializeObject<Transaction>(str);           
         }
     }
 }

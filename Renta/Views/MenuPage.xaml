@@ -20,36 +20,7 @@
            
             HeightRequest="400"
             RowDefinitions="80,80,80,80">
-
-
-            <!--  Settings Menu Item  -->
-            <!--<Frame  Grid.Row="0" Padding="0" HasShadow="False">
-                <Grid ColumnDefinitions="30, 60 , *, 30, 50">
-                   
-                    <BoxView
-                BackgroundColor="Blue"
-                HeightRequest="80"
-                WidthRequest="8" />
-                    <Image
-                Grid.Column="1"
-                Source="settingsicon"
-                VerticalOptions="Center"
-                WidthRequest="30" />
-                    <Label
-                Grid.Column="2"
-                FontSize="24"
-                Text="Settings"
-                VerticalOptions="CenterAndExpand" />
-                 
-                    <Image
-                Grid.Column="4"
-                HorizontalOptions="Center"
-                Source="nextarrow"
-                WidthRequest="20" />
-
-                </Grid>
-             
-            </Frame>-->
+         
             
             <!--  My items Menu Item  -->
             <Frame Grid.Row="0" Padding="0" HasShadow="False">
@@ -57,12 +28,7 @@
                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding MyItems_Tapped}" />
                 </Frame.GestureRecognizers>
                 <Grid  ColumnDefinitions="60 , *, 30, 10">
-                   
-                    <!--<BoxView
-                
-                BackgroundColor="Red"
-                HeightRequest="80"
-                WidthRequest="8" />-->
+                                  
                     <Image
                
                 Grid.Column="0"
@@ -75,27 +41,6 @@
                 FontSize="24"
                 Text="My items"
                 VerticalOptions="CenterAndExpand" />
-                    <!--<BoxView
-                
-                x:Name="MyItemsItemNotificationBox"
-                Grid.Column="3"
-                BackgroundColor="#999999"
-                CornerRadius="100"
-                HeightRequest="30"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                WidthRequest="30" />
-                    <Label
-               
-                x:Name="MyItemsNotificationBadge"
-                Grid.Column="3"
-                FontAttributes="Bold"
-                FontSize="14"
-                HorizontalOptions="Center"
-                Text="15"
-                TextColor="White"
-                VerticalOptions="Center"
-                ZIndex="3" />-->
                     <Image
                 
                 Grid.Column="2"
@@ -112,46 +57,20 @@
                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Renting_Tapped}" />
                 </Frame.GestureRecognizers>
                 <Grid ColumnDefinitions="60 , *, 30, 10">
-           
-            <!--<BoxView
-                BackgroundColor="LawnGreen"
-                HeightRequest="80"
-                WidthRequest="8" />-->
+                   
             <Image
                 
                 Grid.Column="0"
                 Source="renticon"
                 VerticalOptions="Center"
                 WidthRequest="30" />
-            <Label
+                    <Label
                
                 Grid.Column="1"
                 FontSize="24"
                 Text="Renting"
                 VerticalOptions="CenterAndExpand" />
-            <!--<BoxView
-                x:Name="rentingItemNotificationBox"
-                
-                Grid.Column="3"
-                BackgroundColor="#999999"
-                CornerRadius="100"
-                HeightRequest="30"
-                HorizontalOptions="Center"
-                IsVisible="True"
-                VerticalOptions="Center"
-                WidthRequest="30" />
-            <Label
-                x:Name="rentingNotificationBadgeCounter"
-                
-                Grid.Column="3"
-                FontAttributes="Bold"
-                FontSize="14"
-                HorizontalOptions="Center"
-                Text="15"
-                TextColor="White"
-                VerticalOptions="Center"
-                ZIndex="3" />-->
-            <Image
+                    <Image
               
                 Grid.Column="2"
                 HorizontalOptions="Center"
@@ -166,12 +85,6 @@
                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Rental_Tapped}" />
                 </Frame.GestureRecognizers>
                 <Grid ColumnDefinitions="60 , *, 30,10">
-                   
-                    <!--<BoxView
-               
-                BackgroundColor="Yellow"
-                HeightRequest="80"
-                WidthRequest="8" />-->
                     <Image
                 
                 Grid.Column="0"
@@ -184,27 +97,6 @@
                 FontSize="24"
                 Text="Rental"
                 VerticalOptions="CenterAndExpand" />
-                    <!--<BoxView
-                x:Name="rentalItemNotifiactionBox"
-               
-                Grid.Column="3"
-                BackgroundColor="#999999"
-                CornerRadius="100"
-                HeightRequest="30"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                WidthRequest="30" />
-                    <Label
-                x:Name="RentalNotificationBadgeCounter"
-                
-                Grid.Column="3"
-                FontAttributes="Bold"
-                FontSize="14"
-                HorizontalOptions="Center"
-                Text="15"
-                TextColor="White"
-                VerticalOptions="Center"
-                ZIndex="3" />-->
                     <Image
                
                 Grid.Column="2"
@@ -220,12 +112,7 @@
                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding SavedItems_Tapped}" />
                 </Frame.GestureRecognizers>
                 <Grid ColumnDefinitions=" 60 , *, 30, 10">
-                   
-                    <!--<BoxView
-              
-                BackgroundColor="Orange"
-                HeightRequest="80"
-                WidthRequest="8" />-->
+                                 
                     <Image
               
                 Grid.Column="0"
@@ -238,26 +125,6 @@
                 FontSize="24"
                 Text="Saved items"
                 VerticalOptions="CenterAndExpand" />
-                    <!--<BoxView
-                x:Name="favoritesItemNotifiactionBox"
-              
-                Grid.Column="3"
-                BackgroundColor="#999999"
-                CornerRadius="100"
-                HeightRequest="30"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                WidthRequest="30" />
-                    <Label
-                x:Name="favoritesNotificationBadgeCounter"
-            
-                Grid.Column="3"
-                FontAttributes="Bold"
-                FontSize="14"
-                HorizontalOptions="Center"
-                Text="15"
-                TextColor="White"
-                VerticalOptions="Center" />-->
                     <Image
                
                 Grid.Column="2"

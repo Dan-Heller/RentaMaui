@@ -26,7 +26,7 @@ namespace Renta.Models
         public string? Region { get; set; }
 
         public string Id { get; set; }
-        //public string Password { get; set; }
+        
         public string Email { get; set; }
 
         public  List<string> Transactions { get; set; }
@@ -39,19 +39,14 @@ namespace Renta.Models
 
         public List<Notification>? Notifications { get; set; }
 
-        //public List<Chat>? PopulatedChats { get; set; }
-
         public List<string> Items { get; set; } = new List<string>();
         
         public string FCMToken { get; set; }
 
         public User() { }
 
-        public User(string i_Password, string i_Email = null) //change default values eventually
+        public User(string i_Password, string i_Email = null) 
         {
-            
-            //this.CellphoneNumber = i_CellphoneNumber;
-           // this.Password = i_Password;
             this.Email = i_Email;
         }
 
@@ -61,10 +56,8 @@ namespace Renta.Models
         }
     }
 
-
     public class UserLookedUp : User
     {
         public List<Chat>? PopulatedChats { get; set; }
     }
-
 }

@@ -8,7 +8,6 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-//using Android.Locations;
 using Microsoft.Maui.Storage;
 using Renta.enums;
 
@@ -31,14 +30,13 @@ namespace Renta.ViewModels
         
         private string AddPhotoImageSource = "addphoto.jpg";
         public string ItemName { get; set; }
-        public string CoinsPerDay { get; set; }
-        //public string MaxDaysPerRent { get; set; }
+        public string CoinsPerDay { get; set; }        
         public string ItemDescription { get; set; } = string.Empty;
         public string SelectedCategory { get; set; }
         private bool ImageAdded = false;
         private readonly int MaxImagesPerItem = 4;
         private FileResult chosenImageFile;
-        //public List<FileResult> chosenImagesFilesResult = new List<FileResult>();
+        
         public FileResult[] chosenImagesFilesResult = new FileResult[4];
         public bool[] SlotHasImageArray = new bool[4];
         public int[] SlotUpdatedImageArray = new int[4]; // 0 - no image from start, 1 - image from start but not updated , 2 and above - slot updated
@@ -128,9 +126,7 @@ namespace Renta.ViewModels
             Categories.Add(ECategories.Electronics.ToString());
             Categories.Add(ECategories.Bikes.ToString());
             Categories.Add(ECategories.Tools.ToString());
-
-
-            // ImageSource1 = _myItemViewModel.ImagesUrls[0];
+            
             ImageSource1 = ImageSource.FromFile(AddPhotoImageSource);
             ImageSource2 = ImageSource.FromFile(AddPhotoImageSource);
             ImageSource3 = ImageSource.FromFile(AddPhotoImageSource);
@@ -181,7 +177,7 @@ namespace Renta.ViewModels
                     OnPropertyChanged(nameof(ImageSource4));
                     break;
             }
-            // chosenImagesFilesResult.Add(result);
+           
             chosenImagesFilesResult[Int32.Parse(ImageId) - 1] = result;
         }
 
@@ -215,8 +211,7 @@ namespace Renta.ViewModels
                     }
                 }
 
-                //add new urls.
-               // foreach (var fileresult in chosenImagesFilesResult)
+                //add new urls.              
                for (int i = 0; i < MaxImagesPerItem; i++)
                 {
                     if (chosenImagesFilesResult[i] != null)
@@ -239,8 +234,7 @@ namespace Renta.ViewModels
 
                 UpdateItemInfoFromEntries();
 
-                await _itemService.UpdateItemInfo(_myItemViewModel.Item);
-                //await Shell.Current.GoToAsync("../.."); //maybe here insted of going back to ask for the updated item . 
+                await _itemService.UpdateItemInfo(_myItemViewModel.Item);              
                 await _myItemViewModel.GotoMyUpdatedItemPage();
             }
           
@@ -261,7 +255,7 @@ namespace Renta.ViewModels
             var NumberToInt = (Int32.Parse(ImageSlotNumber));
             if (SlotHasImageArray[NumberToInt - 1] == true)
             {
-                //chosenImagesFilesResult.RemoveAt(NumberToInt - 1);
+                
                 chosenImagesFilesResult[NumberToInt - 1] = null;
                 SlotHasImageArray[NumberToInt - 1] = false;
                 switch (ImageSlotNumber)

@@ -13,8 +13,7 @@ public partial class LoginPage : ContentPage
 
 		BindingContext = loginPageViewModel;
         _userService = userService;
-		InitializeComponent();
-		
+		InitializeComponent();		
 	}
 
     protected override async void OnAppearing()

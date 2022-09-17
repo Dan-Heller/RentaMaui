@@ -4,16 +4,6 @@ public partial class MessagesShell : Shell
 {
 	public MessagesShell()
 	{
-		InitializeComponent();
-        //Routing.RegisterRoute(nameof(MessagesPage), typeof(MessagesPage));
-        //Routing.RegisterRoute(nameof(NotificationsPage), typeof(NotificationsPage));
+		InitializeComponent();      
     }
-
-    //protected override  void OnAppearing()
-    //{
-    //    base.OnAppearing();
-    //    IsVisible = true;
-       
-    //}
-
 }

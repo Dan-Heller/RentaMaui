@@ -18,6 +18,4 @@ public partial class ProfilePage : ContentPage
        await  (BindingContext as ProfilePageViewModel).UpdateUserInfo();
 
     }
-
-
 }

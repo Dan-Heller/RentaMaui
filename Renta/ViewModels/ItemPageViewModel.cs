@@ -106,10 +106,7 @@ namespace Renta.ViewModels
 
         public async Task sendItemRequest()
         {
-            //check if user has enough coins.
-            // var leasingSpan = datesCollection[datesCollection.Count - 1] - datesCollection[0];
-            // int leasingLength = leasingSpan.Days;
-            // leasingLength++;
+            //check if user has enough coins.           
             bool enoughCoins =
                 await _userService.GetIfBalanceIsValidForRent((int)_ItemViewModel.PricePerDay, datesCollection.Count);
 

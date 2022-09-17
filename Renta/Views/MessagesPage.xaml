@@ -10,11 +10,6 @@
 
 
     <FlexLayout JustifyContent="Center" Direction="Column" AlignItems="Center">
-        <!--<Label
-            x:Name="chatMessages"
-            Text="Messages!" 
-        VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />-->
         <Label
             HeightRequest="50"
             FontSize="25"

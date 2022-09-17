@@ -9,28 +9,15 @@ namespace Renta.Models
     public class ItemReview
     {
         public string? Id { get; set; }
-
-        // [BsonRepresentation(BsonType.ObjectId)]
         public string? OwnerId { get; set; }
-
         public string? SeekerId { get; set; }
-
         public string? SeekerName { get; set; }
-
         public float ItemRating { get; set; }
-
         public string? TransactionId { get; set; }
-
         public string? ItemId { get; set; }
-
         public string? Review { get; set; }
-
         public float Rating { get => ItemRating; }
-
         public DateTime? DateOfReview { get; set; }
-
-
-        //ctor from database
         public ItemReview(string ownerId, string seekerId, int itemRating, string transactionId, string itemId, string review, DateTime dateTime)
         {
             OwnerId = ownerId;

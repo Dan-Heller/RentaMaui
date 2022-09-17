@@ -30,14 +30,7 @@ namespace Renta.ViewModels
             _transactionService = transactionService;
             _userService = userService;
         }
-
-
-
-        //internal async Task InitializeAsync()
-        //{
-        //    await FetchAsync();
-        //}
-
+       
         public async Task FetchTransactionByStatus()
         {
            Transactions = await _transactionService.GetTransactionsByStatus(EUserType.Owner,selectedStatusInTabsController);
@@ -46,36 +39,11 @@ namespace Renta.ViewModels
             {
                 Transactions.AddRange(await _transactionService.GetTransactionsByStatus(EUserType.Owner, ETransactionStatus.Canceled));
             }
-
-            //if (podcastsModels == null)
-            //{
-            //    await Shell.Current.DisplayAlert(
-            //        AppResource.Error_Title,
-            //        AppResource.Error_Message,
-            //        AppResource.Close);
-
-            //    return;
-            //}
-
-
+            
             TransactionsViewModel =  ConvertToViewModels(Transactions);
             UpdateTransactionsCollection(TransactionsViewModel);
 
-        }
-
-        //private  async Task<List<TransactionViewModel>> ConvertToViewModels(List<Transaction> Transactions)
-        //{
-        //    var viewmodels = new List<TransactionViewModel>();
-        //    foreach (var transaction in Transactions)
-        //    {
-        //        var item = await  _itemService.GetItemById(transaction.ItemId);
-        //        var transactionVM = new TransactionViewModel(transaction, item);
-        //        //var transactionVM = TransactionViewModel.CreateTransactionViewModelAsync(transaction, _itemService);
-        //        viewmodels.Add(transactionVM);
-        //    }
-        //    //await Task.WhenAll(viewmodels);
-        //    return viewmodels;
-        //}
+        }       
 
         private List<TransactionViewModel> ConvertToViewModels(List<TransactionLookedUp> Transactions)
         {
@@ -85,15 +53,12 @@ namespace Renta.ViewModels
             {
                 
                 var transactionVM = new TransactionViewModel(transaction, _transactionService, _userService);
-                transactionVM.TransactionStatusChanged += FetchTransactionByStatus;
-                //var transactionVM = TransactionViewModel.CreateTransactionViewModelAsync(transaction, _itemService);
+                transactionVM.TransactionStatusChanged += FetchTransactionByStatus;                
                 viewmodels.Add(transactionVM);
             }
-            //await Task.WhenAll(viewmodels);
+            
             return viewmodels;
         }
-
-
 
         private void UpdateTransactionsCollection(IEnumerable<TransactionViewModel> TransactionsVM)
         {

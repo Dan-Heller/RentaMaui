@@ -21,12 +21,12 @@
         <ToolbarItem IconImageSource="editicon" Command="{Binding EditButtonClicked}"/>
     </ContentPage.ToolbarItems>
 
-   
 
-   
+
+
 
     <ScrollView>
-        
+
         <Grid RowDefinitions="auto,auto">
             <Grid Grid.Row="0" RowDefinitions="100,*,*,*" Margin="0,10,0,0" Padding="0">
                 <Grid Grid.Row="0" Padding="0">
@@ -38,7 +38,7 @@
                 <!-- Profile name & general description-->
                 <Label Grid.Row="1" Text="{Binding FullName, Mode=TwoWay}" FontAttributes="Bold" TextColor="#383b67" HorizontalTextAlignment="Center" Margin="0,10,0,0" FontSize="22" Padding="0"/>
 
-            
+
 
                 <Grid Grid.Row="2" ColumnDefinitions="auto, auto" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,20,0,0"  >
                     <Label Grid.Row="0" Grid.Column="0" Text="{Binding _LoggedUser.RatingAsString}"  FontSize="25" TextColor="Black"/>
@@ -57,23 +57,15 @@
                 <Label Grid.Row="1" HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16" Text="{Binding Email, Mode=TwoWay}"/>
                 <Label Grid.Row="2" Text="Renta credits" TextColor="Black" HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16"/>
                 <Label Grid.Row="3" HorizontalTextAlignment="Start" Margin="0,0,0,0"  FontSize="16" Text="{Binding Coins, Mode=TwoWay}"/>
-                <!--<Label Grid.Row="4" Text="Number" HorizontalTextAlignment="Start" TextColor="Black" Margin="0,0,0,0" FontSize="16"/>
-                <Label Grid.Row="5" HorizontalTextAlignment="Start" Margin="0,0,0,0"  FontSize="16" Text="052??????"/>-->
                 <Label Grid.Row="4" Text="Location" HorizontalTextAlignment="Start" TextColor="Black" Margin="0,0,0,0" FontSize="16"/>
                 <Label Grid.Row="5" HorizontalTextAlignment="Start" Margin="0,0,0,0"  FontSize="16" Text="{Binding Address, Mode=TwoWay}"/>
-                
-                    <Label Grid.Row="6" Text="Favorites categories:"  TextColor="Black"   HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16" />
-                    <Label Grid.Row="7" Text="{Binding Category1}"    HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16" />
-                    <Label Grid.Row="8" Text="{Binding Category2}"    HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16" />
-              
+
+                <Label Grid.Row="6" Text="Favorites categories:"  TextColor="Black"   HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16" />
+                <Label Grid.Row="7" Text="{Binding Category1}"    HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16" />
+                <Label Grid.Row="8" Text="{Binding Category2}"    HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16" />
+
 
             </Grid>
         </Grid>
     </ScrollView>
-
-
-  
-
-
-
 </ContentPage>

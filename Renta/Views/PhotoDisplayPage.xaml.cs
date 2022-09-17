@@ -7,8 +7,7 @@ public partial class PhotoDisplayPage : ContentPage
     public PhotoDisplayPage(PhotoDisplayPageViewModel photoDisplayPageViewModel)
     {
         BindingContext = photoDisplayPageViewModel;
-        InitializeComponent();
-        
+        InitializeComponent();        
     }
 
     protected override  void OnAppearing()

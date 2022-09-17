@@ -10,7 +10,6 @@ namespace Renta.Models
     {
         public string? Id { get; set; }
 
-        
         public string? RevieweeId { get; set; }
 
         public string? ReviewerId { get; set; }
@@ -25,8 +24,6 @@ namespace Renta.Models
 
         public string? Review { get ;   set; }
 
-        
-
         public DateTime? DateOfReview { get; set; }
 
         public float Rating { get => UserRating; }
@@ -35,8 +32,6 @@ namespace Renta.Models
         {
 
         }
-
-    
 
         public UserReview(string revieweeId, string reviewerId, int userRating, string transactionId, string itemId, string review)
         {
@@ -58,7 +53,5 @@ namespace Renta.Models
             TransactionId = transactionId;
             UserRating = userRating;
         }
-
-
     }
 }

@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using System.Threading.Tasks;
-//using Android.Net.Wifi.Aware;
 using Renta.Services;
 using Renta.Models;
 using MvvmHelpers;
@@ -87,9 +86,7 @@ namespace Renta.ViewModels
         {
             ItemsMightLikeCollection.ReplaceRange(ItemsVM);
         }
-
        
-
         private void UpdateNewestItemsCollection(IEnumerable<ItemViewModel> ItemsVM)
         {
             NewestItemsCollection.ReplaceRange(ItemsVM);
@@ -98,11 +95,6 @@ namespace Renta.ViewModels
 
         public Command ProfileButtonTapped
          => new Command(async () => await Shell.Current.GoToAsync($"{nameof(ProfilePage)}"));
-
-
-
-
      
-
     }
 }

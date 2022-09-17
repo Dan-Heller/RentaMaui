@@ -69,44 +69,4 @@
         </Grid>
     </Frame>
 
-
-    <!--<Frame
-        Margin="10"
-        Padding="0"
-        CornerRadius="15"
-        HasShadow="True"
-        HeightRequest="200"
-        WidthRequest="150">
-        <StackLayout>
-            <Grid HeightRequest="200" WidthRequest="125">
-
-                <Image Aspect="AspectFill" Source="item" />
-
-                <StackLayout Margin="0,140,0,0" Orientation="Horizontal">
-                    <Label
-                        Margin="10,0,0,0"
-                        FontAttributes="Bold"
-                        FontSize="16"
-                        Text="Laguage"
-                        TextColor="White"
-                        TextTransform="Default" />
-                    <Image
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        Margin="10,0,0,0"
-                        HeightRequest="15"
-                        Source="coinsstackicon24px"
-                        WidthRequest="15" />
-    -->
-    <!--<Image Source="https://cdn-icons.flaticon.com/png/512/2838/premium/2838912.png?token=exp=1647883314~hmac=f62f827ed9870e0072d2c70186fa9ae2"
-                           HeightRequest="15"
-                           Margin="-80,0,0,0"
-                           Aspect="AspectFit"/>-->
-    <!--
-                </StackLayout>
-            </Grid>
-        </StackLayout>
-
-    </Frame>-->
-
 </ContentView>

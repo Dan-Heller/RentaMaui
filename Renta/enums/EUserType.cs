@@ -11,5 +11,4 @@ namespace Renta.enums
         Seeker,
         Owner
     }
-
 }

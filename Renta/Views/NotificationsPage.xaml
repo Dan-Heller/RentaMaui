@@ -36,10 +36,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
-
          
-
         </ScrollView>
     </StackLayout>
 </ContentPage>

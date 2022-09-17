@@ -3,16 +3,12 @@ namespace Renta;
 
 public partial class ActivateTransactionPage : ContentPage
 {
-    //ActivateTransactionPageViewModel _activateTransactionPageViewModel;
+   
 	
 	public ActivateTransactionPage(ActivateTransactionPageViewModel activateTransactionPageViewModel)
-	{
-        //BindingContext = new AddItemPageViewModel();
-        BindingContext = activateTransactionPageViewModel;
-        //_activateTransactionPageViewModel = activateTransactionPageViewModel;
-		InitializeComponent();
-        
-
+	{        
+        BindingContext = activateTransactionPageViewModel;        
+		InitializeComponent();        
     }
 
 

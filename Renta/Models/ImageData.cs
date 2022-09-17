@@ -8,7 +8,6 @@ namespace Renta.Models
 {
     public class ImageData
     {
-      public string ImageUri { get; set; }
-        
+      public string ImageUri { get; set; } 
     }
 }

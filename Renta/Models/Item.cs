@@ -13,7 +13,6 @@ namespace Renta.Models
 
         public string? Id { get; set; }
         public string? Name { get; set; }
-
         public string? Category { get; set; }
 
         public float ItemRating { get; set; }
@@ -32,20 +31,6 @@ namespace Renta.Models
 
         public DateTime? UploadDate { get; set; }
 
-
         public Item() { }
-
-        //public Item(string i_Password, string i_Email = null, int i_CellphoneNumber = 0000) //change default values eventually
-        //{
-
-        //    this.CellphoneNumber = i_CellphoneNumber;
-        //   // this.Password = i_Password;
-        //    this.Email = i_Email;
-        //}
-
-        //public string GetFullName()
-        //{
-        //    return this.FirstName + " " + this.LastName;
-        //}
     }
 }

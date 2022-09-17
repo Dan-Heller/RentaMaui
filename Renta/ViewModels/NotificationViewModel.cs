@@ -12,10 +12,7 @@ namespace Renta.ViewModels
 {
     public class NotificationViewModel
     {
-        public Notification _notification { get; set; }
-
-
-        
+        public Notification _notification { get; set; }        
         public string OtherUserId;
         public UserService _userService;
         public User _otherUser;
@@ -32,7 +29,6 @@ namespace Renta.ViewModels
             OtherUserId = OtherUser.Id;
             NotificationTime = notification.Time.ToString("HH:mm");
             insertNotificationMessage();
-
         }
 
         private void insertNotificationMessage()
@@ -77,7 +73,5 @@ namespace Renta.ViewModels
             return _userService.LoggedInUser.PopulatedChats.Find(chat => chat.UserA == OtherUserId || chat.UserB == OtherUserId);
         }
 
-    }
-
-      
+    }      
 }

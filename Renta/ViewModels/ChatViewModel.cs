@@ -35,9 +35,6 @@ namespace Renta.ViewModels
            
         }
 
-
-
-
         public Command ListChatTapped
  => new Command(async () => await GoToChat());
 

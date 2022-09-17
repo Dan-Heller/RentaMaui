@@ -31,7 +31,7 @@ public static class MauiProgram
 
         builder.Services.AddTransient<ListChatPage>();
         builder.Services.AddTransient<ListChatPageViewModel>();
-        //builder.Services.AddSingleton<ChatViewModel>(); // delete this. only for test 
+      
 
         builder.Services.AddSingleton<AppShell>(); 
 		builder.Services.AddSingleton<AppShellViewModel>();
@@ -52,7 +52,7 @@ public static class MauiProgram
 
 
         builder.Services.AddTransient<LoginPage>();
-		builder.Services.AddTransient<LoginPageViewModel>(); //maybe shouldnt be singleton ...
+		builder.Services.AddTransient<LoginPageViewModel>(); 
 
 		builder.Services.AddTransient<RegistrationPage>();
 		builder.Services.AddTransient<RegistrationPageViewModel>();
@@ -118,20 +118,7 @@ public static class MauiProgram
         
         builder.Services.AddSingleton<SavedItemsPage>();
         builder.Services.AddSingleton<SavedItemsPageViewModel>();
-        
-
-        //builder.Services.AddTransient<AppShell>();  ///???
-        //builder.Services.AddTransient<AppShellViewModel>();
-
-        //      builder.Services.AddTransient<FeedPage>();
-        //      builder.Services.AddTransient<FeedPageViewModel>();
-
-        //      builder.Services.AddTransient<ProfilePage>();
-        //      builder.Services.AddTransient<ProfilePageViewModel>();
-
-        //      builder.Services.AddSingleton<INavigationService, NavigationService>();
-
-        
+                
         return builder.Build();
 	}
 }

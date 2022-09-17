@@ -15,9 +15,7 @@ namespace Renta.ViewModels
 
         private FileService _fileService;
         private UserService _userService;
-        private TransactionService _transactionService;
-       // private ItemService _itemService;
-       // public List<string> Categories { get; set; }
+        private TransactionService _transactionService;      
         public ImageSource ImageSource1 { get; set; }
         public ImageSource ImageSource2 { get; set; }
         public ImageSource ImageSource3 { get; set; }
@@ -37,21 +35,10 @@ namespace Renta.ViewModels
 
         public void deserializeString()
         {
-            transaction = JsonConvert.DeserializeObject<Transaction>(_TransactionString);
-            //convertItemToViewModel(Item);
+            transaction = JsonConvert.DeserializeObject<Transaction>(_TransactionString);           
         }
-
-
-
-        // private Item NewItem = new Item();
-
-        private string AddPhotoImageSource = "addphoto.jpg";
-      //  public string ItemName { get; set; }
-      //  public string CoinsPerDay { get; set; }
-        //public string MaxDaysPerRent { get; set; }
-      //  public string ItemDescription { get; set; } = string.Empty;
-      //  public string SelectedCategory { get; set; }
-
+       
+        private string AddPhotoImageSource = "addphoto.jpg";     
         private bool ImageAdded = false;
 
 
@@ -65,25 +52,13 @@ namespace Renta.ViewModels
         {
             _fileService = fileService;
             _userService = userService;
-            _transactionService = transactionService;
-            //_itemService = itemService;
-
-
-            //Categories = new List<string>();
-            //Categories.Add("Sports");
-            //Categories.Add("Clothing");
-            //Categories.Add("Music");
-            //Categories.Add("Travel");
-
-
+            _transactionService = transactionService;            
             ImageSource1 = ImageSource.FromFile(AddPhotoImageSource);
             ImageSource2 = ImageSource.FromFile(AddPhotoImageSource);
             ImageSource3 = ImageSource.FromFile(AddPhotoImageSource);
             ImageSource4 = ImageSource.FromFile(AddPhotoImageSource);
             _transactionService = transactionService;
         }
-
-
 
         public Command AddPhotoFromGallery_Clicked
         => new Command<string>(async (string ImageId) => await AddPhotoFromGallery(ImageId));
@@ -94,18 +69,11 @@ namespace Renta.ViewModels
             if (chosenImageFile != null)
             {
                 UpdateImageSource(ImageId, chosenImageFile);
-
-
             }
         }
 
-
-
-
         private async void UpdateImageSource(string ImageId, FileResult result)
         {
-
-
             var stream = await result.OpenReadAsync();
             SlotHasImageArray[Int32.Parse(ImageId) - 1] = true;
             switch (ImageId)
@@ -133,26 +101,17 @@ namespace Renta.ViewModels
         public async Task TakeAPhoto(string ImageId)
         {
             chosenImageFile = await MediaPicker.CapturePhotoAsync(new MediaPickerOptions { Title = "Please take a photo" });
-
-
             if (chosenImageFile != null)
             {
                 UpdateImageSource(ImageId, chosenImageFile);
-
-
             }
         }
-
 
         public Command ActivateClicked
    => new Command(async () => await ActivateTransaction());
 
-
         private async Task ActivateTransaction()
-        {
-
-            // MaxDaysPerRent != null && int.Parse(MaxDaysPerRent) >= 1 &&
-            // transaction.ItemOwner == _userService.LoggedInUser.Id ? transaction.OwnerImages : transaction.SeekerImages;
+        {           
             var UrlsList = new List<string>();
 
             if (chosenImagesFilesResult.Count > 0) //check minimal information inserted.
@@ -192,10 +151,7 @@ namespace Renta.ViewModels
                         transaction.SeekerAcceptedCompletion = true;
                     }
                 }
-               
-
-
-                //await _itemService.UploadNewItem(NewItem);
+                             
                 await  _transactionService.UpdateTransaction(transaction);
                 await _userService.UpdateLoggedInUser();
                 await Shell.Current.GoToAsync("..");
@@ -206,12 +162,7 @@ namespace Renta.ViewModels
             }
             
         }
-
       
-
-
-
-
         public void RemoveImage(string ImageSlotNumber)
         {
             var NumberToInt = (Int32.Parse(ImageSlotNumber));

@@ -15,7 +15,7 @@ namespace Renta.Dto_s
 
         public LoginDto() { }
 
-        public LoginDto(string i_Email, string i_Password) 
+        public LoginDto(string i_Email, string i_Password)
         {
             this.Password = i_Password;
             this.Email = i_Email;

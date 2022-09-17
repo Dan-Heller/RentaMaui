@@ -12,8 +12,7 @@ namespace Renta.ViewModels
 {
     [QueryProperty(nameof(MyItemString), "item")]
     public  class MyItemPageViewModel : ObservableObject
-    {
-        //private Item _myItem;
+    {       
         public ItemViewModel _myItemViewModel { get; set; }
         public ReviewsService _reviewService { get; set; }
 
@@ -89,7 +88,5 @@ namespace Renta.ViewModels
             _myItemViewModel.CurrentImageIndex = _myItemViewModel.CurrentImageIndex == 0 ? _myItemViewModel.ImagesUrls.Count - 1 : _myItemViewModel.CurrentImageIndex - 1;
             OnPropertyChanged(nameof(_myItemViewModel));
         }
-
-
     }
 }

@@ -9,17 +9,12 @@
              Shell.NavBarIsVisible="true"
              Shell.TitleColor="Black"
              Shell.TabBarIsVisible="False">
-
-  
-    
-    
- 
     
     <StackLayout>
 
         <Grid>
             <Frame Grid.Row="0" Margin="0,5,0,5" Padding="0" BorderColor="Transparent" HasShadow="False">
-                <!-- <controls:RentingPageTabsControl x:Name="TabsControl"> </controls:RentingPageTabsControl> -->
+              
                 <Grid  ColumnDefinitions="*,*,*,*"   >
 
 
@@ -76,7 +71,6 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
 
 
         </ScrollView>

@@ -12,6 +12,5 @@ namespace Renta.ViewModels
         public Command CategoryOptionTappedGoBackToSearchPage
    => new Command(async () => await Shell.Current.GoToAsync(".."));
 
-
     }
 }

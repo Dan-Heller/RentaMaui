@@ -15,24 +15,7 @@
 
                             <Button ImageSource="profileicon.png"/>
 
-                            <!--  <SearchBar x:Name="searchBar"
-                                   HorizontalOptions="Start"
-                                   WidthRequest="460"
-                                   Text="{Binding TextToSearch, Source={x:Reference selfMediaElementView}}"
-                                   SearchCommand="{Binding SearchCommand, Source={x:Reference selfMediaElementView}}" />
-
-                        <Label Text="See All Categories"
-                               Style="{StaticResource BodyLLabelStyle}"
-                               TextColor="{StaticResource Primary}"
-                               Grid.Row="1"
-                               HorizontalOptions="End"
-                               Margin="0,0,30,0"
-                               IsVisible="{Binding ShowSearchCategories, Source={x:Reference selfMediaElementView}}"
-                               FontSize="16">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                            </Label.GestureRecognizers>
-                        </Label> -->
+                           
 
                         </Grid>
                     </On>
@@ -40,11 +23,7 @@
                         <Grid ColumnDefinitions="6*,1*,1*,1*"
                           Margin="16,12"  >
 
-                            <!-- <Image Source="{AppThemeBinding Light=logo_header_horizontal.png,Dark=logo_color_horizontal_darkmode.png}"
-                               HeightRequest="34"
-                               WidthRequest="125"
-                               VerticalOptions="Center"
-                               HorizontalOptions="Start" /> -->
+                           
                             <Label
                                 Text="RentA"
                                 FontSize="25"

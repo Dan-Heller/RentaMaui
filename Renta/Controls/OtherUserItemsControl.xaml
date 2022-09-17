@@ -17,12 +17,6 @@
             </Label.GestureRecognizers>
             </Label>
 
-            <!--<Label x:Name="UnAvailableLabel"  Text="Unavailable"  Grid.Column="2"  HorizontalOptions="Center" VerticalOptions="Center"  TextColor="Gray">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                </Label.GestureRecognizers>
-            </Label>-->
-            
         </Grid>
     </ContentView.Content>
 </ContentView>

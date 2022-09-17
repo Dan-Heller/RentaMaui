@@ -63,9 +63,5 @@ namespace Renta.ViewModels
             NotificationsCollection.ReplaceRange(NotificationsVM);
            
         }
-
-
     }
-
-
 }
