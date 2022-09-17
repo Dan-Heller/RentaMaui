@@ -70,10 +70,9 @@
                             VerticalOptions="Center" />
                     </Grid>
                 </Frame>
-
             </Grid>
         </Grid>
-        <!--  line  -->
+
         <BoxView
             Color="LightGray"
             HeightRequest="1"
@@ -113,9 +112,7 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-
             </StackLayout>
         </ScrollView>
-
     </StackLayout>
 </ContentPage>

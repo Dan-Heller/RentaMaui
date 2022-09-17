@@ -4,9 +4,9 @@ namespace Renta;
 
 public partial class RegistrationPage : ContentPage
 {
-	public RegistrationPage(RegistrationPageViewModel registrationPageViewModel)
-	{
-		BindingContext = registrationPageViewModel;
-		InitializeComponent();
-	}
+    public RegistrationPage(RegistrationPageViewModel registrationPageViewModel)
+    {
+        BindingContext = registrationPageViewModel;
+        InitializeComponent();
+    }
 }

@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using MvvmHelpers;
-using Renta.Dto_s;
+﻿using Renta.Dto_s;
 using Renta.enums;
-using Renta.Models;
 using Renta.Services;
 
 namespace Renta.ViewModels
@@ -18,7 +9,7 @@ namespace Renta.ViewModels
         public string password;
         public string email;
         public string FirstName { get; set; }
-        public string LastName { get; set;}        
+        public string LastName { get; set; }
         public List<string> Categories { get; set; } = new List<string>();
         public string SelectedCategory1 { get; set; } = string.Empty;
         public string SelectedCategory2 { get; set; } = string.Empty;
@@ -29,6 +20,7 @@ namespace Renta.ViewModels
         public string SelectedCity { get; set; }
         private bool IsFormValid { get; set; } = false;
         private UserService m_userService;
+
         public RegistrationPageViewModel(UserService userService)
         {
             m_userService = userService;
@@ -40,15 +32,15 @@ namespace Renta.ViewModels
             SelectedRegion = String.Empty;
 
             FetchRegionsFromString();
-                     
+
             foreach (var value in Enum.GetNames(typeof(ECategories)))
             {
                 Categories.Add(value);
             }
+
             Categories.RemoveAt(0);
-           
         }
-      
+
         public string Password
         {
             set
@@ -58,6 +50,7 @@ namespace Renta.ViewModels
             }
             get => password;
         }
+
         public string Email
         {
             set
@@ -67,24 +60,27 @@ namespace Renta.ViewModels
             }
             get => email;
         }
-     
+
         public Command RegisterCompleted_Clicked
-         => new Command(async () => await registerUser());
+            => new Command(async () => await registerUser());
 
         private async Task registerUser()
         {
-            if(SelectedCategory1 != string.Empty)
+            if (SelectedCategory1 != string.Empty)
             {
-                SelectedFavoritesCategories.Add( Enum.Parse<ECategories>(SelectedCategory1));
+                SelectedFavoritesCategories.Add(Enum.Parse<ECategories>(SelectedCategory1));
             }
+
             if (SelectedCategory2 != string.Empty)
             {
                 SelectedFavoritesCategories.Add(Enum.Parse<ECategories>(SelectedCategory2));
             }
 
-            if (password.Length > 0 && email.Length > 0  && FirstName.Length > 0 && LastName.Length > 0 && SelectedRegion.Length > 0 && SelectedFavoritesCategories.Count == 2)
+            if (password.Length > 0 && email.Length > 0 && FirstName.Length > 0 && LastName.Length > 0 &&
+                SelectedRegion.Length > 0 && SelectedFavoritesCategories.Count == 2)
             {
-                RegisterDto registerDto = new RegisterDto(email, password, FirstName, LastName, SelectedCity, SelectedRegion, SelectedFavoritesCategories);
+                RegisterDto registerDto = new RegisterDto(email, password, FirstName, LastName, SelectedCity,
+                    SelectedRegion, SelectedFavoritesCategories);
                 await m_userService.RegisterUser(registerDto);
 
                 await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
@@ -93,13 +89,13 @@ namespace Renta.ViewModels
             {
                 await Application.Current.MainPage.DisplayAlert(" ", "Please fill all the details", "close");
                 SelectedFavoritesCategories = new List<ECategories>();
-            }           
+            }
         }
 
         private void FetchRegionsFromString()
         {
-            string RegionsStr = "Ashkelon \r\nBeer Sheva \r\nBethlehem \r\nGolan \r\nJenin \r\nHasharon \r\nHebron \r\nHadera \r\nHolon \r\nHaifa \r\nTulkarm \r\nJericho \r\nJerusalem \r\nKinneret \r\nNazareth \r\nAcre \r\nAfula \r\nPetah Tikva \r\nSafed \r\nRamallah \r\nRehovot \r\nRamla \r\nRamat Gan \r\nNablus \r\nTel Aviv";
-            var stringArr = RegionsStr.Split("\r\n");
+            const string regionsStr = "Ashkelon \r\nBeer Sheva \r\nBethlehem \r\nGolan \r\nJenin \r\nHasharon \r\nHebron \r\nHadera \r\nHolon \r\nHaifa \r\nTulkarm \r\nJericho \r\nJerusalem \r\nKinneret \r\nNazareth \r\nAcre \r\nAfula \r\nPetah Tikva \r\nSafed \r\nRamallah \r\nRehovot \r\nRamla \r\nRamat Gan \r\nNablus \r\nTel Aviv";
+            var stringArr = regionsStr.Split("\r\n");
             Regions = stringArr.ToList();
         }
     }

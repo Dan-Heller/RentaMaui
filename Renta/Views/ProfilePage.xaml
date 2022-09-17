@@ -1,70 +1,160 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Renta.ProfilePage"
-                  xmlns:ViewModels="clr-namespace:Renta.ViewModels"
-            x:DataType="ViewModels:ProfilePageViewModel"
-             Title="ProfilePage"
-             Shell.ForegroundColor="Black"
-             Shell.NavBarIsVisible="true"
-             Shell.TabBarIsVisible="False"
-             xmlns:controls="clr-namespace:Renta.Controls"
-             BackgroundColor="White">
 
-    
-    
-    
+<ContentPage
+    BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.NavBarIsVisible="true"
+    Shell.TabBarIsVisible="False"
+    Title="ProfilePage"
+    x:Class="Renta.ProfilePage"
+    x:DataType="ViewModels:ProfilePageViewModel"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:ViewModels="clr-namespace:Renta.ViewModels"
+    xmlns:controls="clr-namespace:Renta.Controls"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="logouticon" Command="{Binding LogoutClicked }">
-            
-        </ToolbarItem>
-        <ToolbarItem IconImageSource="editicon" Command="{Binding EditButtonClicked}"/>
+        <ToolbarItem Command="{Binding LogoutClicked}" IconImageSource="logouticon" />
+        <ToolbarItem Command="{Binding EditButtonClicked}" IconImageSource="editicon" />
     </ContentPage.ToolbarItems>
-
-
-
-
-
     <ScrollView>
-
         <Grid RowDefinitions="auto,auto">
-            <Grid Grid.Row="0" RowDefinitions="100,*,*,*" Margin="0,10,0,0" Padding="0">
+            <Grid
+                Grid.Row="0"
+                Margin="0,10,0,0"
+                Padding="0"
+                RowDefinitions="100,*,*,*">
                 <Grid Grid.Row="0" Padding="0">
-                    <Frame  Margin="0,0,0,0"  BorderColor="Gray" HorizontalOptions="Center" WidthRequest="110" HeightRequest="100" HasShadow="False" CornerRadius="55" Padding="0" IsClippedToBounds="True">
-                        <Image Source="{Binding ProfileImageUrl, Mode=TwoWay}" Aspect="AspectFill"/>
+                    <Frame
+                        BorderColor="Gray"
+                        CornerRadius="55"
+                        HasShadow="False"
+                        HeightRequest="100"
+                        HorizontalOptions="Center"
+                        IsClippedToBounds="True"
+                        Margin="0,0,0,0"
+                        Padding="0"
+                        WidthRequest="110">
+                        <Image Aspect="AspectFill" Source="{Binding ProfileImageUrl, Mode=TwoWay}" />
                     </Frame>
                 </Grid>
 
-                <!-- Profile name & general description-->
-                <Label Grid.Row="1" Text="{Binding FullName, Mode=TwoWay}" FontAttributes="Bold" TextColor="#383b67" HorizontalTextAlignment="Center" Margin="0,10,0,0" FontSize="22" Padding="0"/>
+                <!--  Profile name & general description  -->
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="22"
+                    Grid.Row="1"
+                    HorizontalTextAlignment="Center"
+                    Margin="0,10,0,0"
+                    Padding="0"
+                    Text="{Binding FullName, Mode=TwoWay}"
+                    TextColor="#383b67" />
 
-
-
-                <Grid Grid.Row="2" ColumnDefinitions="auto, auto" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,20,0,0"  >
-                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding _LoggedUser.RatingAsString}"  FontSize="25" TextColor="Black"/>
-                    <Image Source="blankstar" Grid.Row="0" Grid.Column="1" Margin="0,0,7,0"/>
+                <Grid
+                    ColumnDefinitions="auto, auto"
+                    Grid.Row="2"
+                    HorizontalOptions="Center"
+                    Margin="0,20,0,0"
+                    VerticalOptions="Center">
+                    <Label
+                        FontSize="25"
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="{Binding _LoggedUser.RatingAsString}"
+                        TextColor="Black" />
+                    <Image
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Margin="0,0,7,0"
+                        Source="blankstar" />
                 </Grid>
-
-
-                <Grid Grid.Row="3" ColumnDefinitions="Auto,Auto" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,0">
-                    <Image Grid.Column="0" Source="locationicon" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center" />
-                    <Label Grid.Column="1" Text="{Binding Address}" VerticalOptions="Center" FontAttributes="Bold" TextColor="#383b67"  FontSize="16"/>
+                <Grid
+                    ColumnDefinitions="Auto,Auto"
+                    Grid.Row="3"
+                    HorizontalOptions="Center"
+                    Margin="0,0,0,0"
+                    VerticalOptions="Center">
+                    <Image
+                        Grid.Column="0"
+                        HeightRequest="18"
+                        HorizontalOptions="Center"
+                        Source="locationicon"
+                        WidthRequest="18" />
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        Grid.Column="1"
+                        Text="{Binding Address}"
+                        TextColor="#383b67"
+                        VerticalOptions="Center" />
                 </Grid>
             </Grid>
 
-            <Grid Grid.Row="1" RowDefinitions="*,*,*,*,*,*,*,*,*" Margin="10,10,0,0" Padding="0" RowSpacing="5">
-                <Label Grid.Row="0" Text="Email"  TextColor="Black"   HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16" />
-                <Label Grid.Row="1" HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16" Text="{Binding Email, Mode=TwoWay}"/>
-                <Label Grid.Row="2" Text="Renta credits" TextColor="Black" HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16"/>
-                <Label Grid.Row="3" HorizontalTextAlignment="Start" Margin="0,0,0,0"  FontSize="16" Text="{Binding Coins, Mode=TwoWay}"/>
-                <Label Grid.Row="4" Text="Location" HorizontalTextAlignment="Start" TextColor="Black" Margin="0,0,0,0" FontSize="16"/>
-                <Label Grid.Row="5" HorizontalTextAlignment="Start" Margin="0,0,0,0"  FontSize="16" Text="{Binding Address, Mode=TwoWay}"/>
+            <Grid
+                Grid.Row="1"
+                Margin="10,10,0,0"
+                Padding="0"
+                RowDefinitions="*,*,*,*,*,*,*,*,*"
+                RowSpacing="5">
+                <Label
+                    FontSize="16"
+                    Grid.Row="0"
+                    HorizontalTextAlignment="Start"
+                    Margin="0,0,0,0"
+                    Text="Email"
+                    TextColor="Black" />
+                <Label
+                    FontSize="16"
+                    Grid.Row="1"
+                    HorizontalTextAlignment="Start"
+                    Margin="0,0,0,0"
+                    Text="{Binding Email, Mode=TwoWay}" />
+                <Label
+                    FontSize="16"
+                    Grid.Row="2"
+                    HorizontalTextAlignment="Start"
+                    Margin="0,0,0,0"
+                    Text="Renta credits"
+                    TextColor="Black" />
+                <Label
+                    FontSize="16"
+                    Grid.Row="3"
+                    HorizontalTextAlignment="Start"
+                    Margin="0,0,0,0"
+                    Text="{Binding Coins, Mode=TwoWay}" />
+                <Label
+                    FontSize="16"
+                    Grid.Row="4"
+                    HorizontalTextAlignment="Start"
+                    Margin="0,0,0,0"
+                    Text="Location"
+                    TextColor="Black" />
+                <Label
+                    FontSize="16"
+                    Grid.Row="5"
+                    HorizontalTextAlignment="Start"
+                    Margin="0,0,0,0"
+                    Text="{Binding Address, Mode=TwoWay}" />
 
-                <Label Grid.Row="6" Text="Favorites categories:"  TextColor="Black"   HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16" />
-                <Label Grid.Row="7" Text="{Binding Category1}"    HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16" />
-                <Label Grid.Row="8" Text="{Binding Category2}"    HorizontalTextAlignment="Start" Margin="0,0,0,0" FontSize="16" />
-
-
+                <Label
+                    FontSize="16"
+                    Grid.Row="6"
+                    HorizontalTextAlignment="Start"
+                    Margin="0,0,0,0"
+                    Text="Favorites categories:"
+                    TextColor="Black" />
+                <Label
+                    FontSize="16"
+                    Grid.Row="7"
+                    HorizontalTextAlignment="Start"
+                    Margin="0,0,0,0"
+                    Text="{Binding Category1}" />
+                <Label
+                    FontSize="16"
+                    Grid.Row="8"
+                    HorizontalTextAlignment="Start"
+                    Margin="0,0,0,0"
+                    Text="{Binding Category2}" />
             </Grid>
         </Grid>
     </ScrollView>

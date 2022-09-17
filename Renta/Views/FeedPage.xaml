@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
+
 <ContentPage
     BackgroundColor="White"
     Shell.NavBarIsVisible="False"
@@ -11,10 +12,7 @@
 
 
     <Grid RowDefinitions="57,*">
-
         <controls:HeaderControl Grid.Row="0" VerticalOptions="Start" />
-    
-
 
         <ScrollView
             Grid.Row="1"
@@ -48,7 +46,6 @@
                         VerticalOptions="Center"
                         WidthRequest="30" />
                 </Grid>
-
 
                 <Grid RowDefinitions="50,*">
                     <Label

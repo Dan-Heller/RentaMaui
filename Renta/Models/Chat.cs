@@ -8,7 +8,6 @@ namespace Renta.Models
 {
     public class Chat
     {
-       
         public string? Id { get; set; }
 
         public string UserA { get; set; }
@@ -17,7 +16,9 @@ namespace Renta.Models
 
         public List<Message> Messages { get; set; } = new List<Message>();
 
-        public Chat() { }
+        public Chat()
+        {
+        }
 
         public Chat(string userA, string userB)
         {

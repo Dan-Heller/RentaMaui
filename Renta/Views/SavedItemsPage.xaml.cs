@@ -4,11 +4,11 @@ namespace Renta;
 
 public partial class SavedItemsPage : ContentPage
 {
-	public SavedItemsPage(SavedItemsPageViewModel savedItemsPageViewModel)
-	{
+    public SavedItemsPage(SavedItemsPageViewModel savedItemsPageViewModel)
+    {
         BindingContext = savedItemsPageViewModel;
-		InitializeComponent();
-	}
+        InitializeComponent();
+    }
 
     protected override async void OnAppearing()
     {

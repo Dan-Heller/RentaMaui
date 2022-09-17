@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Renta.Models
+﻿namespace Renta.Models
 {
     public class UserReview
     {
@@ -22,18 +16,21 @@ namespace Renta.Models
 
         public string? ItemId { get; set; }
 
-        public string? Review { get ;   set; }
+        public string? Review { get; set; }
 
         public DateTime? DateOfReview { get; set; }
 
-        public float Rating { get => UserRating; }
+        public float Rating
+        {
+            get => UserRating;
+        }
 
         public UserReview()
         {
-
         }
 
-        public UserReview(string revieweeId, string reviewerId, int userRating, string transactionId, string itemId, string review)
+        public UserReview(string revieweeId, string reviewerId, int userRating, string transactionId, string itemId,
+            string review)
         {
             RevieweeId = revieweeId;
             ReviewerId = reviewerId;
@@ -43,7 +40,8 @@ namespace Renta.Models
             UserRating = userRating;
         }
 
-        public UserReview(string revieweeId, string reviewerId, int userRating, string transactionId, string itemId, string review, DateTime datetime)
+        public UserReview(string revieweeId, string reviewerId, int userRating, string transactionId, string itemId,
+            string review, DateTime datetime)
         {
             RevieweeId = revieweeId;
             ReviewerId = reviewerId;

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Specialized;
 using System.Windows.Input;
-using Android.Service.Autofill;
 using Newtonsoft.Json;
 using Renta.Dto_s;
 using Renta.Models;
@@ -38,14 +37,13 @@ namespace Renta.ViewModels
             set { _ItemString = Uri.UnescapeDataString(value ?? string.Empty); }
         }
 
-
         public void deserializeString()
         {
-            var Item = JsonConvert.DeserializeObject<Item>(_ItemString);
+            var item = JsonConvert.DeserializeObject<Item>(_ItemString);
             Console.WriteLine("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-            Console.WriteLine(Item);
+            Console.WriteLine(item);
             Console.WriteLine(_ItemString);
-            convertItemToViewModel(Item);
+            convertItemToViewModel(item);
             InitializeCalendar();
             ItemLiked = _ItemViewModel.ItemLiked;
         }
@@ -76,14 +74,16 @@ namespace Renta.ViewModels
         {
             foreach (var unAvailableDate in _ItemViewModel.UnAvailableDates)
             {
-                for (var date = unAvailableDate.StartDate; date <= unAvailableDate.EndDate; date = date.Value.AddDays(1))
+                for (var date = unAvailableDate.StartDate;
+                     date <= unAvailableDate.EndDate;
+                     date = date.Value.AddDays(1))
                 {
                     Events.Add(new Event()
                     {
                         Title = "Unavailable",
                         Description = "Unavailable",
                         Color = Colors[0],
-                        DateTime = date?? DateTime.Now,
+                        DateTime = date ?? DateTime.Now,
                     });
                 }
             }
@@ -135,6 +135,7 @@ namespace Renta.ViewModels
         }
 
         #region Properties
+
         public Calendar<EventDay> EventCalendar { get; set; } = new Calendar<EventDay>()
         {
             SelectedDates = new ObservableRangeCollection<DateTime>(),
@@ -157,6 +158,7 @@ namespace Renta.ViewModels
         // };
 
         public ObservableRangeCollection<Event> SelectedEvents { get; } = new ObservableRangeCollection<Event>();
+
         #endregion
 
 

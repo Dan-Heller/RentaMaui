@@ -1,141 +1,127 @@
 <?xml version="1.0" encoding="utf-8" ?>
+
 <ContentPage
-    x:Class="Renta.MenuPage"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:controls="clr-namespace:Renta.Controls"
-    Title="Menu"
+    BackgroundColor="White"
     Shell.ForegroundColor="Black"
     Shell.NavBarIsVisible="true"
-    
-     Shell.TitleColor="MediumPurple"
-    BackgroundColor="White">
+    Shell.TitleColor="MediumPurple"
+    Title="Menu"
+    x:Class="Renta.MenuPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:controls="clr-namespace:Renta.Controls"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <StackLayout>
-
-       
-
         <Grid
             BackgroundColor="White"
-           
             HeightRequest="400"
             RowDefinitions="80,80,80,80">
-         
-            
-            <!--  My items Menu Item  -->
-            <Frame Grid.Row="0" Padding="0" HasShadow="False">
+            <Frame
+                Grid.Row="0"
+                HasShadow="False"
+                Padding="0">
                 <Frame.GestureRecognizers>
-                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding MyItems_Tapped}" />
-                </Frame.GestureRecognizers>
-                <Grid  ColumnDefinitions="60 , *, 30, 10">
-                                  
-                    <Image
-               
-                Grid.Column="0"
-                Source="mylistingicon.png"
-                VerticalOptions="Center"
-                WidthRequest="30" />
-                    <Label
-                
-                Grid.Column="1"
-                FontSize="24"
-                Text="My items"
-                VerticalOptions="CenterAndExpand" />
-                    <Image
-                
-                Grid.Column="2"
-                HorizontalOptions="Center"
-                Source="nextarrow"
-                WidthRequest="20" />
-                </Grid>
-            </Frame>
-            
-
-            <!--  Renting Menu Item  -->
-            <Frame  Grid.Row="1" Padding="0" HasShadow="False">
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Renting_Tapped}" />
+                    <TapGestureRecognizer Command="{Binding MyItems_Tapped}" NumberOfTapsRequired="1" />
                 </Frame.GestureRecognizers>
                 <Grid ColumnDefinitions="60 , *, 30, 10">
-                   
-            <Image
-                
-                Grid.Column="0"
-                Source="renticon"
-                VerticalOptions="Center"
-                WidthRequest="30" />
-                    <Label
-               
-                Grid.Column="1"
-                FontSize="24"
-                Text="Renting"
-                VerticalOptions="CenterAndExpand" />
-                    <Image
-              
-                Grid.Column="2"
-                HorizontalOptions="Center"
-                Source="nextarrow"
-                WidthRequest="20" />
-             </Grid>
-             </Frame>
 
-                    <!--  rental  -->
-            <Frame  Grid.Row="2" Padding="0" HasShadow="False">
+                    <Image
+                        Grid.Column="0"
+                        Source="mylistingicon.png"
+                        VerticalOptions="Center"
+                        WidthRequest="30" />
+                    <Label
+                        FontSize="24"
+                        Grid.Column="1"
+                        Text="My items"
+                        VerticalOptions="CenterAndExpand" />
+                    <Image
+                        Grid.Column="2"
+                        HorizontalOptions="Center"
+                        Source="nextarrow"
+                        WidthRequest="20" />
+                </Grid>
+            </Frame>
+
+            <Frame
+                Grid.Row="1"
+                HasShadow="False"
+                Padding="0">
                 <Frame.GestureRecognizers>
-                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Rental_Tapped}" />
+                    <TapGestureRecognizer Command="{Binding Renting_Tapped}" NumberOfTapsRequired="1" />
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="60 , *, 30, 10">
+
+                    <Image
+                        Grid.Column="0"
+                        Source="renticon"
+                        VerticalOptions="Center"
+                        WidthRequest="30" />
+                    <Label
+                        FontSize="24"
+                        Grid.Column="1"
+                        Text="Renting"
+                        VerticalOptions="CenterAndExpand" />
+                    <Image
+                        Grid.Column="2"
+                        HorizontalOptions="Center"
+                        Source="nextarrow"
+                        WidthRequest="20" />
+                </Grid>
+            </Frame>
+
+            <Frame
+                Grid.Row="2"
+                HasShadow="False"
+                Padding="0">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Rental_Tapped}" NumberOfTapsRequired="1" />
                 </Frame.GestureRecognizers>
                 <Grid ColumnDefinitions="60 , *, 30,10">
                     <Image
-                
-                Grid.Column="0"
-                Source="itemsicon"
-                VerticalOptions="Center"
-                WidthRequest="30" />
+                        Grid.Column="0"
+                        Source="itemsicon"
+                        VerticalOptions="Center"
+                        WidthRequest="30" />
                     <Label
-                
-                Grid.Column="1"
-                FontSize="24"
-                Text="Rental"
-                VerticalOptions="CenterAndExpand" />
+                        FontSize="24"
+                        Grid.Column="1"
+                        Text="Rental"
+                        VerticalOptions="CenterAndExpand" />
                     <Image
-               
-                Grid.Column="2"
-                HorizontalOptions="Center"
-                Source="nextarrow"
-                WidthRequest="20" />
+                        Grid.Column="2"
+                        HorizontalOptions="Center"
+                        Source="nextarrow"
+                        WidthRequest="20" />
                 </Grid>
             </Frame>
 
-            <!--  Wish List Menu Item  -->
-            <Frame  Grid.Row="3" Padding="0"  HasShadow="False">
+            <Frame
+                Grid.Row="3"
+                HasShadow="False"
+                Padding="0">
                 <Frame.GestureRecognizers>
-                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding SavedItems_Tapped}" />
+                    <TapGestureRecognizer Command="{Binding SavedItems_Tapped}" NumberOfTapsRequired="1" />
                 </Frame.GestureRecognizers>
                 <Grid ColumnDefinitions=" 60 , *, 30, 10">
-                                 
-                    <Image
-              
-                Grid.Column="0"
-                Source="favlisticon"
-                VerticalOptions="Center"
-                WidthRequest="30" />
-                    <Label
-               
-                Grid.Column="1"
-                FontSize="24"
-                Text="Saved items"
-                VerticalOptions="CenterAndExpand" />
-                    <Image
-               
-                Grid.Column="2"
-                HorizontalOptions="Center"
-                Source="nextarrow"
-                WidthRequest="20" />
 
+                    <Image
+                        Grid.Column="0"
+                        Source="favlisticon"
+                        VerticalOptions="Center"
+                        WidthRequest="30" />
+                    <Label
+                        FontSize="24"
+                        Grid.Column="1"
+                        Text="Saved items"
+                        VerticalOptions="CenterAndExpand" />
+                    <Image
+                        Grid.Column="2"
+                        HorizontalOptions="Center"
+                        Source="nextarrow"
+                        WidthRequest="20" />
                 </Grid>
             </Frame>
-
         </Grid>
-
     </StackLayout>
 </ContentPage>

@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Renta.Models
+﻿namespace Renta.Models
 {
     public class Item
     {
-
         public string? OwnerId { get; set; }
 
         public string? Id { get; set; }
@@ -17,7 +10,10 @@ namespace Renta.Models
 
         public float ItemRating { get; set; }
 
-        public string RatingAsString { get => ItemRating.ToString("0.0"); }
+        public string RatingAsString
+        {
+            get => ItemRating.ToString("0.0");
+        }
 
         public int? PricePerDay { get; set; }
 
@@ -31,6 +27,8 @@ namespace Renta.Models
 
         public DateTime? UploadDate { get; set; }
 
-        public Item() { }
+        public Item()
+        {
+        }
     }
 }

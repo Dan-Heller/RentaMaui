@@ -1,91 +1,101 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Renta.MessagesPage"
-             Shell.ForegroundColor="Black"
-             Shell.NavBarIsVisible="False"
-             Shell.TabBarIsVisible="False"
-             BackgroundColor="GhostWhite">
+<ContentPage
+    BackgroundColor="GhostWhite"
+    Shell.ForegroundColor="Black"
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarIsVisible="False"
+    x:Class="Renta.MessagesPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-
-    <FlexLayout JustifyContent="Center" Direction="Column" AlignItems="Center">
+    <FlexLayout
+        AlignItems="Center"
+        Direction="Column"
+        JustifyContent="Center">
         <Label
-            HeightRequest="50"
-            FontSize="25"
             FontAttributes="None"
+            FontSize="25"
+            HeightRequest="50"
             Margin="0,20,0,15"
-            x:Name="ChatHeader"
-            TextColor="Black" />
+            TextColor="Black"
+            x:Name="ChatHeader" />
 
-        <ScrollView x:Name="MessagesScroll"
-                    FlexLayout.Grow="1"
-                    FlexLayout.Shrink="1"
-                    Orientation="Vertical"
-                    Margin="5,0,5,25">
-            <CollectionView ItemsSource="{Binding MessagesCollection}"
-                            SelectionMode="None">
+        <ScrollView
+            FlexLayout.Grow="1"
+            FlexLayout.Shrink="1"
+            Margin="5,0,5,25"
+            Orientation="Vertical"
+            x:Name="MessagesScroll">
+            <CollectionView ItemsSource="{Binding MessagesCollection}" SelectionMode="None">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout
-                        Orientation="Vertical"
-                        Span="{OnIdiom Phone=1, Tablet=1, Desktop=1}"
                         HorizontalItemSpacing="5"
+                        Orientation="Vertical"
+                        Span="{OnIdiom Phone=1,
+                                       Tablet=1,
+                                       Desktop=1}"
                         VerticalItemSpacing="10" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Border Margin="0" Padding="5" Stroke="gray"
-                                StrokeThickness="1" MaximumWidthRequest="300"
-                                StrokeShape="RoundRectangle 10,10,10,10" HorizontalOptions="Start">
+                        <Border
+                            HorizontalOptions="Start"
+                            Margin="0"
+                            MaximumWidthRequest="300"
+                            Padding="5"
+                            Stroke="gray"
+                            StrokeShape="RoundRectangle 10,10,10,10"
+                            StrokeThickness="1">
                             <Border.Triggers>
-                                <DataTrigger TargetType="Border"
-                                             Binding="{Binding Sender}"
-                                             Value="{StaticResource loggedInUserId}">
-                                    <Setter Property="HorizontalOptions"
-                                            Value="End" />
+                                <DataTrigger
+                                    Binding="{Binding Sender}"
+                                    TargetType="Border"
+                                    Value="{StaticResource loggedInUserId}">
+                                    <Setter Property="HorizontalOptions" Value="End" />
 
                                 </DataTrigger>
                             </Border.Triggers>
 
-                            <Label FontSize="20"
-                                   x:Name="chatMessages"
-                                   Text="{Binding Text}"
-                                   VerticalOptions="CenterAndExpand"
-                                   HorizontalOptions="End">
+                            <Label
+                                FontSize="20"
+                                HorizontalOptions="End"
+                                Text="{Binding Text}"
+                                VerticalOptions="CenterAndExpand"
+                                x:Name="chatMessages">
                                 <Label.Triggers>
-                                    <DataTrigger TargetType="Label"
-                                                 Binding="{Binding Sender}"
-                                                 Value="{StaticResource loggedInUserId}">
-                                        <Setter Property="TextColor"
-                                                Value="Red" />
-                                        <Setter Property="HorizontalOptions"
-                                                Value="Start" />
+                                    <DataTrigger
+                                        Binding="{Binding Sender}"
+                                        TargetType="Label"
+                                        Value="{StaticResource loggedInUserId}">
+                                        <Setter Property="TextColor" Value="Red" />
+                                        <Setter Property="HorizontalOptions" Value="Start" />
                                     </DataTrigger>
                                 </Label.Triggers>
                             </Label>
-                            
                         </Border>
                     </DataTemplate>
-
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
         </ScrollView>
-
-        <Frame BorderColor="Black"
-               HeightRequest="80"
-               Margin="0,0,0,20">
+        <Frame
+            BorderColor="Black"
+            HeightRequest="80"
+            Margin="0,0,0,20">
             <Grid ColumnDefinitions="3*,auto">
-                <Entry Grid.Column="0"
-                       x:Name="myChatMessage"
-                       Placeholder="Type your Message"
-                       FontSize="18"
-                       HorizontalOptions="Center" />
-                <Button Grid.Column="1"
-                        Text="Send"
-                        x:Name="SendButton"
-                        HorizontalOptions="Center"
-                        Clicked="SendButton_Clicked" />
+                <Entry
+                    FontSize="18"
+                    Grid.Column="0"
+                    HorizontalOptions="Center"
+                    Placeholder="Type your Message"
+                    x:Name="myChatMessage" />
+                <Button
+                    Clicked="SendButton_Clicked"
+                    Grid.Column="1"
+                    HorizontalOptions="Center"
+                    Text="Send"
+                    x:Name="SendButton" />
             </Grid>
         </Frame>
     </FlexLayout>

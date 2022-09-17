@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:ViewModels="clr-namespace:Renta.ViewModels"
-             x:DataType="ViewModels:PhotoDisplayPageViewModel"
-             x:Class="Renta.Views.PhotoDisplayPage"
-               Shell.ForegroundColor="Black"
-             Shell.NavBarIsVisible="False"
-             Shell.TabBarIsVisible="False"
-             Title=" ">
+
+<ContentPage
+    Shell.ForegroundColor="Black"
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarIsVisible="False"
+    Title=" "
+    x:Class="Renta.Views.PhotoDisplayPage"
+    x:DataType="ViewModels:PhotoDisplayPageViewModel"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:ViewModels="clr-namespace:Renta.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <VerticalStackLayout BackgroundColor="Black">
 
-        <Image x:Name="Img" Margin="0,100,0,0" Source="{Binding _imageSource}"  VerticalOptions="Center"  />
+        <Image
+            Margin="0,100,0,0"
+            Source="{Binding _imageSource}"
+            VerticalOptions="Center"
+            x:Name="Img" />
     </VerticalStackLayout>
 </ContentPage>

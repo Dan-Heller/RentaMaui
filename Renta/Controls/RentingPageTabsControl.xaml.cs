@@ -1,58 +1,50 @@
 using Renta.enums;
 using Renta.ViewModels;
+
 namespace Renta.Controls;
 
 public partial class RentingPageTabsControl : ContentView
 {
-	//private RentingPageViewModel viewModel;
-	public ETransactionStatus SelectedTab;
+    public ETransactionStatus SelectedTab;
 
-	public RentingPageTabsControl() 
-	{
-		InitializeComponent();
-		BindingContext = this;
-		//viewModel = rentingPageViewModel;
-		RequestsLabel.TextColor = Color.FromArgb("000000");
-		
-
-	}
-
-	
-
-	private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+    public RentingPageTabsControl()
     {
-		RequestsLabel.TextColor = Color.FromArgb("808080");
-		ApprovedLabel.TextColor = Color.FromArgb("808080");
-		ActiveLabel.TextColor = Color.FromArgb("808080");
-		HistoryLabel.TextColor = Color.FromArgb("808080");
+        InitializeComponent();
+        BindingContext = this;
+        RequestsLabel.TextColor = Color.FromArgb("000000");
+    }
 
-		(sender as Label).TextColor = Color.FromArgb("000000");
 
-		//change the selected tab in renting view model 
-		//viewModel.SelectedTabInTabsController = switchClassIdToEnum((sender as Label).ClassId);
-	}
-
-	private ETransactionStatus switchClassIdToEnum(string ClassId)
+    private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
     {
-		ETransactionStatus status = ETransactionStatus.Pending;
+        RequestsLabel.TextColor = Color.FromArgb("808080");
+        ApprovedLabel.TextColor = Color.FromArgb("808080");
+        ActiveLabel.TextColor = Color.FromArgb("808080");
+        HistoryLabel.TextColor = Color.FromArgb("808080");
 
-        switch (ClassId)
+        (sender as Label).TextColor = Color.FromArgb("000000");
+    }
+
+    private ETransactionStatus SwitchClassIdToEnum(string classId)
+    {
+        ETransactionStatus status = ETransactionStatus.Pending;
+
+        switch (classId)
         {
-			case "Pending":
-				status = ETransactionStatus.Pending;
-				break;
-			case "Approved":
-				status = ETransactionStatus.Approved;
-				break;
-			case "Active":
-				status = ETransactionStatus.Active;
-				break;
-			case "History":
-				status = ETransactionStatus.Archived;
-				break;
-		}
+            case "Pending":
+                status = ETransactionStatus.Pending;
+                break;
+            case "Approved":
+                status = ETransactionStatus.Approved;
+                break;
+            case "Active":
+                status = ETransactionStatus.Active;
+                break;
+            case "History":
+                status = ETransactionStatus.Archived;
+                break;
+        }
 
-		return status;
-	}
-
+        return status;
+    }
 }

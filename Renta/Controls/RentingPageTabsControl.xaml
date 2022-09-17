@@ -1,36 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Renta.Controls.RentingPageTabsControl"
-            >
+
+<ContentView
+    x:Class="Renta.Controls.RentingPageTabsControl"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <ContentView.Content>
-        <Grid  ColumnDefinitions="*,*,*,*"   >
-            
-            
-            <Label ClassId="Pending" x:Name="RequestsLabel"  Text="Requests"   Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"  TextColor="Gray" >
+        <Grid ColumnDefinitions="*,*,*,*">
+            <Label
+                ClassId="Pending"
+                Grid.Column="0"
+                HorizontalOptions="Center"
+                Text="Requests"
+                TextColor="Gray"
+                VerticalOptions="Center"
+                x:Name="RequestsLabel">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                 </Label.GestureRecognizers>
-                
-            </Label>
-            <Label ClassId="Approved" x:Name="ApprovedLabel" Text="Approved"   Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Gray" >
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-            </Label.GestureRecognizers>
-            </Label>
 
-            <Label ClassId="Active" x:Name="ActiveLabel"  Text="Active"  Grid.Column="2"  HorizontalOptions="Center" VerticalOptions="Center"  TextColor="Gray">
+            </Label>
+            <Label
+                ClassId="Approved"
+                Grid.Column="1"
+                HorizontalOptions="Center"
+                Text="Approved"
+                TextColor="Gray"
+                VerticalOptions="Center"
+                x:Name="ApprovedLabel">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                 </Label.GestureRecognizers>
             </Label>
 
-            <Label ClassId="History" x:Name="HistoryLabel"  Text="History"  Grid.Column="3"  HorizontalOptions="Center" VerticalOptions="Center"  TextColor="Gray">
+            <Label
+                ClassId="Active"
+                Grid.Column="2"
+                HorizontalOptions="Center"
+                Text="Active"
+                TextColor="Gray"
+                VerticalOptions="Center"
+                x:Name="ActiveLabel">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                 </Label.GestureRecognizers>
             </Label>
 
+            <Label
+                ClassId="History"
+                Grid.Column="3"
+                HorizontalOptions="Center"
+                Text="History"
+                TextColor="Gray"
+                VerticalOptions="Center"
+                x:Name="HistoryLabel">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                </Label.GestureRecognizers>
+            </Label>
         </Grid>
     </ContentView.Content>
 </ContentView>

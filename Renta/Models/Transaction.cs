@@ -1,9 +1,4 @@
 ﻿using Renta.enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Renta.Models
 {
@@ -23,15 +18,14 @@ namespace Renta.Models
         public List<string>? OwnerImagesAfter { get; set; }
         public bool OwnerAcceptedActivation = false;
         public bool SeekerAcceptedActivation = false;
-        public bool OwnerAcceptedCompletion  = false;
-        public bool SeekerAcceptedCompletion  = false;
+        public bool OwnerAcceptedCompletion = false;
+        public bool SeekerAcceptedCompletion = false;
         public bool OwnerReviewedSeeker = false;
         public bool SeekerReviewedOwner = false;
         public bool SeekerReviewedItem = false;
 
         public Transaction()
         {
-
         }
     }
 
@@ -41,7 +35,7 @@ namespace Renta.Models
 
         public Item GetItem()
         {
-            if(items != null && items.Count > 0)
+            if (items != null && items.Count > 0)
             {
                 return items[0];
             }
@@ -49,8 +43,6 @@ namespace Renta.Models
             {
                 return null;
             }
-            
         }
-
     }
 }

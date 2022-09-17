@@ -1,9 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Renta.ViewModels
 {
@@ -12,6 +7,7 @@ namespace Renta.ViewModels
     {
         public string _imageSource { get; set; }
         public string _ImageSource { get; set; }
+
         public String ImageSourceString
         {
             get => _ImageSource;

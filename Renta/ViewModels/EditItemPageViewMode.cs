@@ -1,14 +1,6 @@
 ﻿using Renta.Services;
 using Newtonsoft.Json;
 using Renta.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Maui.Storage;
 using Renta.enums;
 
 namespace Renta.ViewModels
@@ -16,7 +8,6 @@ namespace Renta.ViewModels
     [QueryProperty(nameof(MyItemString), "item")]
     public class EditItemPageViewModel : BaseViewModel
     {
-
         private FileService _fileService;
         private UserService _userService;
         private ItemService _itemService;
@@ -27,36 +18,36 @@ namespace Renta.ViewModels
         public ImageSource ImageSource4 { get; set; }
 
         public List<ImageSource> ImageSources = new List<ImageSource>();
-        
+
         private string AddPhotoImageSource = "addphoto.jpg";
         public string ItemName { get; set; }
-        public string CoinsPerDay { get; set; }        
+        public string CoinsPerDay { get; set; }
         public string ItemDescription { get; set; } = string.Empty;
         public string SelectedCategory { get; set; }
         private bool ImageAdded = false;
         private readonly int MaxImagesPerItem = 4;
         private FileResult chosenImageFile;
-        
+
         public FileResult[] chosenImagesFilesResult = new FileResult[4];
         public bool[] SlotHasImageArray = new bool[4];
-        public int[] SlotUpdatedImageArray = new int[4]; // 0 - no image from start, 1 - image from start but not updated , 2 and above - slot updated
+
+        public int[]
+            SlotUpdatedImageArray =
+                new int[4]; // 0 - no image from start, 1 - image from start but not updated , 2 and above - slot updated
 
         public ItemViewModel _myItemViewModel { get; set; }
         private string _MyItemString;
+
         public String MyItemString
         {
             get => _MyItemString;
-            set
-            {
-                _MyItemString = Uri.UnescapeDataString(value ?? string.Empty);
-
-            }
+            set { _MyItemString = Uri.UnescapeDataString(value ?? string.Empty); }
         }
 
         public void deserializeString()
         {
-            var Item = JsonConvert.DeserializeObject<Item>(_MyItemString);
-            convertItemToViewModelandFetchInfo(Item);
+            var item = JsonConvert.DeserializeObject<Item>(_MyItemString);
+            convertItemToViewModelandFetchInfo(item);
         }
 
         private void convertItemToViewModelandFetchInfo(Item item)
@@ -92,8 +83,8 @@ namespace Renta.ViewModels
                         OnPropertyChanged(nameof(ImageSource4));
                         break;
                 }
-                i++;
 
+                i++;
             }
 
             ItemName = _myItemViewModel.Name;
@@ -107,7 +98,7 @@ namespace Renta.ViewModels
         }
 
         public Command SaveButtonClicked
-       => new Command(async () => await updateItem());
+            => new Command(async () => await updateItem());
 
         public EditItemPageViewModel(FileService fileService, UserService userService, ItemService itemService)
         {
@@ -126,7 +117,7 @@ namespace Renta.ViewModels
             Categories.Add(ECategories.Electronics.ToString());
             Categories.Add(ECategories.Bikes.ToString());
             Categories.Add(ECategories.Tools.ToString());
-            
+
             ImageSource1 = ImageSource.FromFile(AddPhotoImageSource);
             ImageSource2 = ImageSource.FromFile(AddPhotoImageSource);
             ImageSource3 = ImageSource.FromFile(AddPhotoImageSource);
@@ -136,29 +127,27 @@ namespace Renta.ViewModels
             ImageSources.Add(ImageSource2);
             ImageSources.Add(ImageSource3);
             ImageSources.Add(ImageSource4);
-
         }
 
         public Command AddPhotoFromGallery_Clicked
-        => new Command<string>(async (string ImageId) => await AddPhotoFromGallery(ImageId));
+            => new Command<string>(async (string imageId) => await AddPhotoFromGallery(imageId));
 
-        public async Task AddPhotoFromGallery(string ImageId)
+        public async Task AddPhotoFromGallery(string imageId)
         {
-            chosenImageFile = await MediaPicker.PickPhotoAsync(new MediaPickerOptions { Title = "Please pick a photo" });
+            chosenImageFile =
+                await MediaPicker.PickPhotoAsync(new MediaPickerOptions { Title = "Please pick a photo" });
             if (chosenImageFile != null)
             {
-                UpdateImageSource(ImageId, chosenImageFile);
-
-
+                UpdateImageSource(imageId, chosenImageFile);
             }
         }
 
-        private async void UpdateImageSource(string ImageId, FileResult result)
+        private async void UpdateImageSource(string imageId, FileResult result)
         {
             var stream = await result.OpenReadAsync();
-            SlotHasImageArray[Int32.Parse(ImageId) - 1] = true;
-            SlotUpdatedImageArray[Int32.Parse(ImageId) - 1]++;
-            switch (ImageId)
+            SlotHasImageArray[Int32.Parse(imageId) - 1] = true;
+            SlotUpdatedImageArray[Int32.Parse(imageId) - 1]++;
+            switch (imageId)
             {
                 case "1":
                     ImageSource1 = ImageSource.FromStream(() => stream);
@@ -177,31 +166,29 @@ namespace Renta.ViewModels
                     OnPropertyChanged(nameof(ImageSource4));
                     break;
             }
-           
-            chosenImagesFilesResult[Int32.Parse(ImageId) - 1] = result;
+
+            chosenImagesFilesResult[Int32.Parse(imageId) - 1] = result;
         }
 
-        public async Task TakeAPhoto(string ImageId)
+        public async Task TakeAPhoto(string imageId)
         {
-            chosenImageFile = await MediaPicker.CapturePhotoAsync(new MediaPickerOptions { Title = "Please take a photo" });
+            chosenImageFile =
+                await MediaPicker.CapturePhotoAsync(new MediaPickerOptions { Title = "Please take a photo" });
 
 
             if (chosenImageFile != null)
             {
-                UpdateImageSource(ImageId, chosenImageFile);
-
-
+                UpdateImageSource(imageId, chosenImageFile);
             }
         }
 
 
         private async Task updateItem()
         {
-            
-
-            if (ItemName != null && SelectedCategory != null && (SlotHasImageArray.Count((s => s != false)) > 0 )) //check minimal information inserted. and that image exist
+            if (ItemName != null && SelectedCategory != null &&
+                (SlotHasImageArray.Count((s => s != false)) >
+                 0)) //check minimal information inserted. and that image exist
             {
-
                 //image slots that "lost" their image should remove urls from item. (and delete from database in the future..)
                 for (int i = 0; i < _myItemViewModel.ImagesUrls.Count; i++)
                 {
@@ -212,32 +199,30 @@ namespace Renta.ViewModels
                 }
 
                 //add new urls.              
-               for (int i = 0; i < MaxImagesPerItem; i++)
+                for (int i = 0; i < MaxImagesPerItem; i++)
                 {
                     if (chosenImagesFilesResult[i] != null)
                     {
                         //upload images to url 
                         var stream = await chosenImagesFilesResult[i].OpenReadAsync();
-                        var ImageUrl = await _fileService.UploadImageAsync(stream, chosenImagesFilesResult[i].FileName);
-                        if(i == 0)
+                        var imageUrl = await _fileService.UploadImageAsync(stream, chosenImagesFilesResult[i].FileName);
+                        if (i == 0)
                         {
                             //add to start of the urls list
-                            _myItemViewModel.Item.ImagesUrls.Insert(0, ImageUrl);
+                            _myItemViewModel.Item.ImagesUrls.Insert(0, imageUrl);
                         }
                         else
                         {
-                            _myItemViewModel.Item.ImagesUrls.Add(ImageUrl);
+                            _myItemViewModel.Item.ImagesUrls.Add(imageUrl);
                         }
-                       
                     }
                 }
 
                 UpdateItemInfoFromEntries();
 
-                await _itemService.UpdateItemInfo(_myItemViewModel.Item);              
+                await _itemService.UpdateItemInfo(_myItemViewModel.Item);
                 await _myItemViewModel.GotoMyUpdatedItemPage();
             }
-          
         }
 
         private void UpdateItemInfoFromEntries()
@@ -249,16 +234,14 @@ namespace Renta.ViewModels
         }
 
 
-
-        public void RemoveImage(string ImageSlotNumber)
+        public void RemoveImage(string imageSlotNumber)
         {
-            var NumberToInt = (Int32.Parse(ImageSlotNumber));
-            if (SlotHasImageArray[NumberToInt - 1] == true)
+            var numberToInt = (Int32.Parse(imageSlotNumber));
+            if (SlotHasImageArray[numberToInt - 1] == true)
             {
-                
-                chosenImagesFilesResult[NumberToInt - 1] = null;
-                SlotHasImageArray[NumberToInt - 1] = false;
-                switch (ImageSlotNumber)
+                chosenImagesFilesResult[numberToInt - 1] = null;
+                SlotHasImageArray[numberToInt - 1] = false;
+                switch (imageSlotNumber)
                 {
                     case "1":
                         ImageSource1 = ImageSource.FromFile(AddPhotoImageSource);

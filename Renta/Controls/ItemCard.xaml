@@ -1,72 +1,74 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+
 <ContentView
     x:Class="Renta.Controls.ItemCard"
+    x:DataType="ViewModels:ItemViewModel"
+    x:Name="ItemCardComponent"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-     xmlns:ViewModels="clr-namespace:Renta.ViewModels"
-     x:DataType="ViewModels:ItemViewModel"
-    x:Name="ItemCardComponent">
+    xmlns:ViewModels="clr-namespace:Renta.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <Frame
-       Margin="2"
-        Padding="0"
-       HeightRequest="180"
         BackgroundColor="AliceBlue"
-        CornerRadius="13"
         BorderColor="DarkGray"
-        HasShadow="True">
+        CornerRadius="13"
+        HasShadow="True"
+        HeightRequest="180"
+        Margin="2"
+        Padding="0">
 
-        <Grid RowDefinitions="150 ,30"  Padding="0" HorizontalOptions="FillAndExpand">
-            <Frame Grid.Row="0"
+        <Grid
+            HorizontalOptions="FillAndExpand"
+            Padding="0"
+            RowDefinitions="150 ,30">
+            <Frame
+                BackgroundColor="Transparent"
+                Grid.Row="0"
+                HasShadow="False"
                 Margin="0"
-                Padding="0,1,0,0"
-               BackgroundColor="Transparent"
-                HasShadow="False">
+                Padding="0,1,0,0">
                 <Frame.GestureRecognizers>
-                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GoToItemPage}" />
+                    <TapGestureRecognizer Command="{Binding GoToItemPage}" NumberOfTapsRequired="1" />
                 </Frame.GestureRecognizers>
                 <Image
-                    Margin="5"
                     Aspect="AspectFill"
                     HeightRequest="125"
                     HorizontalOptions="CenterAndExpand"
-                    WidthRequest="120"
-                    Source="{Binding FirstImageUrl}" />
+                    Margin="5"
+                    Source="{Binding FirstImageUrl}"
+                    WidthRequest="120" />
             </Frame>
             <StackLayout
                 Grid.Row="1"
-                Padding="5,0,0,0"
-                Orientation="Horizontal">
+                Orientation="Horizontal"
+                Padding="5,0,0,0">
 
                 <Image
-                     Grid.Row="1"
+                    Grid.Row="1"
                     HeightRequest="22"
                     Source="coinsstackicon24px"
                     WidthRequest="22" />
 
                 <Label
-                    Grid.Row="1"
-                    Padding="6,2,0,0"
                     FontAttributes="Bold"
                     FontSize="16"
-                    VerticalOptions="Center"
-                    Text="{Binding PricePerDay}" />
+                    Grid.Row="1"
+                    Padding="6,2,0,0"
+                    Text="{Binding PricePerDay}"
+                    VerticalOptions="Center" />
 
-               
                 <Image
-                        x:Name="HeartButton"
-                        Grid.Row="1"
-                        Margin="37,0,0,0"
-                        HeightRequest="25"
-                        Source="{Binding HeartImageSource}"
-                        WidthRequest="25" >
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1"  Command="{Binding HeartButtonClicked}" />
-                        </Image.GestureRecognizers>
-                 </Image>
-               
+                    Grid.Row="1"
+                    HeightRequest="25"
+                    Margin="37,0,0,0"
+                    Source="{Binding HeartImageSource}"
+                    WidthRequest="25"
+                    x:Name="HeartButton">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding HeartButtonClicked}" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
             </StackLayout>
         </Grid>
     </Frame>
-
 </ContentView>

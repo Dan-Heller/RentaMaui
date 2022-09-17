@@ -1,12 +1,5 @@
 ﻿using Renta.enums;
 using Renta.Services;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Renta.ViewModels
 {
@@ -30,21 +23,19 @@ namespace Renta.ViewModels
 
         private void FetchRegionsFromString()
         {
-            string RegionsStr = "Ashkelon \r\nBeer Sheva \r\nBethlehem \r\nGolan \r\nJenin \r\nHasharon \r\nHebron \r\nHadera \r\nHolon \r\nHaifa \r\nTulkarm \r\nJericho \r\nJerusalem \r\nKinneret \r\nNazareth \r\nAcre \r\nAfula \r\nPetah Tikva \r\nSafed \r\nRamallah \r\nRehovot \r\nRamla \r\nRamat Gan \r\nNablus \r\nTel Aviv";
+            string RegionsStr =
+                "Ashkelon \r\nBeer Sheva \r\nBethlehem \r\nGolan \r\nJenin \r\nHasharon \r\nHebron \r\nHadera \r\nHolon \r\nHaifa \r\nTulkarm \r\nJericho \r\nJerusalem \r\nKinneret \r\nNazareth \r\nAcre \r\nAfula \r\nPetah Tikva \r\nSafed \r\nRamallah \r\nRehovot \r\nRamla \r\nRamat Gan \r\nNablus \r\nTel Aviv";
             var stringArr = RegionsStr.Split("\r\n");
             Regions = stringArr.ToList();
         }
 
 
-
-
         public EditProfilePageViewModel(FileService fileService, UserService userService)
         {
-            
             _fileService = fileService;
             _userService = userService;
 
-            if(_userService.LoggedInUser.ProfilePhotoUrl == String.Empty)
+            if (_userService.LoggedInUser.ProfilePhotoUrl == String.Empty)
             {
                 profileImageSource = ImageSource.FromFile("addprofileimage.png");
             }
@@ -52,7 +43,7 @@ namespace Renta.ViewModels
             {
                 profileImageSource = _userService.LoggedInUser.ProfilePhotoUrl;
             }
-            
+
             FirstName = _userService.LoggedInUser.FirstName;
             LastName = _userService.LoggedInUser.LastName;
             Region = _userService.LoggedInUser.Region;
@@ -61,12 +52,13 @@ namespace Renta.ViewModels
 
             SelectedCategory1 = _userService.LoggedInUser.FavoritesCategories[0].ToString();
             SelectedCategory2 = _userService.LoggedInUser.FavoritesCategories[1].ToString();
-            
+
 
             foreach (var value in Enum.GetNames(typeof(ECategories)))
             {
                 Categories.Add(value);
             }
+
             Categories.RemoveAt(0);
         }
 
@@ -77,22 +69,20 @@ namespace Renta.ViewModels
             set
             {
                 profileImageSource = value;
-               OnPropertyChanged();
+                OnPropertyChanged();
             }
         }
-       
+
         public Command SaveButtonClicked
-       => new Command(async () => await updateUser());
+            => new Command(async () => await updateUser());
 
         private async Task updateUser()
         {
             //update favorites categoirs
-           SelectedFavoritesCategories.Add(Enum.Parse<ECategories>(SelectedCategory1));
-           SelectedFavoritesCategories.Add(Enum.Parse<ECategories>(SelectedCategory2));
+            SelectedFavoritesCategories.Add(Enum.Parse<ECategories>(SelectedCategory1));
+            SelectedFavoritesCategories.Add(Enum.Parse<ECategories>(SelectedCategory2));
             _userService.LoggedInUser.FavoritesCategories = new List<ECategories>();
             _userService.LoggedInUser.FavoritesCategories = SelectedFavoritesCategories;
-
-
 
             //check if image changed
             if (ProfileImageChanged)
@@ -100,8 +90,8 @@ namespace Renta.ViewModels
                 var stream = await NewProfileImageFile.OpenReadAsync();
                 var ImageUrl = await _fileService.UploadImageAsync(stream, NewProfileImageFile.FileName);
                 _userService.LoggedInUser.ProfilePhotoUrl = ImageUrl;
-
             }
+
             ProfileImageChanged = false;
 
             //update
@@ -116,12 +106,13 @@ namespace Renta.ViewModels
 
 
         public Command ChangeProfileImage_Clicked
-       => new Command(async () => await ChangeProfileImage());
+            => new Command(async () => await ChangeProfileImage());
 
         private async Task ChangeProfileImage()
         {
-            NewProfileImageFile = await MediaPicker.PickPhotoAsync(new MediaPickerOptions { Title = "Please pick a photo" });
-            
+            NewProfileImageFile =
+                await MediaPicker.PickPhotoAsync(new MediaPickerOptions { Title = "Please pick a photo" });
+
 
             if (NewProfileImageFile != null)
             {
@@ -129,7 +120,7 @@ namespace Renta.ViewModels
                 profileImageSource = ImageSource.FromStream(() => stream);
                 OnPropertyChanged(nameof(ProfileImageSource));
                 ProfileImageChanged = true;
-            }                       
+            }
         }
     }
 }

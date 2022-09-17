@@ -1,58 +1,47 @@
 ﻿using Newtonsoft.Json;
 using Renta.Models;
 using Renta.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Renta.ViewModels
 {
     [QueryProperty(nameof(TransactionString), "transaction")]
     public class ActivateTransactionPageViewModel : BaseViewModel
     {
-
-        private FileService _fileService;
-        private UserService _userService;
-        private TransactionService _transactionService;      
+        private readonly FileService _fileService;
+        private readonly UserService _userService;
+        private readonly TransactionService _transactionService;
         public ImageSource ImageSource1 { get; set; }
         public ImageSource ImageSource2 { get; set; }
         public ImageSource ImageSource3 { get; set; }
         public ImageSource ImageSource4 { get; set; }
-        public Transaction transaction { get; set; }
+        public Transaction Transaction { get; set; }
 
-        private string _TransactionString;
+        private string _transactionString;
+
         public String TransactionString
         {
-            get => _TransactionString;
-            set
-            {
-                _TransactionString = Uri.UnescapeDataString(value ?? string.Empty);
-
-            }
+            get => _transactionString;
+            set { _transactionString = Uri.UnescapeDataString(value ?? string.Empty); }
         }
 
         public void deserializeString()
         {
-            transaction = JsonConvert.DeserializeObject<Transaction>(_TransactionString);           
+            Transaction = JsonConvert.DeserializeObject<Transaction>(_transactionString);
         }
-       
-        private string AddPhotoImageSource = "addphoto.jpg";     
+
+        private string AddPhotoImageSource = "addphoto.jpg";
         private bool ImageAdded = false;
-
-
-
         private readonly int MaxImagesPerItem = 4;
         private FileResult chosenImageFile;
         public List<FileResult> chosenImagesFilesResult = new List<FileResult>();
         private bool[] SlotHasImageArray = new bool[4];
 
-        public ActivateTransactionPageViewModel(FileService fileService, UserService userService, TransactionService transactionService)
+        public ActivateTransactionPageViewModel(FileService fileService, UserService userService,
+            TransactionService transactionService)
         {
             _fileService = fileService;
             _userService = userService;
-            _transactionService = transactionService;            
+            _transactionService = transactionService;
             ImageSource1 = ImageSource.FromFile(AddPhotoImageSource);
             ImageSource2 = ImageSource.FromFile(AddPhotoImageSource);
             ImageSource3 = ImageSource.FromFile(AddPhotoImageSource);
@@ -61,11 +50,12 @@ namespace Renta.ViewModels
         }
 
         public Command AddPhotoFromGallery_Clicked
-        => new Command<string>(async (string ImageId) => await AddPhotoFromGallery(ImageId));
+            => new Command<string>(async (string ImageId) => await AddPhotoFromGallery(ImageId));
 
         public async Task AddPhotoFromGallery(string ImageId)
         {
-            chosenImageFile = await MediaPicker.PickPhotoAsync(new MediaPickerOptions { Title = "Please pick a photo" });
+            chosenImageFile =
+                await MediaPicker.PickPhotoAsync(new MediaPickerOptions { Title = "Please pick a photo" });
             if (chosenImageFile != null)
             {
                 UpdateImageSource(ImageId, chosenImageFile);
@@ -95,24 +85,26 @@ namespace Renta.ViewModels
                     OnPropertyChanged(nameof(ImageSource4));
                     break;
             }
+
             chosenImagesFilesResult.Add(result);
         }
 
-        public async Task TakeAPhoto(string ImageId)
+        public async Task TakeAPhoto(string imageId)
         {
-            chosenImageFile = await MediaPicker.CapturePhotoAsync(new MediaPickerOptions { Title = "Please take a photo" });
+            chosenImageFile =
+                await MediaPicker.CapturePhotoAsync(new MediaPickerOptions { Title = "Please take a photo" });
             if (chosenImageFile != null)
             {
-                UpdateImageSource(ImageId, chosenImageFile);
+                UpdateImageSource(imageId, chosenImageFile);
             }
         }
 
         public Command ActivateClicked
-   => new Command(async () => await ActivateTransaction());
+            => new Command(async () => await ActivateTransaction());
 
         private async Task ActivateTransaction()
-        {           
-            var UrlsList = new List<string>();
+        {
+            var urlsList = new List<string>();
 
             if (chosenImagesFilesResult.Count > 0) //check minimal information inserted.
             {
@@ -121,38 +113,37 @@ namespace Renta.ViewModels
                     //upload images to url 
                     var stream = await fileresult.OpenReadAsync();
                     var ImageUrl = await _fileService.UploadImageAsync(stream, fileresult.FileName);
-                    UrlsList.Add(ImageUrl);
+                    urlsList.Add(ImageUrl);
                 }
 
-                if (transaction.ItemOwner == _userService.LoggedInUser.Id)
+                if (Transaction.ItemOwner == _userService.LoggedInUser.Id)
                 {
-                    if(transaction.Status == enums.ETransactionStatus.Approved)
+                    if (Transaction.Status == enums.ETransactionStatus.Approved)
                     {
-                        transaction.OwnerImagesBefore = UrlsList;
-                        transaction.OwnerAcceptedActivation = true;
+                        Transaction.OwnerImagesBefore = urlsList;
+                        Transaction.OwnerAcceptedActivation = true;
                     }
                     else
                     {
-                        transaction.OwnerImagesAfter = UrlsList;
-                        transaction.OwnerAcceptedCompletion = true;
+                        Transaction.OwnerImagesAfter = urlsList;
+                        Transaction.OwnerAcceptedCompletion = true;
                     }
-                   
                 }
                 else
                 {
-                    if (transaction.Status == enums.ETransactionStatus.Approved)
+                    if (Transaction.Status == enums.ETransactionStatus.Approved)
                     {
-                        transaction.SeekerImagesBefore = UrlsList;
-                        transaction.SeekerAcceptedActivation = true;
+                        Transaction.SeekerImagesBefore = urlsList;
+                        Transaction.SeekerAcceptedActivation = true;
                     }
                     else
                     {
-                        transaction.SeekerImagesAfter = UrlsList;
-                        transaction.SeekerAcceptedCompletion = true;
+                        Transaction.SeekerImagesAfter = urlsList;
+                        Transaction.SeekerAcceptedCompletion = true;
                     }
                 }
-                             
-                await  _transactionService.UpdateTransaction(transaction);
+
+                await _transactionService.UpdateTransaction(Transaction);
                 await _userService.UpdateLoggedInUser();
                 await Shell.Current.GoToAsync("..");
             }
@@ -160,17 +151,16 @@ namespace Renta.ViewModels
             {
                 await Application.Current.MainPage.DisplayAlert(" ", "Pleace add at least one image.", "close");
             }
-            
         }
-      
-        public void RemoveImage(string ImageSlotNumber)
+
+        public void RemoveImage(string imageSlotNumber)
         {
-            var NumberToInt = (Int32.Parse(ImageSlotNumber));
-            if (SlotHasImageArray[NumberToInt - 1] == true)
+            var numberToInt = (Int32.Parse(imageSlotNumber));
+            if (SlotHasImageArray[numberToInt - 1] == true)
             {
-                SlotHasImageArray[NumberToInt - 1] = false;
-                chosenImagesFilesResult.RemoveAt(NumberToInt - 1);
-                switch (ImageSlotNumber)
+                SlotHasImageArray[numberToInt - 1] = false;
+                chosenImagesFilesResult.RemoveAt(numberToInt - 1);
+                switch (imageSlotNumber)
                 {
                     case "1":
                         ImageSource1 = ImageSource.FromFile(AddPhotoImageSource);
@@ -191,6 +181,5 @@ namespace Renta.ViewModels
                 }
             }
         }
-
     }
 }

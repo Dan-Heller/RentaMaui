@@ -1,42 +1,88 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:ViewModels="clr-namespace:Renta.ViewModels"
-             x:DataType="ViewModels:TransactionViewModel"
-             x:Class="Renta.Controls.RentingTransactionControl"
-             
-             >
+
+<ContentView
+    x:Class="Renta.Controls.RentingTransactionControl"
+    x:DataType="ViewModels:TransactionViewModel"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:ViewModels="clr-namespace:Renta.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <ContentView.Content>
-        <Frame Padding="0"  HeightRequest="85" BorderColor="DarkGray"> <!--this frame should in the end be in the page view so border wont eat each other -->
+        <Frame
+            BorderColor="DarkGray"
+            HeightRequest="85"
+            Padding="0">
             <Frame.GestureRecognizers>
-                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GoToTransactionPage}" />
+                <TapGestureRecognizer Command="{Binding GoToTransactionPage}" NumberOfTapsRequired="1" />
             </Frame.GestureRecognizers>
             <Grid ColumnDefinitions="70,2*,*,40,40,40" Padding="7,5,7,5">
-                <Frame  CornerRadius="13"  Padding="0,2,0,0" Grid.Column="0" >
+                <Frame
+                    CornerRadius="13"
+                    Grid.Column="0"
+                    Padding="0,2,0,0">
                     <Frame.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding MyItemPhotoTapped}" />
+                        <TapGestureRecognizer Command="{Binding MyItemPhotoTapped}" NumberOfTapsRequired="1" />
                     </Frame.GestureRecognizers>
-                    <Image Source="{Binding FirstImageUrl}"   VerticalOptions="Center" Margin="2"
-                       HeightRequest="65" WidthRequest="65" Aspect="AspectFit"/>
+                    <Image
+                        Aspect="AspectFit"
+                        HeightRequest="65"
+                        Margin="2"
+                        Source="{Binding FirstImageUrl}"
+                        VerticalOptions="Center"
+                        WidthRequest="65" />
                 </Frame>
-                <Label Text="{Binding Item.Name}" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black"
-                       FontSize="20" Padding="5,0,0,0"/>
+                <Label
+                    FontSize="20"
+                    Grid.Column="1"
+                    HorizontalOptions="Start"
+                    Padding="5,0,0,0"
+                    Text="{Binding Item.Name}"
+                    TextColor="Black"
+                    VerticalOptions="Center" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="11"
+                    Grid.Column="2"
+                    HorizontalOptions="Start"
+                    Padding="5,0,0,0"
+                    Text="{Binding DatesAsString}"
+                    TextColor="Black"
+                    VerticalOptions="Center" />
 
+                <ImageButton
+                    Aspect="AspectFit"
+                    Command="{Binding Cancel_Clicked}"
+                    CornerRadius="20"
+                    Grid.Column="3"
+                    HeightRequest="35"
+                    IsVisible="{Binding NeedCancelIcon}"
+                    Padding="0"
+                    Source="cancelicon.png"
+                    VerticalOptions="Center"
+                    WidthRequest="35" />
 
-                <Label Text="{Binding DatesAsString}" Grid.Column="2" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black"
-                       FontSize="11" FontAttributes="Bold" Padding="5,0,0,0"/>
-                
-                <ImageButton Source="cancelicon.png" 
-                    VerticalOptions="Center" Aspect="AspectFit" HeightRequest="35"
-                    WidthRequest="35" Padding="0"  CornerRadius="20" Grid.Column="3" Command="{Binding Cancel_Clicked}" IsVisible="{Binding NeedCancelIcon}"/>
+                <ImageButton
+                    Aspect="AspectFit"
+                    Command="{Binding Approve_Clicked}"
+                    CornerRadius="20"
+                    Grid.Column="4"
+                    HeightRequest="35 "
+                    IsVisible="{Binding NeedApproveIconOnOwner}"
+                    Padding="0"
+                    Source="accepticon.png"
+                    VerticalOptions="Center"
+                    WidthRequest="35"
+                    x:Name="ApproveButton" />
 
-                <ImageButton Source="accepticon.png" x:Name="ApproveButton" IsVisible="{Binding NeedApproveIconOnOwner}"
-                    VerticalOptions="Center" Aspect="AspectFit" HeightRequest="35 "
-                    WidthRequest="35" Padding="0"  CornerRadius="20" Grid.Column="4" Command="{Binding Approve_Clicked}"/>
-                
-                <ImageButton Source="blankprofileimage.png" 
-                    VerticalOptions="Center" Aspect="AspectFit" HeightRequest="45"
-                    WidthRequest="45" Padding="0"  CornerRadius="20" Grid.Column="5" Command="{Binding SeekerProfileLink_Tapped}"/>
+                <ImageButton
+                    Aspect="AspectFit"
+                    Command="{Binding SeekerProfileLink_Tapped}"
+                    CornerRadius="20"
+                    Grid.Column="5"
+                    HeightRequest="45"
+                    Padding="0"
+                    Source="blankprofileimage.png"
+                    VerticalOptions="Center"
+                    WidthRequest="45" />
 
             </Grid>
         </Frame>

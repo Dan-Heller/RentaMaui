@@ -9,10 +9,9 @@ namespace Renta.Services
 {
     public class UserService
     {
-        
-        public UserLookedUp LoggedInUser { get; set; }       
-        IConfiguration configuration;
-        HttpClient httpclient;
+        public UserLookedUp LoggedInUser { get; set; }
+        readonly IConfiguration _configuration;
+        readonly HttpClient _httpclient;
 
         public event Action UserUpdatedInvoker;
 
@@ -22,9 +21,9 @@ namespace Renta.Services
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
             HttpResponseMessage response = null;
 
-            string UserId = LoggedInUser.Id;
-            response = await httpclient.PutAsync(
-                new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Users/" + UserId), content);
+            string userId = LoggedInUser.Id;
+            response = await _httpclient.PutAsync(
+                new Uri(_configuration.GetSection("Settings:ApiUrl").Value + "/Users/" + userId), content);
 
             string str = await response.Content.ReadAsStringAsync();
             LoggedInUser = JsonConvert.DeserializeObject<UserLookedUp>(str);
@@ -37,9 +36,9 @@ namespace Renta.Services
             var httpClientHandler = new HttpClientHandler();
             httpClientHandler.ServerCertificateCustomValidationCallback =
                 (message, cert, chain, errors) => true;
-            httpclient = new HttpClient(httpClientHandler);
-            configuration = config;
-            httpclient.MaxResponseContentBufferSize = 256000;
+            _httpclient = new HttpClient(httpClientHandler);
+            _configuration = config;
+            _httpclient.MaxResponseContentBufferSize = 256000;
         }
 
         public async Task RegisterUser(RegisterDto registerDto)
@@ -51,8 +50,8 @@ namespace Renta.Services
             string json = JsonConvert.SerializeObject(registerDto);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            await httpclient.PostAsync(
-                new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Auth/register"), content);
+            await _httpclient.PostAsync(
+                new Uri(_configuration.GetSection("Settings:ApiUrl").Value + "/Auth/register"), content);
         }
 
         public async Task<bool> LoginUser(LoginDto loginDto)
@@ -66,8 +65,8 @@ namespace Renta.Services
                 string json = JsonConvert.SerializeObject(loginDto);
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                var response = await httpclient.PostAsync(
-                    new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Auth/login"), content);
+                var response = await _httpclient.PostAsync(
+                    new Uri(_configuration.GetSection("Settings:ApiUrl").Value + "/Auth/login"), content);
                 string str = await response.Content.ReadAsStringAsync();
                 LoginResponse loginResponse = JsonConvert.DeserializeObject<LoginResponse>(str);
 
@@ -76,16 +75,16 @@ namespace Renta.Services
 
                 return true;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return false;
-            }           
+            }
         }
 
         public async Task GetUserFromToken(string token)
         {
-            var response = await httpclient.GetAsync(
-                new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Auth/"+token));
+            var response = await _httpclient.GetAsync(
+                new Uri(_configuration.GetSection("Settings:ApiUrl").Value + "/Auth/" + token));
             string responseAsString = await response.Content.ReadAsStringAsync();
             LoginResponse loginResponse = JsonConvert.DeserializeObject<LoginResponse>(responseAsString);
             LoggedInUser = loginResponse?.user;
@@ -96,12 +95,12 @@ namespace Renta.Services
             LoggedInUser = await GetUserById(LoggedInUser.Id);
         }
 
-        public async Task<UserLookedUp> GetUserById(string Id)
+        public async Task<UserLookedUp> GetUserById(string id)
         {
             HttpResponseMessage response = null;
 
-            response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Users/" +
-                                                         Id));
+            response = await _httpclient.GetAsync(new Uri(_configuration.GetSection("Settings:ApiUrl").Value + "/Users/" +
+                                                         id));
             string str = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<UserLookedUp>(str);
         }
@@ -113,7 +112,7 @@ namespace Renta.Services
                     .Add("price", price.ToString())
                     .Add("daysCount", daysCount.ToString());
 
-            var response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value +
+            var response = await _httpclient.GetAsync(new Uri(_configuration.GetSection("Settings:ApiUrl").Value +
                                                              "/Users/Balance/" + LoggedInUser.Id + queryString));
             string str = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<bool>(str);

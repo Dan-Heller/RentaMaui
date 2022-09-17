@@ -1,27 +1,31 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Renta.LoginPage"
-             Title="LoginPage"
-             BackgroundColor="White"
-             Shell.FlyoutBehavior="Disabled">
+
+<ContentPage
+    BackgroundColor="White"
+    Shell.FlyoutBehavior="Disabled"
+    Title="LoginPage"
+    x:Class="Renta.LoginPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <ContentPage.Content>
-        <StackLayout Padding="40" VerticalOptions="Center"
-                     HorizontalOptions="FillAndExpand">
-            <Image Source="rentalogo1" Margin="0,0,0,100"></Image>
+        <StackLayout
+            HorizontalOptions="FillAndExpand"
+            Padding="40"
+            VerticalOptions="Center">
+            <Image Margin="0,0,0,100" Source="rentalogo1" />
             <Label Text="Email:" />
-            <Entry Placeholder="Email" Text="{Binding Email, Mode=TwoWay}"/>
+            <Entry Placeholder="Email" Text="{Binding Email, Mode=TwoWay}" />
             <Label Text="Password:" />
-            <Entry IsPassword="True"
-                   Placeholder="Password" Text="{Binding Password, Mode=TwoWay}"/>
-            <Button Text="Login" Command="{Binding LoginButtonClicked }" />
-            <Label Text="Register" HorizontalOptions="Center">
+            <Entry
+                IsPassword="True"
+                Placeholder="Password"
+                Text="{Binding Password, Mode=TwoWay}" />
+            <Button Command="{Binding LoginButtonClicked}" Text="Login" />
+            <Label HorizontalOptions="Center" Text="Register">
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding RegisterLabelTapped}"></TapGestureRecognizer>
+                    <TapGestureRecognizer Command="{Binding RegisterLabelTapped}" />
                 </Label.GestureRecognizers>
             </Label>
-
         </StackLayout>
     </ContentPage.Content>
-    
 </ContentPage>

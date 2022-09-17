@@ -23,7 +23,6 @@
             </Style>
 
 
-
             <!-- <Color x:Key="PrimaryColor">#2060FF</Color> -->
             <Color x:Key="TertiaryColor">#A0A0FF</Color>
             <!--<Color x:Key="PrimaryColor">#E00000</Color>
@@ -80,11 +79,6 @@
                 <!-- <Setter Property="Shell.BackgroundColor" Value="{StaticResource PrimaryColor}"/> -->
             </Style>
 
-            <!-- <Style TargetType="{x:Type Label}"> -->
-            <!--     <Setter Property="TextColor" Value="{StaticResource ContentTextColor}"/> -->
-            <!--     <Setter Property="FontSize" Value="{StaticResource SmallFontSize}"/> -->
-            <!-- </Style> -->
-
             <Style TargetType="{x:Type Entry}">
                 <Setter Property="TextColor" Value="{StaticResource ContentTextColor}" />
                 <Setter Property="FontSize" Value="{StaticResource SmallFontSize}" />
@@ -110,8 +104,6 @@
                 <Setter Property="ColumnSpacing" Value="0" />
                 <Setter Property="RowSpacing" Value="0" />
             </Style>
-
-
         </ResourceDictionary>
     </Application.Resources>
 </Application>

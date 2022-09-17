@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Renta.Dto_s
+﻿namespace Renta.Dto_s
 {
     public class LoginDto
     {
@@ -13,12 +7,14 @@ namespace Renta.Dto_s
 
         public string FCMToken { get; set; }
 
-        public LoginDto() { }
+        public LoginDto()
+        {
+        }
 
         public LoginDto(string i_Email, string i_Password)
         {
-            this.Password = i_Password;
-            this.Email = i_Email;
+            Password = i_Password;
+            Email = i_Email;
         }
     }
 }

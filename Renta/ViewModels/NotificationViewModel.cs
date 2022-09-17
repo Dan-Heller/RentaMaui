@@ -1,43 +1,46 @@
-﻿
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Renta.Models;
 using Renta.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Renta.ViewModels
 {
     public class NotificationViewModel
     {
-        public Notification _notification { get; set; }        
-        public string OtherUserId;
-        public UserService _userService;
-        public User _otherUser;
-        public ImageSource otherUserProfilePhoto { get => _otherUser.ProfilePhotoUrl; }
-        public string OtherUserFullName { get => _otherUser.FirstName + " " + _otherUser.LastName; }
-        
+        private Notification Notification { get; set; }
+        private readonly string _otherUserId;
+        private readonly UserService _userService;
+        private readonly User _otherUser;
+
+        public ImageSource otherUserProfilePhoto
+        {
+            get => _otherUser.ProfilePhotoUrl;
+        }
+
+        public string OtherUserFullName
+        {
+            get => _otherUser.FirstName + " " + _otherUser.LastName;
+        }
+
         public string NotificationTime { get; set; } = string.Empty;
         public string _message { get; set; } = string.Empty;
-        public NotificationViewModel(Notification notification, UserService userService, User OtherUser)
+
+        public NotificationViewModel(Notification notification, UserService userService, User otherUser)
         {
-            _notification = notification;
+            Notification = notification;
             _userService = userService;
-            _otherUser = OtherUser;
-            OtherUserId = OtherUser.Id;
+            _otherUser = otherUser;
+            _otherUserId = otherUser.Id;
             NotificationTime = notification.Time.ToString("HH:mm");
             insertNotificationMessage();
         }
 
         private void insertNotificationMessage()
         {
-            if(_notification.NotificationType == enums.ENotificationType.Chat)
+            if (Notification.NotificationType == enums.ENotificationType.Chat)
             {
                 _message = "You recieved a message from " + OtherUserFullName;
             }
-            else if(_notification.NotificationType == enums.ENotificationType.ItemRequest)
+            else if (Notification.NotificationType == enums.ENotificationType.ItemRequest)
             {
                 _message = OtherUserFullName + " is interested in your item.";
             }
@@ -48,17 +51,17 @@ namespace Renta.ViewModels
         }
 
         public Command NotificationTapped
-=> new Command(async () => await GoToNextPage());
+            => new Command(async () => await GoToNextPage());
 
         private async Task GoToNextPage()
         {
-            if (_notification.NotificationType == enums.ENotificationType.Chat)
+            if (Notification.NotificationType == enums.ENotificationType.Chat)
             {
                 Chat _chat = findChat();
                 var jsonStr = JsonConvert.SerializeObject(_chat);
                 await Shell.Current.GoToAsync($"{nameof(MessagesPage)}?chat={jsonStr}");
             }
-            else if (_notification.NotificationType == enums.ENotificationType.ItemRequest)
+            else if (Notification.NotificationType == enums.ENotificationType.ItemRequest)
             {
                 await Shell.Current.GoToAsync($"{nameof(RentingPage)}");
             }
@@ -70,8 +73,8 @@ namespace Renta.ViewModels
 
         private Chat findChat()
         {
-            return _userService.LoggedInUser.PopulatedChats.Find(chat => chat.UserA == OtherUserId || chat.UserB == OtherUserId);
+            return _userService.LoggedInUser.PopulatedChats.Find(chat =>
+                chat.UserA == _otherUserId || chat.UserB == _otherUserId);
         }
-
-    }      
+    }
 }

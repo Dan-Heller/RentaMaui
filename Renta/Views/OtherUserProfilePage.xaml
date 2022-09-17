@@ -1,57 +1,124 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-              xmlns:controls="clr-namespace:Renta.Controls"
-               xmlns:ViewModels="clr-namespace:Renta.ViewModels"
-            x:DataType="ViewModels:OtherUserProfilePageViewModel"
-             x:Class="Renta.OtherUserProfilePage"
-              xmlns:Pages ="clr-namespace:Renta"
-             Title=""
-             
-             BackgroundColor="White"
-             Shell.ForegroundColor="Black"
-             Shell.NavBarIsVisible="true"
-             Shell.TabBarIsVisible="False">
 
-
+<ContentPage
+    BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.NavBarIsVisible="true"
+    Shell.TabBarIsVisible="False"
+    Title=""
+    x:Class="Renta.OtherUserProfilePage"
+    x:DataType="ViewModels:OtherUserProfilePageViewModel"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:Pages="clr-namespace:Renta"
+    xmlns:ViewModels="clr-namespace:Renta.ViewModels"
+    xmlns:controls="clr-namespace:Renta.Controls"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="messageicon.png" Command="{Binding MessageIcon_Tapped}" />
+        <ToolbarItem Command="{Binding MessageIcon_Tapped}" IconImageSource="messageicon.png" />
     </ContentPage.ToolbarItems>
 
     <ScrollView>
         <Grid RowDefinitions="auto,auto">
-        <Grid Grid.Row="0" RowDefinitions="100,*,*,*" Margin="0,10,0,0" Padding="0">
-            <Grid Grid.Row="0" Padding="0">
-                <Frame  Margin="0,0,0,0"  BorderColor="Black" HorizontalOptions="Center" WidthRequest="110" HeightRequest="100" HasShadow="False" CornerRadius="55" Padding="0" IsClippedToBounds="True">
-                    <Image Source="{Binding _OtherUser.ProfilePhotoUrl}" Aspect="AspectFit"/>
-                </Frame>
-            </Grid>
-
-            <!-- Profile name & general description-->
-                <Label Grid.Row="1" Text="{Binding FullName}" FontAttributes="Bold" TextColor="#383b67" HorizontalTextAlignment="Center" Margin="0,10,0,0" FontSize="22" Padding="0"/>            
-
-                <Grid Grid.Row="2" ColumnDefinitions="auto, auto" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,20,0,0"  >
-                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding _OtherUser.RatingAsString}"  FontSize="25" TextColor="Black"/>
-                    <Image Source="blankstar" Grid.Row="0" Grid.Column="1" Margin="0,0,7,0"/>
+            <Grid
+                Grid.Row="0"
+                Margin="0,10,0,0"
+                Padding="0"
+                RowDefinitions="100,*,*,*">
+                <Grid Grid.Row="0" Padding="0">
+                    <Frame
+                        BorderColor="Black"
+                        CornerRadius="55"
+                        HasShadow="False"
+                        HeightRequest="100"
+                        HorizontalOptions="Center"
+                        IsClippedToBounds="True"
+                        Margin="0,0,0,0"
+                        Padding="0"
+                        WidthRequest="110">
+                        <Image Aspect="AspectFit" Source="{Binding _OtherUser.ProfilePhotoUrl}" />
+                    </Frame>
                 </Grid>
 
-            <Grid Grid.Row="3" ColumnDefinitions="Auto,Auto" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,0">
-                <Image Grid.Column="0" Source="locationicon" WidthRequest="18" HeightRequest="18" HorizontalOptions="Center" />
-                    <Label Grid.Column="1" Text="{Binding Address}" FontAttributes="Bold" TextColor="#383b67"  FontSize="16"/>
-            </Grid>
-        </Grid>
+                <!--  Profile name & general description  -->
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="22"
+                    Grid.Row="1"
+                    HorizontalTextAlignment="Center"
+                    Margin="0,10,0,0"
+                    Padding="0"
+                    Text="{Binding FullName}"
+                    TextColor="#383b67" />
 
-        <Grid Grid.Row="1" RowDefinitions="30,*" Margin="5,10,0,0" Padding="0">
-           
-                <Frame Grid.Row="0" Margin="0,5,10,0" Padding="0">
-                    <Grid  ColumnDefinitions="*,*"   >
-                        <Label x:Name="Items"  Text="Items"   Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"  TextColor="Gray" >
+                <Grid
+                    ColumnDefinitions="auto, auto"
+                    Grid.Row="2"
+                    HorizontalOptions="Center"
+                    Margin="0,20,0,0"
+                    VerticalOptions="Center">
+                    <Label
+                        FontSize="25"
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="{Binding _OtherUser.RatingAsString}"
+                        TextColor="Black" />
+                    <Image
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Margin="0,0,7,0"
+                        Source="blankstar" />
+                </Grid>
+
+                <Grid
+                    ColumnDefinitions="Auto,Auto"
+                    Grid.Row="3"
+                    HorizontalOptions="Center"
+                    Margin="0,0,0,0"
+                    VerticalOptions="Center">
+                    <Image
+                        Grid.Column="0"
+                        HeightRequest="18"
+                        HorizontalOptions="Center"
+                        Source="locationicon"
+                        WidthRequest="18" />
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        Grid.Column="1"
+                        Text="{Binding Address}"
+                        TextColor="#383b67" />
+                </Grid>
+            </Grid>
+            <Grid
+                Grid.Row="1"
+                Margin="5,10,0,0"
+                Padding="0"
+                RowDefinitions="30,*">
+
+                <Frame
+                    Grid.Row="0"
+                    Margin="0,5,10,0"
+                    Padding="0">
+                    <Grid ColumnDefinitions="*,*">
+                        <Label
+                            Grid.Column="0"
+                            HorizontalOptions="Center"
+                            Text="Items"
+                            TextColor="Gray"
+                            VerticalOptions="Center"
+                            x:Name="Items">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                             </Label.GestureRecognizers>
 
                         </Label>
-                        <Label x:Name="Reviews" Text="Reviews"   Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Gray" >
+                        <Label
+                            Grid.Column="1"
+                            HorizontalOptions="Center"
+                            Text="Reviews"
+                            TextColor="Gray"
+                            VerticalOptions="Center"
+                            x:Name="Reviews">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                             </Label.GestureRecognizers>
@@ -59,19 +126,20 @@
                     </Grid>
                 </Frame>
 
-
-                <CollectionView ItemsSource="{Binding ItemsCollection}"
-                        SelectionMode="None"
-                                Grid.Row="1"
-                                Margin="0,3,0,0"
-                                x:Name="ItemsCollection"
-                        >
+                <CollectionView
+                    Grid.Row="1"
+                    ItemsSource="{Binding ItemsCollection}"
+                    Margin="0,3,0,0"
+                    SelectionMode="None"
+                    x:Name="ItemsCollection">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout
-                                 Orientation="Vertical"
-                                 Span="{OnIdiom Phone=3, Tablet=3, Desktop=3}"
-                                 HorizontalItemSpacing="5"
-                                 VerticalItemSpacing="5" />
+                            HorizontalItemSpacing="5"
+                            Orientation="Vertical"
+                            Span="{OnIdiom Phone=3,
+                                           Tablet=3,
+                                           Desktop=3}"
+                            VerticalItemSpacing="5" />
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
@@ -80,19 +148,20 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
 
-
-                <CollectionView ItemsSource="{Binding UserReviewsCollection}"
-                        SelectionMode="None"
-                                Grid.Row="1"
-                                Margin="0,3,5,0"
-                                x:Name="ReviewsCollection"
-                        >
+                <CollectionView
+                    Grid.Row="1"
+                    ItemsSource="{Binding UserReviewsCollection}"
+                    Margin="0,3,5,0"
+                    SelectionMode="None"
+                    x:Name="ReviewsCollection">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout
-                                 Orientation="Vertical"
-                                 Span="{OnIdiom Phone=1, Tablet=3, Desktop=3}"
-                                 HorizontalItemSpacing="5"
-                                 VerticalItemSpacing="5" />
+                            HorizontalItemSpacing="5"
+                            Orientation="Vertical"
+                            Span="{OnIdiom Phone=1,
+                                           Tablet=3,
+                                           Desktop=3}"
+                            VerticalItemSpacing="5" />
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
@@ -100,8 +169,7 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-
             </Grid>
-    </Grid>
+        </Grid>
     </ScrollView>
 </ContentPage>

@@ -1,35 +1,33 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:Renta.Controls"
-             x:Class="Renta.ListChatPage"
-             Shell.ForegroundColor="Black"
-             Shell.NavBarIsVisible="False"
-             Title="ListChatPage"
-           
-             >
+
+<ContentPage
+    Shell.ForegroundColor="Black"
+    Shell.NavBarIsVisible="False"
+    Title="ListChatPage"
+    x:Class="Renta.ListChatPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:controls="clr-namespace:Renta.Controls"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <StackLayout>
-        <Label 
+        <Label
+            FontSize="30"
+            HorizontalOptions="Start"
             Margin="0,10,0,0"
             Text="Chats"
-            FontSize="30"
             TextColor="Black"
-            VerticalOptions="Center" 
-            HorizontalOptions="Start" />
-
+            VerticalOptions="Center" />
 
         <ScrollView Orientation="Vertical">
-
-            <CollectionView ItemsSource="{Binding ChatsCollection}"
-                        SelectionMode="None"
-                        >
+            <CollectionView ItemsSource="{Binding ChatsCollection}" SelectionMode="None">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout
-                                 Orientation="Vertical"
-                                 Span="{OnIdiom Phone=1, Tablet=1, Desktop=1}"
-                                 HorizontalItemSpacing="5"
-                                 VerticalItemSpacing="0" />
+                        HorizontalItemSpacing="5"
+                        Orientation="Vertical"
+                        Span="{OnIdiom Phone=1,
+                                       Tablet=1,
+                                       Desktop=1}"
+                        VerticalItemSpacing="0" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -37,9 +35,6 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
         </ScrollView>
     </StackLayout>
-       
-   
 </ContentPage>

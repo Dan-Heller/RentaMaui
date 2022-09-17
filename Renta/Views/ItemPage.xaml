@@ -19,9 +19,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:xc="clr-namespace:XCalendar.Maui.Views;assembly=XCalendar.Maui">
 
-    <ContentPage.Resources>
-       
-    </ContentPage.Resources>
+    <ContentPage.Resources />
 
     <ContentPage.ToolbarItems>
         <ToolbarItem
@@ -32,9 +30,7 @@
 
 
     <ScrollView Orientation="Vertical">
-        <!--  Images  should be horizontal scroll  -->
         <Grid RowDefinitions="auto,auto">
-
             <Grid
                 BackgroundColor="LightGray"
                 Grid.Row="0"
@@ -122,8 +118,6 @@
                             Margin="0,0,0,0"
                             Source="blankstar" />
                     </Grid>
-
-                    <!--  item owner profile link  -->
 
                     <Image
                         Grid.Column="2"
@@ -270,8 +264,6 @@
                                                         Spacing="2.5">
 
 
-                                                  
-
                                                         <BindableLayout.ItemTemplate>
                                                             <DataTemplate x:DataType="{x:Type Models:Event}">
                                                                 <BoxView
@@ -335,7 +327,6 @@
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-
                 </Grid>
             </Grid>
         </Grid>

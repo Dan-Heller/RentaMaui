@@ -1,52 +1,100 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Renta.EditProfilePage"
-             Title="Edit Profile"
-             Shell.ForegroundColor="Black"
-             Shell.NavBarIsVisible="true"
-             Shell.TabBarIsVisible="False"
-             BackgroundColor="White"
-             Shell.TitleColor="MediumPurple">
+
+<ContentPage
+    BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.NavBarIsVisible="true"
+    Shell.TabBarIsVisible="False"
+    Shell.TitleColor="MediumPurple"
+    Title="Edit Profile"
+    x:Class="Renta.EditProfilePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="saveicon" Command="{Binding SaveButtonClicked }"/>
+        <ToolbarItem Command="{Binding SaveButtonClicked}" IconImageSource="saveicon" />
     </ContentPage.ToolbarItems>
 
 
+    <Grid
+        BackgroundColor="LightGray"
+        Padding="10,0"
+        RowDefinitions="100,20,20,auto,auto,auto,auto,auto,auto,auto,auto">
 
-    <Grid RowDefinitions="100,20,20,auto,auto,auto,auto,auto,auto,auto,auto" Padding="10,0" BackgroundColor="LightGray">
-
-        <!-- Image Profile-->
-        <Frame Grid.Row="1" Margin="0,-90,0,0" BorderColor="White" HorizontalOptions="Center" WidthRequest="110" HeightRequest="100" HasShadow="False" CornerRadius="55" Padding="0" IsClippedToBounds="True" >
-            <ImageButton Source="{Binding ProfileImageSource, Mode=TwoWay}"   Aspect="AspectFill" Command="{Binding ChangeProfileImage_Clicked}"/>
+        <!--  Image Profile  -->
+        <Frame
+            BorderColor="White"
+            CornerRadius="55"
+            Grid.Row="1"
+            HasShadow="False"
+            HeightRequest="100"
+            HorizontalOptions="Center"
+            IsClippedToBounds="True"
+            Margin="0,-90,0,0"
+            Padding="0"
+            WidthRequest="110">
+            <ImageButton
+                Aspect="AspectFill"
+                Command="{Binding ChangeProfileImage_Clicked}"
+                Source="{Binding ProfileImageSource, Mode=TwoWay}" />
         </Frame>
 
 
-
         <Label Grid.Row="2" Text="First Name:" />
-        <Entry Grid.Row="3" Placeholder="First Name" Text="{Binding FirstName, Mode=TwoWay}"/>
+        <Entry
+            Grid.Row="3"
+            Placeholder="First Name"
+            Text="{Binding FirstName, Mode=TwoWay}" />
         <Label Grid.Row="4" Text="Last Name:" />
-        <Entry Grid.Row="5" Placeholder="Last Name" Text="{Binding LastName, Mode=TwoWay}"/>
-       
-        <Grid Grid.Row="6" RowDefinitions="*,*"  ColumnDefinitions="*,*">
-                <Label Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,10" Grid.Column="0"  Text="Pick prefered categories." />
-                <Picker Grid.Row="1" Grid.Column="0"   SelectedIndex="4" Margin="0" Title=""  
-                ItemsSource="{Binding Categories}" 
-                SelectedItem="{Binding SelectedCategory1}">
-                </Picker>
-                <Picker Grid.Row="1" Grid.Column="1"   SelectedIndex="4" Margin="0" Title=""  
-                ItemsSource="{Binding Categories}" 
-                SelectedItem="{Binding SelectedCategory2}">
-                </Picker>
+        <Entry
+            Grid.Row="5"
+            Placeholder="Last Name"
+            Text="{Binding LastName, Mode=TwoWay}" />
+
+        <Grid
+            ColumnDefinitions="*,*"
+            Grid.Row="6"
+            RowDefinitions="*,*">
+            <Label
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Grid.Row="0"
+                Margin="0,0,0,10"
+                Text="Pick prefered categories." />
+            <Picker
+                Grid.Column="0"
+                Grid.Row="1"
+                ItemsSource="{Binding Categories}"
+                Margin="0"
+                SelectedIndex="4"
+                SelectedItem="{Binding SelectedCategory1}"
+                Title="" />
+            <Picker
+                Grid.Column="1"
+                Grid.Row="1"
+                ItemsSource="{Binding Categories}"
+                Margin="0"
+                SelectedIndex="4"
+                SelectedItem="{Binding SelectedCategory2}"
+                Title="" />
         </Grid>
-        <Label Grid.Row="7" Text="Region: "  Padding="0,10,0,10"/>
-        <Picker Grid.Row="8" x:Name="CityPicker"  SelectedIndex="4" Margin="0" Title="Select your city" 
-                ItemsSource="{Binding Regions}" 
-                SelectedItem="{Binding Region}">
-            </Picker>
+        <Label
+            Grid.Row="7"
+            Padding="0,10,0,10"
+            Text="Region: " />
+        <Picker
+            Grid.Row="8"
+            ItemsSource="{Binding Regions}"
+            Margin="0"
+            SelectedIndex="4"
+            SelectedItem="{Binding Region}"
+            Title="Select your city"
+            x:Name="CityPicker" />
         <Label Grid.Row="9" Text="City:" />
-        <Entry Grid.Row="10" Placeholder="City" Text="{Binding City, Mode=TwoWay}"/>
+        <Entry
+            Grid.Row="10"
+            Placeholder="City"
+            Text="{Binding City, Mode=TwoWay}" />
 
     </Grid>
 </ContentPage>

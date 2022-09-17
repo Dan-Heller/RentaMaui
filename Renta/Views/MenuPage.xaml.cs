@@ -4,9 +4,9 @@ namespace Renta;
 
 public partial class MenuPage : ContentPage
 {
-	public MenuPage(MenuPageViewModel menuPageViewModel)
-	{
+    public MenuPage(MenuPageViewModel menuPageViewModel)
+    {
         BindingContext = menuPageViewModel;
-		InitializeComponent();
-	}
+        InitializeComponent();
+    }
 }

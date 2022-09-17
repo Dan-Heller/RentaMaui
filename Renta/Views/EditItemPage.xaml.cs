@@ -1,42 +1,43 @@
 using Renta.ViewModels;
+
 namespace Renta;
 
 public partial class EditItemPage : ContentPage
 {
-	public EditItemPage(EditItemPageViewModel editItemPageViewModel)
-	{
-		BindingContext = editItemPageViewModel;
+    public EditItemPage(EditItemPageViewModel editItemPageViewModel)
+    {
+        BindingContext = editItemPageViewModel;
 
-		InitializeComponent();
-	}
+        InitializeComponent();
+    }
 
     protected override void OnAppearing()
     {
         base.OnAppearing();
         (BindingContext as EditItemPageViewModel).deserializeString();
-
     }
 
     private async void AddPhoto_Tapped(object sender, EventArgs e)
     {
-       
         var image = sender as ImageButton;
         var ImageId = image.ClassId;
 
         //check that previous slot was used 
         if (ImageId != "1")
         {
-            if ((BindingContext as EditItemPageViewModel).SlotHasImageArray[Int32.Parse(ImageId) - 2] == false )
+            if ((BindingContext as EditItemPageViewModel).SlotHasImageArray[Int32.Parse(ImageId) - 2] == false)
             {
                 return;
             }
         }
 
-        string choosedOption = await DisplayActionSheet("Choose option:", "Cancel", null, "From Gallery", "Take a photo", "Remove image");
+        string choosedOption = await DisplayActionSheet("Choose option:", "Cancel", null, "From Gallery",
+            "Take a photo", "Remove image");
 
         if (choosedOption == "From Gallery")
         {
-            await (BindingContext as EditItemPageViewModel).AddPhotoFromGallery(ImageId);    //the of clicked -> init the method doesnt worked with onchanged
+            await (BindingContext as EditItemPageViewModel)
+                .AddPhotoFromGallery(ImageId); //the of clicked -> init the method doesnt worked with onchanged
         }
         else if (choosedOption == "Take a photo")
         {
@@ -47,6 +48,4 @@ public partial class EditItemPage : ContentPage
             (BindingContext as EditItemPageViewModel).RemoveImage(ImageId);
         }
     }
-
-  
 }

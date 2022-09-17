@@ -1,86 +1,73 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ContentView x:Name="selfMediaElementView"
-             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Renta.Controls.HeaderControl"
-              xmlns:Services="clr-namespace:Renta.Services"
-            x:DataType="Services:UserService"
-             BackgroundColor="GhostWhite">
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<ContentView
+    BackgroundColor="GhostWhite"
+    x:Class="Renta.Controls.HeaderControl"
+    x:DataType="Services:UserService"
+    x:Name="selfMediaElementView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:Services="clr-namespace:Renta.Services"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <ContentView.Content>
-        <ContentView  >
-            <Frame HasShadow="true"  Padding="1" CornerRadius="0" Margin="0">
+        <ContentView>
+            <Frame
+                CornerRadius="0"
+                HasShadow="true"
+                Margin="0"
+                Padding="1">
                 <OnPlatform x:TypeArguments="View">
                     <On Platform="UWP, macOS">
                         <Grid RowDefinitions="*, auto">
-
-                            <Button ImageSource="profileicon.png"/>
-
-                           
-
+                            <Button ImageSource="profileicon.png" />
                         </Grid>
                     </On>
                     <On Platform="Android,iOS">
-                        <Grid ColumnDefinitions="6*,1*,1*,1*"
-                          Margin="16,12"  >
-
-                           
+                        <Grid ColumnDefinitions="6*,1*,1*,1*" Margin="16,12">
                             <Label
-                                Text="RentA"
                                 FontSize="25"
                                 Grid.Column="0"
-                               
-                               VerticalOptions="Center"
-                               HorizontalOptions="Start"
-                               >
-                                
-                            </Label>
-                            <Image Source="profileicon.png"
-                               Grid.Column="1"
-                               VerticalOptions="Center"
-                               HorizontalOptions="End"
-                               HeightRequest="30"
-                               WidthRequest="30"
-                               >
+                                HorizontalOptions="Start"
+                                Text="RentA"
+                                VerticalOptions="Center" />
+                            <Image
+                                Grid.Column="1"
+                                HeightRequest="30"
+                                HorizontalOptions="End"
+                                Source="profileicon.png"
+                                VerticalOptions="Center"
+                                WidthRequest="30">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="ProfileButton_Tapped" />
                                 </Image.GestureRecognizers>
                             </Image>
-                            
-                            <Image Source="notificationicon.png"
-                               Grid.Column="2"
-                               
-                               VerticalOptions="Center"
-                               HorizontalOptions="End"
-                               HeightRequest="30"
-                               WidthRequest="30"
-                            
-                               >
+
+                            <Image
+                                Grid.Column="2"
+                                HeightRequest="30"
+                                HorizontalOptions="End"
+                                Source="notificationicon.png"
+                                VerticalOptions="Center"
+                                WidthRequest="30">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="NotificationsButton_Tapped" />
                                 </Image.GestureRecognizers>
-
                             </Image>
-                           
-                            <Image Source="addicon.png"
-                               Grid.Column="5"
-                               
-                               VerticalOptions="Center"
-                               HorizontalOptions="End"
-                               HeightRequest="30"
-                               WidthRequest="30"
-                            
-                               >
+
+                            <Image
+                                Grid.Column="5"
+                                HeightRequest="30"
+                                HorizontalOptions="End"
+                                Source="addicon.png"
+                                VerticalOptions="Center"
+                                WidthRequest="30">
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="AddITtemButton_Tapped" />
+                                    <TapGestureRecognizer Tapped="AddItemButton_Tapped" />
                                 </Image.GestureRecognizers>
                             </Image>
                         </Grid>
-
-
                     </On>
                 </OnPlatform>
             </Frame>
-            
         </ContentView>
     </ContentView.Content>
 </ContentView>

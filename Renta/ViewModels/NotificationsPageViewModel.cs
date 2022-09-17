@@ -1,67 +1,60 @@
 ﻿using MvvmHelpers;
 using Renta.Models;
 using Renta.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Renta.ViewModels
 {
     public class NotificationsPageViewModel : BaseViewModel
     {
-        public UserService _userService;
-        public List<Notification> notifications;
-        public List<NotificationViewModel> notificationsViewModels;
-        public ObservableRangeCollection<NotificationViewModel> NotificationsCollection { get; private set; } = new ObservableRangeCollection<NotificationViewModel>();
+        private readonly UserService _userService;
+        private List<Notification> _notifications;
+        private List<NotificationViewModel> _notificationsViewModels;
+
+        public ObservableRangeCollection<NotificationViewModel> NotificationsCollection { get; private set; } =
+            new ObservableRangeCollection<NotificationViewModel>();
 
         public NotificationsPageViewModel(UserService userService)
         {
             _userService = userService;
-            notificationsViewModels = new List<NotificationViewModel>();
+            _notificationsViewModels = new List<NotificationViewModel>();
         }
 
         public async Task PageAppeared()
         {
             await _userService.UpdateLoggedInUser();
-            notifications = _userService.LoggedInUser.Notifications;
+            _notifications = _userService.LoggedInUser.Notifications;
 
-            notificationsViewModels = await ConvertToViewModels(notifications);
-            notificationsViewModels = notificationsViewModels.OrderByDescending(notification => notification.NotificationTime).ToList();
-            UpdateMyNotifcationsCollection(notificationsViewModels);
+            _notificationsViewModels = await ConvertToViewModels(_notifications);
+            _notificationsViewModels = _notificationsViewModels
+                .OrderByDescending(notification => notification.NotificationTime).ToList();
+            UpdateMyNotifcationsCollection(_notificationsViewModels);
             OnPropertyChanged(nameof(NotificationsCollection));
         }
 
         public void PageDisappeared()
         {
-            notificationsViewModels.Clear();
-            UpdateMyNotifcationsCollection(notificationsViewModels);
+            _notificationsViewModels.Clear();
+            UpdateMyNotifcationsCollection(_notificationsViewModels);
             OnPropertyChanged(nameof(NotificationsCollection));
         }
 
 
-        private async Task<List<NotificationViewModel>> ConvertToViewModels(List<Notification> Notifications)
+        private async Task<List<NotificationViewModel>> ConvertToViewModels(List<Notification> notifications)
         {
-          
-
-            var tasks = Notifications.Select(async (notification) => {
-                string OtherUserId = notification.OtherUserId ;
-                User otherUser = await _userService.GetUserById(OtherUserId);
+            var tasks = notifications.Select(async (notification) =>
+            {
+                string otherUserId = notification.OtherUserId;
+                User otherUser = await _userService.GetUserById(otherUserId);
                 var notificationVM = new NotificationViewModel(notification, _userService, otherUser);
-                notificationsViewModels.Add(notificationVM);
-
+                _notificationsViewModels.Add(notificationVM);
             });
             await Task.WhenAll(tasks);
-            return notificationsViewModels;
+            return _notificationsViewModels;
         }
 
-
-
-        private void UpdateMyNotifcationsCollection(IEnumerable<NotificationViewModel> NotificationsVM)
+        private void UpdateMyNotifcationsCollection(IEnumerable<NotificationViewModel> notificationsVm)
         {
-            NotificationsCollection.ReplaceRange(NotificationsVM);
-           
+            NotificationsCollection.ReplaceRange(notificationsVm);
         }
     }
 }

@@ -1,47 +1,51 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Renta.FiltersPage"
-             xmlns:sliders="clr-namespace:Syncfusion.Maui.Sliders;assembly=Syncfusion.Maui.Sliders"
-             Title="Filters"
-                Shell.ForegroundColor="Black"
-             Shell.NavBarIsVisible="true"
-             Shell.TabBarIsVisible="False"
-              Shell.TitleColor="MediumPurple"
-             BackgroundColor="White">
+
+<ContentPage
+    BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.NavBarIsVisible="true"
+    Shell.TabBarIsVisible="False"
+    Shell.TitleColor="MediumPurple"
+    Title="Filters"
+    x:Class="Renta.FiltersPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:sliders="clr-namespace:Syncfusion.Maui.Sliders;assembly=Syncfusion.Maui.Sliders"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Show"  Clicked="Show_Clicked"/>
+        <ToolbarItem Clicked="Show_Clicked" Text="Show" />
     </ContentPage.ToolbarItems>
 
     <StackLayout>
         <Grid RowDefinitions="*,*,*,*">
-            <Label 
-               Text="Price range"
-               FontSize="Medium"
-               HorizontalOptions="Start"
-               VerticalOptions="CenterAndExpand" 
-                   Grid.Row="0"/>
+            <Label
+                FontSize="Medium"
+                Grid.Row="0"
+                HorizontalOptions="Start"
+                Text="Price range"
+                VerticalOptions="CenterAndExpand" />
 
-            <sliders:SfRangeSlider x:Name="PriceSlider"  Grid.Row="1"
-                       Minimum="0" 
-                       Maximum="100" 
-                       RangeStart="0"  
-                       RangeEnd="100"
-                       Interval="10" 
-                       ShowLabels="True"
-                                    
-                                    >
-            </sliders:SfRangeSlider>
-          
+            <sliders:SfRangeSlider
+                Grid.Row="1"
+                Interval="10"
+                Maximum="100"
+                Minimum="0"
+                RangeEnd="100"
+                RangeStart="0"
+                ShowLabels="True"
+                x:Name="PriceSlider" />
 
-            <Label Text="Region: " Grid.Row="2"  Padding="0,10,0,10"/>
-            <Picker x:Name="RegionPicker" Grid.Row="3"  SelectedIndex="4" Margin="0" Title="Select a Region" 
-                ItemsSource="{Binding Regions}" 
-                >
-            </Picker>
+            <Label
+                Grid.Row="2"
+                Padding="0,10,0,10"
+                Text="Region: " />
+            <Picker
+                Grid.Row="3"
+                ItemsSource="{Binding Regions}"
+                Margin="0"
+                SelectedIndex="4"
+                Title="Select a Region"
+                x:Name="RegionPicker" />
 
         </Grid>
-
     </StackLayout>
-
 </ContentPage>

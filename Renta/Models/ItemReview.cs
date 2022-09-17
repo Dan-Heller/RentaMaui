@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Renta.Models
+﻿namespace Renta.Models
 {
     public class ItemReview
     {
@@ -16,9 +10,16 @@ namespace Renta.Models
         public string? TransactionId { get; set; }
         public string? ItemId { get; set; }
         public string? Review { get; set; }
-        public float Rating { get => ItemRating; }
+
+        public float Rating
+        {
+            get => ItemRating;
+        }
+
         public DateTime? DateOfReview { get; set; }
-        public ItemReview(string ownerId, string seekerId, int itemRating, string transactionId, string itemId, string review, DateTime dateTime)
+
+        public ItemReview(string ownerId, string seekerId, int itemRating, string transactionId, string itemId,
+            string review, DateTime dateTime)
         {
             OwnerId = ownerId;
             SeekerId = seekerId;
@@ -31,11 +32,10 @@ namespace Renta.Models
 
         public ItemReview()
         {
-
         }
-
-        //ctor for creation of the review 
-        public ItemReview(string ownerId, string seekerId, int itemRating, string transactionId, string itemId, string review)
+        
+        public ItemReview(string ownerId, string seekerId, int itemRating, string transactionId, string itemId,
+            string review)
         {
             OwnerId = ownerId;
             SeekerId = seekerId;
@@ -44,8 +44,5 @@ namespace Renta.Models
             TransactionId = transactionId;
             ItemRating = itemRating;
         }
-
-
-
     }
 }

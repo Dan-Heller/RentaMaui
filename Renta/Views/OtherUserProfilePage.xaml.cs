@@ -4,22 +4,21 @@ namespace Renta;
 
 public partial class OtherUserProfilePage : ContentPage
 {
+    private OtherUserProfilePageViewModel viewModel => BindingContext as OtherUserProfilePageViewModel;
 
-	private OtherUserProfilePageViewModel viewModel => BindingContext as OtherUserProfilePageViewModel;
-	public OtherUserProfilePage(OtherUserProfilePageViewModel otherUserProfilePageViewModel)
-	{
-		BindingContext = otherUserProfilePageViewModel;
-        
+    public OtherUserProfilePage(OtherUserProfilePageViewModel otherUserProfilePageViewModel)
+    {
+        BindingContext = otherUserProfilePageViewModel;
+
         InitializeComponent();
         ReviewsCollection.IsVisible = false;
     }
 
-	protected override async void OnAppearing()
-	{
-		base.OnAppearing();
-		await viewModel.InitializeAsync();
-
-	}
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        await viewModel.InitializeAsync();
+    }
 
     private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
     {
@@ -28,16 +27,15 @@ public partial class OtherUserProfilePage : ContentPage
 
         (sender as Label).TextColor = Color.FromHex("000000");
 
-		if((sender as Label) == Items)
-		{
-			ItemsCollection.IsVisible = true;
-			ReviewsCollection.IsVisible = false;
-
+        if ((sender as Label) == Items)
+        {
+            ItemsCollection.IsVisible = true;
+            ReviewsCollection.IsVisible = false;
         }
-		else
-		{
-			ItemsCollection.IsVisible = false;
-			ReviewsCollection.IsVisible = true ;
+        else
+        {
+            ItemsCollection.IsVisible = false;
+            ReviewsCollection.IsVisible = true;
         }
     }
 }

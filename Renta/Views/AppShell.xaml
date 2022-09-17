@@ -1,36 +1,33 @@
-<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Renta.AppShell"
-             BackgroundColor="{DynamicResource SecondaryColor}"
-            xmlns:Pages ="clr-namespace:Renta"
-            xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
-            Shell.NavBarIsVisible="false"
-            Shell.TabBarUnselectedColor="Gray"
-            Shell.TabBarTitleColor="Black">
+<Shell
+    BackgroundColor="{DynamicResource SecondaryColor}"
+    Shell.NavBarIsVisible="false"
+    Shell.TabBarTitleColor="Black"
+    Shell.TabBarUnselectedColor="Gray"
+    x:Class="Renta.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:Pages="clr-namespace:Renta"
+    xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
 
-    <ShellItem Route="LoginPage" FlyoutItemIsVisible="False">
+    <ShellItem FlyoutItemIsVisible="False" Route="LoginPage">
         <ShellContent ContentTemplate="{DataTemplate Pages:LoginPage}" />
     </ShellItem>
-    
-    <TabBar >
-        <Tab Title="Home" 
-         Icon="homeicon.png">
+
+    <TabBar>
+        <Tab Icon="homeicon.png" Title="Home">
             <ShellContent ContentTemplate="{DataTemplate Pages:FeedPage}" Route="FeedPage" />
         </Tab>
-       
-        <Tab Title="Messages"
-         Icon="messageicon.png">
+
+        <Tab Icon="messageicon.png" Title="Messages">
             <ShellContent ContentTemplate="{DataTemplate Pages:ListChatPage}" Route="ListChatPage" />
         </Tab>
-      
-        <Tab Title="Search"
-         Icon="searchicon.png">
-            <ShellContent ContentTemplate="{DataTemplate Pages:SearchPage}" Route="SearchPage"/>
+
+        <Tab Icon="searchicon.png" Title="Search">
+            <ShellContent ContentTemplate="{DataTemplate Pages:SearchPage}" Route="SearchPage" />
         </Tab>
-        <Tab Title="Menu"
-         Icon="menuicon.png">
-            <ShellContent ContentTemplate="{DataTemplate Pages:MenuPage}" Route="MenuPage"/>
+        <Tab Icon="menuicon.png" Title="Menu">
+            <ShellContent ContentTemplate="{DataTemplate Pages:MenuPage}" Route="MenuPage" />
         </Tab>
     </TabBar>
 </Shell>

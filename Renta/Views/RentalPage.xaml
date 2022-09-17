@@ -1,69 +1,95 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            xmlns:controls="clr-namespace:Renta.Controls"
-             x:Class="Renta.RentalPage"
-             Title="RentalPage"
-             BackgroundColor="White"
-             Shell.ForegroundColor="Black"
-             Shell.NavBarIsVisible="true"
-             Shell.TitleColor="Black"
-             Shell.TabBarIsVisible="False">
-    
+
+<ContentPage
+    BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.NavBarIsVisible="true"
+    Shell.TabBarIsVisible="False"
+    Shell.TitleColor="Black"
+    Title="RentalPage"
+    x:Class="Renta.RentalPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:controls="clr-namespace:Renta.Controls"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
     <StackLayout>
-
         <Grid>
-            <Frame Grid.Row="0" Margin="0,5,0,5" Padding="0" BorderColor="Transparent" HasShadow="False">
-              
-                <Grid  ColumnDefinitions="*,*,*,*"   >
+            <Frame
+                BorderColor="Transparent"
+                Grid.Row="0"
+                HasShadow="False"
+                Margin="0,5,0,5"
+                Padding="0">
 
-
-                    <Label ClassId="Pending" x:Name="RequestsLabel"  Text="Requests"   Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"  TextColor="Gray" >
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                        </Label.GestureRecognizers>
-
-                    </Label>
-                    <Label ClassId="Approved" x:Name="ApprovedLabel" Text="Approved"   Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Gray" >
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                        </Label.GestureRecognizers>
-                    </Label>
-
-                    <Label ClassId="Active" x:Name="ActiveLabel"  Text="Active"  Grid.Column="2"  HorizontalOptions="Center" VerticalOptions="Center"  TextColor="Gray">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                        </Label.GestureRecognizers>
-                    </Label>
-
-                    <Label ClassId="History" x:Name="HistoryLabel"  Text="History"  Grid.Column="3"  HorizontalOptions="Center" VerticalOptions="Center"  TextColor="Gray">
+                <Grid ColumnDefinitions="*,*,*,*">
+                    <Label
+                        ClassId="Pending"
+                        Grid.Column="0"
+                        HorizontalOptions="Center"
+                        Text="Requests"
+                        TextColor="Gray"
+                        VerticalOptions="Center"
+                        x:Name="RequestsLabel">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                         </Label.GestureRecognizers>
                     </Label>
+                    <Label
+                        ClassId="Approved"
+                        Grid.Column="1"
+                        HorizontalOptions="Center"
+                        Text="Approved"
+                        TextColor="Gray"
+                        VerticalOptions="Center"
+                        x:Name="ApprovedLabel">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
 
+                    <Label
+                        ClassId="Active"
+                        Grid.Column="2"
+                        HorizontalOptions="Center"
+                        Text="Active"
+                        TextColor="Gray"
+                        VerticalOptions="Center"
+                        x:Name="ActiveLabel">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <Label
+                        ClassId="History"
+                        Grid.Column="3"
+                        HorizontalOptions="Center"
+                        Text="History"
+                        TextColor="Gray"
+                        VerticalOptions="Center"
+                        x:Name="HistoryLabel">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
                 </Grid>
-
             </Frame>
         </Grid>
-        <!-- line -->
-        <BoxView 
-                   HeightRequest="1"
-                   Color="LightGray"
-                   Margin ="0, 0, 0, 0"
-        />
 
+        <BoxView
+            Color="LightGray"
+            HeightRequest="1"
+            Margin="0,0,0,0" />
         <ScrollView Orientation="Vertical">
-
-            <CollectionView ItemsSource="{Binding TransactionCollection}"
-                        SelectionMode="None"
-                        >
+            <CollectionView ItemsSource="{Binding TransactionCollection}" SelectionMode="None">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout
-                                 Orientation="Vertical"
-                                 Span="{OnIdiom Phone=1, Tablet=1, Desktop=1}"
-                                 HorizontalItemSpacing="5"
-                                 VerticalItemSpacing="0" />
+                        HorizontalItemSpacing="5"
+                        Orientation="Vertical"
+                        Span="{OnIdiom Phone=1,
+                                       Tablet=1,
+                                       Desktop=1}"
+                        VerticalItemSpacing="0" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -71,9 +97,6 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
-
         </ScrollView>
-
     </StackLayout>
 </ContentPage>

@@ -1,56 +1,72 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Renta.RegistrationPage"
-             Title="RegistrationPage"
-             Shell.ForegroundColor="Black"
-             Shell.NavBarIsVisible="true"
-             BackgroundColor="White">
-    
-  
-             
-     
+
+<ContentPage
+    BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.NavBarIsVisible="true"
+    Title="RegistrationPage"
+    x:Class="Renta.RegistrationPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
     <ContentPage.Content>
-        <StackLayout Padding="40" VerticalOptions="Center"
-                     HorizontalOptions="FillAndExpand">
-            <Image Source="rentalogo1" Margin="0,0,0,100"></Image>
+        <StackLayout
+            HorizontalOptions="FillAndExpand"
+            Padding="40"
+            VerticalOptions="Center">
+            <Image Margin="0,0,0,100" Source="rentalogo1" />
             <Label Text="Email:" />
-            <Entry Placeholder="Email" Text="{Binding Email, Mode=TwoWay}"  />
-            
+            <Entry Placeholder="Email" Text="{Binding Email, Mode=TwoWay}" />
+
             <Label Text="Password:" />
-            <Entry IsPassword="True"  Text="{Binding Password, Mode=TwoWay}"
-                   Placeholder="Password"/>
-            
+            <Entry
+                IsPassword="True"
+                Placeholder="Password"
+                Text="{Binding Password, Mode=TwoWay}" />
+
             <Label Text="First Name:" />
-            <Entry Placeholder="First Name" Text="{Binding FirstName, Mode=TwoWay}"  />
-            
+            <Entry Placeholder="First Name" Text="{Binding FirstName, Mode=TwoWay}" />
+
             <Label Text="Last Name:" />
-            <Entry Placeholder="Last Name" Text="{Binding LastName, Mode=TwoWay}"  />
+            <Entry Placeholder="Last Name" Text="{Binding LastName, Mode=TwoWay}" />
 
-            <Grid RowDefinitions="*,*" ColumnDefinitions="*,*">
-                <Label Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0"  Text="Pick prefered categories." />
-                <Picker Grid.Row="1" Grid.Column="0" x:Name="CategoryPicker1"  SelectedIndex="4" Margin="0" Title=""  
-                ItemsSource="{Binding Categories}" 
-                SelectedItem="{Binding SelectedCategory1}">
-                </Picker>
-                <Picker Grid.Row="1" Grid.Column="1" x:Name="CategoryPicker2"  SelectedIndex="4" Margin="0" Title=""  
-                ItemsSource="{Binding Categories}" 
-                SelectedItem="{Binding SelectedCategory2}">
-                </Picker>
+            <Grid ColumnDefinitions="*,*" RowDefinitions="*,*">
+                <Label
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="0"
+                    Text="Pick prefered categories." />
+                <Picker
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    ItemsSource="{Binding Categories}"
+                    Margin="0"
+                    SelectedIndex="4"
+                    SelectedItem="{Binding SelectedCategory1}"
+                    Title=""
+                    x:Name="CategoryPicker1" />
+                <Picker
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    ItemsSource="{Binding Categories}"
+                    Margin="0"
+                    SelectedIndex="4"
+                    SelectedItem="{Binding SelectedCategory2}"
+                    Title=""
+                    x:Name="CategoryPicker2" />
             </Grid>
-            
-            <Label Text="Region: "  Padding="0,10,0,10"/>
-            <Picker x:Name="RegionPicker"  SelectedIndex="4" Margin="0" Title="Select your Region"  
-                ItemsSource="{Binding Regions}" 
-                SelectedItem="{Binding SelectedRegion}">
-            </Picker>
+
+            <Label Padding="0,10,0,10" Text="Region: " />
+            <Picker
+                ItemsSource="{Binding Regions}"
+                Margin="0"
+                SelectedIndex="4"
+                SelectedItem="{Binding SelectedRegion}"
+                Title="Select your Region"
+                x:Name="RegionPicker" />
             <Label Text="City (optional):" />
-            <Entry Placeholder="City" Text="{Binding SelectedCity, Mode=TwoWay}"  />
-
-            <Button Text="Register" Command="{Binding RegisterCompleted_Clicked }" />
-
-
-
+            <Entry Placeholder="City" Text="{Binding SelectedCity, Mode=TwoWay}" />
+            <Button Command="{Binding RegisterCompleted_Clicked}" Text="Register" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Renta.Models
+﻿namespace Renta.Models
 {
     public class Message
     {
@@ -14,7 +8,9 @@ namespace Renta.Models
 
         public DateTime Time { get; set; }
 
-        public Message() { }
+        public Message()
+        {
+        }
 
         public Message(string? sender, string text, DateTime time)
         {

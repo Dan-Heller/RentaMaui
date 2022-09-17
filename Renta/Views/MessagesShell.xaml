@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Renta.MessagesShell"
-             xmlns:Pages ="clr-namespace:Renta"
-             
-              Title="Inbox"
-             Shell.NavBarIsVisible="False"
-             
-             Shell.TabBarUnselectedColor="Black"
-             Shell.TabBarTitleColor="Black"
-             Shell.UnselectedColor="Gray"
-             
-             Shell.TitleColor="Black">
+
+<Shell
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarTitleColor="Black"
+    Shell.TabBarUnselectedColor="Black"
+    Shell.TitleColor="Black"
+    Shell.UnselectedColor="Gray"
+    Title="Inbox"
+    x:Class="Renta.MessagesShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:Pages="clr-namespace:Renta"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <TabBar>
 
-        <Tab  Title="Inbox">
-            <ShellContent Title="Notifications" 
-                        ContentTemplate="{DataTemplate Pages:NotificationsPage}" Route="NotificationsPage"  />
-            <ShellContent Title="Messages"
-                       ContentTemplate="{DataTemplate Pages:MessagesPage}"   Route="MessagesPage" />
+        <Tab Title="Inbox">
+            <ShellContent
+                ContentTemplate="{DataTemplate Pages:NotificationsPage}"
+                Route="NotificationsPage"
+                Title="Notifications" />
+            <ShellContent
+                ContentTemplate="{DataTemplate Pages:MessagesPage}"
+                Route="MessagesPage"
+                Title="Messages" />
         </Tab>
     </TabBar>
 </Shell>

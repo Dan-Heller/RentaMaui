@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Renta.SavedItemsPage"
-             Title="Saved Items"
-               xmlns:controls="clr-namespace:Renta.Controls"
-             BackgroundColor="White"
-             Shell.ForegroundColor="Black"
+
+<ContentPage
+    BackgroundColor="White"
+    Shell.ForegroundColor="Black"
     Shell.NavBarIsVisible="true"
-     Shell.TitleColor="Black">
+    Shell.TitleColor="Black"
+    Title="Saved Items"
+    x:Class="Renta.SavedItemsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:controls="clr-namespace:Renta.Controls"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <ScrollView Padding="5,5,5,5" VerticalOptions="FillAndExpand">
 
-        <CollectionView ItemsSource="{Binding SavedItemsCollection}"
-                        SelectionMode="None"
-                        >
+        <CollectionView ItemsSource="{Binding SavedItemsCollection}" SelectionMode="None">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout
-                                 Orientation="Vertical"
-                                 Span="{OnIdiom Phone=3, Tablet=3, Desktop=3}"
-                                 HorizontalItemSpacing="5"
-                                 VerticalItemSpacing="5" />
+                    HorizontalItemSpacing="5"
+                    Orientation="Vertical"
+                    Span="{OnIdiom Phone=3,
+                                   Tablet=3,
+                                   Desktop=3}"
+                    VerticalItemSpacing="5" />
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>

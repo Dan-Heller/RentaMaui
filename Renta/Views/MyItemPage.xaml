@@ -1,28 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+
 <ContentPage
-    x:Class="Renta.MyItemPage"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:controls="clr-namespace:Renta.Controls"
-    xmlns:ViewModels="clr-namespace:Renta.ViewModels"
-    x:DataType="ViewModels:MyItemPageViewModel"
-    Title=" "
     BackgroundColor="White"
     Shell.ForegroundColor="Black"
     Shell.NavBarIsVisible="true"
     Shell.TabBarIsVisible="False"
-    Shell.TitleColor="MediumPurple">
+    Shell.TitleColor="MediumPurple"
+    Title=" "
+    x:Class="Renta.MyItemPage"
+    x:DataType="ViewModels:MyItemPageViewModel"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:ViewModels="clr-namespace:Renta.ViewModels"
+    xmlns:controls="clr-namespace:Renta.Controls"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style x:Key="stlBoardTitle" TargetType="Label">
+            <Style TargetType="Label" x:Key="stlBoardTitle">
                 <Setter Property="Padding" Value="0,30,0,5" />
                 <Setter Property="TextColor" Value="#a5a2a2" />
                 <Setter Property="FontSize" Value="16" />
                 <Setter Property="HorizontalOptions" Value="Center" />
             </Style>
 
-            <Style x:Key="stlBoardDesc" TargetType="Label">
+            <Style TargetType="Label" x:Key="stlBoardDesc">
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="FontSize" Value="16" />
                 <Setter Property="HorizontalOptions" Value="Center" />
@@ -30,38 +31,42 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-
     <ContentPage.ToolbarItems>
-
-        <ToolbarItem IconImageSource="editicon" Command="{Binding EditButtonClicked}" />
+        <ToolbarItem Command="{Binding EditButtonClicked}" IconImageSource="editicon" />
     </ContentPage.ToolbarItems>
 
-
     <ScrollView>
-        <!--  Images  should be horizontal scroll  -->
         <Grid RowDefinitions="auto,auto">
-
             <Grid
+                BackgroundColor="LightGray"
                 Grid.Row="0"
-                Padding="0,0,0,0"
-                BackgroundColor="LightGray">
+                Padding="0,0,0,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Image
+                    Aspect="AspectFit"
                     Grid.Row="0"
                     HeightRequest="300"
-                    Aspect="AspectFit"
                     Source="{Binding _myItemViewModel.CurrentImage}"
                     VerticalOptions="Start" />
-                <ImageButton Command="{Binding NextImage_Clicked}" Source="nexticon.png" HeightRequest="30" HorizontalOptions="End" />
-                <ImageButton Command="{Binding PreviousImage_Clicked}" Source="nexticon.png" HeightRequest="30" HorizontalOptions="Start" Rotation="180" />
+                <ImageButton
+                    Command="{Binding NextImage_Clicked}"
+                    HeightRequest="30"
+                    HorizontalOptions="End"
+                    Source="nexticon.png" />
+                <ImageButton
+                    Command="{Binding PreviousImage_Clicked}"
+                    HeightRequest="30"
+                    HorizontalOptions="Start"
+                    Rotation="180"
+                    Source="nexticon.png" />
             </Grid>
 
             <Grid
+                BackgroundColor="White"
                 Grid.Row="1"
                 Padding="10,10,10,0"
-                BackgroundColor="White"
                 RowSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -70,45 +75,54 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
-
-
                 </Grid.RowDefinitions>
 
                 <Grid
+                    ColumnDefinitions="20,*,*"
                     Grid.Row="0"
                     Padding="5,0,0,0"
-                    ColumnDefinitions="20,*,*"
-                    RowDefinitions="auto"
-                    >
+                    RowDefinitions="auto">
 
                     <Image
-                        Grid.Row="0"
                         Grid.Column="0"
+                        Grid.Row="0"
                         HeightRequest="25"
                         HorizontalOptions="StartAndExpand"
                         Source="coinsstackicon24px"
                         WidthRequest="25" />
                     <Label
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        Padding="8,2,0,0"
                         FontAttributes="Bold"
                         FontSize="20"
-                        VerticalOptions="Center"
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Padding="8,2,0,0"
                         Text="{Binding _myItemViewModel.PricePerDay}"
-                        TextColor="Black" />
+                        TextColor="Black"
+                        VerticalOptions="Center" />
 
-                    <Grid Grid.Row="0" Grid.Column="2" ColumnDefinitions="auto, auto" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,0"  >
-                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding  _myItemViewModel.Item.RatingAsString}"  FontSize="25" TextColor="Black"/>
-                        <Image Source="blankstar" Grid.Row="0" Grid.Column="1" Margin="0,0,0,0"/>
+                    <Grid
+                        ColumnDefinitions="auto, auto"
+                        Grid.Column="2"
+                        Grid.Row="0"
+                        HorizontalOptions="Center"
+                        Margin="0,0,0,0"
+                        VerticalOptions="Center">
+                        <Label
+                            FontSize="25"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            Text="{Binding _myItemViewModel.Item.RatingAsString}"
+                            TextColor="Black" />
+                        <Image
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            Margin="0,0,0,0"
+                            Source="blankstar" />
                     </Grid>
 
-                    <!-- item owner profile link -->
-
-                    <Image  
-                            
-                        Grid.Row="0"
+                    <Image
                         Grid.Column="2"
+                        Grid.Row="0"
                         HeightRequest="40"
                         HorizontalOptions="End"
                         Source="blankprofileimage.jpg"
@@ -117,60 +131,62 @@
                             <TapGestureRecognizer Command="{Binding ProfileLink_Tapped}" />
                         </Image.GestureRecognizers>
                     </Image>
-
                 </Grid>
-
                 <Label
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="3"
                     FontAttributes="Bold"
                     FontSize="20"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Grid.Row="1"
                     Text="{Binding _myItemViewModel.Name}"
                     TextColor="Black" />
 
-                <Grid Grid.Row="2" ColumnDefinitions="auto,*">
+                <Grid ColumnDefinitions="auto,*" Grid.Row="2">
                     <Label
-                    
-                    Grid.Column="0"
-                    FontSize="16"
-                    Text="Upload date: "
-                    TextColor="#a5a2a2" />
+                        FontSize="16"
+                        Grid.Column="0"
+                        Text="Upload date: "
+                        TextColor="#a5a2a2" />
                     <Label
-                   
-                    Grid.Column="1"
-                    FontSize="16"
-                    Text="{Binding _myItemViewModel.UploadDate}"
-                    TextColor="#a5a2a2" />
+                        FontSize="16"
+                        Grid.Column="1"
+                        Text="{Binding _myItemViewModel.UploadDate}"
+                        TextColor="#a5a2a2" />
                 </Grid>
                 <Label
-                    Grid.Row="3"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="3"
-                    Margin="0,10,0,0"
                     FontAttributes="Bold"
                     FontSize="20"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Grid.Row="3"
+                    Margin="0,10,0,0"
                     Text="Description"
                     TextColor="Black" />
                 <Label
-                    Grid.Row="4"
                     Grid.Column="0"
+                    Grid.Row="4"
                     Text="{Binding _myItemViewModel.Description}"
                     TextColor="Black" />
 
-                <Grid Grid.Row="5" RowDefinitions="30,*" Margin="5,10,0,0" Padding="0">
-                    <CollectionView ItemsSource="{Binding ItemReviewsCollection}"
+                <Grid
+                    Grid.Row="5"
+                    Margin="5,10,0,0"
+                    Padding="0"
+                    RowDefinitions="30,*">
+                    <CollectionView
+                        Grid.Row="1"
+                        ItemsSource="{Binding ItemReviewsCollection}"
+                        Margin="0,3,5,0"
                         SelectionMode="None"
-                                Grid.Row="1"
-                                Margin="0,3,5,0"
-                                x:Name="ReviewsCollection"
-                        >
+                        x:Name="ReviewsCollection">
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout
-                                 Orientation="Vertical"
-                                 Span="{OnIdiom Phone=1, Tablet=3, Desktop=3}"
-                                 HorizontalItemSpacing="5"
-                                 VerticalItemSpacing="5" />
+                                HorizontalItemSpacing="5"
+                                Orientation="Vertical"
+                                Span="{OnIdiom Phone=1,
+                                               Tablet=3,
+                                               Desktop=3}"
+                                VerticalItemSpacing="5" />
                         </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
@@ -178,10 +194,7 @@
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-
                 </Grid>
-
-
             </Grid>
         </Grid>
     </ScrollView>

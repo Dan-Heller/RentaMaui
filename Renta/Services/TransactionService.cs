@@ -2,11 +2,7 @@
 using Renta.enums;
 using Renta.Dto_s;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Http;
 
@@ -14,18 +10,18 @@ namespace Renta.Services
 {
     public class TransactionService
     {
-        UserService _userService;
-        IConfiguration configuration;
-        HttpClient httpclient;
+        readonly UserService _userService;
+        readonly IConfiguration _configuration;
+        readonly HttpClient _httpclient;
 
         public TransactionService(IConfiguration config, UserService userService)
         {
             var httpClientHandler = new HttpClientHandler();
             httpClientHandler.ServerCertificateCustomValidationCallback =
                 (message, cert, chain, errors) => { return true; };
-            httpclient = new HttpClient(httpClientHandler);
-            configuration = config;
-            httpclient.MaxResponseContentBufferSize = 256000;
+            _httpclient = new HttpClient(httpClientHandler);
+            _configuration = config;
+            _httpclient.MaxResponseContentBufferSize = 256000;
             _userService = userService;
         }
 
@@ -37,7 +33,7 @@ namespace Renta.Services
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
             System.Diagnostics.Debug.WriteLine(content);
 
-            await httpclient.PostAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Transactions"),
+            await _httpclient.PostAsync(new Uri(_configuration.GetSection("Settings:ApiUrl").Value + "/Transactions"),
                 content);
         }
 
@@ -49,14 +45,14 @@ namespace Renta.Services
                 .Add("id", _userService.LoggedInUser.Id)
                 .Add("type", userType.ToString())
                 .Add("status", status.ToString());
-           
+
             HttpResponseMessage response = null;
             string userId = _userService.LoggedInUser.Id;
-            response = await httpclient.GetAsync(new Uri(configuration.GetSection("Settings:ApiUrl").Value +
+            response = await _httpclient.GetAsync(new Uri(_configuration.GetSection("Settings:ApiUrl").Value +
                                                          "/Transactions/" + queryString));
             string str = await response.Content.ReadAsStringAsync();
-            var Transactions = JsonConvert.DeserializeObject<List<TransactionLookedUp>>(str);
-            return Transactions;
+            var transactions = JsonConvert.DeserializeObject<List<TransactionLookedUp>>(str);
+            return transactions;
         }
 
         public async Task UpdateTransaction(Transaction updatedTransaction)
@@ -64,12 +60,12 @@ namespace Renta.Services
             string json = JsonConvert.SerializeObject(updatedTransaction);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
             HttpResponseMessage response = null;
-            response = await httpclient.PutAsync(
-                new Uri(configuration.GetSection("Settings:ApiUrl").Value + "/Transactions/" + updatedTransaction.Id),
+            response = await _httpclient.PutAsync(
+                new Uri(_configuration.GetSection("Settings:ApiUrl").Value + "/Transactions/" + updatedTransaction.Id),
                 content);
 
             string str = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<Transaction>(str);           
+            var result = JsonConvert.DeserializeObject<Transaction>(str);
         }
     }
 }

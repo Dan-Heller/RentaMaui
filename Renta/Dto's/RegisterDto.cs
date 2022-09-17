@@ -1,9 +1,4 @@
 ﻿using Renta.enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Renta.Dto_s
 {
@@ -22,18 +17,20 @@ namespace Renta.Dto_s
 
         public List<ECategories>? FavoritesCategories { get; set; }
 
-        public RegisterDto() { }
-
-        public RegisterDto(string i_Email, string i_Password, string i_FirstName, string i_LastName, string i_City, string i_Region, List<ECategories> i_FavoritesCategories)
+        public RegisterDto()
         {
+        }
 
-            this.Password = i_Password;
-            this.Email = i_Email;
-            this.FirstName = i_FirstName;
-            this.LastName = i_LastName;
-            this.City = i_City;
-            this.Region = i_Region;
-            this.FavoritesCategories = i_FavoritesCategories;
+        public RegisterDto(string i_Email, string i_Password, string i_FirstName, string i_LastName, string i_City,
+            string i_Region, List<ECategories> i_FavoritesCategories)
+        {
+            Password = i_Password;
+            Email = i_Email;
+            FirstName = i_FirstName;
+            LastName = i_LastName;
+            City = i_City;
+            Region = i_Region;
+            FavoritesCategories = i_FavoritesCategories;
         }
     }
 }

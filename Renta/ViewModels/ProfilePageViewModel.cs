@@ -1,27 +1,26 @@
-﻿
-using Renta.Dto_s;
-using Renta.Models;
+﻿using Renta.Models;
 using Renta.Services;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Renta.ViewModels
 {
     public class ProfilePageViewModel : BaseViewModel
     {
-       
         private string email;
 
         private string coins;
-        public string FullName { get; set; }        
-        public string Category1 { get => _LoggedUser.FavoritesCategories[0].ToString(); }
-        public string Category2 { get => _LoggedUser.FavoritesCategories[1].ToString(); }
-        public string Address   { get; set; }
+        public string FullName { get; set; }
+
+        public string Category1
+        {
+            get => _LoggedUser.FavoritesCategories[0].ToString();
+        }
+
+        public string Category2
+        {
+            get => _LoggedUser.FavoritesCategories[1].ToString();
+        }
+
+        public string Address { get; set; }
 
         public string ProfileImageUrl { get; set; }
 
@@ -43,7 +42,7 @@ namespace Renta.ViewModels
             _LoggedUser = _userService.LoggedInUser;
             OnPropertyChanged(nameof(_LoggedUser));
         }
-   
+
         private void getUserInformation()
         {
             email = _LoggedUser.Email;
@@ -57,41 +56,32 @@ namespace Renta.ViewModels
             OnPropertyChanged(nameof(Address));
             OnPropertyChanged(nameof(Category1));
             OnPropertyChanged(nameof(Category2));
-
         }
 
         public string Email
         {
-            set
-            {
-                email = value;               
-            }
+            set { email = value; }
             get => email;
         }
 
         public string Coins
         {
-            set
-            {
-                coins = value;                
-            }
+            set { coins = value; }
             get => coins;
         }
-       
+
         public Command LogoutClicked
-        => new Command(async () => await Logout());
+            => new Command(async () => await Logout());
 
         private async Task Logout()
         {
             SecureStorage.Remove("AuthToken");
-            
-            
+
             await Shell.Current.Navigation.PopAsync();
             await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
-            
         }
 
         public Command EditButtonClicked
-        => new Command(async () => await Shell.Current.GoToAsync($"{nameof(EditProfilePage)}"));
+            => new Command(async () => await Shell.Current.GoToAsync($"{nameof(EditProfilePage)}"));
     }
 }

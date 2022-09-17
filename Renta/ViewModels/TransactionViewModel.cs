@@ -1,11 +1,6 @@
 ﻿using Renta.Services;
 using Renta.enums;
 using Renta.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Renta.Views;
 
@@ -23,38 +18,72 @@ namespace Renta.ViewModels
 
         public bool NeedApproveIconOnSeeker { get; set; }
 
-        public bool NeedCancelIcon { get; set; }  
-        public string? Id { get => Transaction?.Id; }
-        public string? ItemOwner { get => Transaction?.ItemOwner; }
+        public bool NeedCancelIcon { get; set; }
 
-        public string? ItemSeeker { get => Transaction?.ItemSeeker; }
+        public string? Id
+        {
+            get => Transaction?.Id;
+        }
+
+        public string? ItemOwner
+        {
+            get => Transaction?.ItemOwner;
+        }
+
+        public string? ItemSeeker
+        {
+            get => Transaction?.ItemSeeker;
+        }
 
 
-        public string? ItemId { get => Transaction?.ItemId; }
+        public string? ItemId
+        {
+            get => Transaction?.ItemId;
+        }
 
-        public DateTime? StartDate { get => Transaction?.StartDate; }
+        public DateTime? StartDate
+        {
+            get => Transaction?.StartDate;
+        }
 
-        public DateTime? EndDate { get => Transaction?.EndDate; }
+        public DateTime? EndDate
+        {
+            get => Transaction?.EndDate;
+        }
 
-        public DateTime? CreatedAt { get => Transaction?.CreatedAt; }
-        public ETransactionStatus Status { get => Transaction.Status; }
+        public DateTime? CreatedAt
+        {
+            get => Transaction?.CreatedAt;
+        }
+
+        public ETransactionStatus Status
+        {
+            get => Transaction.Status;
+        }
 
         public delegate Task TransactionStatusChangedDelegate();
+
         public TransactionStatusChangedDelegate TransactionStatusChanged;
 
         public string DatesAsString { get; set; }
-        
-        public string FirstImageUrl { get { return Item.ImagesUrls[0]; } }
 
-        public TransactionViewModel(TransactionLookedUp transaction, TransactionService transactionService, UserService userService)
+        public string FirstImageUrl
+        {
+            get { return Item.ImagesUrls[0]; }
+        }
+
+        public TransactionViewModel(TransactionLookedUp transaction, TransactionService transactionService,
+            UserService userService)
         {
             Transaction = transaction;
             _userService = userService;
             Item = transaction.GetItem();
-            _transactionService = transactionService;                        
-            DatesAsString = StartDate.Value.Date.ToString("dd/MM/yyyy") + "\n-  " + EndDate.Value.Date.ToString("dd/MM/yyyy");
+            _transactionService = transactionService;
+            DatesAsString = StartDate.Value.Date.ToString("dd/MM/yyyy") + "\n-  " +
+                            EndDate.Value.Date.ToString("dd/MM/yyyy");
 
-            if(transaction.Status == ETransactionStatus.Approved || transaction.Status == ETransactionStatus.Active || transaction.Status == ETransactionStatus.Archived || transaction.Status == ETransactionStatus.Canceled)
+            if (transaction.Status == ETransactionStatus.Approved || transaction.Status == ETransactionStatus.Active ||
+                transaction.Status == ETransactionStatus.Archived || transaction.Status == ETransactionStatus.Canceled)
             {
                 NeedCancelIcon = false;
             }
@@ -64,27 +93,27 @@ namespace Renta.ViewModels
             }
 
             NeedApproveIconOnOwner = checkedForOwnerApproveIcon(transaction);
-            NeedApproveIconOnSeeker = checkedForSeekerApproveIcon(transaction);            
+            NeedApproveIconOnSeeker = checkedForSeekerApproveIcon(transaction);
         }
 
         private bool checkedForOwnerApproveIcon(TransactionLookedUp transaction)
         {
             return Status == ETransactionStatus.Pending ||
-                   (Status == ETransactionStatus.Approved && CheckDateRange() && (!transaction.OwnerAcceptedActivation)) ||
-                   (Status == ETransactionStatus.Active && CheckLastRentingDayArrive() && (!transaction.OwnerAcceptedCompletion));
+                   (Status == ETransactionStatus.Approved && CheckDateRange() &&
+                    (!transaction.OwnerAcceptedActivation)) ||
+                   (Status == ETransactionStatus.Active && CheckLastRentingDayArrive() &&
+                    (!transaction.OwnerAcceptedCompletion));
         }
 
         private bool checkedForSeekerApproveIcon(TransactionLookedUp transaction)
         {
             return Status == ETransactionStatus.Approved && CheckDateRange() && !transaction.SeekerAcceptedActivation ||
-                    Status == ETransactionStatus.Active && CheckLastRentingDayArrive() && !transaction.SeekerAcceptedCompletion;
+                   Status == ETransactionStatus.Active && CheckLastRentingDayArrive() &&
+                   !transaction.SeekerAcceptedCompletion;
         }
-
-
 
         private bool CheckLastRentingDayArrive()
         {
-
             DateTime currentDate = DateTime.Now.Date;
             DateTime start = this.StartDate.Value.Date;
             DateTime end = this.EndDate.Value.Date;
@@ -96,7 +125,7 @@ namespace Renta.ViewModels
         {
             DateTime currentDate = DateTime.Now.Date;
             DateTime start = this.StartDate.Value.Date;
-            DateTime end = this.EndDate.Value.Date;           
+            DateTime end = this.EndDate.Value.Date;
 
             if (currentDate >= start && currentDate <= end)
             {
@@ -110,18 +139,17 @@ namespace Renta.ViewModels
 
 
         public Command Approve_Clicked
-        => new Command(async () => await HandleApproveRequest());
+            => new Command(async () => await HandleApproveRequest());
 
         public Command Cancel_Clicked
-        => new Command(async () => await HandleCancelRequest());
+            => new Command(async () => await HandleCancelRequest());
 
         private async Task HandleApproveRequest()
         {
-
             if (Status == ETransactionStatus.Approved || Status == ETransactionStatus.Active)
             {
-                    var jsonStr = JsonConvert.SerializeObject(Transaction);
-                    await Shell.Current.GoToAsync($"{nameof(ActivateTransactionPage)}?transaction={jsonStr}");
+                var jsonStr = JsonConvert.SerializeObject(Transaction);
+                await Shell.Current.GoToAsync($"{nameof(ActivateTransactionPage)}?transaction={jsonStr}");
             }
 
             if (Status == ETransactionStatus.Pending)
@@ -130,7 +158,6 @@ namespace Renta.ViewModels
                 await _transactionService.UpdateTransaction(Transaction); //update in database
                 TransactionStatusChanged?.Invoke(); // tells the page to update collection.
             }
-            
         }
 
         private async Task HandleCancelRequest()
@@ -141,23 +168,24 @@ namespace Renta.ViewModels
         }
 
         public Command OwnerProfileLink_Tapped
-      => new Command(async () => await Shell.Current.GoToAsync($"{nameof(OtherUserProfilePage)}?OwnerId={ItemOwner}"));
+            => new Command(async () =>
+                await Shell.Current.GoToAsync($"{nameof(OtherUserProfilePage)}?OwnerId={ItemOwner}"));
 
         public Command SeekerProfileLink_Tapped
-=> new Command(async () => await Shell.Current.GoToAsync($"{nameof(OtherUserProfilePage)}?OwnerId={ItemSeeker}"));
+            => new Command(async () =>
+                await Shell.Current.GoToAsync($"{nameof(OtherUserProfilePage)}?OwnerId={ItemSeeker}"));
 
         public Command ItemPhotoTapped
-=> new Command(async () => await GotoItemPage());
+            => new Command(async () => await GotoItemPage());
 
         private async Task GotoItemPage()
         {
             var jsonStr = JsonConvert.SerializeObject(Item);
             await Shell.Current.GoToAsync($"{nameof(ItemPage)}?item={jsonStr}");
         }
-
-
+        
         public Command MyItemPhotoTapped
-  => new Command(async () => await GotoMyItemPage());
+            => new Command(async () => await GotoMyItemPage());
 
         private async Task GotoMyItemPage()
         {
@@ -166,12 +194,12 @@ namespace Renta.ViewModels
         }
 
         public Command GoToTransactionPage
-=> new Command(async () => await NavigateToTransactionPage());
+            => new Command(async () => await NavigateToTransactionPage());
 
         private async Task NavigateToTransactionPage()
         {
             var jsonStr = JsonConvert.SerializeObject(Transaction);
-            await Shell.Current.GoToAsync($"{nameof(TransactionPage)}?transaction={jsonStr}");            
-        }                     
+            await Shell.Current.GoToAsync($"{nameof(TransactionPage)}?transaction={jsonStr}");
+        }
     }
 }

@@ -1,46 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView
     x:Class="Renta.Controls.MyItemCard"
+    x:DataType="ViewModels:ItemViewModel"
+    x:Name="MyItemCardComponent"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-     xmlns:ViewModels="clr-namespace:Renta.ViewModels"
-     x:DataType="ViewModels:ItemViewModel"
-    
-    x:Name="MyItemCardComponent">
+    xmlns:ViewModels="clr-namespace:Renta.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <Frame
-        Margin="2"
-        Padding="0"
-       HeightRequest="180"
         BackgroundColor="AliceBlue"
-        CornerRadius="13"
         BorderColor="DarkGray"
-        HasShadow="True">
+        CornerRadius="13"
+        HasShadow="True"
+        HeightRequest="180"
+        Margin="2"
+        Padding="0">
 
-        <Grid RowDefinitions="150 ,30"  Padding="0" HorizontalOptions="FillAndExpand">
-            <Frame Grid.Row="0"
-                Margin="0"
-                Padding="0,1,0,0"
-               BackgroundColor="Transparent"
+        <Grid
+            HorizontalOptions="FillAndExpand"
+            Padding="0"
+            RowDefinitions="150 ,30">
+            <Frame
+                BackgroundColor="Transparent"
+                Grid.Row="0"
                 HasShadow="False"
-                 >
+                Margin="0"
+                Padding="0,1,0,0">
                 <Frame.GestureRecognizers>
-                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GoToMyItemPage}" />
+                    <TapGestureRecognizer Command="{Binding GoToMyItemPage}" NumberOfTapsRequired="1" />
                 </Frame.GestureRecognizers>
                 <Image
-                    
                     Aspect="AspectFit"
                     HeightRequest="150"
                     HorizontalOptions="CenterAndExpand"
-                    WidthRequest="119"
-                    Source="{Binding FirstImageUrl}" />
+                    Source="{Binding FirstImageUrl}"
+                    WidthRequest="119" />
             </Frame>
             <StackLayout
                 Grid.Row="1"
-                Padding="5,0,0,0"
                 Orientation="Horizontal"
-                
-                >
+                Padding="5,0,0,0">
 
                 <Image
                     Grid.Row="1"
@@ -49,16 +48,12 @@
                     WidthRequest="22" />
 
                 <Label
-                    Grid.Row="1"
-                    Padding="8,2,0,0"
                     FontAttributes="Bold"
                     FontSize="16"
+                    Grid.Row="1"
+                    Padding="8,2,0,0"
                     Text="{Binding PricePerDay}" />
-
-                
-                   
             </StackLayout>
-
         </Grid>
     </Frame>
 

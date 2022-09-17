@@ -1,31 +1,50 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Renta.Controls.ReviewController"
-             xmlns:Models="clr-namespace:Renta.Models"
-             x:DataType="Models:UserReview"
-                
-             >
+
+<ContentView
+    x:Class="Renta.Controls.ReviewController"
+    x:DataType="Models:UserReview"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:Models="clr-namespace:Renta.Models"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <Frame
-       Margin="2"
-        Padding="0"
-       
         BackgroundColor="AliceBlue"
-        CornerRadius="13"
         BorderColor="DarkGray"
-        HasShadow="True">
+        CornerRadius="13"
+        HasShadow="True"
+        Margin="2"
+        Padding="0">
 
-        <Grid RowDefinitions="auto,auto" ColumnDefinitions="*,15,auto"  Padding="0" HorizontalOptions="FillAndExpand" Margin="0,5,0,0" >
-            <Label Grid.Row="0" Grid.Column="0" Text="{Binding ReviewerName}" FontSize="25" Margin="10,0,0,0" TextColor="Black"/>
-            <Label Grid.Row="0" Grid.Column="1" Text="{Binding Rating}"  FontSize="25" TextColor="Black"/>
-            <Image Source="blankstar" Grid.Row="0" Grid.Column="2" Margin="0,0,7,0"/>
+        <Grid
+            ColumnDefinitions="*,15,auto"
+            HorizontalOptions="FillAndExpand"
+            Margin="0,5,0,0"
+            Padding="0"
+            RowDefinitions="auto,auto">
             <Label
-                    Grid.Row="1"
-                    FontSize="20"
-                    Text="{Binding Review}"
-                    TextColor="Black"
-                    Margin="10,0,0,10"/>
+                FontSize="25"
+                Grid.Column="0"
+                Grid.Row="0"
+                Margin="10,0,0,0"
+                Text="{Binding ReviewerName}"
+                TextColor="Black" />
+            <Label
+                FontSize="25"
+                Grid.Column="1"
+                Grid.Row="0"
+                Text="{Binding Rating}"
+                TextColor="Black" />
+            <Image
+                Grid.Column="2"
+                Grid.Row="0"
+                Margin="0,0,7,0"
+                Source="blankstar" />
+            <Label
+                FontSize="20"
+                Grid.Row="1"
+                Margin="10,0,0,10"
+                Text="{Binding Review}"
+                TextColor="Black" />
         </Grid>
     </Frame>
 </ContentView>

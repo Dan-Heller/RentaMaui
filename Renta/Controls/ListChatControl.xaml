@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Renta.Controls.ListChatControl"
-               xmlns:ViewModels="clr-namespace:Renta.ViewModels"
-            x:DataType="ViewModels:ChatViewModel">
+
+<ContentView
+    x:Class="Renta.Controls.ListChatControl"
+    x:DataType="ViewModels:ChatViewModel"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:ViewModels="clr-namespace:Renta.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <ContentView.Resources>
         <ResourceDictionary>
 
-            <Style x:Key="RecentImageContainerStyle" TargetType="Grid">
+            <Style TargetType="Grid" x:Key="RecentImageContainerStyle">
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="HeightRequest" Value="72" />
                 <Setter Property="WidthRequest" Value="72" />
             </Style>
 
-            <Style x:Key="RecentEllipseStyle" TargetType="Ellipse">
+            <Style TargetType="Ellipse" x:Key="RecentEllipseStyle">
                 <Setter Property="HeightRequest" Value="72" />
                 <Setter Property="WidthRequest" Value="72" />
             </Style>
 
-            <Style x:Key="RecentImageStyle" TargetType="Image">
+            <Style TargetType="Image" x:Key="RecentImageStyle">
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="HeightRequest" Value="48" />
                 <Setter Property="Margin" Value="10" />
             </Style>
 
-            <Style x:Key="NameTextStyle" TargetType="Label">
+            <Style TargetType="Label" x:Key="NameTextStyle">
                 <Setter Property="TextColor" Value="Black" />
                 <Setter Property="FontSize" Value="16" />
                 <Setter Property="FontFamily" Value="Metropolis Regular" />
@@ -33,7 +35,7 @@
                 <Setter Property="Margin" Value="12, 0" />
             </Style>
 
-            <Style x:Key="MessageTextStyle" TargetType="Label">
+            <Style TargetType="Label" x:Key="MessageTextStyle">
                 <Setter Property="TextColor" Value="Black" />
                 <Setter Property="FontSize" Value="14" />
                 <Setter Property="FontFamily" Value="Metropolis Regular" />
@@ -44,7 +46,7 @@
 
             <Color x:Key="TimeColor">#B2ACBE</Color>
 
-            <Style x:Key="TimeTextStyle" TargetType="Label">
+            <Style TargetType="Label" x:Key="TimeTextStyle">
                 <Setter Property="TextColor" Value="{StaticResource TimeColor}" />
                 <Setter Property="FontFamily" Value="Metropolis Regular" />
                 <Setter Property="FontSize" Value="11" />
@@ -54,39 +56,31 @@
     </ContentView.Resources>
     <ContentView.Content>
         <Grid
-          ColumnDefinitions="Auto, *"
-          RowSpacing="0"
-          Margin="12, 24">
+            ColumnDefinitions="Auto, *"
+            Margin="12,24"
+            RowSpacing="0">
             <Grid.GestureRecognizers>
-                <TapGestureRecognizer                
-                  NumberOfTapsRequired="1" Command="{Binding ListChatTapped}"/>
+                <TapGestureRecognizer Command="{Binding ListChatTapped}" NumberOfTapsRequired="1" />
             </Grid.GestureRecognizers>
-            <Grid
-                Style="{StaticResource RecentImageContainerStyle}">
+            <Grid Style="{StaticResource RecentImageContainerStyle}">
                 <Ellipse
-                     Stroke="Black"
-                     StrokeThickness="1"
-                    Style="{StaticResource RecentEllipseStyle}"/>
+                    Stroke="Black"
+                    StrokeThickness="1"
+                    Style="{StaticResource RecentEllipseStyle}" />
                 <Image
                     HeightRequest="60"
                     Source="{Binding otherUserProfilePhoto}"
-                    Style="{StaticResource RecentImageStyle}"/>
+                    Style="{StaticResource RecentImageStyle}" />
             </Grid>
-            <Grid
-                Grid.Column="1"   
-                ColumnDefinitions="*, Auto">
+            <Grid ColumnDefinitions="*, Auto" Grid.Column="1">
                 <StackLayout>
-                    <Label        
-                        Text="{Binding OtherUserFullName}"
-                        Style="{StaticResource NameTextStyle}"/>
-                    <Label         
-                        Text="{Binding LastMessage}"
-                        Style="{StaticResource MessageTextStyle}"/>
+                    <Label Style="{StaticResource NameTextStyle}" Text="{Binding OtherUserFullName}" />
+                    <Label Style="{StaticResource MessageTextStyle}" Text="{Binding LastMessage}" />
                 </StackLayout>
-                <Label 
+                <Label
                     Grid.Column="1"
-                    Text="{Binding LastMessageTime}"
-                    Style="{StaticResource TimeTextStyle}"/>
+                    Style="{StaticResource TimeTextStyle}"
+                    Text="{Binding LastMessageTime}" />
             </Grid>
         </Grid>
     </ContentView.Content>

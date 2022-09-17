@@ -33,7 +33,7 @@
             <Label
                 FontSize="20"
                 HorizontalOptions="Center"
-                Text="{Binding _transaction.Status}"
+                Text="{Binding Transaction.Status}"
                 TextColor="Black" />
 
             <Label Text="Image of previous condition" x:Name="BeforeConditionLabel" />
@@ -55,7 +55,7 @@
                         Clicked="ImageTapped"
                         x:Name="BeforeImage1" />
                 </Frame>
-             
+
                 <Frame
                     BorderColor="#c6c1ea"
                     CornerRadius="13"
@@ -67,7 +67,6 @@
                         Aspect="AspectFill"
                         Clicked="ImageTapped"
                         x:Name="BeforeImage2" />
-
                 </Frame>
                 <Frame
                     BorderColor="#c6c1ea"
@@ -80,7 +79,6 @@
                         Aspect="AspectFill"
                         Clicked="ImageTapped"
                         x:Name="BeforeImage3" />
-
                 </Frame>
                 <Frame
                     BorderColor="#c6c1ea"
@@ -114,7 +112,7 @@
                         Clicked="ImageTapped"
                         x:Name="AfterImage1" />
                 </Frame>
-              
+
                 <Frame
                     BorderColor="#c6c1ea"
                     CornerRadius="13"
@@ -139,7 +137,6 @@
                         Aspect="AspectFill"
                         Clicked="ImageTapped"
                         x:Name="AfterImage3" />
-
                 </Frame>
                 <Frame
                     BorderColor="#c6c1ea"
@@ -300,7 +297,6 @@
                         WidthRequest="100" />
                 </Grid>
             </Frame>
-      
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

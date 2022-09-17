@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Renta.CreditsPage"
-             Title="CreditsPage"
-             Shell.NavBarIsVisible="true"
-               Shell.ForegroundColor="Black"
-             BackgroundColor="White">
+
+<ContentPage
+    BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.NavBarIsVisible="true"
+    Title="CreditsPage"
+    x:Class="Renta.CreditsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <StackLayout>
-        <Label Text="Welcome to .NET MAUI!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <Label
+            HorizontalOptions="CenterAndExpand"
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="CenterAndExpand" />
     </StackLayout>
 </ContentPage>

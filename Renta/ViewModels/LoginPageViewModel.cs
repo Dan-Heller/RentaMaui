@@ -10,43 +10,36 @@ namespace Renta.ViewModels
 {
     public class LoginPageViewModel
     {
-        public string password;
-        public string email;
+        private string password;
+        private string email;
         private UserService m_userService;
+
         public LoginPageViewModel(UserService userService)
         {
             m_userService = userService;
-
-        }        
+        }
 
         public string Password
         {
-            set
-            {
-                password = value;
-                
-            }
+            set { password = value; }
             get => password;
         }
+
         public string Email
         {
-            set
-            {
-                email = value;
-               
-            }
+            set { email = value; }
             get => email;
         }
 
 
         public Command LoginButtonClicked
-            => new Command(async () => await  loginUser());
+            => new Command(async () => await loginUser());
 
         public async Task loginUser()
-        {                                 
+        {
             LoginDto loginDto = new LoginDto(email, password);
-           bool LoginSuccess  = await m_userService.LoginUser(loginDto);
-                                 
+            bool LoginSuccess = await m_userService.LoginUser(loginDto);
+
             if (LoginSuccess)
             {
                 await Shell.Current.GoToAsync($"//{nameof(FeedPage)}");
@@ -59,7 +52,7 @@ namespace Renta.ViewModels
 
 
         public Command RegisterLabelTapped
- => new Command(async () => await Shell.Current.GoToAsync($"//{nameof(LoginPage)}/{nameof(RegistrationPage)}"));
-
+            => new Command(async () =>
+                await Shell.Current.GoToAsync($"//{nameof(LoginPage)}/{nameof(RegistrationPage)}"));
     }
 }
